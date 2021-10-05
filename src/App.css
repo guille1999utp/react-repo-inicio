@@ -1,0 +1,18 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.App{
+  width: auto;
+  height: 80px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+h1{
+  padding: 20px;
+  color: white;
+  font-family: sans-serif;
+
+}
