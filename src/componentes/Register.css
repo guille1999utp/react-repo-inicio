@@ -1,0 +1,122 @@
+
+.formre{
+    box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    margin-top: 10%;
+    margin-top: 100px;
+    min-width: 200px;
+    max-width: 800px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); ;
+    grid-template-rows: repeat(2, 1fr);
+
+    
+   
+}
+.gridform{
+    grid-column: 2/3;
+}
+
+.i{
+    grid-column: 1/3;
+    color: black;
+    font-size: 40px;
+    font-family: sans-serif;
+    padding-bottom: 60px;
+    text-align: center;
+}
+.ajust{
+    margin-left: 7rem;
+    font-size: 22px;
+    font-family: sans-serif;
+    padding-bottom: 20px;
+}
+
+
+.inputr{
+    min-width: 200px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    margin-left: 7rem;
+    border: 1px solid black;
+    font-size: 18px;
+    font-family: 'calibri';
+}
+.ya{
+    margin-left: 7rem;
+    font-size: 22px;
+    font-family: sans-serif;
+    padding-bottom: 20px;
+    margin-left: 7rem;
+}
+.as{
+    grid-column: 1/3;
+    margin-left: 7rem;
+    margin-top: 20px;
+    padding: 15px;
+    width: 75px;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 20px
+}
+.as:hover{
+    background: black;
+    color: white;
+    box-shadow: white
+}
+.buttonregi{
+   
+    width: 80%;
+    grid-column: 1/3;
+    background: black;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 25px auto;
+    
+    font-size: 18px;
+}
+
+@media (max-width: 700px) {
+    .formre{
+       display: flex;
+       flex-direction: column;
+        }
+        .i{
+            margin-left: 0px;
+            color: black;
+            font-size: 40px;
+            font-family: sans-serif;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+        .ajust{
+            text-align: center;
+            margin-left: 0px;
+            font-size: 22px;
+            font-family: sans-serif;
+            padding-bottom: 20px;
+        }
+        .inputr{
+          width: 85%;
+           margin-left: 4%;
+   
+        
+        }
+        .as{
+        margin-left: 4%;  
+        }
+        .ya{
+            margin-left: 4%;
+            font-size: 22px;
+            font-family: sans-serif;
+            padding-bottom: 20px;
+        }
+    
+   }

@@ -4,18 +4,10 @@
   height: 80px;
   background-color: black;
   color: white;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-.login{
-  margin: auto 0px;
-  text-align: right;
-  right: 0px;
-  font-size: 40px;
-  font-family: sans-serif;
-
-}
 .register{
   text-decoration: none;
   text-align: right;
