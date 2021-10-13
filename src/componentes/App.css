@@ -1,37 +1,138 @@
-
-.App{
-  width:100%;
-  height: 80px;
+.menu{
   background-color: black;
-  color: white;
+  height: 75px;
+  width: 100%;
   display: flex;
-  flex-direction: row-reverse;
-}
-
-.register{
-  text-decoration: none;
-  text-align: right;
-  margin: auto 0px;
-  margin-right: 5%;
-  font-size: 25px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 5px 0 10px black;
   font-family: sans-serif;
+}
+.logo{
   color: white;
+  font-size: 35px;
+padding-left: 80px;
+  font-weight: bold;
+}
+.items{
+  display: flex;
+  list-style: none;
+  margin-right: 30px;
+}
+.items li{
+  border-radius: 3px;
+  margin: 0 5px;
+}
+.items li a{
+ text-decoration: none;
+ font-size: 15px;
+ display: block;
+ margin-left: 15px;
+ text-transform: uppercase;
+ color: white;
 }
 
-@media (max-width: 1280px) {
-  .login {
-     font-size: 30px; 
-    }
-    .register {
-      font-size: 18px; 
-     }
+.btnmenu{
+  margin-right: 30px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+ul.show{
+top: 65px;
+}
+@media screen and (max-width:1280px){
+  
+  .logo{
+    font-size: 30px;
+    padding-left: 35px;
+  }
+  .items li a{
+    text-decoration: none;
+    font-size: 12px;
+    display: block;
+    text-transform: uppercase;
+    color: white;
+   }
+   
+}
+@media screen and (max-width:1024px){
+  
+  .logo{
+    font-size: 22px;
+    padding-left: 35px;
+  }
+  .items li a{
+    
+    text-decoration: none;
+    font-size: 13px;
+    display: block;
+    text-transform: uppercase;
+    color: white;
+   }
+   .items li a{
+    margin: 0 0px;
+   }
+
+}
+@media screen and (max-width:858px){
+
+  .menu{
+    height: 65px;
+  }
+  .btnmenu{
+  display:inline-block ;
+  margin-right: 15px;
+  font-size: 30px;
+  text-decoration: none;
+  }
+  .items{
+    position: fixed;
+    width: 100vw;
+    height: calc(100% - 65px);
+    background: rgb(45, 49, 58);
+    top: -100vh;
+    text-align: center;
+    transition: all 500ms;
+    flex-direction: column;
+  }
+  .items li{
+    margin: 30px 0 0 0;
+    line-height: 30px;
+  }
+  .items li:hover{
+   background: none;
+  }
+  .items li a{
+    font-size: 20px;
+    color: rgb(174, 175, 181);
+    font-weight: bold;
+    transition: all 1000ms;
+   }
+   .items li a:hover{
+    color: white;
+    background: rgb(24, 30, 43);
+    padding: 20px;
+    transition: all 1000ms;
+   
+   }
+
+   .logo{
+     font-size: 18px;
+     padding-left: 35px;
+   }
+
 }
 
-@media (max-width: 800px) {
- .login {
-     font-size: 25px;
-     }
- .register {
-      font-size: 15px; 
-     }
+@media screen and (max-width:858px) and (orientation: landscape){
+
+.items li{
+  margin: 5px 0 0 0;
+}
+.items{
+  overflow: scroll;
+  height: calc(100%-65px);
+}
+
 }

@@ -84,27 +84,27 @@ function Register() {
         <h4 className='i'>Iniciar Sesion</h4>
    <div >
    <h3 className='ajust'>Nombres</h3>
-   <input className='inputr' placeholder='ingrese nombres' onChange={ onChangeNombre} name='nombre'/>
+   <input className='inputr' placeholder='ingrese nombres' onChange={ onChangeNombre} name='nombre' required/>
    </div>
    <div className='gridform'>
    <h3 className='ajust'>Apellidos</h3>
-   <input className='inputr' placeholder='ingrese apellidos' onChange={ onChangeApellido} name='apellidos'/>
+   <input className='inputr' placeholder='ingrese apellidos' onChange={ onChangeApellido} name='apellidos' required/>
    </div>
    <div>
    <h3 className='ajust'>Fecha De Nacimiento</h3>
-   <input className='inputr' type='date' name='fechnacimiento' onChange={ onChangeFecha }/>
+   <input className='inputr' type='date' name='fechnacimiento' onChange={ onChangeFecha } required/>
    </div>
    <div className='gridform'>
    <h3 className='ajust'>Correo</h3>
-  <input className='inputr' type='email' placeholder='ingrese correo' onChange={ onChangeCorreo} name='correo'/>
+  <input className='inputr' type='email' placeholder='ingrese correo' onChange={ onChangeCorreo} name='correo' required/>
   </div>
   <div>
    <h3 className='ajust'>Contraseña</h3>
-   <input className='inputr' type='password' placeholder='ingrese contraseña' onChange={ onChangeContraseña} name='password'/>
+   <input className='inputr' type='password' placeholder='ingrese contraseña' onChange={ onChangeContraseña} name='password' required/>
    </div>
    <div className='gridform'>
    <h3 className='ajust'>Verificar Contraseña</h3>
-   <input className='inputr' type='password' placeholder='Repite la contraseña' onChange={ onChangeContraseñar} name='passwordrepetida'/>
+   <input className='inputr' type='password' placeholder='Repite la contraseña' onChange={ onChangeContraseñar} name='passwordrepetida' required/>
    </div>
 
    <button className='buttonregi' type='submit'>Registrarme</button>
