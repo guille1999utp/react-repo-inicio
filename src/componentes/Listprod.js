@@ -1,20 +1,102 @@
-import './Listprod.css';
-import {Glider} from 'glider-js'
-function Listprod() {
-    new Glider(document.querySelector('.glider'));
+import "./Listprod.css";
+import Cards from "./Cards";
 
+
+export default function Listprod() {
+  const cards = [
+    {
+      id: 1,
+      image: "https://mfiles.alphacoders.com/849/thumb-849315.jpg",
+      rating: 4.3,
+      star: "fas fa-star-half-alt",
+      reviews: 453,
+      mobile: "MI A3",
+      specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
+      actual_price: 14999,
+      after_discount: 12999
+    },
+    {
+      id: 2,
+      image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
+      rating: 4.3,
+      star: "fas fa-star-half-alt",
+      reviews: 453,
+      mobile: "Realme 7 Pro",
+      specs: "6 GB RAM | 128 GB ROM | Expandable Upto 256 GB ",
+      actual_price: 17999,
+      after_discount: 16999
+    },
+    {
+      id: 3,
+      image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
+      rating: 4.3,
+      star: "fas fa-star-half-alt",
+      reviews: 453,
+      mobile: "Samsung M40",
+      specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
+      actual_price: 14999,
+      after_discount: 13999
+    },
+    {
+      id: 4,
+      image: 'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
+      rating: 4.3,
+      star: "fas fa-star-half-alt",
+      reviews: 453,
+      mobile: "Oneplus 9T",
+      specs: "8 GB RAM | 256 GB ROM | Expandable Upto 256 GB ",
+      actual_price: 24999,
+      after_discount: 21999
+    },  {
+        id: 3,
+        image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
+        rating: 4.3,
+        star: "fas fa-star-half-alt",
+        reviews: 453,
+        mobile: "Samsung M40",
+        specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
+        actual_price: 14999,
+        after_discount: 13999
+      },  {
+        id: 3,
+        image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
+        rating: 4.3,
+        star: "fas fa-star-half-alt",
+        reviews: 453,
+        mobile: "Samsung M40",
+        specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
+        actual_price: 14999,
+        after_discount: 13999
+      },  {
+        id: 3,
+        image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
+        rating: 4.3,
+        star: "fas fa-star-half-alt",
+        reviews: 453,
+        mobile: "Samsung M40",
+        specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
+        actual_price: 14999,
+        after_discount: 13999
+      },  {
+        id: 3,
+        image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
+        rating: 4.3,
+        star: "fas fa-star-half-alt",
+        reviews: 453,
+        mobile: "Samsung M40",
+        specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
+        actual_price: 14999,
+        after_discount: 13999
+      },
+  ];
   return (
-    <>
-    <div className="glider">
-  <div> 1 </div>
-  <div> 2 </div>
-  <div> 3 </div>
-  <div> 4 </div>
-  <div> 5 </div>
-  <div> 6 </div>
-</div>
-    </>
+    <div className="Cardcompleta">
+      <h1>Products</h1>
+      <div className="flex">
+        {cards.map((card) => (
+          <Cards key={card.id} image={card.image} rating={card.rating} reviews={card.reviews} mobile={card.mobile} specs={card.specs} actual_price={card.actual_price} after_discount={card.actual_price} />
+        ))}
+      </div>
+    </div>
   );
 }
-
-export default Listprod;
