@@ -93,9 +93,7 @@ export default function Listprod() {
   return (
   <>
     <div className='pagineCard'>
-    <FilterCard className='filtercard'>
-     
-     </FilterCard> 
+    <FilterCard/>
     <div className="Cardcompleta">
       <h1 className='margin-bottom'>Productos Encontrados</h1>
       <div className="flex">
