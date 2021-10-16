@@ -4,7 +4,6 @@ import './Cards.css';
 function Cards(
     {image,
     rating,
-    star,
     reviews,
     mobile,
     specs,

@@ -1,5 +1,6 @@
 import "./Listprod.css";
 import Cards from "./Cards";
+import FilterCard from "./FilterCard";
 
 
 export default function Listprod() {
@@ -90,13 +91,20 @@ export default function Listprod() {
       },
   ];
   return (
+  <>
+    <div className='pagineCard'>
+    <FilterCard className='filtercard'>
+     
+     </FilterCard> 
     <div className="Cardcompleta">
-      <h1>Products</h1>
+      <h1 className='margin-bottom'>Productos Encontrados</h1>
       <div className="flex">
         {cards.map((card) => (
           <Cards key={card.id} image={card.image} rating={card.rating} reviews={card.reviews} mobile={card.mobile} specs={card.specs} actual_price={card.actual_price} after_discount={card.actual_price} />
         ))}
       </div>
     </div>
+    </div>
+    </>
   );
 }

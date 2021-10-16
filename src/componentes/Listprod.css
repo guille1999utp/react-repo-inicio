@@ -1,4 +1,14 @@
-.Cardcompleta {
+.pagineCard{
+	display: grid;
+	grid-template-columns: 1fr repeat(3,1fr);
+}
+
+.Cardcompleta { 
+	padding: 2rem;
+	border-radius: 20px;
+	margin:2rem;
+	background: rgb(237, 237, 237);;
+	grid-column: 2/5;
 	font-family: sans-serif;
 	text-align: center;
   }
@@ -34,3 +44,6 @@
 	color: #fff;
 	margin-bottom: 1rem;
   }
+.margin-bottom{
+	margin-bottom: 2rem;
+}
