@@ -2,7 +2,9 @@ import './Cards.css';
 
 
 function Cards(
-    {image,
+    {id,
+    history,
+   image,
     rating,
     reviews,
     mobile,
@@ -10,6 +12,10 @@ function Cards(
     actual_price,
     after_discount}) {
   
+   const redirect = () => {
+  history.push( `/producto/${id}`);
+   }
+
     return (
    <>
       <div className="card">
@@ -31,7 +37,7 @@ function Cards(
               </span>
             </p>
           </div>
-          <button className="btn">Add To Cart</button>
+          <button className="btn" onClick={ redirect } >Add To Cart</button>
         </div>
       </div>
     </>

@@ -1,5 +1,6 @@
 import './App.css';
 import React, {useState} from 'react'
+import { Link  } from 'react-router-dom';
 
 function App() {
 
@@ -26,14 +27,14 @@ function App() {
     <nav className='menu'>
       <label className='logo'>CompraRepuestos</label>
       <ul className={(bar.valid === true)?'items show':'items'}>
-      <li><a className='menubari' href='/inicio' >Productos</a></li>
-      <li><a className='menubari' href='/'>Ordenar</a></li>
-      <li><a className='menubari' href='/'>Chats</a></li>
-      <li><a className='menubari' href='/'>Notificaciones</a></li>
-      <li><a className='menubari' href='/'>Ajustes</a></li>
-      <li><a className='menubari' href='/'>Informacion</a></li>
-      <li><a className='menubari' href='/login'>Login</a></li>
-      <li><a className='menubari' href='/register'>Register</a></li>
+      <li><Link className='menubari' to='/inicio' >Productos</Link></li>
+      <li><Link className='menubari' to='/'>Ordenar</Link></li>
+      <li><Link className='menubari' to='/'>Chats</Link></li>
+      <li><Link className='menubari' to='/'>Notificaciones</Link></li>
+      <li><Link className='menubari' to='/'>Ajustes</Link></li>
+      <li><Link className='menubari' to='/'>Informacion</Link></li>
+      <li><Link className='menubari' to='/login'>Login</Link></li>
+      <li><Link className='menubari' to='/register'>Register</Link></li>
       </ul>
     <button className='btnmenu' onClick={ ()=> onhandledclick() } >
     <i className='bx bx-menu' ></i>

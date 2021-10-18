@@ -3,7 +3,7 @@ import Cards from "./Cards";
 import FilterCard from "./FilterCard";
 
 
-export default function Listprod() {
+export default function Listprod({history}) {
   const cards = [
     {
       id: 1,
@@ -49,7 +49,7 @@ export default function Listprod() {
       actual_price: 24999,
       after_discount: 21999
     },  {
-        id: 3,
+        id: 5,
         image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
         rating: 4.3,
         star: "fas fa-star-half-alt",
@@ -59,7 +59,7 @@ export default function Listprod() {
         actual_price: 14999,
         after_discount: 13999
       },  {
-        id: 3,
+        id: 6,
         image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
         rating: 4.3,
         star: "fas fa-star-half-alt",
@@ -69,7 +69,7 @@ export default function Listprod() {
         actual_price: 14999,
         after_discount: 13999
       },  {
-        id: 3,
+        id: 7,
         image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
         rating: 4.3,
         star: "fas fa-star-half-alt",
@@ -79,7 +79,7 @@ export default function Listprod() {
         actual_price: 14999,
         after_discount: 13999
       },  {
-        id: 3,
+        id: 8,
         image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
         rating: 4.3,
         star: "fas fa-star-half-alt",
@@ -98,7 +98,7 @@ export default function Listprod() {
       <h1 className='margin-bottom'>Productos Encontrados</h1>
       <div className="flex">
         {cards.map((card) => (
-          <Cards key={card.id} image={card.image} rating={card.rating} reviews={card.reviews} mobile={card.mobile} specs={card.specs} actual_price={card.actual_price} after_discount={card.actual_price} />
+          <Cards key={card.id} id={card.id} history={history} image={card.image} rating={card.rating} reviews={card.reviews} mobile={card.mobile} specs={card.specs} actual_price={card.actual_price} after_discount={card.actual_price} />
         ))}
       </div>
     </div>
