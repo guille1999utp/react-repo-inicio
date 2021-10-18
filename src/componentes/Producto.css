@@ -1,23 +1,143 @@
+
 .gridproducto{
-  margin: 2rem 10%;
+ 
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows:repeat(6, 1fr);
+    grid-template-columns: 4fr 4fr 2fr;
+    background: white;
+    padding: 20px 100px;
+    height: 100vh;
 }
 
-.fotoproducto{
-  grid-column: 1/3;
-  width: 70%;
-  margin: 0 auto;
-  max-width: 400px;
-  max-height: 700px;
+
+.fleximg{
+  grid-column: 1/2;
   grid-row: 1/3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.fleximg .fotoproducto{
+  width: 100%;
+  margin-top: 20px;
+  max-width: 65%;
+  margin-left: 10%;
+}
+.morefotos{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 10%;
+}
+.listmorefotos{
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  border: solid grey 2px;
+  margin-top: 10px;
 }
 
-.infopro{
-  grid-column: 3/5;
+.infocom{
+  padding: 20px;
+  grid-column: 3/4;
   grid-row: 1/3;
   background: white;
-  width: 100%;
+  width: 90%;
+  height: 50vh;
+  border: solid rgba(0, 0, 0, 0.2) 1px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.infopro{
+  grid-column: 2/3;
+  grid-row: 1/3;
+  background: white;
+  width: 90%;
   height: 100%;
 }
+.infopro h3{
+  font-family:sans-serif ;
+  font-size: 2.2rem;
+  font-weight: 400
+}
+.infopro h4{
+  font-weight: 200;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  font-family:sans-serif ;
+ 
+}
+.infopro p{
+  font-family:sans-serif ;
+  font-size: 0.8rem;
+}
+.infopro p{
+  font-family:sans-serif ;
+  font-size: 0.8rem;
+}
+.flexcara{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.flexcara p{
+ margin-right: 10%;
+ margin-top: 20px;
+}
+.flexcara strong{
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 5px;
+ }
+ .infopro li{
+   margin-top: 10px;
+  font-family:sans-serif ;
+  font-size: 1rem;
+}
+.infocom h4{
+  font-family:sans-serif ;
+font-size: 2rem;
+}
+.infocom p{
+  font-family:sans-serif ;
+  margin-top: 10px;
+  font-size: 1rem;
+  }
+.infocom .disponiblecolor{
+  margin-top: 30px;
+  font-size: 1.4rem;
+    color: green;
+    }
+.infocom .cantidad{
+  margin-top: 10px;
+  padding: 5px;
+  width: 60px;
+  border-radius: 10px;
+}
+.infocom .botoncompra{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+}
+
+.infocom .amarillo{
+ background: rgb(255, 220 , 0);
+}
+.infocom .naranja{
+  background: rgb(255, 120 , 0);
+ }
+
+ .infocom .listamia{
+ font-weight: 600;
+ width: 100%;
+ margin-top: 40px;
+ font-size: 1rem;
+ border-radius: 5px;
+ padding: 2px;
+ border: none;
+ }
