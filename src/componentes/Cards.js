@@ -5,12 +5,8 @@ function Cards(
     {id,
     history,
    image,
-    rating,
-    reviews,
     mobile,
-    specs,
-    actual_price,
-    after_discount}) {
+    actual_price,}) {
   
    const redirect = () => {
   history.push( `/producto/${id}`);
@@ -20,26 +16,23 @@ function Cards(
    <>
       <div className="card">
         <div className="card-img">
-          <img src={image} alt="mobile" />
+          <img onClick={ redirect } src={image} alt="mobile" />
         </div>
         <div className="card-body">
           <div className="left">
-            <p className="bold">{mobile}</p>
-            <p>
-              {rating}  |{" "}
-              {reviews}
-            </p>
-            <p>{specs}</p>
-            <p>
-               <span>{after_discount}</span> |{" "}
-              <span>
-                <strike>{actual_price}</strike>
+            <p onClick={ redirect } className="bold">{mobile}</p>
+              <span className='price'>
+              {'$'+actual_price}
               </span>
-            </p>
+              <br></br>
+              <br></br>
+              <span className='disp'>
+                Envio Gratis
+              </span>
           </div>
-          <button className="btn" onClick={ redirect } >Add To Cart</button>
         </div>
       </div>
+      <hr></hr>
     </>
         
       );

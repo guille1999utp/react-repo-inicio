@@ -11,14 +11,14 @@ export default function Listprod({history}) {
       rating: 4.3,
       star: "fas fa-star-half-alt",
       reviews: 453,
-      mobile: "MI A3",
+      mobile: "MI A3 addddd dddddddddddddddddd dddddddddddddd ddddddddddd ddddd dddddddddddd ddddd ddddddddddddd  dddddd dddddddddd",
       specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
-      actual_price: 14999,
-      after_discount: 12999
+      actual_price: "14999",
+      after_discount: "12999"
     },
     {
       id: 2,
-      image:'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
+      image:'https://th.bing.com/th/id/OIP.CInGSRsoynSVra-yWje3uQHaEK?pid=ImgDet&rs=1',
       rating: 4.3,
       star: "fas fa-star-half-alt",
       reviews: 453,
@@ -40,7 +40,7 @@ export default function Listprod({history}) {
     },
     {
       id: 4,
-      image: 'https://mfiles.alphacoders.com/849/thumb-849315.jpg',
+      image: 'https://th.bing.com/th/id/OIP.CInGSRsoynSVra-yWje3uQHaEK?pid=ImgDet&rs=1',
       rating: 4.3,
       star: "fas fa-star-half-alt",
       reviews: 453,
@@ -98,7 +98,7 @@ export default function Listprod({history}) {
       <h1 className='margin-bottom'>Productos Encontrados</h1>
       <div className="flex">
         {cards.map((card) => (
-          <Cards key={card.id} id={card.id} history={history} image={card.image} rating={card.rating} reviews={card.reviews} mobile={card.mobile} specs={card.specs} actual_price={card.actual_price} after_discount={card.actual_price} />
+          <Cards key={card.id} id={card.id} history={history} image={card.image} mobile={card.mobile} actual_price={card.actual_price}/>
         ))}
       </div>
     </div>
