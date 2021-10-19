@@ -50,3 +50,21 @@
 .margin-bottom{
 	margin-bottom: 2rem;
 }
+
+@media screen and (max-width:540px){
+
+	.pagineCard{
+		display: flex;
+		flex-direction: column;
+	}
+	.Cardcompleta { 
+		padding: 2rem;
+		border-radius: 20px;
+		margin:0rem;
+	  }
+	  .margin-bottom{
+		margin-bottom: 0.5rem;
+	}
+  }
+  
+  

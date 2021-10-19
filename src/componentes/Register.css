@@ -2,8 +2,8 @@
 .formre{
     box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
     margin: auto;
-    margin-top: 10%;
-    margin-top: 100px;
+    margin-top: 3%;
+    margin-bottom: 3%;
     min-width: 200px;
     max-width: 800px;
     padding: 30px;
@@ -84,6 +84,7 @@
 
 @media (max-width: 700px) {
     .formre{
+       margin-top: 0%;
        display: flex;
        flex-direction: column;
         }

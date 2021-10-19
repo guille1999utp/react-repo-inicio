@@ -27,7 +27,7 @@ function App() {
     <nav className='menu'>
       <label className='logo'>CompraRepuestos</label>
       <ul className={(bar.valid === true)?'items show':'items'}>
-      <li><Link className='menubari' to='/inicio' >Productos</Link></li>
+      <li><Link className='menubari' to='/productover' >Productos</Link></li>
       <li><Link className='menubari' to='/'>Ordenar</Link></li>
       <li><Link className='menubari' to='/'>Chats</Link></li>
       <li><Link className='menubari' to='/'>Notificaciones</Link></li>

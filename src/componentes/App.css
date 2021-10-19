@@ -38,6 +38,7 @@ padding-left: 80px;
   color: white;
   cursor: pointer;
   display: none;
+  background: black;
 }
 ul.show{
 top: 65px;

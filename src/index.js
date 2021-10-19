@@ -14,7 +14,7 @@ ReactDOM.render(
   <App />
   <Route path="/login" component={ Iniciarsesion }/>
   <Route path="/register" component={ Register }/>
-  <Route path="/inicio" component={ Listprod }/>
+  <Route path="/productover" component={ Listprod }/>
   <Route path="/producto/:id" component={ Producto }/>
   </Router>
  ,
