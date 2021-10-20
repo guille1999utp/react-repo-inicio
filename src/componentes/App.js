@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState} from 'react'
 import { Link  } from 'react-router-dom';
 
-function App() {
+function App({history}) {
 
   const [bar, setbar] = useState({
     valid: false
@@ -19,13 +19,15 @@ function App() {
         })
     }
     }
+  
+    
 
    
   return (
     
     <>
     <nav className='menu'>
-      <label className='logo'>CompraRepuestos</label>
+      <label className='logo'><Link to='/inicio' >CompraRepuestos</Link></label>
       <ul className={(bar.valid === true)?'items show':'items'}>
       <li><Link className='menubari' to='/productover' >Productos</Link></li>
       <li><Link className='menubari' to='/'>Ordenar</Link></li>

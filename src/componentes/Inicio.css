@@ -1,0 +1,100 @@
+
+.contendioinicio{
+    background:rgb(235, 235, 235);
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: 100%;
+}
+.margininiciotop{
+    margin: 0 auto;
+    width: 1280px;
+    position: relative;
+}
+.margininiciotop h2{
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: rgb(102, 102, 124);
+    font-family:  sans-serif;
+}
+.marginslider h2{
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: rgb(102, 102, 124);
+    font-family:  sans-serif;
+}
+.marginslider{
+    margin: 100px auto;
+    width: 1280px;
+}
+.carditem{
+    width: 224px;
+    height: 330px;
+    margin: 0  10px ;
+    background: white;
+}
+.flexinicio{
+    display: flex;
+    flex-direction: row;
+}
+.imginicio{
+    margin-bottom: 10px;
+}
+.carditem .descuentoinicio{
+    margin: auto 0;
+    color: rgb(4, 173, 4);
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+.carditem .precioinicio{
+
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+.carditem .enviogratisinicio{
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: rgb(4, 144, 4);
+}
+.carditem img{
+    width: 224px;
+    height: 224px;
+}
+.slick-next:before {
+    color: black;
+}
+.slick-prev:before, .slick-next:before {
+    color: black;
+}
+.marginslider h2{
+    margin-bottom: 20px;
+}
+.carditemarca{
+    width: 170px;
+    height: 170px;
+    background: white;
+    margin: 0  10px ;
+    border-radius: 50%;
+}
+.carditemarca img{
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+.marginlefthr{
+    margin-top: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+
+}
+@media screen and (max-width:858px){
+
+    .margininiciotop{
+        margin: 0 auto;
+        min-width: 50%;
+    }
+    .marginslider{
+        margin: 100px auto;
+        min-width: 50%;
+    }
+    }

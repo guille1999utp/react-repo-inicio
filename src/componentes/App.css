@@ -1,18 +1,31 @@
 .menu{
   background-color: black;
   height: 75px;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 5px 0 10px black;
   font-family: sans-serif;
+  position: relative;
+  z-index: 1;
 }
 .logo{
   color: white;
   font-size: 35px;
 padding-left: 80px;
   font-weight: bold;
+  cursor: pointer;
+}
+.logo a{
+  text-decoration: none;
+  color: white;
+}
+.flexinicio a{
+  text-decoration: none;
+  
+  margin: 6px;
+  color: rgb(67, 67, 235);
 }
 .items{
   display: flex;
@@ -91,7 +104,7 @@ top: 65px;
   .items{
     position: fixed;
     width: 100vw;
-    height: calc(100% - 65px);
+    height: calc(100vh - 65px);
     background: rgb(45, 49, 58);
     top: -100vh;
     text-align: center;

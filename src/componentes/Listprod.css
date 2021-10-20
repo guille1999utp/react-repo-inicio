@@ -27,6 +27,7 @@
   }
   
   .card {
+	  margin-top: 10px;
 	display: flex;
 	flex-direction: row;
 	background: white;
@@ -77,7 +78,7 @@
 		font-weight: 100;
 	  }
 	  .price{
-		font-size: 2rem;
+		font-size: 1.5rem;
 		font-weight: 500;
 	}
 	.disp{
