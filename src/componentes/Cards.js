@@ -21,10 +21,11 @@ function Cards(
         <div className="card-body">
           <div className="left">
             <p onClick={ redirect } className="bold">{mobile}</p>
+            <br></br>
               <span className='price'>
               {'$'+actual_price}
               </span>
-              <br></br>
+              
               <br></br>
               <span className='disp'>
                 Envio Gratis

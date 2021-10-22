@@ -1,9 +1,21 @@
 
 .contendioinicio{
     background:rgb(235, 235, 235);
-    padding-top: 100px;
     padding-bottom: 100px;
     height: 100%;
+    overflow: hidden;
+}
+.sliderbargrande{
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 30px;
+    
+}
+
+.sliderbargrande div img{
+    cursor: pointer;
+    width: 100%;
+    height: 300px;
 }
 .margininiciotop{
     margin: 0 auto;
@@ -25,12 +37,19 @@
 .marginslider{
     margin: 100px auto;
     width: 1280px;
+
 }
 .carditem{
+    cursor: pointer;
     width: 224px;
     height: 330px;
     margin: 0  10px ;
     background: white;
+    transition: 0.2s ease;
+}
+.carditem:hover{
+    box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.5);
+    transition: 0.2s ease-in-out;
 }
 .flexinicio{
     display: flex;
@@ -61,9 +80,7 @@
     width: 224px;
     height: 224px;
 }
-.slick-next:before {
-    color: black;
-}
+
 .slick-prev:before, .slick-next:before {
     color: black;
 }
@@ -71,6 +88,7 @@
     margin-bottom: 20px;
 }
 .carditemarca{
+
     width: 170px;
     height: 170px;
     background: white;
@@ -98,3 +116,11 @@
         min-width: 50%;
     }
     }
+    @media screen and (max-width:667px){
+
+        .sliderbargrande div img{
+            height: 100px;
+        }
+        }
+
+   

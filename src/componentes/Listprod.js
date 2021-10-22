@@ -13,7 +13,7 @@ export default function Listprod({history}) {
       reviews: 453,
       mobile: "MI A3 addddd dddddddddddddddddd dddddddddddddd ddddddddddd ddddd dddddddddddd ddddd ddddddddddddd  dddddd dddddddddd",
       specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
-      actual_price: "14999",
+      actual_price: "14.999",
       after_discount: "12999"
     },
     {
@@ -24,7 +24,7 @@ export default function Listprod({history}) {
       reviews: 453,
       mobile: "Realme 7 Pro",
       specs: "6 GB RAM | 128 GB ROM | Expandable Upto 256 GB ",
-      actual_price: 17999,
+      actual_price: 17.999,
       after_discount: 16999
     },
     {
@@ -35,7 +35,7 @@ export default function Listprod({history}) {
       reviews: 453,
       mobile: "Samsung M40",
       specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
-      actual_price: 14999,
+      actual_price: 14.999,
       after_discount: 13999
     },
     {
@@ -46,7 +46,7 @@ export default function Listprod({history}) {
       reviews: 453,
       mobile: "Oneplus 9T",
       specs: "8 GB RAM | 256 GB ROM | Expandable Upto 256 GB ",
-      actual_price: 24999,
+      actual_price: 24.999,
       after_discount: 21999
     },  {
         id: 5,
@@ -56,7 +56,7 @@ export default function Listprod({history}) {
         reviews: 453,
         mobile: "Samsung M40",
         specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
-        actual_price: 14999,
+        actual_price: 14.999,
         after_discount: 13999
       },  {
         id: 6,
@@ -66,7 +66,7 @@ export default function Listprod({history}) {
         reviews: 453,
         mobile: "Samsung M40",
         specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
-        actual_price: 14999,
+        actual_price: 14.999,
         after_discount: 13999
       },  {
         id: 7,
@@ -76,7 +76,7 @@ export default function Listprod({history}) {
         reviews: 453,
         mobile: "Samsung M40",
         specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
-        actual_price: 14999,
+        actual_price: 14.999,
         after_discount: 13999
       },  {
         id: 8,
@@ -86,12 +86,13 @@ export default function Listprod({history}) {
         reviews: 453,
         mobile: "Samsung M40",
         specs: "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB ",
-        actual_price: 14999,
+        actual_price: 14.999,
         after_discount: 13999
       },
   ];
   return (
   <>
+     <div className='contendioinicio'>
     <div className='pagineCard'>
     <FilterCard/>
     <div className="Cardcompleta">
@@ -101,6 +102,7 @@ export default function Listprod({history}) {
           <Cards key={card.id} id={card.id} history={history} image={card.image} mobile={card.mobile} actual_price={card.actual_price}/>
         ))}
       </div>
+    </div>
     </div>
     </div>
     </>
