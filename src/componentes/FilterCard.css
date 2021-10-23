@@ -6,7 +6,6 @@
  margin-top:  4rem;
  display: flex;
  flex-direction: column;
- justify-content: space-around;
 }
 .inputf{
   padding: 4px;
@@ -42,14 +41,26 @@ margin-left: 10px;
 @media screen and (max-width:540px){
 
 	.formfilter{
-
+  flex-direction: row;
     height: 100%;
    font-family:  sans-serif;
    text-align: left;
    margin: 0 auto ;
    margin-top:  0;
-  
+  flex-wrap: wrap;
   }
+  .colorf{
+    margin:  auto 20px;
+      }
+  .tamaño{
+   width: 100%;
+    }
+    .checkbox{
+      margin: auto 35px auto 5px;
+    }
+    .mr-5{
+      margin-left: 20px;
+    }
   }
   
   

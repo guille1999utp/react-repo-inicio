@@ -2,30 +2,7 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: system-ui;
-}
-.containermayor{
-  color: #11101d;
-  width: 80%;
-  height: 100%;
-  margin-left: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-  grid-gap: 20px;
-}
-.containlist{
-  box-shadow: 0px 1px 10px rgb(0 0 0 / 20%);
-  padding-top: 15px;
-  padding-bottom: 10px;
-  padding-left: 15px;
-  border-radius: 5px;
-  margin-left: 25%;
-  margin-bottom: 2%;
-  margin-top: 2%;
 }
 
 .box{
@@ -86,30 +63,34 @@ h4{
   color: #EDADAC;
   text-decoration: none;
 }
-
+.bx-menu:before {
+    color: white;
+}
 .card img{
   width: 100%;
   height: 515px;
 }
 .sidebar{
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   height: 100%;
-  width: 65px;
+  width: 50px;
+  margin-right: 50px ;
   background: white;
   padding: 0px 0px;
   z-index: 99;
   transition: all 0.5s ease;
 }
 .sidebar.open{
-  width: 250px;
+  width: 210px;
 }
 .sidebar .logo-details{
-  padding: 10px;
+  padding: 10px 0px 10px 10px;
   background-color: #673BB7;
-  height: 60px;
+  height: 40px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   position: relative;
 }
@@ -211,10 +192,11 @@ h4{
 }
 .sidebar .bx-menu-alt-right{
   color: white;
+  transition: ease 0.3s
 }
 
 .sidebar .bx-menu{
-  color: white;
+  text-align: start;
 }
 .sidebar li a{
   display: flex;

@@ -66,9 +66,20 @@
     height: 40px;
 	background:rgb(235, 235, 235);
 }
-@media screen and (max-width:623px){
+@media screen and (max-width:650px){
 	.margin-bottom{
 		font-size: 1.4rem;
+	}
+	.bold {
+		font-size: 0.8rem;
+	
+	  }
+	  .price{
+		font-size: 1.2rem;
+
+	}
+	.disp{
+		font-size: 0.8rem;
 	}
 }
 

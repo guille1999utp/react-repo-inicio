@@ -10,17 +10,20 @@ import Iniciarsesion from './componentes/Iniciar-sesion';
 import Producto from './componentes/Producto';
 import { BrowserRouter as Router, Route  } from 'react-router-dom';
 import Inicio from './componentes/Inicio';
-import AppBar from './componentes/AppBar';
+
+import App from './componentes/App';
+import Chat from './componentes/Chat';
 
 
 ReactDOM.render(
   <Router>
-  <AppBar />
+  <App />
   <Route path="/login" component={ Iniciarsesion }/>
   <Route path="/register" component={ Register }/>
   <Route path="/productover" component={ Listprod }/>
   <Route path="/producto/:id" component={ Producto }/>
   <Route path="/inicio" component={ Inicio }/>
+  <Route path="/chat" component={ Chat }/>
   </Router>
  ,
   document.getElementById('root')

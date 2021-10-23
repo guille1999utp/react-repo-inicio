@@ -31,7 +31,7 @@ function App() {
       <ul className={(bar.valid === true)?'items show':'items'}>
       <li><Link className='menubari' to='/productover' >Productos</Link></li>
       <li><Link className='menubari' to='/'>Ordenar</Link></li>
-      <li><Link className='menubari' to='/'>Chats</Link></li>
+      <li><Link className='menubari' to='/chat'>Chats</Link></li>
       <li><Link className='menubari' to='/'>Notificaciones</Link></li>
       <li><Link className='menubari' to='/'>Ajustes</Link></li>
       <li><Link className='menubari' to='/'>Informacion</Link></li>

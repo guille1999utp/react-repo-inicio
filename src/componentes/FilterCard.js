@@ -8,11 +8,11 @@ function FilterCard() {
      <h4 className='hdeproduc colorf'>Estado del Producto</h4>
      <div className='flexche'>
     <div className='flexche'>
-    <p className='colorf'>nuevo</p>
+    <p className='mr-5'>nuevo</p>
     <input type='checkbox'  className='checkbox' /> 
     </div>
     <div className='flexche'>
-    <p className='colorf'>usado</p>
+    <p className='mr-5'>usado</p>
     <input type='checkbox' className='checkbox'/> 
     </div>
     </div>
@@ -35,11 +35,11 @@ function FilterCard() {
     <h4 className='hdeproduc colorf'>Vendedor</h4>
     <div className='flexche'>
     <div className='flexche'>
-    <p className='colorf'>Local</p>
+    <p className='mr-5'>Local</p>
     <input type='checkbox' className='checkbox'/> 
     </div>
     <div className='flexche'>
-    <p className='colorf'>corriente</p>
+    <p className='mr-5'>corriente</p>
     <input type='checkbox' className='checkbox'/> 
     </div>
     </div>
@@ -59,7 +59,7 @@ function FilterCard() {
     </div>
     <h4 className='hdeproduc colorf'>Costo de envio</h4>
     <div className='flexche'>
-    <p className='colorf'>Gratis</p>
+    <p className='mr-5'>Gratis</p>
     <input type='checkbox' className='checkbox'/> 
     </div>
     </form>

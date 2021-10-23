@@ -5,7 +5,7 @@ import { Link  } from 'react-router-dom';
 function AppBar() {
  
     const [appbar, setappbar] = useState({
-        appbar: true
+        appbar: false
         });
         const clickmenu = () =>{
             if(appbar.appbar === false){
@@ -29,7 +29,7 @@ function AppBar() {
     <>
    <div className={(appbar.appbar === true )? "sidebar open":'sidebar'}>
     <div className="logo-details">
-        <div className="logo_name">Menú </div>
+        <div className="logo_name">{(appbar.appbar === true )? "Menú":''} </div>
         <i onClick={clickmenu} className={(appbar.appbar === true )? 'bx bx-menu-alt-right':'bx bx-menu'}></i>
     </div>
     <ul className="nav-list">
