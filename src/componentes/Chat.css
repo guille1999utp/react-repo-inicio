@@ -5,17 +5,64 @@
     position: relative;
     z-index: 50;
 }
+.chatperfil{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 7%;
+    width: 100%;
+    background: rgb(223, 206, 206);
+}
+.bx-user{
+ font-size: 35px;
+ margin: auto 0;
+ margin-left: 10px;
+ border: solid black 3px;
+ border-radius: 50%;
+}
+.chaticon{
+    font-size: 20px;
+    margin-top: 30%;
+}
+.menuchat{
+    font-size: 20px;
+    margin-left: 10px;
+}
+.usuariochatperfil{
+    height: 10%;
+    width: 100%;
+    background: blue;
+    margin-top: 2px;
+}
+.paletacomandochat{
+    height: 10%;
+    width: 100%;
+    background: violet;
+}
+.paletachat{
+    position: relative;
+    height: 10%;
+    width: 100%;
+    background: khaki;
+}
+.chatuses{
+    background: lightsalmon;
+    width: 100%;
+    height: 80%;
+}
 .usuariosactivos{
+   display: flex;
+   flex-direction: column;
    width: 30%;
    height: 100%;
    min-width: 100px;
-   background: green;
+   background: grey;
 }
 .mensajesusuarios{
     width: 100%;
     height: 100%;
     min-width: 200px;
-    background: greenyellow;
+    background: white;
  }
 .fondonegrochat{
     width: 100%;
@@ -29,16 +76,19 @@
     flex-direction: row;
     width: 90%;
     max-width: 1280px;
+    min-width: 650px;
     height: 80%;
     background: white;
     position: relative;
     margin: 0 auto;
     top: 40px;
+    box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.4);
 }
-@media screen and (max-width:540px){
+
+@media screen and (max-width:650px){
     .cajachat{
         width: 100%;
+        border: none;
     }
-
   }
   
