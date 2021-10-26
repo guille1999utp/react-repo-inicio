@@ -5,8 +5,16 @@ function Chat() {
     <>
     <div className='fondochat'>
     <div className='fondonegrochat'></div>
-    <div className='cajachat'></div>
+    <div className='cajachat'>
+    <div className='usuariosactivos'>
+
+</div>
+<div className='mensajesusuarios'>
+
+</div>
+    </div>
     
+   
     </div>
     </>
   );
