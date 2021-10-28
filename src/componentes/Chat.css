@@ -35,20 +35,20 @@
     margin-top: 2px;
 }
 .paletacomandochat{
-    height: 10%;
+    height: 8%;
     width: 100%;
     background: violet;
 }
 .paletachat{
     position: relative;
-    height: 10%;
+    height: 7%;
     width: 100%;
     background: khaki;
 }
 .chatuses{
     background: lightsalmon;
     width: 100%;
-    height: 80%;
+    height: 85%;
 }
 .usuariosactivos{
    display: flex;
@@ -78,6 +78,7 @@
     max-width: 1280px;
     min-width: 650px;
     height: 80%;
+    min-height: 700px;
     background: white;
     position: relative;
     margin: 0 auto;
@@ -89,6 +90,11 @@
     .cajachat{
         width: 100%;
         border: none;
+        top: 0;
     }
+    .bx-user{
+        font-size: 20px;
+        border: solid black 1px;
+       }
   }
   
