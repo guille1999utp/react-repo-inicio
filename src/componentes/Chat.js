@@ -15,16 +15,38 @@ function Chat() {
           </div>
           </div>
           <div className='usuariochatperfil'>
-
+          <div className='fotousuario'>
+          </div>
+          <div className='perfilyultimo'>
+           <span>nicolas pinga</span>
+           <p> <i class='bx bx-check-double'></i>ultimo mensaje desde ...</p>
+          </div>
+          <p className='horachat'>10:40pm</p>
           </div>
           <div className='usuariochatperfil'>
-
+          <div className='fotousuario'>
           </div>
-          <div className='usuariochatperfil'>
-
+          <div className='perfilyultimo'>
+           <span>nicolas pinga</span>
+           <p> <i class='bx bx-check-double'></i>ultimo mensaje desde ...</p>
           </div>
-          <div className='usuariochatperfil'>
-
+          <p className='horachat'>10:40pm</p>
+          </div>  <div className='usuariochatperfil'>
+          <div className='fotousuario'>
+          </div>
+          <div className='perfilyultimo'>
+           <span>nicolas pinga</span>
+           <p> <i class='bx bx-check-double'></i>ultimo mensaje desde ...</p>
+          </div>
+          <p className='horachat'>10:40pm</p>
+          </div>  <div className='usuariochatperfil'>
+          <div className='fotousuario'>
+          </div>
+          <div className='perfilyultimo'>
+           <span>nicolas pinga</span>
+           <p> <i class='bx bx-check-double'></i>ultimo mensaje desde ...</p>
+          </div>
+          <p className='horachat'>10:40pm</p>
           </div>
 
 
@@ -37,7 +59,9 @@ function Chat() {
 
           </div>
           <div className='paletachat'>
-
+          <i class='bx bx-paperclip'></i>
+          <input type='text' className='decorationpaleta' placeholder='Escribir Mensaje'></input>
+          <i className='bx bxs-send'></i>
           </div>
         </div>
     </div>
