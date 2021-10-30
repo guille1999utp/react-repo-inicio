@@ -9,7 +9,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 7vh;
+    height: 5vh;
+    min-height: 43.5px;
     width: 100%;
     background: rgb(223, 206, 206);
 }
@@ -21,23 +22,37 @@
 }
 .chaticon{
     font-size: 20px;
-    margin-top: 30%;
+    margin: auto 10px;
+    margin-left: 20px;
+    margin-top: 15%;
 }
 .menuchat{
     font-size: 20px;
-    margin-left: 10px;
+    margin: auto 10px;
+    margin-right: 5%;
+}
+.iconoschatfondo{
+    width: 100px;
 }
 .usuariochatperfil{
     height: 60px;
     width: 100%;
-    background:rgb(235, 235, 235);
     display: flex;
     justify-content: space-between;
 }
 .paletacomandochat{
-    height: 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 7%;
+    min-height: 55px;
     width: 100%;
-    background: violet;
+    background: rgb(237, 237, 237);
+}
+.correcionpaletachat{
+    display: flex;
+    flex-direction: row;
+    margin: auto 0;
 }
 .perfilyultimo{
     display: flex;
@@ -61,16 +76,31 @@
     height: 40px;
     min-width: 40px;
     border-radius: 50%;
-    background: white;
+    background: rgb(235, 235, 235);
     margin-left:10px;
     margin-top: 10px;
+}
+.fotousuariouser{
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background: white;
+    position: relative;
+    margin-left: 15px;
+}
+.hrdivchat{
+    width: 80%;
+    height: 1px;
+    background: rgb(242, 242, 242);
+    margin: 0 auto;
 }
 
 .paletachat{
     position: relative;
     height: 9%;
     width: 100%;
-    background: khaki;
+    background:rgb(235, 235, 235);
     display: flex;
     justify-content: space-around;
 }
@@ -81,32 +111,25 @@ margin-left: 2%;
 height: 60%;
 padding:  0 10px ;
 border-radius: 20px;
-border: solid black 1px;
+border:none;
 }
-
+.nombrechat{
+    margin: auto 0;
+    margin-left: 15px;
+    font-size: 1rem;
+}
 .bxs-send, .bx-paperclip{
     cursor: pointer;
     margin: auto 0;
     font-size: 25px;
     margin-left: 5px;
     padding: 5px;
+    color: rgb(81, 88, 92);
 }
-.bx-paperclip:hover{
-    background: black;
-    color: white;
-    padding: 5px;
-    border-radius: 50%;
- }
-.bxs-send:hover{
-   background: black;
-   color: white;
-   padding: 5px;
-   border-radius: 50%;
-}
+
 .chatuses{
-    background: lightsalmon;
     width: 100%;
-    height: 83%;
+    height: 84%;
 }
 .usuariosactivos{
    display: flex;
@@ -114,11 +137,13 @@ border: solid black 1px;
    width: 30vw;
    min-width: 180px;
    height: 100%;
-   background:rgb(235, 235, 235);
+   
 }
 .mensajesusuarios{
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
     min-width: 200px;
     background: white;
  }
@@ -140,6 +165,7 @@ border: solid black 1px;
     position: relative;
     margin: 0 auto;
     top: 20px;
+    min-height: 437px;
     box-shadow: 0px 0px 4px 4px rgba(80, 78, 78, 0.4);
 }
 
