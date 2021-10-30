@@ -23,6 +23,8 @@ function Chat() {
           </div>
           <p className='horachat'>10:40pm</p>
           </div>
+          <br></br>
+          <hr></hr>
           <div className='usuariochatperfil'>
           <div className='fotousuario'>
           </div>
@@ -31,7 +33,10 @@ function Chat() {
            <p> <i class='bx bx-check-double'></i>ultimo mensaje desde ...</p>
           </div>
           <p className='horachat'>10:40pm</p>
-          </div>  <div className='usuariochatperfil'>
+          </div>
+          <br></br>
+          <hr></hr>
+            <div className='usuariochatperfil'>
           <div className='fotousuario'>
           </div>
           <div className='perfilyultimo'>
@@ -39,7 +44,10 @@ function Chat() {
            <p> <i class='bx bx-check-double'></i>ultimo mensaje desde ...</p>
           </div>
           <p className='horachat'>10:40pm</p>
-          </div>  <div className='usuariochatperfil'>
+          </div>
+          <br></br>
+          <hr></hr>
+            <div className='usuariochatperfil'>
           <div className='fotousuario'>
           </div>
           <div className='perfilyultimo'>
@@ -47,8 +55,8 @@ function Chat() {
            <p> <i class='bx bx-check-double'></i>ultimo mensaje desde ...</p>
           </div>
           <p className='horachat'>10:40pm</p>
-          </div>
-
+          </div>  <br></br>
+          <hr></hr>
 
         </div>
         <div className='mensajesusuarios'>
