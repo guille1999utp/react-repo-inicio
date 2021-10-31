@@ -13,6 +13,7 @@
     min-height: 43.5px;
     width: 100%;
     background: rgb(223, 206, 206);
+  
 }
 .bx-user{
  font-size: 35px;
@@ -130,15 +131,32 @@ border:none;
 .chatuses{
     width: 100%;
     height: 84%;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/002/218/678/non_2x/blue-wallpaper-with-modern-smartphones-social-media-message-background-copy-space-for-a-text-vector.jpg");
+    overflow-y: scroll;
 }
+.chatuses::-webkit-scrollbar{
+    width: 4px;
+   }
+   .chatuses::-webkit-scrollbar-thumb{
+       background:rgb(138, 224, 250);
+       border-radius: 5px;
+      }
 .usuariosactivos{
    display: flex;
    flex-direction: column;
    width: 30vw;
    min-width: 180px;
    height: 100%;
-   
+   overflow-y: scroll;
 }
+.usuariosactivos::-webkit-scrollbar{
+ width: 4px;
+}
+.usuariosactivos::-webkit-scrollbar-thumb{
+    background:rgb(81, 88, 92);
+    border-radius: 5px;
+   }
+   
 .mensajesusuarios{
     width: 100%;
     height: 100%;
@@ -167,6 +185,94 @@ border:none;
     top: 20px;
     min-height: 437px;
     box-shadow: 0px 0px 4px 4px rgba(80, 78, 78, 0.4);
+}
+
+
+.flecha-izquierda{
+    display: inline-block;
+    margin-right: -6px;
+    margin-top: 10px;
+    width: 0; 
+    height: 0; 
+    border-top: 0px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid white;
+}
+.mensaje-autor{
+    margin-top: 50px;
+    margin-left: 25px;
+}
+
+.mensaje-autor .contenido{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    display: inline-block;
+    font-size: 13px;
+    padding: 15px;
+    vertical-align: top;
+    width: 280px;
+}
+.mensaje-autor .fecha{
+    color: #777;
+    font-style: italic;
+    font-size: 13px;
+    margin-right: 35px;
+    margin-top: 10px;
+}
+.mensaje-autor .flecha-izquierda{
+    display: inline-block;
+    margin-right: -6px;
+    margin-top: 10px;
+    width: 0; 
+    height: 0; 
+    border-top: 0px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid white;
+}
+.mensaje-amigo{
+    margin-top: 50px;
+    text-align: end;
+    margin-right: 25px;
+}
+
+.mensaje-amigo .flecha-derecha{
+    display: inline-block;
+    margin-left: -6px;
+    margin-top: 10px;
+    width: 0; 
+    height: 0; 
+    border-top: 0px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid #3990BF;
+}
+.mensaje-autor .foto{
+    border-radius: 5px;
+}
+.mensaje-amigo .fecha{
+    color: #777;
+    font-style: italic;
+    font-size: 13px;
+    text-align: right;
+    margin-top: 10px;
+}
+.mensaje-amigo .foto{
+    display: inline-block;
+    vertical-align: top;
+}
+.foto{
+    width: 45px;
+    height: 45px;
+}
+.mensaje-amigo .contenido{
+    background-color: #3990BF;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-size: 13px;
+    padding: 15px;
+    vertical-align: top;
+    width: 280px;
 }
 
 @media screen and (max-width:650px){

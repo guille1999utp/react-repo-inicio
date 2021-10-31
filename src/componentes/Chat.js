@@ -23,7 +23,6 @@ function Chat() {
           </div>
           <p className='horachat'>10:40pm</p>
           </div>
-          
           <div className='hrdivchat'></div>
           <div className='usuariochatperfil'>
           <div className='fotousuario'>
@@ -45,18 +44,7 @@ function Chat() {
           </div>
           <p className='horachat'>10:40pm</p>
           </div>
-        
-          <div className='hrdivchat'></div>
-            <div className='usuariochatperfil'>
-          <div className='fotousuario'>
-          </div>
-          <div className='perfilyultimo'>
-           <span>nicolas pinga</span>
-           <p> <i class='bx bx-check-double'></i>ultimo mensaje desde ...</p>
-          </div>
-          <p className='horachat'>10:40pm</p>
-          </div>  
-          <div className='hrdivchat'></div>
+           
 
         </div>
         <div className='mensajesusuarios'>
@@ -66,11 +54,69 @@ function Chat() {
               </div>
               <p className='nombrechat'>nicolas pinga</p>
           </div>
-          <i class='bx bx-dots-vertical-rounded menuchat'></i>
+          <i className='bx bx-dots-vertical-rounded menuchat'></i>
           </div>
-          <img className='chatuses' src='https://static.vecteezy.com/system/resources/previews/002/218/678/non_2x/blue-wallpaper-with-modern-smartphones-social-media-message-background-copy-space-for-a-text-vector.jpg' alt=''>
+          <div className='chatuses'>
+        
+          <div className="mensaje-autor">
+            <img src="https://microsofters.com/wp-content/uploads/2021/06/img19-scaled.jpg" alt="" className="foto"></img>
+            <div className="flecha-izquierda"></div>
+            <div className="contenido">
+                Hola mi Jenny!!! Cómo estás??
+            </div>
+            <div className="fecha">Enviado hace tres minutos</div>
+        </div>
 
-          </img>
+        <div className="mensaje-amigo">
+            <div className="contenido">
+                Jajaja que onda señor Rivas, como está?? <br />
+                Yo estoy muy bien, cansada como siempre por la serie jeje :/
+            </div>
+            <div className="flecha-derecha"></div>
+            <img src="https://microsofters.com/wp-content/uploads/2021/06/img19-scaled.jpg" alt="" className="foto"></img>
+            <div className="fecha">Enviado hace tres minutos</div>
+        </div>
+        
+        <div className="mensaje-autor">
+            <img src="https://microsofters.com/wp-content/uploads/2021/06/img19-scaled.jpg" alt="" className="foto"></img>
+            <div className="flecha-izquierda"></div>
+            <div className="contenido">
+                Hola mi Jenny!!! Cómo estás??
+            </div>
+            <div className="fecha">Enviado hace tres minutos</div>
+        </div>
+
+        <div className="mensaje-amigo">
+            <div className="contenido">
+                Jajaja que onda señor Rivas, como está?? <br />
+                Yo estoy muy bien, cansada como siempre por la serie jeje :/
+            </div>
+            <div className="flecha-derecha"></div>
+            <img src="https://microsofters.com/wp-content/uploads/2021/06/img19-scaled.jpg" alt="" className="foto"></img>
+            <div className="fecha">Enviado hace tres minutos</div>
+        </div>
+        
+        <div className="mensaje-autor">
+            <img src="https://microsofters.com/wp-content/uploads/2021/06/img19-scaled.jpg" alt="" className="foto"></img>
+            <div className="flecha-izquierda"></div>
+            <div className="contenido">
+                Hola mi Jenny!!! Cómo estás??
+            </div>
+            <div className="fecha">Enviado hace tres minutos</div>
+        </div>
+
+        <div className="mensaje-amigo">
+            <div className="contenido">
+                Jajaja que onda señor Rivas, como está?? <br />
+                Yo estoy muy bien, cansada como siempre por la serie jeje :/
+            </div>
+            <div className="flecha-derecha"></div>
+            <img src="https://microsofters.com/wp-content/uploads/2021/06/img19-scaled.jpg" alt="" className="foto"></img>
+            <div className="fecha">Enviado hace tres minutos</div>
+        </div>
+        
+
+    </div>
           <div className='paletachat'>
           <i class='bx bx-paperclip'></i>
           <input type='text' className='decorationpaleta' placeholder='Escribir Mensaje'></input>
