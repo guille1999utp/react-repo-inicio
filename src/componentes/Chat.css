@@ -16,18 +16,21 @@
   
 }
 .bx-user{
+ cursor: pointer;
  font-size: 35px;
  margin: auto 0;
  margin-left: 10px;
 
 }
 .chaticon{
+    cursor: pointer;
     font-size: 20px;
     margin: auto 10px;
     margin-left: 20px;
     margin-top: 15%;
 }
 .menuchat{
+    cursor: pointer;
     font-size: 20px;
     margin: auto 10px;
     margin-right: 5%;
@@ -40,6 +43,10 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+
+}
+.usuariochatperfil:hover{
+  background: rgb(240, 237, 237);
 }
 .paletacomandochat{
     display: flex;
@@ -62,15 +69,23 @@
     margin: 10px;
 }
 .perfilyultimo span{
+    white-space: nowrap;
+    text-overflow: ellipsis;
  font-size: 18px;
    
 }
+.flexusuariochat{
+    display: flex;
+    flex-direction: row;
+}
 .perfilyultimo p{
+    text-overflow: ellipsis;
     font-size: 13px;
    }
 .horachat{
     font-size: 12px;
     margin: 10px;
+    margin-left: 0px;
 }
 .fotousuario{
     width: 40px;
@@ -289,11 +304,24 @@ border:none;
 
   @media screen and (max-width:1100px){
     .perfilyultimo span{
-        font-size: 14px;
+        font-size: 12px;
           
        }
        .perfilyultimo p{
-           font-size: 9px;
+           font-size: 7px;
           }
+          .fotousuario{
+            width: 25px;
+            height: 25px;
+            min-width: 25px;
+            border-radius: 50%;
+            background: rgb(235, 235, 235);
+            margin-top: 15px;
+        }
+        .usuariochatperfil{
+            height: 54px;
+            width: 100%;
+        
+        }
   }
   
