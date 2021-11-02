@@ -1,35 +1,62 @@
 import './Chat.css';
 import CajaChat from './CajaChat';
 import UsuariosConectados from './UsuariosConectados';
+import React, {useState} from 'react'
 
 function Chat() {
-    const mensajes = [
+    let mensajesArray = [
         {
-            mensaje: "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
+            mensaj: "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
             fecha: "5 minutos" ,
             enviado: 1,
         },
         {
-            mensaje: "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
+            mensaj: "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
             fecha: "5 minutos" ,
             enviado: 0
         },
         {
-            mensaje: "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
+            mensaj: "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
             fecha: "5 minutos" ,
             enviado: 0
         },
         {
-            mensaje: "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
+            mensaj: "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
             fecha: "5 minutos" ,
             enviado: 1
-        },
-        {
-            mensaje: "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
-            fecha: "5 minutos" ,
-            enviado: 0
-        },
+        }
     ]
+ 
+   
+    const [mensajes, setMensajes] = useState(mensajesArray)
+const [mensaje, setmensaje] = useState({
+    mensaj: "1",
+    fecha: "5 minutos" ,
+    enviado: 1
+})
+
+
+        const onSubmit = (e) =>{
+            e.preventDefault()
+                setMensajes([...mensajes, mensaje])
+                setmensaje({
+                    mensaj: "",
+                    fecha: "5 minutos" ,
+                    enviado: 1
+                })
+                console.log(mensajes)
+            
+        }
+
+
+    const  onChangeMensaje =(e)=>{
+        const {name, value} = e.target;
+        setmensaje({
+      ...mensaje, [name] : value
+      });
+           }
+
+    
     const usuariosconectados = [
         {
             name: "Nicolas giraldo",
@@ -93,15 +120,15 @@ function Chat() {
           <div className='chatuses'>
         
           { mensajes.map( (e) =>(
-          <CajaChat mensaje={e.mensaje} fecha={e.fecha} enviado={e.enviado}></CajaChat>
+          <CajaChat mensaje={e.mensaj} fecha={e.fecha} enviado={e.enviado}></CajaChat>
           ))}
 
           </div>
-          <div className='paletachat'>
+          <form className='paletachat' onSubmit={onSubmit}>
           <i class='bx bx-paperclip'></i>
-          <input type='text' className='decorationpaleta' placeholder='Escribir Mensaje'></input>
-          <i className='bx bxs-send'></i>
-          </div>
+          <input type='text' className='decorationpaleta' value={ mensaje.mensaj}  placeholder='Escribir Mensaje' onChange={onChangeMensaje} name='mensaj'></input>
+          <button type='submit' className='botonsend'><i className='bx bxs-send'></i></button>
+          </form>
         </div>
     </div>
     

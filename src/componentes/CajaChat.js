@@ -1,11 +1,11 @@
 
 function CajaChat({mensaje, fecha, enviado}) {
-    if (enviado === 1) {
+    if (enviado === 1 && mensaje.length > 0) {
         return (
             <>
           <div className="mensaje-amigo">
                     <div className="contenido">
-                        { mensaje }
+                        <p>{ mensaje }</p>
                     </div>
                     <div className="flecha-derecha"></div>
                     <img src="https://microsofters.com/wp-content/uploads/2021/06/img19-scaled.jpg" alt="" className="foto"></img>
@@ -13,7 +13,7 @@ function CajaChat({mensaje, fecha, enviado}) {
                 </div>
             </>
           );
-    }else{
+    }else if(mensaje.length > 0){
         return (
             <>
           <div className="mensaje-autor">
@@ -26,6 +26,8 @@ function CajaChat({mensaje, fecha, enviado}) {
         </div>
             </>
           );
+    }else{
+        return ""
     }
   
 }

@@ -214,7 +214,7 @@ border:none;
     border-right: 15px solid white;
 }
 .mensaje-autor{
-    margin-top: 50px;
+    margin-top: 40px;
     margin-left: 25px;
 }
 
@@ -229,11 +229,12 @@ border:none;
     width: 280px;
 }
 .mensaje-autor .fecha{
-    color: #777;
+    color: black;
     font-style: italic;
     font-size: 13px;
     margin-right: 35px;
     margin-top: 10px;
+    margin-bottom: 15px;
 }
 .mensaje-autor .flecha-izquierda{
     display: inline-block;
@@ -246,7 +247,7 @@ border:none;
     border-right: 15px solid white;
 }
 .mensaje-amigo{
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: end;
     margin-right: 25px;
 }
@@ -265,11 +266,12 @@ border:none;
     border-radius: 5px;
 }
 .mensaje-amigo .fecha{
-    color: #777;
+    color: black;
     font-style: italic;
     font-size: 13px;
     text-align: right;
     margin-top: 10px;
+    margin-bottom: 15px;
 }
 .mensaje-amigo .foto{
     display: inline-block;
@@ -289,7 +291,9 @@ border:none;
     vertical-align: top;
     width: 280px;
 }
-
+.botonsend{
+    border: none;
+}
 @media screen and (max-width:650px){
     .cajachat{
         width: 100%;
