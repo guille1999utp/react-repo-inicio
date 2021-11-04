@@ -1,17 +1,29 @@
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import './Inicio.css';
-import React from "react";
+import React, {useState, useEffect} from 'react'
 import Slider from "react-slick";
 import { Link  } from 'react-router-dom';
 //useEffect para poder hacer responsive la carta 
 function Inicio ({history}) {
+  const [Width, setWidth] = useState(window.innerWidth);  
+
+  const cambiarTamaño=()=>{ 
+     setWidth(window.innerWidth);
+  }
+
+   useEffect(()=>{
+     window.addEventListener('resize',cambiarTamaño);
+     return ()=>{
+       window.removeEventListener('resize', cambiarTamaño)
+     }
+   })
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
-        slidesToScroll:5
+        slidesToShow: (Width > 1348)? 5:(Width > 1057)? 4:(Width > 740)? 3:(Width > 500)? 2:1,
+        slidesToScroll:(Width > 1348)? 5:(Width > 1057)? 4:(Width > 740)? 3:(Width > 500)? 2:1
       };
        const settingsinicio = {
         dots: true,
@@ -52,7 +64,6 @@ function Inicio ({history}) {
           </div>
         </Slider>
       </div>
-
 
 
       <div className='margininiciotop'>

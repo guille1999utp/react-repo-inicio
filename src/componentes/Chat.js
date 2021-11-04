@@ -30,7 +30,7 @@ function Chat() {
    
     const [mensajes, setMensajes] = useState(mensajesArray)
 const [mensaje, setmensaje] = useState({
-    mensaj: "1",
+    mensaj: " ",
     fecha: "5 minutos" ,
     enviado: 1
 })
