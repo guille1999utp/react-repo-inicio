@@ -56,6 +56,36 @@ padding-left: 80px;
 ul.show{
 top: 65px;
 }
+
+.formbusqueda{
+  margin-left: 20px;
+background: white;
+height: 31px;
+width: 40%;
+position: relative;
+min-width: 100px;
+margin-right: 10px;
+} 
+.formbus{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  }
+.inputbusqueda{
+outline: none;
+border: none;
+padding: 5px;
+padding-right: 50px;
+width: 80%;
+
+}
+.botonbusqueda{
+  height: 25px;
+  background: white ;
+  border: none;
+  font-size: 25px;
+  margin-top: 5px;
+}
 @media screen and (max-width:1280px){
   
   .logo{
@@ -69,6 +99,7 @@ top: 65px;
     text-transform: uppercase;
     color: white;
    }
+  
    
 }
 @media screen and (max-width:1024px){
@@ -150,3 +181,14 @@ top: 65px;
 }
 
 }
+@media screen and (max-width:414px) and (orientation: landscape){
+
+  .items li{
+    margin: 5px 0 0 0;
+  }
+  .items{
+    overflow: scroll;
+    height: calc(100%-65px);
+  }
+  
+  }

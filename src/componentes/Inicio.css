@@ -43,12 +43,12 @@
     cursor: pointer;
     width: 224px;
     height: 330px;
-    margin: 0  10px ;
+    margin: 10px  10px ;
     background: white;
     transition: 0.2s ease;
 }
 .carditem:hover{
-    box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.1);
     transition: 0.2s ease-in-out;
 }
 .flexinicio{
@@ -103,6 +103,10 @@
     margin-top: 5px;
     border: 1px solid rgba(0,0,0,0.2);
 
+}
+.flexinicio a{
+ color: rgb(61, 136, 249) !important; 
+ font-weight: 500;
 }
 @media screen and (max-width:1348px){
 
