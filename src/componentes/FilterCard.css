@@ -7,6 +7,15 @@
  display: flex;
  flex-direction: column;
 }
+.divfilterflex{
+  display: flex;
+  flex-direction: row;
+}
+.divfilterflex hr{
+ margin-top: 40px;
+ height: 70vh;
+  
+}
 .inputf{
   padding: 4px;
   max-width: 50px;
@@ -39,7 +48,10 @@ margin: 5px;
 margin-left: 10px;
 }
 @media screen and (max-width:540px){
-
+  .divfilterflex hr{
+    height: 1px;
+     
+   }
 	.formfilter{
   flex-direction: row;
     height: 100%;

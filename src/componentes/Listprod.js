@@ -90,9 +90,10 @@ export default function Listprod({history}) {
         after_discount: 13999
       },
   ];
+  
   return (
   <>
-     <div className='contendioinicio'>
+    
     <div className='pagineCard'>
     <FilterCard/>
     <div className="Cardcompleta">
@@ -104,7 +105,7 @@ export default function Listprod({history}) {
       </div>
     </div>
     </div>
-    </div>
+
     </>
   );
 }

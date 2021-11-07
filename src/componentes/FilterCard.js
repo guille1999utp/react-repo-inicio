@@ -1,9 +1,8 @@
 import './FilterCard.css'
 function FilterCard() {
   return (
-    <>
-    <form className='formfilter' >
-
+    <div  className='divfilterflex'>
+    <form className='formfilter'>
      <h3 className='tamaño colorf'>Busqueda</h3>
      <h4 className='hdeproduc colorf'>Estado del Producto</h4>
      <div className='flexche'>
@@ -63,7 +62,8 @@ function FilterCard() {
     <input type='checkbox' className='checkbox'/> 
     </div>
     </form>
-    </>
+    <hr></hr>
+    </div>
   );
 }
 

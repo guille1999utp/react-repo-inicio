@@ -14,13 +14,13 @@ function Cards(
 
     return (
    <>
-      <div className="card">
+      <div className="card" onClick={ redirect }>
         <div className="card-img">
-          <img onClick={ redirect } src={image} alt="mobile" />
+          <img src={image} alt="mobile" />
         </div>
         <div className="card-body">
           <div className="left">
-            <p onClick={ redirect } className="bold">{mobile}</p>
+            <h2 className="bold">{mobile}</h2>
             <br></br>
               <span className='price'>
               {'$'+actual_price}

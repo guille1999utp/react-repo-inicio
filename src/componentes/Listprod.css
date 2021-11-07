@@ -1,14 +1,22 @@
 .pagineCard{
+	background: white;
 	display: grid;
-	grid-template-columns: 1fr repeat(3,1fr);
+	grid-template-columns: 1fr repeat(5,1fr);
+}
+.contenidoinicio{
+	background: white;
 }
 .card-body{
 	margin-top: 10px;
 }
 .price{
-	
-	font-size: 1.7rem;
-	font-weight: 500;
+	color: #333;
+    display: flex;
+    font-size: 24px;
+    font-weight: 400;
+    margin-right: 8px;
+    line-height: 1.25;
+   
 }
 .disp{
 	color: rgb(4, 116, 13);
@@ -19,7 +27,7 @@
 	width: 80%;
 	background: white;
 	margin:2rem;
-	grid-column: 2/5;
+	grid-column: 2/8;
 	font-family: sans-serif;
   }
   hr{
@@ -34,6 +42,8 @@
   }
   
   .card {
+	  cursor: pointer;
+	box-sizing: border-box;
 	  margin-top: 10px;
 	display: flex;
 	flex-direction: row;
@@ -41,13 +51,13 @@
 	width: 100%;
 	height: auto;
     margin-bottom: 10px;
+	padding: 20px 50px 20px 0;
   }
   .card-img {
 	width: 150px;
 	height: 100%;
   }
   .card-img img {
-	cursor: pointer;
 	  height: 150px;
 	  width: 120px;
 	  margin: 0 10px;
@@ -57,14 +67,14 @@
 	padding-left: 1rem;
   }
   .bold {
-	cursor: pointer;
-	font-size: 1.2rem;
-	font-weight: 100;
+	color: #333;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.3;
   }
 
 .margin-bottom{
     height: 40px;
-	background:rgb(235, 235, 235);
 }
 @media screen and (max-width:650px){
 	.margin-bottom{
