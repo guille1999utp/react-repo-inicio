@@ -1,3 +1,29 @@
+.filtercelular{
+  display: flex;
+  width: 100%;
+  height: 40px;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin:0 auto ;
+}
+.flexbotonfil{
+  display: flex;
+  flex-direction: row;
+  width: 49%;
+  justify-content: center;
+  cursor: pointer;
+}
+.iconfilter{
+ margin: auto 0;
+  margin-right: 5px;
+  
+}
+.filtercelular .flexbotonfil p{
+  margin: auto 0;
+}
+
 .formfilter{
   height: 50vh;
  font-family:  sans-serif;
@@ -34,7 +60,13 @@
  
 
 }
-
+.filtercelular hr{
+  margin: auto 0;
+  height: 40%;
+}
+hr{
+  margin: 0;
+}
 .tamaño{
 text-align: center;
 font-size: 2rem;

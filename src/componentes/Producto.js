@@ -1,7 +1,42 @@
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import './Producto.css'
+import React, {useState, useEffect} from 'react'
+import Slider from "react-slick";
+import { Link  } from 'react-router-dom';
 
-function Producto() {
+function Producto({history}) {
+
+  const [Width, setWidth] = useState(window.innerWidth);  
+ const cambiarTamaño = ()=>{
+    setWidth(window.innerWidth);
+  }
+  useEffect(()=>{
+    window.addEventListener('resize',cambiarTamaño);
+    return ()=>{
+      window.removeEventListener('resize', cambiarTamaño)
+   }
+ })
+  
+  const settings = {
+    arrows: (Width > 355)? true:false,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: (Width > 1348)? 5:(Width > 1057)? 4:(Width > 740)? 3:(Width > 500)? 2:1,
+    slidesToScroll:(Width > 1348)? 5:(Width > 1057)? 4:(Width > 740)? 3:(Width > 500)? 2:1
+  };
+  
+    const redirect = () => {
+      history.push( `/producto/2`);
+       }
+
+
+
+
   return (
+  <>
+<div>
     <div className='gridproducto'>
         <div className='fleximg'>
         <img className='fotoproducto' src='https://mfiles.alphacoders.com/849/thumb-849315.jpg' alt='producto'/>
@@ -64,6 +99,234 @@ function Producto() {
     </div>
   
     </div>
+    <br></br>
+    <br></br>
+    <hr></hr>
+    </div>
+
+
+  <div className='marginslider'>
+<div className='flexinicio'>
+<h2>Mas Productos Relacionados</h2>
+  <Link to='/productover' className='vermas' >Ver Mas</Link>
+  </div>
+  <Slider {...settings}>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+  </Slider>
+</div>
+
+
+
+
+<div className='marginslider'>
+<div className='flexinicio'>
+<h2>Mas Productos Relacionados</h2>
+  <Link to='/productover' className='vermas' >Ver Mas</Link>
+  </div>
+  <Slider {...settings}>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+    <div >
+    <div className='carditem' onClick={redirect}>
+    <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+    <div className='flexinicio'>
+    <p className='precioinicio'>$ 456.321</p>
+    <p className='descuentoinicio'> 13% OFF</p>
+    </div>
+    <p className='enviogratisinicio'>Envio Gratis</p>
+    </div>
+    </div>
+  </Slider>
+</div>
+
+    </>
   );
 }
 

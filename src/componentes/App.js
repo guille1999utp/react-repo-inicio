@@ -41,7 +41,7 @@ function App() {
     
     <>
     <nav className='menu'>
-      <label className='logo'><Link to='/inicio' onClick={ ()=> onhandledclick() } >{ (Width > 488)?'CompraRepuestos':'CR'}</Link></label>
+      <label className='logo'><Link to='/inicio' >{ (Width > 488)?'CompraRepuestos':'CR'}</Link></label>
       <div className='formbusqueda'>
       <form >
         <div className='formbus'>

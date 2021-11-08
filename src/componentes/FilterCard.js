@@ -1,5 +1,18 @@
 import './FilterCard.css'
+import React, {useState, useEffect} from 'react'
 function FilterCard() {
+  const [Width, setWidth] = useState(window.innerWidth);  
+  const cambiarTamaño = ()=>{
+     setWidth(window.innerWidth);
+   }
+   useEffect(()=>{
+     window.addEventListener('resize',cambiarTamaño);
+     return ()=>{
+       window.removeEventListener('resize', cambiarTamaño)
+    }
+  })
+
+  if(Width>540){
   return (
     <div  className='divfilterflex'>
     <form className='formfilter'>
@@ -65,6 +78,26 @@ function FilterCard() {
     <hr></hr>
     </div>
   );
+}else{
+  return (
+<>
+<div className='filtercelular'>
+<div  className='flexbotonfil'>
+<i class='bx bx-sort iconfilter' ></i>
+<p>Ordenar</p>
+</div>
+<hr></hr>
+<div className='flexbotonfil'>
+<i class='bx bxs-filter-alt iconfilter'></i>
+<p>Filtrar</p>
+</div>
+</div>
+</>
+  )
+}
+
+
+
 }
 
 export default FilterCard;
