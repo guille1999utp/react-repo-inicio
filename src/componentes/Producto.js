@@ -22,13 +22,13 @@ function Producto({history}) {
     arrows: (Width > 355)? true:false,
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: (Width > 1348)? 5:(Width > 1057)? 4:(Width > 740)? 3:(Width > 500)? 2:1,
     slidesToScroll:(Width > 1348)? 5:(Width > 1057)? 4:(Width > 740)? 3:(Width > 500)? 2:1
   };
   
     const redirect = () => {
-      history.push( `/producto/2`);
+      history.push( `/producto/4`);
        }
 
 
@@ -215,7 +215,9 @@ function Producto({history}) {
 </div>
 
 
-
+<br></br>
+   <br></br>
+   <hr></hr>
 
 <div className='marginslider'>
 <div className='flexinicio'>

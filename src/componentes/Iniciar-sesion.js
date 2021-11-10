@@ -20,7 +20,7 @@ function Iniciarsesion() {
         <b>Sign in with google</b>
     </p>
 </div>
-<button class="loginBtn loginBtn--facebook">
+<button className="loginBtn loginBtn--facebook">
   Login with Facebook
 </button>
 

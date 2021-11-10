@@ -83,12 +83,12 @@ function FilterCard() {
 <>
 <div className='filtercelular'>
 <div  className='flexbotonfil'>
-<i class='bx bx-sort iconfilter' ></i>
+<i className='bx bx-sort iconfilter' ></i>
 <p>Ordenar</p>
 </div>
 <hr></hr>
 <div className='flexbotonfil'>
-<i class='bx bxs-filter-alt iconfilter'></i>
+<i className='bx bxs-filter-alt iconfilter'></i>
 <p>Filtrar</p>
 </div>
 </div>

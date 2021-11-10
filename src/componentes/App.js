@@ -5,6 +5,7 @@ import { Link  } from 'react-router-dom';
 function App() {
 
   const [Width, setWidth] = useState(window.innerWidth);  
+  const Verificado=false;  
 
   const cambiarTamaño=()=>{ 
      setWidth(window.innerWidth);
@@ -15,6 +16,7 @@ function App() {
      return ()=>{
        window.removeEventListener('resize', cambiarTamaño)
      }
+
    })
 
 
@@ -34,9 +36,8 @@ function App() {
     }
     }
    
-    
 
-   
+ 
   return (
     
     <>
@@ -46,18 +47,20 @@ function App() {
       <form >
         <div className='formbus'>
           <input type='text' placeholder='Buscar' className='inputbusqueda' ></input>
-          <button type='submit' className='botonbusqueda'><i class='bx bx-search-alt-2'></i></button>
+          <button type='submit' className='botonbusqueda'><i className='bx bx-search-alt-2'></i></button>
         </div>
           </form>
       </div>
       <ul className={(bar.valid === true)?'items show':'items'}>
-      <li><Link className='menubari' to='/productover' onClick={ ()=> onhandledclick() } >Productos</Link></li>
-      <li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Ordenar</Link></li>
-      <li><Link className='menubari' to='/chat' onClick={ ()=> onhandledclick() }>Chats</Link></li>
-      <li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Notificaciones</Link></li>
-      <li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Ajustes</Link></li>
-      <li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Informacion</Link></li>
-      
+
+       <li><Link className='menubari' to='/productover' onClick={ ()=> onhandledclick() } >Productos</Link></li>
+       {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Ordenar</Link></li>: null}
+       {(Verificado === true)?<li><Link className='menubari' to='/chat' onClick={ ()=> onhandledclick() }>Chats</Link></li>: null}
+       {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Notificaciones</Link></li>: null}
+       {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Ajustes</Link></li>: null}
+       <li><Link className='menubari' to='/carrito' onClick={ ()=> onhandledclick() }>Carrito</Link></li>
+       {(Verificado === false)?<li><Link className='menubari' to='/login' onClick={ ()=> onhandledclick() }>Login</Link></li> : null}
+       {(Verificado === false)?<li><Link className='menubari' to='/register' onClick={ ()=> onhandledclick() }>Register</Link></li> : null}
      
       </ul>
     <button className='btnmenu' onClick={ ()=> onhandledclick() } >
@@ -69,7 +72,7 @@ function App() {
   );
 }
 // se utilizara a la hora cuando el usuario ya este registrado
-//<li><Link className='menubari' to='/login' onClick={ ()=> onhandledclick() }>Login</Link></li>
-// <li><Link className='menubari' to='/register' onClick={ ()=> onhandledclick() }>Register</Link></li>
+//
+// 
 
 export default App;

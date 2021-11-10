@@ -10,7 +10,7 @@ function UsuariosConectados({name, ultmensaje, horault}) {
           </img>
           <div className='perfilyultimo'>
            <span>{ name }</span>
-           <p> <i class='bx bx-check-double'></i>{ ultmensaje } ...</p>
+           <p> <i className='bx bx-check-double'></i>{ ultmensaje } ...</p>
           </div>
           </div>
           <p className='horachat'>{ horault }</p>

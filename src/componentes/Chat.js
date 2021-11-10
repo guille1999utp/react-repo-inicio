@@ -96,10 +96,10 @@ const [mensaje, setmensaje] = useState({
     <div className='cajachat'>
         <div className='usuariosactivos'>
           <div className='chatperfil'>
-          <i class='bx bx-user' ></i>
+          <i className='bx bx-user' ></i>
           <div className='iconoschatfondo'>
-          <i class='bx bxs-chat chaticon'></i>
-          <i class='bx bx-dots-vertical-rounded menuchat'></i>
+          <i className='bx bxs-chat chaticon'></i>
+          <i className='bx bx-dots-vertical-rounded menuchat'></i>
           </div>
           </div>
           
@@ -125,7 +125,7 @@ const [mensaje, setmensaje] = useState({
 
           </div>
           <form className='paletachat' onSubmit={onSubmit}>
-          <i class='bx bx-paperclip'></i>
+          <i className='bx bx-paperclip'></i>
           <input type='text' className='decorationpaleta' value={ mensaje.mensaj}  placeholder='Escribir Mensaje' onChange={onChangeMensaje} name='mensaj'></input>
           <button type='submit' className='botonsend'><i className='bx bxs-send'></i></button>
           </form>

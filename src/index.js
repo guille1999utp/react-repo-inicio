@@ -13,6 +13,7 @@ import Inicio from './componentes/Inicio';
 
 import App from './componentes/App';
 import Chat from './componentes/Chat';
+import Carrito from './componentes/Carrito';
 
 
 ReactDOM.render(
@@ -24,6 +25,7 @@ ReactDOM.render(
   <Route path="/producto/:id" component={ Producto }/>
   <Route path="/inicio" component={ Inicio }/>
   <Route path="/chat" component={ Chat }/>
+  <Route path="/carrito" component={ Carrito }/>
   </Router>
  ,
   document.getElementById('root')
