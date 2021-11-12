@@ -5,7 +5,7 @@ import { Link  } from 'react-router-dom';
 function App() {
 
   const [Width, setWidth] = useState(window.innerWidth);  
-  const Verificado=false;  
+  const Verificado=true;  
 
   const cambiarTamaño=()=>{ 
      setWidth(window.innerWidth);
@@ -35,7 +35,15 @@ function App() {
         })
     }
     }
-   
+
+
+    const onhandledmenuback = () =>{
+      if(bar.valid === true){
+      setbar({
+      valid : false
+      })
+      }
+    }
 
  
   return (
@@ -53,14 +61,14 @@ function App() {
       </div>
       <ul className={(bar.valid === true)?'items show':'items'}>
 
-       <li><Link className='menubari' to='/productover' onClick={ ()=> onhandledclick() } >Productos</Link></li>
-       {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Ordenar</Link></li>: null}
-       {(Verificado === true)?<li><Link className='menubari' to='/chat' onClick={ ()=> onhandledclick() }>Chats</Link></li>: null}
-       {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Notificaciones</Link></li>: null}
-       {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Ajustes</Link></li>: null}
-       {(Verificado === true)? <li><Link className='menubari' to='/carrito' onClick={ ()=> onhandledclick() }>Carrito</Link></li>: null}
-       {(Verificado === false)?<li><Link className='menubari' to='/login' onClick={ ()=> onhandledclick() }>Login</Link></li> : null}
-       {(Verificado === false)?<li><Link className='menubari' to='/register' onClick={ ()=> onhandledclick() }>Register</Link></li> : null}
+       <li><Link className='menubari' to='/productover' onClick={ ()=> onhandledmenuback() } >Productos</Link></li>
+       {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledmenuback() }>Ordenar</Link></li>: null}
+       {(Verificado === true)?<li><Link className='menubari' to='/chat' onClick={ ()=> onhandledmenuback() }>Chats</Link></li>: null}
+       {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledmenuback() }>Notificaciones</Link></li>: null}
+       {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledmenuback() }>Ajustes</Link></li>: null}
+       {(Verificado === true)? <li><Link className='menubari' to='/carrito' onClick={ ()=> onhandledmenuback() }>Carrito</Link></li>: null}
+       {(Verificado === false)?<li><Link className='menubari' to='/login' onClick={ ()=> onhandledmenuback() }>Login</Link></li> : null}
+       {(Verificado === false)?<li><Link className='menubari' to='/register' onClick={ ()=> onhandledmenuback() }>Register</Link></li> : null}
      
       </ul>
     <button className='btnmenu' onClick={ ()=> onhandledclick() } >
