@@ -58,7 +58,7 @@ function App() {
        {(Verificado === true)?<li><Link className='menubari' to='/chat' onClick={ ()=> onhandledclick() }>Chats</Link></li>: null}
        {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Notificaciones</Link></li>: null}
        {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledclick() }>Ajustes</Link></li>: null}
-       <li><Link className='menubari' to='/carrito' onClick={ ()=> onhandledclick() }>Carrito</Link></li>
+       {(Verificado === true)? <li><Link className='menubari' to='/carrito' onClick={ ()=> onhandledclick() }>Carrito</Link></li>: null}
        {(Verificado === false)?<li><Link className='menubari' to='/login' onClick={ ()=> onhandledclick() }>Login</Link></li> : null}
        {(Verificado === false)?<li><Link className='menubari' to='/register' onClick={ ()=> onhandledclick() }>Register</Link></li> : null}
      
