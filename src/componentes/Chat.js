@@ -1,7 +1,7 @@
 import './Chat.css';
 import CajaChat from './CajaChat';
 import UsuariosConectados from './UsuariosConectados';
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 function Chat() {
     let mensajesArray = [
@@ -34,6 +34,14 @@ const [mensaje, setmensaje] = useState({
     fecha: "5 minutos" ,
     enviado: 1
 })
+
+useEffect(()=>{
+    const chatscrollabajo = document.querySelector('.finalchatscroll');
+    chatscrollabajo.scrollIntoView({
+        behavior: 'smooth'
+    })
+
+ })
 
 
         const onSubmit = (e) =>{
@@ -91,7 +99,6 @@ const [mensaje, setmensaje] = useState({
     ]
   return (
     <>
-    <div className='fondochat'>
     <div className='fondonegrochat'></div>
     <div className='cajachat'>
         <div className='usuariosactivos'>
@@ -122,7 +129,7 @@ const [mensaje, setmensaje] = useState({
           { mensajes.map( (e) =>(
           <CajaChat mensaje={e.mensaj} fecha={e.fecha} enviado={e.enviado}></CajaChat>
           ))}
-
+<div className='finalchatscroll'></div>
           </div>
           <form className='paletachat' onSubmit={onSubmit}>
           <i className='bx bx-paperclip'></i>
@@ -130,9 +137,6 @@ const [mensaje, setmensaje] = useState({
           <button type='submit' className='botonsend'><i className='bx bxs-send'></i></button>
           </form>
         </div>
-    </div>
-    
-   
     </div>
     </>
   );
