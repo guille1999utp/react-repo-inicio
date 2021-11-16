@@ -37,8 +37,8 @@ const Carrito = () => {
             <div className="flexcolum"></div>
           </div>
         </div>
-           <hr></hr>
-            
+        <hr></hr>
+
         <div className="productocarrito">
           <img
             src="https://fondosmil.com/fondo/17010.jpg"
@@ -61,8 +61,8 @@ const Carrito = () => {
             <div className="flexcolum"></div>
             <div className="flexcolum"></div>
           </div>
-        </div>      
-        <hr></hr> 
+        </div>
+        <hr></hr>
         <div className="productocarrito">
           <img
             src="https://fondosmil.com/fondo/17010.jpg"
@@ -85,8 +85,8 @@ const Carrito = () => {
             <div className="flexcolum"></div>
             <div className="flexcolum"></div>
           </div>
-        </div>      
-        <hr></hr> 
+        </div>
+        <hr></hr>
       </div>
     </div>
   );

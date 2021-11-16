@@ -15,6 +15,8 @@ import App from './componentes/App';
 import Chat from './componentes/Chat';
 import Carrito from './componentes/Carrito';
 import Configuracion from './componentes/Configuracion';
+import Ordenar from './componentes/Ordenar';
+
 
 
 ReactDOM.render(
@@ -28,6 +30,7 @@ ReactDOM.render(
   <Route path="/chat" component={ Chat }/>
   <Route path="/carrito" component={ Carrito }/>
   <Route path="/ajustes" component={ Configuracion }/>
+  <Route path="/ordenar" component={ Ordenar }/>
   </Router>
  ,
   document.getElementById('root')

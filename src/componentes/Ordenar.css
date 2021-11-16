@@ -1,0 +1,90 @@
+
+.menuchat{
+    cursor: pointer;
+    font-size: 20px;
+    margin: auto 10px;
+    margin-right: 5%;
+}
+
+.paletacomandoproductos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 7%;
+    min-height: 55px;
+    width: 100%;
+    background: rgb(237, 237, 237);
+}
+.correcionpaletachat{
+    display: flex;
+    flex-direction: row;
+    margin: auto 0;
+}
+.fotousuariouser{
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background: white;
+    position: relative;
+    margin-left: 15px;
+}
+
+.paletachat{
+    position: relative;
+   
+    height: 7%;
+    width: 100%;
+    background:rgb(235, 235, 235);
+    display: flex;
+    justify-content: space-around;
+}
+.decorationpaleta{
+width: 85%;
+margin: auto 0;
+margin-left: 2%;
+height: 60%;
+padding:  0 10px ;
+border-radius: 20px;
+border:none;
+}
+.solicitante{
+    margin: auto 0;
+    margin-left: 25px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.bxs-send, .bx-paperclip{
+    cursor: pointer;
+    margin: auto 0;
+    font-size: 25px;
+    margin-left: 5px;
+    padding: 5px;
+    color: rgb(81, 88, 92);
+}
+
+.chatuses{
+    width: 100%;
+    height: 87%;
+    overflow-y: scroll;
+    background: white;
+}
+.chatuses::-webkit-scrollbar{
+    width: 4px;
+   }
+   .chatuses::-webkit-scrollbar-thumb{
+       background:rgb(138, 224, 250);
+       border-radius: 5px;
+      }
+   
+.cajaordenar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 92vh;
+    background: white;
+    position: relative;
+    margin: 0 auto;
+    min-height: 437px;
+    box-shadow: 0px 0px 4px 4px rgba(80, 78, 78, 0.4);
+}
