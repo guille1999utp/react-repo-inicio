@@ -65,7 +65,7 @@ function App() {
        {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledmenuback() }>Ordenar</Link></li>: null}
        {(Verificado === true)?<li><Link className='menubari' to='/chat' onClick={ ()=> onhandledmenuback() }>Chats</Link></li>: null}
        {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledmenuback() }>Notificaciones</Link></li>: null}
-       {(Verificado === true)?<li><Link className='menubari' to='/' onClick={ ()=> onhandledmenuback() }>Ajustes</Link></li>: null}
+       {(Verificado === true)?<li><Link className='menubari' to='/ajustes' onClick={ ()=> onhandledmenuback() }>Ajustes</Link></li>: null}
        {(Verificado === true)? <li><Link className='menubari' to='/carrito' onClick={ ()=> onhandledmenuback() }>Carrito</Link></li>: null}
        {(Verificado === false)?<li><Link className='menubari' to='/login' onClick={ ()=> onhandledmenuback() }>Login</Link></li> : null}
        {(Verificado === false)?<li><Link className='menubari' to='/register' onClick={ ()=> onhandledmenuback() }>Register</Link></li> : null}

@@ -40,7 +40,6 @@ useEffect(()=>{
     chatscrollabajo.scrollIntoView({
         behavior: 'smooth'
     })
-
  })
 
 

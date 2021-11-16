@@ -14,6 +14,7 @@ import Inicio from './componentes/Inicio';
 import App from './componentes/App';
 import Chat from './componentes/Chat';
 import Carrito from './componentes/Carrito';
+import Configuracion from './componentes/Configuracion';
 
 
 ReactDOM.render(
@@ -26,6 +27,7 @@ ReactDOM.render(
   <Route path="/inicio" component={ Inicio }/>
   <Route path="/chat" component={ Chat }/>
   <Route path="/carrito" component={ Carrito }/>
+  <Route path="/ajustes" component={ Configuracion }/>
   </Router>
  ,
   document.getElementById('root')
