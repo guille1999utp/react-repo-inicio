@@ -1,6 +1,6 @@
 import './Ordenar.css';
 import React, { useState, useEffect } from "react";
-
+import Cajasolicitud from './Cajasolicitud';
 
 function Ordenar() {
     let solicitudesarray = [
@@ -57,6 +57,23 @@ function Ordenar() {
       };
   return (
     <>
+    <div className='agregardenar'>
+      <div className='formordenar'>
+  <form>
+  <label for="nombre">
+            <span>¿Cuál es tu nombre?</span>
+            <input type="text" id="nombre" placeholder="Tu nombre"></input>
+        </label>
+        <label for="inicio-platzi">
+            <span>¿Qué día comenzaste en Platzi?</span>
+            <input type="date" id="inicio-platzi"></input>
+        </label>
+        <label for="horario">
+            <span>¿En qué horario estudias?</span>
+            <input type="time" id="horario"></input>
+        </label>
+  </form>
+      </div>
       <div className="cajaordenar">
         <div className="mensajesusuarios">
           <div className="paletacomandoproductos">
@@ -70,16 +87,12 @@ function Ordenar() {
             </div>
             <i className="bx bx-dots-vertical-rounded menuchat"></i>
           </div>
-          <div className="chatuses">
-            <div className="finalchatscroll"></div>
-          </div>
           <form className="paletachat" onSubmit={onSubmit}>
-            <i className="bx bx-paperclip"></i>
             <input
               type="text"
               className="decorationpaleta"
               value={solicitud.solicitado}
-              placeholder="Escribir Mensaje"
+              placeholder="Buscar"
               onChange={onChangeMensaje}
               name="solicitado"
             ></input>
@@ -87,7 +100,14 @@ function Ordenar() {
               <i className="bx bxs-send"></i>
             </button>
           </form>
+          <div className="chatuses">
+          <Cajasolicitud></Cajasolicitud>
+            <div className="finalchatscroll">
+            </div>
+          </div>
+          
         </div>
+      </div>
       </div>
     </>
   );
