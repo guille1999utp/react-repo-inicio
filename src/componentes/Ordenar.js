@@ -5,31 +5,51 @@ import Cajasolicitud from "./Cajasolicitud";
 function Ordenar() {
   let solicitudesarray = [
     {
-      solicitado:
+      producto:
         "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
       fecha: "5 minutos",
+      descripsion: '',
+      requerido: '',
+      horallegada: '',
+      urlfoto:''
     },
     {
-      solicitado:
+      producto:
         "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
       fecha: "5 minutos",
+      descripsion: '',
+      requerido: '',
+      horallegada: '',
+      urlfoto:''
     },
     {
-      solicitado:
+      producto:
         "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
       fecha: "5 minutos",
+      descripsion: '',
+      requerido: '',
+      horallegada: '',
+      urlfoto:''
     },
     {
-      solicitado:
+      producto:
         "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
       fecha: "5 minutos",
+      descripsion: '',
+      requerido: '',
+      horallegada: '',
+      urlfoto:''
     },
   ];
 
   const [solicitudes, setSolicitados] = useState(solicitudesarray);
   const [solicitud, setSolicitud] = useState({
-    solicitado: "",
-    fecha: "5 minutos",
+  producto: "",
+      fecha: "",
+      descripsion: '',
+      requerido: '',
+      horallegada: '',
+      urlfoto:''
   });
 
   useEffect(() => {
@@ -43,8 +63,12 @@ function Ordenar() {
     e.preventDefault();
     setSolicitados([...solicitudes, solicitud]);
     setSolicitud({
-      solicitado: "",
-      fecha: "5 minutos",
+  producto: "",
+      fecha: "",
+      descripsion: '',
+      requerido: '',
+      horallegada: '',
+      urlfoto:''
     });
   };
 
