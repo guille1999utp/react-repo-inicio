@@ -7,7 +7,11 @@
     box-sizing:border-box;
     margin-bottom: 10px;
 }
-.agregardenar
-{
-    width: 80%;
+
+@media screen and (max-width:1000px){
+    .agregardenar{
+        margin:  0;
+        width: 100vw;
+        height: 100vh;
+    }
 }

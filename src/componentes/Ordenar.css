@@ -76,7 +76,10 @@ border:none;
        background:rgb(138, 224, 250);
        border-radius: 5px;
       }
-   
+   #fileordenar{
+       display: none;
+   }
+
 .cajaordenar{
     display: flex;
     flex-direction: row;
@@ -87,7 +90,7 @@ border:none;
  
 }
 .agregardenar{
-    margin:  20px auto ;
+    margin: 20px auto ;
     width: 85%;
     height: 85vh;
     display: flex;
@@ -96,4 +99,90 @@ border:none;
 .formordenar{
     width: 30%;
     box-shadow: 0px 0px 4px 4px rgb(80, 78, 78 , 0.4);
+}
+.formingresarproucto{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.formingresarproucto label span{
+    margin-top: 15px;
+    margin-left:15px;
+    font-size: 20px;
+}
+.formordenar h3{
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.wrap{
+flex-wrap: wrap;
+}
+.formingresarproucto label input,textarea,.butonfile{
+    max-height: 600px;
+    max-width: 200px;
+    padding: 5px;
+width: 45%;
+margin-left: 15px;
+margin-top: 15px;
+}
+ .butonsolicitar{
+      font-size: 20px;
+      padding: 10px;
+      width: 70%;
+      margin: 0 auto;
+      margin-top: 15px;
+      max-width: 270px;
+  }
+  
+  @media screen and (max-width:1000px){
+    .agregardenar{
+        margin:  0;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+@media screen and (max-width:700px){
+    .formordenar {
+        margin: 0 auto;
+        width: 100%;
+        padding-bottom: 30px;
+    }
+    .mensajesusuarios {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+    }
+    .cajaordenar {
+        width: 100%;
+    }
+    .agregardenar {
+        flex-direction: column;
+    }
+    .flexrow{
+        justify-content: center;
+    }   
+       .formingresarproucto label span{
+        margin-top: 15px;
+        margin-right:25px;
+        font-size: 20px;
+    }
+    
+.formingresarproucto label input,textarea,.butonfile{
+    min-width: 180px;
+    max-height: 218px;
+    max-width: 200px;
+    margin-left: 0;
+    margin-top: 15px;
+}
+.solicitante{
+    font-size: 1rem;
+}
+
+.formordenar h3{
+    font-size: 20px;
+}
 }
