@@ -63,16 +63,16 @@ border:none;
     color: rgb(81, 88, 92);
 }
 
-.chatuses{
+.ordenarproductossolicitud{
     width: 100%;
     height: 87%;
     overflow-y: scroll;
     background: white;
 }
-.chatuses::-webkit-scrollbar{
+.ordenarproductossolicitud::-webkit-scrollbar{
     width: 4px;
    }
-   .chatuses::-webkit-scrollbar-thumb{
+   .ordenarproductossolicitud::-webkit-scrollbar-thumb{
        background:rgb(138, 224, 250);
        border-radius: 5px;
       }
@@ -122,12 +122,12 @@ border:none;
 flex-wrap: wrap;
 }
 .formingresarproucto label input,textarea,.butonfile{
-    max-height: 600px;
     max-width: 200px;
     padding: 5px;
 width: 45%;
 margin-left: 15px;
 margin-top: 15px;
+max-height: 100px;
 }
  .butonsolicitar{
       font-size: 20px;
@@ -173,7 +173,7 @@ margin-top: 15px;
     
 .formingresarproucto label input,textarea,.butonfile{
     min-width: 180px;
-    max-height: 218px;
+ 
     max-width: 200px;
     margin-left: 0;
     margin-top: 15px;

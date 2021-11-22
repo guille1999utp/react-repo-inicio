@@ -6,39 +6,48 @@ function Ordenar() {
   let solicitudesarray = [
     {
       producto:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
+        "computador gamer",
       fecha: "5 minutos",
-      descripsion: '',
+      descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
       requerido: '',
       horallegada: '',
-      urlfoto:''
+      urlfoto:'https://www.alkosto.com/medias/192876259719-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wzNjU5MDJ8aW1hZ2UvcG5nfGltYWdlcy9oYzEvaGQ1LzkwNzg5NDYwMDUwMjIucG5nfGRjMzVlZjBkYzgwN2Y2ZWZhZGQxNmIxMjhhODg3NzU5NmMwNjNkN2I4OTc1NzMzY2NjNTA3YTQ3OTUxNjA2NGQ'
     },
     {
       producto:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
+        "computador gamer",
       fecha: "5 minutos",
-      descripsion: '',
+      descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
       requerido: '',
       horallegada: '',
-      urlfoto:''
+      urlfoto:'https://http2.mlstatic.com/D_NQ_NP_826178-MCO44786840309_022021-O.jpg'
     },
     {
       producto:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
+        "computador gamer",
       fecha: "5 minutos",
-      descripsion: '',
+      descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
       requerido: '',
       horallegada: '',
-      urlfoto:''
+      urlfoto:'https://falabella.scene7.com/is/image/FalabellaCO/13166500_1?wid=800&hei=800&qlt=70'
     },
     {
       producto:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
+        "computador gamer",
       fecha: "5 minutos",
-      descripsion: '',
+      descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
       requerido: '',
       horallegada: '',
-      urlfoto:''
+      urlfoto:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTIUoORhUjAt4aoZIWn6VYAJebLwoDQPdXUw&usqp=CAU'
+    },
+    {
+      producto:
+        "computador gamer",
+      fecha: "5 minutos",
+      descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
+      requerido: '',
+      horallegada: '',
+      urlfoto:'https://tecnobits.net/wp-content/uploads/2018/08/RAZER-BLADE-1555.jpg'
     },
   ];
 
@@ -61,7 +70,7 @@ function Ordenar() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setSolicitados([...solicitudes, solicitud]);
+    setSolicitados([solicitud,...solicitudes]);
     setSolicitud({
   producto: "",
       fecha: "",
@@ -89,10 +98,10 @@ function Ordenar() {
       <div className="agregardenar">
         <div className="formordenar">
           <h3>busca tu Producto</h3>
-          <form className="formingresarproucto">
+          <form className="formingresarproucto" onSubmit={onSubmit}>
             <label for="titulo" className="flexrow wrap">
               <span>Producto</span>
-              <input type="text" id="titulo" placeholder="Tu nombre"></input>
+              <input type="text" id="titulo" placeholder="Tu nombre" name='producto' onChange={onChangeMensaje}></input>
             </label>
 
             <label for="descripsion" className="flexrow wrap">
@@ -102,22 +111,24 @@ function Ordenar() {
                 type="text"
                 id="descripsion"
                 placeholder="Descripsion"
+                name='descripsion'
+                onChange={onChangeMensaje}
               ></textarea>
             </label>
 
             <label for="dia" className="flexrow wrap">
               <span>dia requerido</span>
-              <input type="date" id="dia"></input>
+              <input type="date" id="dia" name='fecha' onChange={onChangeMensaje}></input>
             </label>
 
             <label for="horario" className="flexrow wrap">
               <span>hora llegada</span>
-              <input type="time" id="horario"></input>
+              <input type="time" id="horario" name='horallegada' onChange={onChangeMensaje}></input>
             </label>
 
             <label className="flexrow wrap">
             <span class="file-custom">Fotos</span>
-            <input type="file" id="fileordenar" aria-label="File browser example"></input>
+            <input type="file" id="fileordenar" aria-label="File browser example" name='urlfoto' onChange={onChangeMensaje}></input>
              <button type='button' className='butonfile' onClick={onFile}>subir foto</button>
             </label>
             <button type="submit" className="butonsolicitar">
@@ -151,9 +162,11 @@ function Ordenar() {
                 <i className="bx bxs-send"></i>
               </button>
             </form>
-            <div className="chatuses">
-              <Cajasolicitud></Cajasolicitud>
-              <div className="finalchatscroll"></div>
+            <div className="ordenarproductossolicitud">
+            <div className="finalchatscroll"></div>
+              {solicitudes.map((soli,i) =>(
+                <Cajasolicitud key={i} producto={soli.producto} descripsion={soli.descripsion} urlfoto={soli.urlfoto}></Cajasolicitud>
+              ))}
             </div>
           </div>
         </div>

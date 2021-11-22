@@ -2,22 +2,23 @@ import './Cajasolicitud.css';
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Cajasolicitud() {
+function Cajasolicitud({producto,descripsion,urlfoto}) {
+  console.log(urlfoto)
   return (
     <>
         <div className="productordenado">
           <img
-            src="https://fondosmil.com/fondo/17010.jpg"
+            src={urlfoto}
             className="img-producto"
             alt="img"
           ></img>
           <div className="caracteristicaproductocarrito">
             <div className="flexcolum">
               <Link to="/producto/45" className="mostrartextotitulocarrito">
-                Monitor Samsung Gaming 27 Curvo Fhd Nvidia G-sync 240hz
+               {producto}
               </Link>
               <h3 className="cbasica">
-                Color: Dark blue gray, Voltaje: 100V/240V
+               {descripsion}
               </h3>
               <button type="button" className="botoneliminarcarrito">
                 Eliminar
