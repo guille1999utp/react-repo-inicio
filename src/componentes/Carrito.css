@@ -131,10 +131,16 @@ padding: 64px;
 
 
   @media screen and (max-width:550px){
+    .cbasica{
+        margin-top: 3px;
+    }
     .img-producto{
         width: 30%;
         margin-right: 10px;
         margin-left: 10px;
+    }
+    .botoneliminarcarrito{
+        margin-top: 3px;
     }
       }
 
