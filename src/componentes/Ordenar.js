@@ -53,9 +53,9 @@ function Ordenar() {
 
   const [solicitudes, setSolicitados] = useState(solicitudesarray);
   const [solicitud, setSolicitud] = useState({
-  producto: "",
-      fecha: "",
+      producto: "",
       descripsion: '',
+      fecha: "",
       requerido: '',
       horallegada: '',
       urlfoto:''
@@ -70,15 +70,27 @@ function Ordenar() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if(solicitud.producto.length !== 0 && solicitud.descripsion.length !== 0){
+  
+     const produclenght = solicitud.producto.trim().slice(0,80);
+     const descripleght = solicitud.descripsion.trim().slice(0,200);
+    setSolicitud({descripsion : descripleght,producto : produclenght });
+ 
+ 
+    console.log(solicitud)
     setSolicitados([solicitud,...solicitudes]);
     setSolicitud({
-  producto: "",
+      producto: "",
       fecha: "",
       descripsion: '',
       requerido: '',
       horallegada: '',
       urlfoto:''
     });
+  }else{
+    
+  }
+  
   };
 
   const onChangeMensaje = (e) => {
@@ -101,7 +113,7 @@ function Ordenar() {
           <form className="formingresarproucto" onSubmit={onSubmit}>
             <label for="titulo" className="flexrow wrap">
               <span>Producto</span>
-              <input type="text" id="titulo" placeholder="Tu nombre" name='producto' onChange={onChangeMensaje}></input>
+              <input type="text" id="titulo" placeholder="Tu nombre" name='producto' onChange={onChangeMensaje} value={solicitud.producto}></input>
             </label>
 
             <label for="descripsion" className="flexrow wrap">
@@ -113,22 +125,22 @@ function Ordenar() {
                 placeholder="Descripsion"
                 name='descripsion'
                 onChange={onChangeMensaje}
-              ></textarea>
+                value={solicitud.descripsion} ></textarea>
             </label>
 
             <label for="dia" className="flexrow wrap">
               <span>dia requerido</span>
-              <input type="date" id="dia" name='fecha' onChange={onChangeMensaje}></input>
+              <input type="date" id="dia" name='fecha' onChange={onChangeMensaje} value={solicitud.fecha}></input>
             </label>
 
             <label for="horario" className="flexrow wrap">
               <span>hora llegada</span>
-              <input type="time" id="horario" name='horallegada' onChange={onChangeMensaje}></input>
+              <input type="time" id="horario" name='horallegada' onChange={onChangeMensaje} value={solicitud.horallegada}></input>
             </label>
 
             <label className="flexrow wrap">
             <span class="file-custom">Fotos</span>
-            <input type="file" id="fileordenar" aria-label="File browser example" name='urlfoto' onChange={onChangeMensaje}></input>
+            <input type="file" id="fileordenar" aria-label="File browser example" name='urlfoto' onChange={onChangeMensaje} value={solicitud.urlfoto}></input>
              <button type='button' className='butonfile' onClick={onFile}>subir foto</button>
             </label>
             <button type="submit" className="butonsolicitar">

@@ -68,6 +68,7 @@ border:none;
     height: 87%;
     overflow-y: scroll;
     background: white;
+    overflow-x: hidden;
 }
 .ordenarproductossolicitud::-webkit-scrollbar{
     width: 4px;
@@ -97,6 +98,7 @@ border:none;
     flex-direction: row;
 }
 .formordenar{
+    background:rgb(36, 37, 38);
     width: 30%;
     box-shadow: 0px 0px 4px 4px rgb(80, 78, 78 , 0.4);
 }
@@ -108,11 +110,13 @@ border:none;
     justify-content: space-around;
 }
 .formingresarproucto label span{
+    color: white;
     margin-top: 15px;
     margin-left:15px;
     font-size: 20px;
 }
 .formordenar h3{
+    color: white;
     text-align: center;
     font-size: 25px;
     margin-top: 20px;
@@ -130,14 +134,20 @@ margin-top: 15px;
 max-height: 100px;
 }
  .butonsolicitar{
-      font-size: 20px;
+    background: black;
+    opacity: 0.6;
+    color: white;
+    font-size: 20px;
       padding: 10px;
       width: 70%;
       margin: 0 auto;
       margin-top: 15px;
       max-width: 270px;
   }
-  
+  .butonsolicitar:hover{
+      background: black;
+      opacity: 1;
+  }
   @media screen and (max-width:1000px){
     .agregardenar{
         margin:  0;
