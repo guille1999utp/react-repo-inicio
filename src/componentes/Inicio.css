@@ -22,17 +22,26 @@
     width: 1280px;
     position: relative;
 }
-.margininiciotop h2{
-    margin-bottom: 20px;
+.margininiciotop h2 {
     font-weight: 300;
     color: rgb(102, 102, 124);
     font-family:  sans-serif;
 }
+.margininiciotop h2 a{
+    color: rgb(61, 136, 249) !important; 
+    text-decoration: none;
+    font-size: 15px;
+}
 .marginslider h2{
-    margin-bottom: 20px;
     font-weight: 500;
     color: rgb(102, 102, 124);
     font-family:  sans-serif;
+}
+.marginslider h2 a{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(61, 136, 249) !important; 
 }
 .marginslider{
     margin: 100px auto;
@@ -52,11 +61,7 @@
     box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.1);
     transition: 0.2s ease-in-out;
 }
-.flexinicio{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
+
 .imginicio{
     margin-bottom: 10px;
 }
@@ -106,10 +111,6 @@
     border: 1px solid rgba(0,0,0,0.2);
 
 }
-.flexinicio a{
- color: rgb(61, 136, 249) !important; 
- font-weight: 500;
-}
 @media screen and (max-width:1348px){
 
     .margininiciotop{
@@ -136,12 +137,7 @@
         }
         }
         @media screen and (max-width:740px){
-            .flexinicio h2{
-                font-size: 18px;
-            }
-            .flexinicio a{
-                font-size: 12px;
-            }
+            
             .margininiciotop{
                 margin: 0 auto;
                width: 500px;
@@ -188,5 +184,10 @@
             height: 150px;
         }
         }
+        @media screen and (max-width:290px){
+            .carditem{
+              margin: 0 auto;
+              margin-left: 25px;
+            }
 
-   
+        }

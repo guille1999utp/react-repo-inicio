@@ -24,7 +24,8 @@ padding-left: 80px;
 .flexinicio a{
   text-decoration: none;
   
-  margin: 6px;
+  margin-top: 6px;
+  margin-left: 6px;
   color: rgb(67, 67, 235);
 }
 .items{

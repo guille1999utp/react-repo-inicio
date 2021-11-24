@@ -66,10 +66,7 @@ function Inicio ({history}) {
 
 
       <div className='margininiciotop'>
-        <div className='flexinicio'>
-        <h2>Repuestos Agregados Recientemente</h2>
-        <Link  to='/productover' className='vermas' >Ver Mas</Link>
-        </div>
+        <h2>Repuestos Agregados Recientemente <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
         <Slider {...settings}>
           <div>
           <div className='carditem' onClick={redirect}>
@@ -175,10 +172,10 @@ function Inicio ({history}) {
       </div>
 
       <div className='marginslider'>
-      <div className='flexinicio'>
-      <h2>Ultimas Ofertas</h2>
-        <Link to='/productover' className='vermas' >Ver Mas</Link>
-        </div>
+     
+      <h2>Ultimas Ofertas <Link to='/productover' className='vermas' >Ver Mas</Link></h2>
+        
+        
         <Slider {...settings}>
           <div >
           <div className='carditem' onClick={redirect}>

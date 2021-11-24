@@ -67,6 +67,7 @@ padding: 64px;
     color: rgb(3, 104, 37);
 }
 .botoneliminarcarrito{
+    cursor: pointer;
     text-align: left;
     background: white;
     width: 100px;

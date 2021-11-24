@@ -37,9 +37,11 @@ function Producto({history}) {
   return (
   <>
 <div>
+ 
     <div className='gridproducto'>
+    <div>
         <div className='fleximg'>
-        <img className='fotoproducto' src='https://mfiles.alphacoders.com/849/thumb-849315.jpg' alt='producto'/>
+        <img className='fotoproducto' src='https://i1.wp.com/hipertextual.com/wp-content/uploads/2020/09/hipertextual-que-incluye-playstation-5-su-caja-2020706348.jpg?fit=2500%2C1500' alt='producto'/>
         <div className='morefotos'>
         <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.8uu1-Xja_qIE5F2ge5zyWQHaLT?pid=ImgDet' alt='producto'/>
         <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.PH4ArjoOnTFboybCIfrOMAHaNu?' alt='producto'/>
@@ -48,9 +50,9 @@ function Producto({history}) {
         <img className='listmorefotos' src='https://th.bing.com/th?id=OIF.socMBLS6AIAEk%2bR19vR1tQ' alt='producto'/>
         <img className='listmorefotos' src='https://th.bing.com/th?id=OIF.jZJjdFROrRJB%2fY0s19om9w' alt='producto'/>
         </div>
-        </div>
+       
 
-    <div className='infopro'>
+     <div className='infopro'>
         <h3> titulo de producto que se quiere comprar</h3>
         <h4>Detalles</h4>
         <div className='flexcara'>
@@ -71,7 +73,8 @@ function Producto({history}) {
 
         </ul>
     </div>
-
+    </div>
+    </div>
 
        <div className='infocom'>
     <h4>$50.000</h4>
@@ -99,6 +102,11 @@ function Producto({history}) {
     </div>
   
     </div>
+
+
+
+
+
     <br></br>
     <br></br>
     <hr></hr>

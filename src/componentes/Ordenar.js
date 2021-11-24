@@ -5,6 +5,7 @@ import Cajasolicitud from "./Cajasolicitud";
 function Ordenar() {
   let solicitudesarray = [
     {
+      id: 1,
       producto:
         "computador gamer",
       fecha: "5 minutos",
@@ -14,8 +15,8 @@ function Ordenar() {
       urlfoto:'https://www.alkosto.com/medias/192876259719-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wzNjU5MDJ8aW1hZ2UvcG5nfGltYWdlcy9oYzEvaGQ1LzkwNzg5NDYwMDUwMjIucG5nfGRjMzVlZjBkYzgwN2Y2ZWZhZGQxNmIxMjhhODg3NzU5NmMwNjNkN2I4OTc1NzMzY2NjNTA3YTQ3OTUxNjA2NGQ'
     },
     {
-      producto:
-        "computador gamer",
+      id: 2,
+      producto:"computador gamer",
       fecha: "5 minutos",
       descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
       requerido: '',
@@ -23,6 +24,7 @@ function Ordenar() {
       urlfoto:'https://http2.mlstatic.com/D_NQ_NP_826178-MCO44786840309_022021-O.jpg'
     },
     {
+      id: 3,
       producto:
         "computador gamer",
       fecha: "5 minutos",
@@ -32,6 +34,7 @@ function Ordenar() {
       urlfoto:'https://falabella.scene7.com/is/image/FalabellaCO/13166500_1?wid=800&hei=800&qlt=70'
     },
     {
+      id: 4,
       producto:
         "computador gamer",
       fecha: "5 minutos",
@@ -41,6 +44,7 @@ function Ordenar() {
       urlfoto:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTIUoORhUjAt4aoZIWn6VYAJebLwoDQPdXUw&usqp=CAU'
     },
     {
+      id: 5,
       producto:
         "computador gamer",
       fecha: "5 minutos",
@@ -53,12 +57,13 @@ function Ordenar() {
 
   const [solicitudes, setSolicitados] = useState(solicitudesarray);
   const [solicitud, setSolicitud] = useState({
+      id:"",
       producto: "",
-      descripsion: '',
+      descripsion: "",
       fecha: "",
-      requerido: '',
-      horallegada: '',
-      urlfoto:''
+      requerido: "",
+      horallegada: "",
+      urlfoto:""
   });
 
   useEffect(() => {
@@ -71,10 +76,7 @@ function Ordenar() {
   const onSubmit = (e) => {
     e.preventDefault();
     if(solicitud.producto.length !== 0 && solicitud.descripsion.length !== 0){
-  
-     const produclenght = solicitud.producto.trim().slice(0,80);
-     const descripleght = solicitud.descripsion.trim().slice(0,200);
-    setSolicitud({descripsion : descripleght,producto : produclenght });
+    setSolicitud({...solicitud});
  
  
     console.log(solicitud)
@@ -87,10 +89,7 @@ function Ordenar() {
       horallegada: '',
       urlfoto:''
     });
-  }else{
-    
   }
-  
   };
 
   const onChangeMensaje = (e) => {
@@ -100,6 +99,7 @@ function Ordenar() {
       [name]: value,
     });
   };
+  
 
   const onFile  = () =>{
     document.querySelector('#fileordenar').click();
@@ -176,9 +176,10 @@ function Ordenar() {
             </form>
             <div className="ordenarproductossolicitud">
             <div className="finalchatscroll"></div>
-              {solicitudes.map((soli,i) =>(
-                <Cajasolicitud key={i} producto={soli.producto} descripsion={soli.descripsion} urlfoto={soli.urlfoto}></Cajasolicitud>
+              {solicitudes.map((soli) =>(
+                <Cajasolicitud key={soli.id} solicitudes={solicitudes} setSolicitados={setSolicitados} producto={soli.producto} id={soli.id} descripsion={soli.descripsion} urlfoto={soli.urlfoto}></Cajasolicitud>
               ))}
+            
             </div>
           </div>
         </div>
