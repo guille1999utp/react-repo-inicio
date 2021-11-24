@@ -1,8 +1,13 @@
 .fondocarrito{
     width: 100vw; 
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     background:rgb(235, 235, 235);  
     padding-top: 40px;
+}
+.flexro{
+    display: flex;
+    flex-direction: row;
 }
 .conteinerproductoseleccionado{
 border-radius: 10px;
@@ -36,9 +41,10 @@ padding: 64px;
     margin-bottom: 15px;
 }
 .img-producto{
-    min-width: 140px;
+    min-width: 100px;
     height: 100%;
     margin-right: 20px;
+    width: 20%;
 }
 .caracteristicaproductocarrito{
     display: flex;
@@ -124,7 +130,7 @@ padding: 64px;
     margin-right: 10px;
     margin-left: 10px;
 }
-.flexrow{
+.flexro{
     justify-content: space-around;
 }
   }
