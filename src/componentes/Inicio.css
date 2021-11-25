@@ -48,6 +48,9 @@
     width: 1280px;
     margin: 100px auto;
 }
+.flexinicio{
+    display: flex;
+}
 .carditem{
     cursor: pointer;
     width: 224px;

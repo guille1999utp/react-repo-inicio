@@ -41,7 +41,9 @@ function Producto({history}) {
     <div className='gridproducto'>
     <div>
         <div className='fleximg'>
-        <img className='fotoproducto' src='https://i1.wp.com/hipertextual.com/wp-content/uploads/2020/09/hipertextual-que-incluye-playstation-5-su-caja-2020706348.jpg?fit=2500%2C1500' alt='producto'/>
+          <div className='cajafotoproducto'>
+        <img className='fotoproducto' src='https://cdn.pocket-lint.com/r/s/1200x/assets/images/142227-phones-review-iphone-x-review-photos-image1-ahdsiyvum0.jpg' alt='producto'/>
+        </div>
         <div className='morefotos'>
         <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.8uu1-Xja_qIE5F2ge5zyWQHaLT?pid=ImgDet' alt='producto'/>
         <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.PH4ArjoOnTFboybCIfrOMAHaNu?' alt='producto'/>
@@ -102,13 +104,6 @@ function Producto({history}) {
     </div>
   
     </div>
-
-
-
-
-
-    <br></br>
-    <br></br>
     <hr></hr>
     </div>
 
@@ -223,8 +218,7 @@ function Producto({history}) {
 </div>
 
 
-<br></br>
-   <br></br>
+
    <hr></hr>
 
 <div className='marginslider'>

@@ -5,19 +5,15 @@
     grid-template-columns:2fr 1fr 0f;
     background: white;
     padding: 20px 100px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
-
-
 
 .fleximg{
   width: 100%;
 
 }
 .fleximg .fotoproducto{
-  width: 100%;
-  margin-top: 20px;
-  max-width: 95%;
+height: 100%;
 }
 .morefotos{
   display: flex;
@@ -36,8 +32,12 @@
   border: solid grey 2px;
   margin-top: 10px;
 }
-
+.cajafotoproducto{
+  height: 550px;
+  text-align: center;
+}
 .infocom{
+  max-width: 300px;
   padding: 20px;
   grid-column: 3/4;
   grid-row: 1/3;
@@ -50,6 +50,7 @@
   flex-direction: column;
 }
 .infopro{
+  margin-top: 20px;
   grid-column: 2/3;
   grid-row: 1/3;
   background: white;

@@ -2,7 +2,7 @@ import './Iniciar-sesion.css';
 
 function Iniciarsesion() {
   return (
-    <>
+    <div className='fondologin'>
     <form className='formi' method='POST'>
         <h4 className='i'>Iniciar Sesion</h4>
         <h3 className='ajus'>Correo</h3>
@@ -27,7 +27,7 @@ function Iniciarsesion() {
    <h3 className='ajus'>no tienes cuenta?</h3>
    <a href='/register' className='am' >Registrarme</a>
     </form>
-    </>
+    </div>
   );
 }
 

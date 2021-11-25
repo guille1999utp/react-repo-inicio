@@ -79,9 +79,9 @@ function Register() {
 
 
   return (
-    <>
+    <div className='fondologin'>
   <form className='formre' onSubmit={ onSubmit } >
-        <h4 className='i'>Iniciar Sesion</h4>
+        <h4 className='i'>Registro</h4>
    <div >
    <h3 className='ajust'>Nombres</h3>
    <input className='inputr' placeholder='ingrese nombres' onChange={ onChangeNombre} name='nombre' required/>
@@ -113,7 +113,7 @@ function Register() {
    <h3 className='ya'>ya tienes cuenta?</h3>
    <a href='/login' className='as' >Ingresar</a>
     </form>
-    </>
+    </div>
   );
 }
 

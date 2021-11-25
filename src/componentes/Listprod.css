@@ -1,4 +1,6 @@
 .pagineCard{
+	max-width: 1200px;
+	margin: 0 auto;
 	background: white;
 	display: grid;
 	grid-template-columns: 1fr repeat(5,1fr);
