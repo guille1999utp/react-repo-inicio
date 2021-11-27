@@ -40,6 +40,7 @@
 }
 .usuariochatperfil:hover{
   background: rgb(240, 237, 237);
+  cursor: pointer;
 }
 .paletacomandochat{
     display: flex;

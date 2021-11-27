@@ -74,6 +74,8 @@ function FilterCard() {
             <p className="mr-5">Gratis</p>
             <input type="checkbox" className="checkbox" />
           </div>
+
+          <button className='botonbusquedafilter'>buscar</button>
         </form>
         <hr></hr>
       </div>

@@ -2,7 +2,7 @@ import './Cajasolicitud.css';
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Cajasolicitud({producto,descripsion,urlfoto,id,carrito,setCarrito}) {
+function Cajasolicitud({producto,descripsion,urlfoto,id,carrito,setCarrito,precio}) {
     const productoa = producto.trim().slice(0,70);
     const descripsiona = descripsion.trim().slice(0,150);
   
@@ -28,11 +28,15 @@ function Cajasolicitud({producto,descripsion,urlfoto,id,carrito,setCarrito}) {
                {descripsiona}
               </h3>
               <span className="enviogratiscarrito">Envio gratis</span>
+              <div className='flexrowcarrito'>
               <button type="button" className="botoneliminarcarrito" onClick={onDelete}>
                 Eliminar
               </button>
+              <p className='preciocarrito'>{'$'+precio}</p>
+              </div>
             </div>
           </div>
+         
         </div>
         <hr></hr>
               </>
