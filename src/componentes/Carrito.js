@@ -56,7 +56,7 @@ const Carrito = () => {
             Carrito({carrito.length})
           </Link>
           <Link to="/carrito/guardado" className="botoncarrito">
-            Guardado(0)
+            Guardado(1)
           </Link>
         </div>
         <hr></hr>

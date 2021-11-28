@@ -32,7 +32,8 @@
   font-size: 16px;
   font-weight:600;
   cursor: pointer;
-
+  max-width: 200px;
+ 
 }
 .formfilter{
   height: 50vh;
@@ -55,7 +56,7 @@
 .inputf{
   padding: 4px;
   max-width: 50px;
-  margin: 0 auto;
+  margin: 0 5px;
 }
 .colorf{
   color: rgb(51, 51, 51);
@@ -63,13 +64,14 @@
 
 .flexche{
   display: flex;
-  
+}
+.flexcher{
+  display: flex;
 }
 .checkbox{
   margin: auto 10px;
- 
-
 }
+
 .filtercelular hr{
   margin: auto 0;
   height: 40%;
@@ -104,17 +106,33 @@ margin-left: 10px;
   flex-wrap: wrap;
   }
   .colorf{
-    margin:  auto 20px;
+    margin:  0 20px;
       }
   .tamaño{
+    font-size: 20px;
    width: 100%;
     }
-    .checkbox{
-      margin: auto 35px auto 5px;
+    .flexche{
+      margin-top:10px ;
+      
     }
-    .mr-5{
-      margin-left: 20px;
+    
+    .botonbusquedafilter{
+      margin: 10px auto;
     }
+    .select{
+      margin: 0;
+    }
+    .ta-center{
+      margin: auto 20px;
+      color: rgb(51, 51, 51);
+    }
+  }
+  
+@media screen and (max-width:321px){
+  .checkbox{
+    margin: 3px 9px;
+  }
   }
   
   
