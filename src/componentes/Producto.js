@@ -49,8 +49,7 @@ function Producto({history}) {
         <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.PH4ArjoOnTFboybCIfrOMAHaNu?' alt='producto'/>
         <img className='listmorefotos' src='https://th.bing.com/th?id=OIF.Xvl24aduC4vdMndoLG%2bSgg' alt='producto'/>
         <img className='listmorefotos' src='https://th.bing.com/th?id=OIF.ESDCrrq0U%2fT62IwipM4%2f%2bA' alt='producto'/>
-        <img className='listmorefotos' src='https://th.bing.com/th?id=OIF.socMBLS6AIAEk%2bR19vR1tQ' alt='producto'/>
-        <img className='listmorefotos' src='https://th.bing.com/th?id=OIF.jZJjdFROrRJB%2fY0s19om9w' alt='producto'/>
+      
         </div>
        
 

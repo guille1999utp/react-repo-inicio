@@ -63,6 +63,14 @@ const Carrito = () => {
         {carrito.map((carro) =>(
         <Cajacarrito producto={carro.producto} precio={carro.precio} descripsion={carro.descripsion} urlfoto={carro.urlfoto} id={carro.id} carrito={carrito} setCarrito={setCarrito}></Cajacarrito>
         ))}
+        {(carrito.length === 0)?
+        <>
+        <div className='comprarbotoncarrito'>Selecciona Tus Productos Favoritos <Link to="/inicio" className="botoncarrito">
+            Ver productos 
+          </Link></div>
+        
+        </>
+        : null}
         {(carrito.length > 0)?
         <button className='comprarbotoncarrito'>Comprar</button>
         : null}
