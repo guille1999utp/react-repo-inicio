@@ -5,10 +5,10 @@ function Iniciarsesion() {
     <div className='fondologin'>
     <form className='formi' method='POST'>
         <h4 className='i'>Iniciar Sesion</h4>
-        <h3 className='ajus'>Correo</h3>
-   <input className='inputl' type='email' placeholder='ingrese correo'/>
-   <h3 className='ajus'>Contraseña</h3>
-   <input className='inputl' type='password' placeholder='ingrese contraseña'/>
+        <label className='ajus'for='correo' >Correo</label>
+   <input className='inputl'  id='correo'  type='email' placeholder='ingrese correo'/>
+   <label className='ajus'   for='contraseña'>Contraseña</label>
+   <input className='inputl' id='contraseña' type='password' placeholder='ingrese contraseña'/>
    <button type='submit' className='buttoningresar'> ingresar</button>
    <div 
     className="google-btn"

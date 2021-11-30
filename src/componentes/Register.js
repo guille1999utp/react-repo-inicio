@@ -82,29 +82,29 @@ function Register() {
     <div className='fondologin'>
   <form className='formre' onSubmit={ onSubmit } >
         <h4 className='i'>Registro</h4>
-   <div >
-   <h3 className='ajust'>Nombres</h3>
-   <input className='inputr' placeholder='ingrese nombres' onChange={ onChangeNombre} name='nombre' required/>
-   </div>
-   <div className='gridform'>
-   <h3 className='ajust'>Apellidos</h3>
-   <input className='inputr' placeholder='ingrese apellidos' onChange={ onChangeApellido} name='apellidos' required/>
-   </div>
    <div>
-   <h3 className='ajust'>Fecha De Nacimiento</h3>
-   <input className='inputr' type='date' name='fechnacimiento' onChange={ onChangeFecha } required/>
+   <label className='ajust'    for='nombre'>Nombres</label>
+   <input autoComplete={'off'} id='nombre' className='inputr' placeholder='ingrese nombres' onChange={ onChangeNombre} name='nombre' required/>
    </div>
    <div className='gridform'>
-   <h3 className='ajust'>Correo</h3>
-  <input className='inputr' type='email' placeholder='ingrese correo' onChange={ onChangeCorreo} name='correo' required/>
+   <label className='ajust'  for='apellidos'>Apellidos</label>
+   <input autoComplete={'off'} id='apellidos' className='inputr' placeholder='ingrese apellidos' onChange={ onChangeApellido} name='apellidos' required/>
+   </div>
+   <div className='divmarginregister'>
+   <label className='ajust'  for='fechanacimiento'>Fecha De Nacimiento</label>
+   <input className='inputr' id='fechanacimiento' type='date' name='fechnacimiento' onChange={ onChangeFecha } required/>
+   </div>
+   <div className='gridform divmarginregister'>
+   <label  className='ajust'  for='correo'>Correo</label>
+  <input autoComplete={'off'} id='correo' className='inputr' type='email' placeholder='ingrese correo' onChange={ onChangeCorreo} name='correo' required/>
   </div>
-  <div>
-   <h3 className='ajust'>Contraseña</h3>
-   <input className='inputr' type='password' placeholder='ingrese contraseña' onChange={ onChangeContraseña} name='password' required/>
+  <div className='divmarginregister'>
+   <label className='ajust'  for='contraseña'>Contraseña</label>
+   <input autoComplete={'off'} id='contraseña' className='inputr' type='password' placeholder='ingrese contraseña' onChange={ onChangeContraseña} name='password' required/>
    </div>
-   <div className='gridform'>
-   <h3 className='ajust'>Verificar Contraseña</h3>
-   <input className='inputr' type='password' placeholder='Repite la contraseña' onChange={ onChangeContraseñar} name='passwordrepetida' required/>
+   <div className='gridform divmarginregister'>
+   <label className='ajust'  for='verificacion'>Verificar Contraseña</label>
+   <input autoComplete={'off'} id='verificacion' className='inputr' type='password' placeholder='Repite la contraseña' onChange={ onChangeContraseñar} name='passwordrepetida' required/>
    </div>
 
    <button className='buttonregi' type='submit'>Registrarme</button>

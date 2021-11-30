@@ -154,9 +154,7 @@ const ordenar = () =>{
          <div className="flexche">
          <h4 className=" ta-center">Precio</h4>
            <input className="inputf" placeholder="minimo" name="minimo" />
-           
            - 
-
            <input className="inputf" placeholder="maximo" name="maximo" />
          </div>
          <div className="flexche">

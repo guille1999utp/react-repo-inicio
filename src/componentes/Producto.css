@@ -180,6 +180,14 @@ width: 60%;
 }
 }
 
+@media screen and (max-width:541px){
+  .infocom {
+    max-width: 100%;
+   padding: 0; 
+   border: none;
+   width: 90%;
+}
+  }
 @media screen and (max-width:380px){
   .infopro ul{
     list-style:none;

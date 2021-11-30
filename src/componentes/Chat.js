@@ -146,6 +146,7 @@ function Chat() {
           <form className="paletachat" onSubmit={onSubmit}>
             <i className="bx bx-paperclip"></i>
             <input
+            autoComplete={'off'}
               type="text"
               className="decorationpaleta"
               value={mensaje.mensaj}

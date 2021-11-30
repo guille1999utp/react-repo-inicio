@@ -113,7 +113,7 @@ function Ordenar() {
           <form className="formingresarproucto" onSubmit={onSubmit}>
             <label for="titulo" className="flexrow wrap">
               <span>Producto</span>
-              <input type="text" id="titulo" placeholder="Tu nombre" name='producto' onChange={onChangeMensaje} value={solicitud.producto}></input>
+              <input autoComplete={'off'} type="text" id="titulo" placeholder="Tu nombre" name='producto' onChange={onChangeMensaje} value={solicitud.producto}></input>
             </label>
 
             <label for="descripsion" className="flexrow wrap">

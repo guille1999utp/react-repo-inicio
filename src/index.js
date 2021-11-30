@@ -16,6 +16,7 @@ import Chat from './componentes/Chat';
 import Carrito from './componentes/Carrito';
 import Configuracion from './componentes/Configuracion';
 import Ordenar from './componentes/Ordenar';
+import Solicitudes from './componentes/Solicitudes';
 
 
 
@@ -31,6 +32,7 @@ ReactDOM.render(
   <Route path="/carrito" component={ Carrito }/>
   <Route path="/ajustes" component={ Configuracion }/>
   <Route path="/ordenar" component={ Ordenar }/>
+  <Route path="/solicitudes" component={ Solicitudes }/>
   </Router>
  ,
   document.getElementById('root')
