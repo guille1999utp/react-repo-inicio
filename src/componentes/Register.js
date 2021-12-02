@@ -95,7 +95,7 @@ function Register() {
    <input className='inputr' id='fechanacimiento' type='date' name='fechnacimiento' onChange={ onChangeFecha } required/>
    </div>
    <div className='gridform divmarginregister'>
-   <label  className='ajust'  for='correo'>Correo</label>
+   <label  className='ajust'  for='correo' >Correo</label>
   <input autoComplete={'off'} id='correo' className='inputr' type='email' placeholder='ingrese correo' onChange={ onChangeCorreo} name='correo' required/>
   </div>
   <div className='divmarginregister'>

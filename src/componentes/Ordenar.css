@@ -91,6 +91,7 @@ border:none;
  
 }
 .agregardenar{
+    min-height: 550px;
     margin: 20px auto ;
     width: 85%;
     height: 85vh;
@@ -110,6 +111,7 @@ border:none;
     justify-content: space-around;
 }
 .formingresarproucto label span{
+    width: 165px;
     color: white;
     margin-top: 15px;
     margin-left:15px;
@@ -124,6 +126,7 @@ border:none;
 }
 .wrap{
 flex-wrap: wrap;
+justify-content: center;
 }
 .formingresarproucto label input,textarea,.butonfile{
     max-width: 200px;
