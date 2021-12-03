@@ -70,6 +70,14 @@ border:none;
     background: white;
     overflow-x: hidden;
 }
+.ordenarproductossolicitud .ceroordenar{
+ width: 100%;
+ height: 100%;}
+.ordenarproductossolicitud .ceroordenar h2{
+   text-align: center; 
+   padding-top: 25%;   
+}
+   
 .ordenarproductossolicitud::-webkit-scrollbar{
     width: 4px;
    }

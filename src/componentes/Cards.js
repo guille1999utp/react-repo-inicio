@@ -22,7 +22,6 @@ function Cards({ id, history, image, mobile, actual_price }) {
           </div>
         </div>
       </div>
-      <hr></hr>
     </>
   );
 }

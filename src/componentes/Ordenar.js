@@ -176,9 +176,11 @@ function Ordenar() {
             </form>
             <div className="ordenarproductossolicitud">
             <div className="finalchatscroll"></div>
-              {solicitudes.map((soli) =>(
+            {(solicitudes.length > 0)?
+              solicitudes.map((soli) =>(
                 <Cajasolicitud key={soli.id} solicitudes={solicitudes} setSolicitados={setSolicitados} producto={soli.producto} id={soli.id} descripsion={soli.descripsion} urlfoto={soli.urlfoto}></Cajasolicitud>
-              ))}
+              ))
+            : <div className='ceroordenar'><h2>Solicita tu primer producto</h2></div>}
             
             </div>
           </div>

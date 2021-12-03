@@ -1,24 +1,23 @@
-import './AppBar.css';
-import { Route, BrowserRouter } from 'react-router';
-import Register from './componentes/Register';
-import Listprod from './componentes/Listprod';
-import Iniciarsesion from './componentes/Iniciar-sesion';
-import Producto from './componentes/Producto';
-import { BrowserRouter as Router, Route  } from 'react-router-dom';
-import Inicio from './componentes/Inicio';
-
-import Header from './componentes/Header';
-import Chat from './componentes/Chat';
-import Carrito from './componentes/Carrito';
-import Configuracion from './componentes/Configuracion';
-import Ordenar from './componentes/Ordenar';
-import Solicitudes from './componentes/Solicitudes';
-
-function App() {
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import store from './redux/store';
+import Register from './Register';
+import Listprod from './Listprod';
+import Iniciarsesion from './Iniciar-sesion';
+import Producto from './Producto';
+import Inicio from './Inicio';
+import Header from './Header';
+import Chat from './Chat';
+import Carrito from './Carrito';
+import Configuracion from './Configuracion';
+import Ordenar from './Ordenar';
+import Solicitudes from './Solicitudes';
+import { Provider } from 'react-redux';
+const App = () => {
   return (
-    <>
-    <BrowserRouter>
-  <Header />
+    <Provider store={store}>
+    <Router>
+  <Header/>
+  <Switch>
   <Route path="/login" component={ Iniciarsesion }/>
   <Route path="/register" component={ Register }/>
   <Route path="/productover" component={ Listprod }/>
@@ -29,8 +28,10 @@ function App() {
   <Route path="/ajustes" component={ Configuracion }/>
   <Route path="/ordenar" component={ Ordenar }/>
   <Route path="/solicitudes" component={ Solicitudes }/>
-  </BrowserRouter>
-    </>
+  <Redirect from='/' to='/inicio'/>
+  </Switch>
+  </Router>
+  </Provider>
   );
 }
 

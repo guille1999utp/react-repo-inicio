@@ -21,10 +21,7 @@
   margin-right: 10%;
 }
 .listmorefotos{
-  max-width:10%;
-  min-width: 9%;
   max-height:50px;
-  min-height: 10px;
   margin: 5px;
   margin-bottom: 0px;
   border: solid grey 2px;
@@ -110,12 +107,13 @@ font-size: 2rem;
   border-radius: 10px;
 }
 .infocom .botoncompra{
+  cursor: pointer;
   width: 80%;
   margin: 0 auto;
   margin-top: 30px;
-  font-size: 1.2rem;
+  font-size: 1.02rem;
   border-radius: 15px;
-  padding: 5px;
+  padding: 8px;
   border: none;
 }
 
@@ -127,6 +125,7 @@ font-size: 2rem;
  }
 
  .infocom .listamia{
+   cursor: pointer;
  font-weight: 600;
  width: 100%;
  margin-top: 40px;

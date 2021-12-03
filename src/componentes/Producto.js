@@ -47,8 +47,8 @@ function Producto({history}) {
         <div className='morefotos'>
         <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.8uu1-Xja_qIE5F2ge5zyWQHaLT?pid=ImgDet' alt='producto'/>
         <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.PH4ArjoOnTFboybCIfrOMAHaNu?' alt='producto'/>
-        <img className='listmorefotos' src='https://th.bing.com/th?id=OIF.Xvl24aduC4vdMndoLG%2bSgg' alt='producto'/>
-        <img className='listmorefotos' src='https://th.bing.com/th?id=OIF.ESDCrrq0U%2fT62IwipM4%2f%2bA' alt='producto'/>
+        <img className='listmorefotos' src='https://i.pinimg.com/originals/64/b7/35/64b735fe92c580cad36351a26d4b13c9.jpg' alt='producto'/>
+        <img className='listmorefotos' src='https://www.xtrafondos.com/wallpapers/edificios-ciudad-de-noche-3183.jpg' alt='producto'/>
       
         </div>
        
@@ -99,7 +99,7 @@ function Producto({history}) {
     </select>
     <button className='botoncompra amarillo'>agregar al carrito</button>
     <button className='botoncompra naranja'>comprar ya</button>
-    <button className='listamia'>lista deseada</button>
+    <button className='listamia'>Guardar</button>
     </div>
   
     </div>
