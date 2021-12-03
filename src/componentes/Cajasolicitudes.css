@@ -9,3 +9,14 @@
 .productordenado form{
     text-align: center;
 }
+.productordenado form button{
+    margin-top: 10px;
+    width: 100px;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 20px;
+    border: 1px solid;  
+}
+.productordenado{
+    padding-right: 5px;
+}
