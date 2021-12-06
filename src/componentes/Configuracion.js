@@ -1,4 +1,4 @@
-import './Configuracion.css';
+import './Configuracion.scss';
 
 function Configuracion() {
   return (

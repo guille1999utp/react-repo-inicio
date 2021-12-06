@@ -1,4 +1,4 @@
-import "./Ordenar.css";
+import "./Ordenar.scss";
 import React, { useState, useEffect } from "react";
 import Cajasolicitud from "./Cajasolicitud";
 

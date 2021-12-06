@@ -1,6 +1,6 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './Producto.css'
+import './Producto.scss'
 import React, {useState, useEffect} from 'react'
 import Slider from "react-slick";
 import { Link  } from 'react-router-dom';
@@ -30,6 +30,9 @@ function Producto({history}) {
     const redirect = () => {
       history.push( `/producto/4`);
        }
+       const compraredireccion = () => {
+        history.push( `/comprar`);
+         }
 
 
 
@@ -98,7 +101,7 @@ function Producto({history}) {
     <option value="value12">12</option>
     </select>
     <button className='botoncompra amarillo'>agregar al carrito</button>
-    <button className='botoncompra naranja'>comprar ya</button>
+    <button className='botoncompra naranja' onClick={compraredireccion}>comprar ya</button>
     <button className='listamia'>Guardar</button>
     </div>
   

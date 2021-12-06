@@ -24,13 +24,13 @@ const App = () => {
   <Route path="/register" component={ Register }/>
   <Route path="/productover" component={ Listprod }/>
   <Route path="/producto/:id" component={ Producto }/>
-  <Route path="/" component={ Inicio }/>
+  <Route path="/inicio" component={ Inicio }/>
   <Route path="/chat" component={ Chat }/>
   <Route path="/carrito" component={ Carrito }/>
   <Route path="/ajustes" component={ Configuracion }/>
   <Route path="/ordenar" component={ Ordenar }/>
   <Route path="/solicitudes" component={ Solicitudes }/>
-  <Redirect from='/' to='/'/>
+  <Redirect from='/inicio' to='/inicio'/>
   </Switch>
   </Router>
   </Provider>

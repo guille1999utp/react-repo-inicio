@@ -31,6 +31,7 @@
   text-align: center;
 }
 .infocom{
+  box-sizing: content-box;
   max-width: 300px;
   padding: 20px;
   grid-column: 3/4;
@@ -167,7 +168,7 @@ grid-template-columns: 1fr;
     grid-template-rows:1fr;
 }
 .infocom{
-margin: 0px auto;
+margin: 0px auto 20px auto;
 width: 60%;
 }
 

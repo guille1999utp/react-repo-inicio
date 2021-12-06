@@ -1,7 +1,7 @@
 import React,{ useState} from 'react'
 import { Link } from "react-router-dom";
 import './Cajasolicitudes.css';
-export const Cajasolicitudes = ({producto,descripsion,urlfoto,id,solicitudes,setSolicitados}) => {
+export const Cajasolicitudes = ({producto,descripsion,urlfoto}) => {
 
     const productoa = producto.trim().slice(0,70);
   const descripsiona = descripsion.trim().slice(0,200);

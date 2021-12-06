@@ -1,5 +1,5 @@
 import React ,{useState} from "react";
-import "./Carrito.css";
+import "./Carrito.scss";
 import { Link } from "react-router-dom";
 import Cajacarrito from "./Cajacarrito";
 

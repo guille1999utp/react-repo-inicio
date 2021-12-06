@@ -1,12 +1,23 @@
-import React from 'react'
-import './Compra.css'
+import React,{useEffect,useState} from 'react'
+import './Compra.scss'
 
  const Compra = () => {
+    const [Width, setWidth] = useState(window.innerWidth);  
+    const cambiarTamaño = ()=>{
+        setWidth(window.innerWidth);
+      }
+      useEffect(()=>{
+        window.addEventListener('resize',cambiarTamaño);
+        return ()=>{
+          window.removeEventListener('resize', cambiarTamaño)
+       }
+     })
+
+
     return (
         <>
         <div className='cajacompra'>
         <div>
-       <h1> Selecciona direccion del Propietario</h1>
        <h3>Agregar una direccion</h3>
        <form>
            <label> Nombre del comprador ( Completo ) </label>
@@ -19,18 +30,17 @@ import './Compra.css'
            <label> Ciudad </label>
            <input type='text' className='inputds' ></input>
            <label>estado</label>
-           <select >
+           <select className='selected'>
                <option>cartago</option>
                <option>zaragoza</option>
                <option>pereira</option>
-           </select>
+           </select >
            <label> Codigo Postal </label>
            <input className='inputds' type='text'></input>
            <div>
            <label className='recordatoriodireccio'> Recordar direccion </label>
            <input type='checkbox' className='checkcompra'></input>
           </div>
-          <button>Pagar</button>
        </form>
        </div>
        
@@ -39,10 +49,10 @@ import './Compra.css'
 
        <div class="containere">
     <div class="price">
-        <h1>Awesome, that's $99.99 !</h1>
+        <h1>Comprar Producto a $104.500</h1>
     </div>
     <div class="card__container">
-        <div class="card">
+        <div class="cardtarjeta">
             <div class="row paypal">
                 <div class="left">
                     <input id="pp" type="radio" name="payment" />
@@ -50,7 +60,8 @@ import './Compra.css'
                     <label for="pp">Paypal</label>
                 </div>
                 <div class="right">
-                    <img src="http://i68.tinypic.com/2rwoj6s.png" alt="paypal" />
+                {(Width > 700)? <img src="https://www.paymentmedia.com/gallery/5ade47cb5cc8fpaypal_623.jpg" alt="paypal" />: null}
+                   
                 </div>
             </div>
             <div class="row credit">
@@ -59,16 +70,21 @@ import './Compra.css'
                     <div class="radio"></div>
                     <label for="cd">Debit/ Credit Card</label>
                 </div>
+
+                {(Width > 700)? 
                 <div class="right">
-                    <img src="http://i66.tinypic.com/5knfq8.png" alt="visa" />
-                    <img src="http://i67.tinypic.com/14y4p1.png" alt="mastercard" />
-                    <img src="http://i63.tinypic.com/1572ot1.png" alt="amex" />
-                    <img src="http://i64.tinypic.com/2i92k4p.png" alt="maestro" />
+                <img src="https://1000marcas.net/wp-content/uploads/2019/12/logo-Mastercard.png" alt="visa" />
+               <img src="https://cdn.pixabay.com/photo/2017/08/10/14/02/visa-2623015_960_720.png" alt="mastercard" />
+               <img src="https://cdn-icons-png.flaticon.com/512/196/196539.png" alt="maestro" />
+               <img src="https://es.seaicons.com/wp-content/uploads/2017/02/diners-club-international-icon.png" alt="amex" />
                 </div>
+                :null}
+
+
             </div>
             <div class="row cardholder">
                 <div class="info">
-                    <label for="cardholdername">Name</label>
+                    <label for="cardholdername">Nombre</label>
                     <input placeholder="e.g. Richard Bovell" id="cardholdername" type="text" />
                 </div>
             </div>
@@ -80,7 +96,7 @@ import './Compra.css'
             </div>
             <div class="row details">
                 <div class="left">
-                    <label for="expiry-date">Expiry</label>
+                    <label for="expiry-date">Expiracion</label>
                     <select id="expiry-date">
                         <option>MM</option>
                         <option value="1">01</option>
@@ -118,7 +134,6 @@ import './Compra.css'
                 <div class="right">
                     <label for="cvv">CVC/CVV</label>
                     <input type="text" maxlength="4" placeholder="123"/>
-                    <span data-balloon-length="medium" data-balloon="The 3 or 4-digit number on the back of your card." data-balloon-pos="up">i</span>
                 </div>
             </div>
         </div>

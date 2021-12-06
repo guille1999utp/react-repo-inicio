@@ -1,4 +1,4 @@
-import "./Cards.css";
+import "./Cards.scss";
 
 function Cards({ id, history, image, mobile, actual_price }) {
   const redirect = () => {

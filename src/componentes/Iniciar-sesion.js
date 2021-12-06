@@ -1,4 +1,4 @@
-import './Iniciar-sesion.css';
+import './Iniciar-sesion.scss';
 
 function Iniciarsesion() {
   return (

@@ -1,4 +1,4 @@
-import "./FilterCard.css";
+import "./FilterCard.scss";
 import React, { useState, useEffect } from "react";
 function FilterCard() {
   const [Width, setWidth] = useState(window.innerWidth);

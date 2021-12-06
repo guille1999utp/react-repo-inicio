@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from "react-router-dom";
 import Cajasolicitudes from "./Cajasolicitudes";
-import './Solicitudes.css';
+import './Solicitudes.scss';
 export default function Solicitudes() {
     let infocarrito = [
         {
