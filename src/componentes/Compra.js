@@ -18,6 +18,8 @@ import './Compra.scss'
         <>
         <div className='cajacompra'>
         <div>
+        <fieldset>
+               <legend>Datos de Compra</legend>
        <h3>Agregar una direccion</h3>
        <form>
            <label> Nombre del comprador ( Completo ) </label>
@@ -42,6 +44,7 @@ import './Compra.scss'
            <input type='checkbox' className='checkcompra'></input>
           </div>
        </form>
+       </fieldset>
        </div>
        
 
@@ -139,7 +142,7 @@ import './Compra.scss'
         </div>
     </div>
     <div class="button">
-        <button type="submit"><i class="ion-locked"></i> Confirm and Pay</button>
+        <button type="submit"><i class="ion-locked"></i> Comprar Ahora</button>
     </div>
 </div>
 

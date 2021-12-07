@@ -25,7 +25,7 @@ const ordenar = () =>{
   setOrdenarFilter(tr);
 }
 
-  if (Width > 540) {
+  if (Width > 545) {
     return (
       <div className="divfilterflex">
         <form className="formfilter">

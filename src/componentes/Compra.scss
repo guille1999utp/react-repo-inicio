@@ -14,7 +14,6 @@
     flex-direction: column;
 }
 .cajacompra h3{
-    margin-top: 40px;
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 20px;
@@ -29,6 +28,19 @@
     font-weight: 600;
     margin-bottom: 5px;
 }
+.cajacompra fieldset{
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    legend{
+        border: black solid 1px;
+        border-radius: 20px;
+        background-color: black;
+        color: white;
+        padding: 5px;
+    }
+}
+
 .cajacompra form  .recordatoriodireccio{
     font-size: 12px;
     font-weight: 400;
@@ -67,9 +79,7 @@
     height: 100vh;
     flex-direction: column;
 }
-*{
-    box-sizing: border-box;
-}  
+
 .price{
     justify-content: center;
     h1{
@@ -122,6 +132,7 @@
         transform: translateY(-50%);
     }
     .left{
+        
         float: left;
         margin-left: 50px;
         label{
@@ -139,6 +150,7 @@
             visibility: hidden;
         }
         .radio{
+            box-sizing: border-box;
             position: absolute;
             top: -2px;
             left: -20px;
@@ -231,6 +243,7 @@ input[type=radio]:checked ~ .radio{
         transform: translateY(-50%);
     }
     .left{
+        box-sizing: border-box;
         float: left;
         padding-left: 40px;
         width: 50%;
@@ -290,6 +303,7 @@ input[type=radio]:checked ~ .radio{
         }
     }}
 .button button{
+    cursor: pointer;
     font-size: 1.2rem;
     font-weight: 400;
     letter-spacing: 1px;

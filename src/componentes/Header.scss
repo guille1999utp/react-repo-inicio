@@ -1,7 +1,6 @@
 .menu{
   background-color: black;
   height: 75px;
-  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,10 +22,12 @@ padding-left: 80px;
 }
 .flexinicio a{
   text-decoration: none;
-  
   margin-top: 6px;
   margin-left: 6px;
   color: rgb(67, 67, 235);
+  @media screen and (max-width:600px){
+    font-size: 10px;
+      }
 }
 .items{
   display: flex;

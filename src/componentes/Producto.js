@@ -102,7 +102,7 @@ function Producto({history}) {
     </select>
     <button className='botoncompra amarillo'>agregar al carrito</button>
     <button className='botoncompra naranja' onClick={compraredireccion}>comprar ya</button>
-    <button className='listamia'>Guardar</button>
+    <button className='listamia'>Compartir</button>
     </div>
   
     </div>
