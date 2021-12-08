@@ -5,7 +5,8 @@ function Configuracion() {
     <>
     <div className='estructuraconfig'>
         <div className='herramientasconfig'>
-<h3><i class='bx bxs-cog'></i> Configuracion</h3>
+        <h3><i class='bx bxs-user-circle'></i> Perfil</h3>
+        <div className='scrollconfiguracino'><div><i class='bx bxs-cog'></i>  <p>Configuracion</p></div> <i class='bx bxs-down-arrow'></i></div>
 <ul>
     <li><p><i class='bx bxs-user'></i> General</p></li>
     <li><p><i class='bx bxs-shield-alt-2' ></i> Privacidad</p></li>

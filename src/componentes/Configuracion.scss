@@ -11,16 +11,22 @@
     display: flex;
     flex-direction: column;
     width: 20%;
-    min-width: 288px;
+    min-width: 332px;
     background: rgb(36, 37, 38);
     border: solid rgb(57, 58, 59) 1px;
 }
 .herramientasconfig h3{
-    margin-top: 20px;
-    margin-left: 20px;
+    margin:0 10px;
+    margin-top: 10px;
+    padding: 20px 10px;
     font-size: 30px;
-    margin-bottom: 20px;
     color: rgb(228, 230, 235);
+    &:hover{
+        background: rgb(58, 59, 60);
+        border-radius: 20px;
+        cursor: pointer;
+        }
+
 }
 .herramientasconfig ul li{
     font-size: 20px;
@@ -40,3 +46,111 @@ border-radius: 20px;
     flex-direction: column;
     width: 80%;
 }
+.scrollconfiguracino{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:0 10px;
+    padding: 20px 10px;
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(228, 230, 235);
+    div{
+        display: flex;
+        p{
+            margin-left: 5px;
+        }
+    }
+    &:hover{
+        background: rgb(58, 59, 60);
+        border-radius: 20px;
+        cursor: pointer;
+        }
+}
+
+
+
+
+
+
+.herramientasconfig, .herramientasconfig ul, .herramientasconfig li, .herramientasconfig a {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+  }
+  
+  .herramientasconfig {
+    height: 40px;
+    width: 530px;
+    background-color: #ccc;
+    border-radius: 7px;
+  }
+  
+  .herramientasconfig li {
+    position: relative;
+    list-style: none;
+    float: left;
+    display: block;
+    height: 40px;
+  }
+  
+  .herramientasconfig a {
+    display: block;
+    padding: 0 16px;
+    margin: 6px 0;
+    
+    line-height: 28px;
+    text-decoration: none;
+    
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color: #fff;
+    
+    border-left: 1px solid #393942;
+    border-right: 1px solid #4f5058;
+    transition: color .2s ease-in-out;
+  }
+  
+  .herramientasconfig li:firs-child a {border-left: none;}
+  .herramientasconfig li:last-child a {border-right: none;}
+  
+  .herramientasconfig li:hover > a {color: #0C0}
+  
+  .herramientasconfig ul {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    
+    opacity: 0;
+    background: #222;
+    
+    border-radius: 0 0 5px 5px;
+    transition: opacity .20s ease .1s;
+  }
+  
+  .herramientasconfig li:hover > ul {opacity: 1;}
+  
+  .herramientasconfig ul li {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    
+    transition: height .25s ease .1s;
+  }
+  
+  .herramientasconfig li:hover > ul li {
+    height: 36px;
+    overflow: visible;
+    padding: 0;
+  }
+  
+  .herramientasconfig ul li a {
+    width: 130px;
+    padding: 4px 10px;
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid #353539;
+  }
+  .herramientasconfig ul li:last-child a { border: none; }
