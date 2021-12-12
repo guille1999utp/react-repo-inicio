@@ -1,14 +1,45 @@
 import './Iniciar-sesion.scss';
+import { useDispatch } from 'react-redux';
+import {useState} from 'react'
+import { fetchstoken } from '../helpers/fetchmetod';
+import { loginstate } from '../redux/actions/auth';
 
 function Iniciarsesion() {
+  const dispatch = useDispatch;
+  const [login, setLogin] = useState({
+   correo:'pass@gmail.com',
+   password: 'transformers'
+});
+
+const onChangeMensaje = (e) => {
+  const { name, value } = e.target;
+  setLogin({
+    ...login,
+    [name]: value,
+  });
+};
+
+const onSubmit = async(e) => {
+  e.preventDefault();
+  if(login.correo.length  !== 0 && login.password.length !== 0){
+  const resultlogin = await fetchstoken('login', login , 'POST');
+  if(resultlogin.ok){
+    console.log(resultlogin.usuarioBd)
+   dispatch(loginstate(resultlogin.usuarioBd))
+  }else{
+    console.log(resultlogin)
+  }
+
+}};
+
   return (
     <div className='fondologin'>
-    <form className='formi' method='POST'>
+    <form className='formi' onSubmit={onSubmit}>
         <h4 className='i'>Iniciar Sesion</h4>
-        <label className='ajus'for='correo' >Correo</label>
-   <input className='inputl'  id='correo'  type='email' placeholder='ingrese correo'/>
+        <label className='ajus'for='correo'  >Correo</label>
+   <input className='inputl'  id='correo'  type='email' placeholder='ingrese correo' name='correo' value={login.correo} onChange={onChangeMensaje}/>
    <label className='ajus'   for='contraseña'>Contraseña</label>
-   <input className='inputl' id='contraseña' type='password' placeholder='ingrese contraseña'/>
+   <input className='inputl' id='contraseña' type='password' name='password' placeholder='ingrese contraseña' value={login.password} onChange={onChangeMensaje}/>
    <button type='submit' className='buttoningresar'> ingresar</button>
    <div 
     className="google-btn"
