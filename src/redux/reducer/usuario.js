@@ -1,10 +1,11 @@
 import { types } from "../types/authLogin";
 
-function reducer(state = {usuario:''}, action){
+function reducer(state = {}, action){
     switch (action.types){
         case types.login:
             return {
-            usuario: action.payload.nombre
+            ...state,
+            usuario: action.payload
             }
 
         case types.logout:

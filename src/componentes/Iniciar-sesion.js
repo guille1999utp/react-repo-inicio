@@ -1,11 +1,11 @@
 import './Iniciar-sesion.scss';
 import { useDispatch } from 'react-redux';
-import {useState} from 'react'
+import React,{useState} from 'react'
 import { fetchstoken } from '../helpers/fetchmetod';
 import { loginstate } from '../redux/actions/auth';
 
 function Iniciarsesion() {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const [login, setLogin] = useState({
    correo:'pass@gmail.com',
    password: 'transformers'
@@ -19,18 +19,18 @@ const onChangeMensaje = (e) => {
   });
 };
 
-const onSubmit = async(e) => {
-  e.preventDefault();
-  if(login.correo.length  !== 0 && login.password.length !== 0){
-  const resultlogin = await fetchstoken('login', login , 'POST');
-  if(resultlogin.ok){
-    console.log(resultlogin.usuarioBd)
-   dispatch(loginstate(resultlogin.usuarioBd))
-  }else{
-    console.log(resultlogin)
-  }
-
-}};
+  const onSubmit = async(e) => {
+    e.preventDefault();
+    if(login.correo.length  !== 0 && login.password.length !== 0){
+    const resultlogin = await fetchstoken('login', login , 'POST');
+    if(resultlogin.ok){
+      console.log(resultlogin.usuarioBd)
+     dispatch(loginstate(resultlogin.usuarioBd));
+    }else{
+      console.log(resultlogin)
+    }
+  
+  }};
 
   return (
     <div className='fondologin'>

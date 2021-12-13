@@ -15,7 +15,7 @@ import Solicitudes from './Solicitudes';
 import { Provider } from 'react-redux';
 const App = () => {
   return (
-    <Provider store={store}>
+      <Provider store={store}>
     <Router>
   <Header/>
   <Switch>
