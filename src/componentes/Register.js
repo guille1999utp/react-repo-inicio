@@ -1,81 +1,56 @@
 import React, {useState} from 'react'
 import './Register.scss';
-import axios from 'axios'
-
-
-
+import { useDispatch } from 'react-redux';
+import { fetchstoken } from '../helpers/fetchmetod';
+import { loginstate } from '../redux/actions/auth';
+import Swal from 'sweetalert2'
 function Register() {
 
-     const [state, setState] = useState({
-     nombre: '',
-     apellidos:'',
-     correo:'',
-     password:'',
-     passwordrepetida:'',
-     fechnacimiento:'',
-     });
+  const dispatch = useDispatch();
+  const [state, setState] = useState({
+    nombre: '',
+    apellidos:'',
+    correo:'',
+    password:'',
+    passwordrepetida:'',
+    fechnacimiento:'',
+    });
+const Registert= ()=>{
+  return (state.correo.length > 0 && state.password.length > 0 && state.nombre.length > 0 && state.apellidos.length > 0 && state.passwordrepetida.length > 0 && state.fechnacimiento.length > 0) ? true: false;
+}
+const onChangeMensaje = (e) => {
+  const { name, value } = e.target;
+  setState({
+    ...state,
+    [name]: value,
+  });
+};
 
-
-   const onSubmit = async (e) =>{
-     if(state.password === state.passwordrepetida){
-    const res = await axios({
-      url:'http://localhost:4000/signup',
-      method: 'POST',
-      data: {
-      nombre: state.nombre + ' '+ state.apellidos,
-      correo: state.correo,
-      password: state.password,
-      fechnacimiento: state.fechnacimiento
-      }
-      });
-      console.log(res);
-      e.preventDefault();
-     }
-      
+  const onSubmit = async(e) => {
+    e.preventDefault();
+    if(state.password === state.passwordrepetida){
+    const resultregister = await fetchstoken('register', state , 'POST');
+    if(resultregister.ok){
+     const {__v,...state} = resultregister.newuser;
+     localStorage.setItem('token',resultregister.token);
+     dispatch(loginstate(state));
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'error...',
+        text: resultregister.msg
+            })
+      console.log(resultregister)
     }
-  const  onChangeNombre =(e)=>{
-       const {name, value} = e.target;
-      setState({
-      ...state, [name] : value
-      });
-     console.log(state);
-      }
-      const   onChangeApellido =(e)=>{
-         
-        const {name, value} = e.target;
-        setState({
-        ...state, [name] : value
-        });
-       console.log(state);
-        }
-        const  onChangeFecha = (e)=>{
-          const {name, value} = e.target;
-          setState({
-          ...state, [name] : value
-          });
-         console.log(state);
-          }
-          const   onChangeCorreo =(e)=>{
-            const {name, value} = e.target;
-            setState({
-            ...state, [name] : value
-            });
-           console.log(state);
-            }
-            const onChangeContraseña =(e)=>{
-              const {name, value} = e.target;
-              setState({
-              ...state, [name] : value
-              });
-             console.log(state);
-              }
-              const onChangeContraseñar=(e)=>{
-                const {name, value} = e.target;
-                setState({
-                ...state, [name] : value
-                });
-               console.log(state);
+  }else{
+    Swal.fire({
+      icon: 'error',
+      title: 'error...',
+      text: 'las contraseñas deben coincidir'
+          })
   }
+  
+  };
 
 
   return (
@@ -83,31 +58,31 @@ function Register() {
   <form className='formre' onSubmit={ onSubmit } >
         <h4 className='i'>Registro</h4>
    <div>
-   <label className='ajust'    for='nombre'>Nombres</label>
-   <input autoComplete={'off'} id='nombre' className='inputr' placeholder='ingrese nombres' onChange={ onChangeNombre} name='nombre' required/>
+   <label className='ajust' >Nombres</label>
+   <input autoComplete={'off'} id='nombre' className='inputr' placeholder='ingrese nombres' onChange={ onChangeMensaje} name='nombre' required/>
    </div>
    <div className='gridform'>
-   <label className='ajust'  for='apellidos'>Apellidos</label>
-   <input autoComplete={'off'} id='apellidos' className='inputr' placeholder='ingrese apellidos' onChange={ onChangeApellido} name='apellidos' required/>
+   <label className='ajust' >Apellidos</label>
+   <input autoComplete={'off'} id='apellidos' className='inputr' placeholder='ingrese apellidos' onChange={ onChangeMensaje} name='apellidos' required/>
    </div>
    <div className='divmarginregister'>
-   <label className='ajust'  for='fechanacimiento'>Fecha De Nacimiento</label>
-   <input className='inputr' id='fechanacimiento' type='date' name='fechnacimiento' onChange={ onChangeFecha } required/>
+   <label className='ajust' >Fecha De Nacimiento</label>
+   <input className='inputr' id='fechanacimiento' type='date' name='fechnacimiento' onChange={ onChangeMensaje } required/>
    </div>
    <div className='gridform divmarginregister'>
-   <label  className='ajust'  for='correo' >Correo</label>
-  <input autoComplete={'off'} id='correo' className='inputr' type='email' placeholder='ingrese correo' onChange={ onChangeCorreo} name='correo' required/>
+   <label  className='ajust'  >Correo</label>
+  <input autoComplete={'off'} id='correo' className='inputr' type='email' placeholder='ingrese correo' onChange={ onChangeMensaje} name='correo' required/>
   </div>
   <div className='divmarginregister'>
-   <label className='ajust'  for='contraseña'>Contraseña</label>
-   <input autoComplete={'off'} id='contraseña' className='inputr' type='password' placeholder='ingrese contraseña' onChange={ onChangeContraseña} name='password' required/>
+   <label className='ajust' >Contraseña</label>
+   <input autoComplete={'off'} id='contraseña' className='inputr' type='password' placeholder='ingrese contraseña' onChange={ onChangeMensaje} name='password' required/>
    </div>
    <div className='gridform divmarginregister'>
-   <label className='ajust'  for='verificacion'>Verificar Contraseña</label>
-   <input autoComplete={'off'} id='verificacion' className='inputr' type='password' placeholder='Repite la contraseña' onChange={ onChangeContraseñar} name='passwordrepetida' required/>
+   <label className='ajust' >Verificar Contraseña</label>
+   <input autoComplete={'off'} id='verificacion' className='inputr' type='password' placeholder='Repite la contraseña' onChange={ onChangeMensaje} name='passwordrepetida' required/>
    </div>
 
-   <button className='buttonregi' type='submit'>Registrarme</button>
+   <button className={Registert()?'buttonregi':'buttonregidisable'} type='submit' disabled={!Registert()}>Registrarme</button>
 
 
    <h3 className='ya'>ya tienes cuenta?</h3>

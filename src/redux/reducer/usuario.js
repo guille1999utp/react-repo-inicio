@@ -1,16 +1,15 @@
 import { types } from "../types/authLogin";
 
 function reducer(state = {}, action){
-    switch (action.types){
+    switch (action.type){
         case types.login:
             return {
             ...state,
             usuario: action.payload
             }
 
-        case types.logout:
-            return {
-            }
+        case types.regenerate:
+            return {}
         default:
             return state
     }

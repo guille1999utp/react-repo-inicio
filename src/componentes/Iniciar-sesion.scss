@@ -62,7 +62,19 @@ padding-top: 3%;
     box-shadow: white
 }
 .buttoningresar{
+    border-radius: 23px;
     background: black;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 18px;
+    cursor: pointer;
+}
+.buttoningresardisable{
+    border-radius: 23px;
+    background: black;
+    opacity: 0.5;
     border: none;
     padding: 12px;
     color: white;

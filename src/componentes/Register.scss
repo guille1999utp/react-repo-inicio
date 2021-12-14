@@ -70,7 +70,8 @@
     box-shadow: white
 }
 .buttonregi{
-   
+   cursor: pointer;
+   border-radius: 23px;
     width: 80%;
     grid-column: 1/3;
     background: black;
@@ -79,6 +80,19 @@
     color: white;
     margin: 25px auto;
     
+    font-size: 18px;
+}
+.buttonregidisable{
+    width: 80%;
+    grid-column: 1/3;
+    background: black;
+    opacity: 0.5;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 25px auto;
+    border-radius: 23px;
+
     font-size: 18px;
 }
 

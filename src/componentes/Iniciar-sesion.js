@@ -10,7 +10,9 @@ function Iniciarsesion() {
    correo:'pass@gmail.com',
    password: 'transformers'
 });
-
+const loginsesion= ()=>{
+  return (login.correo.length > 0 && login.password.length > 0) ? true: false;
+}
 const onChangeMensaje = (e) => {
   const { name, value } = e.target;
   setLogin({
@@ -21,26 +23,26 @@ const onChangeMensaje = (e) => {
 
   const onSubmit = async(e) => {
     e.preventDefault();
-    if(login.correo.length  !== 0 && login.password.length !== 0){
     const resultlogin = await fetchstoken('login', login , 'POST');
     if(resultlogin.ok){
-      console.log(resultlogin.usuarioBd)
-     dispatch(loginstate(resultlogin.usuarioBd));
+     const {__v,...state} = resultlogin.usuarioBd;
+     localStorage.setItem('token',resultlogin.token);
+     dispatch(loginstate(state));
     }else{
       console.log(resultlogin)
     }
   
-  }};
+  };
 
   return (
     <div className='fondologin'>
     <form className='formi' onSubmit={onSubmit}>
         <h4 className='i'>Iniciar Sesion</h4>
-        <label className='ajus'for='correo'  >Correo</label>
+        <label className='ajus'  >Correo</label>
    <input className='inputl'  id='correo'  type='email' placeholder='ingrese correo' name='correo' value={login.correo} onChange={onChangeMensaje}/>
-   <label className='ajus'   for='contraseña'>Contraseña</label>
+   <label className='ajus'>Contraseña</label>
    <input className='inputl' id='contraseña' type='password' name='password' placeholder='ingrese contraseña' value={login.password} onChange={onChangeMensaje}/>
-   <button type='submit' className='buttoningresar'> ingresar</button>
+   <button type='submit' className={loginsesion()?'buttoningresar':'buttoningresardisable'} disabled={!loginsesion()}> ingresar</button>
    <div 
     className="google-btn"
 >

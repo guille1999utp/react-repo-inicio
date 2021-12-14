@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from "redux";
 import results from "./reducer/results";
-import usuario from "./reducer/usuario";
+import infoUsuario from "./reducer/usuario";
 const reducer = combineReducers({
 results,
-usuario
+infoUsuario
 });
 
 const store = createStore(

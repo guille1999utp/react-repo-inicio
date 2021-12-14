@@ -1,9 +1,9 @@
 import './Header.scss';
 import React, {useState,useEffect} from 'react'
 import { Link  } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Header() {
-
   const [Width, setWidth] = useState(window.innerWidth);  
   const Verificado=true;  
 
@@ -44,13 +44,14 @@ function Header() {
       })
       }
     }
+ const state = useSelector(state => state.infoUsuario.usuario);
 
  
   return (
     
     <>
     <nav className='menu'>
-      <label className='logo'><Link to='/inicio' >{ (Width > 488)?'CompraRepuestos':'CR'}</Link></label>
+      <label className='logo'><Link to='/' >{ (Width > 488)?'CompraRepuestos':'CR'}</Link></label>
       <div className='formbusqueda'>
       <form >
         <div className='formbus'>
