@@ -111,12 +111,12 @@ function Ordenar() {
         <div className="formordenar">
           <h3>busca tu Producto</h3>
           <form className="formingresarproucto" onSubmit={onSubmit}>
-            <label for="titulo" className="flexrow wrap">
+            <label  className="flexrow wrap">
               <span>Producto</span>
               <input autoComplete={'off'} type="text" id="titulo" placeholder="Tu nombre" name='producto' onChange={onChangeMensaje} value={solicitud.producto}></input>
             </label>
 
-            <label for="descripsion" className="flexrow wrap">
+            <label className="flexrow wrap">
               <span>descripsion</span>
               <br></br>
               <textarea
@@ -128,18 +128,18 @@ function Ordenar() {
                 value={solicitud.descripsion} ></textarea>
             </label>
 
-            <label for="dia" className="flexrow wrap">
+            <label  className="flexrow wrap">
               <span>dia requerido</span>
               <input type="date" id="dia" name='fecha' onChange={onChangeMensaje} value={solicitud.fecha}></input>
             </label>
 
-            <label for="horario" className="flexrow wrap">
+            <label  className="flexrow wrap">
               <span>hora llegada</span>
               <input type="time" id="horario" name='horallegada' onChange={onChangeMensaje} value={solicitud.horallegada}></input>
             </label>
 
             <label className="flexrow wrap">
-            <span class="file-custom">Fotos</span>
+            <span className="file-custom">Fotos</span>
             <input type="file" id="fileordenar" aria-label="File browser example" name='urlfoto' onChange={onChangeMensaje} value={solicitud.urlfoto}></input>
              <button type='button' className='butonfile' onClick={onFile}>subir foto</button>
             </label>

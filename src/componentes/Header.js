@@ -3,9 +3,9 @@ import React, {useState,useEffect} from 'react'
 import { Link  } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-function Header() {
+const Header = () => {
   const [Width, setWidth] = useState(window.innerWidth);  
-  const Verificado=true;  
+
 
   const cambiarTamaño=()=>{ 
      setWidth(window.innerWidth);
@@ -44,9 +44,7 @@ function Header() {
       })
       }
     }
- const state = useSelector(state => state.infoUsuario.usuario);
-
- 
+ const state =  useSelector(user => user.infoUsuario);
   return (
     
     <>
@@ -63,13 +61,13 @@ function Header() {
       <ul className={(bar.valid === true)?'items show':'items'}>
 
        <li><Link className='menubari' to='/productover' onClick={ ()=> onhandledmenuback() } >Productos</Link></li>
-       {(Verificado === true)?<li><Link className='menubari' to='/ordenar' onClick={ ()=> onhandledmenuback() }>Ordenar</Link></li>: null}
-       {(Verificado === true)?<li><Link className='menubari' to='/chat' onClick={ ()=> onhandledmenuback() }>Chats</Link></li>: null}
-       {(Verificado === true)?<li><Link className='menubari' to='/solicitudes' onClick={ ()=> onhandledmenuback() }>Solicitudes</Link></li>: null}
-       {(Verificado === true)? <li><Link className='menubari' to='/carrito' onClick={ ()=> onhandledmenuback() }>Carrito</Link></li>: null}
-       {(Verificado === true)?<li><Link className='menubari' to='/ajustes' onClick={ ()=> onhandledmenuback() }>Perfil</Link></li>: null}
-       {(Verificado === false)?<li><Link className='menubari' to='/login' onClick={ ()=> onhandledmenuback() }>Login</Link></li> : null}
-       {(Verificado === false)?<li><Link className='menubari' to='/register' onClick={ ()=> onhandledmenuback() }>Register</Link></li> : null}
+       {(state.online === true)?<li><Link className='menubari' to='/ordenar' onClick={ ()=> onhandledmenuback() }>Ordenar</Link></li>: null}
+       {(state.online === true)?<li><Link className='menubari' to='/chat' onClick={ ()=> onhandledmenuback() }>Chats</Link></li>: null}
+       {(state.online === true)?<li><Link className='menubari' to='/solicitudes' onClick={ ()=> onhandledmenuback() }>Solicitudes</Link></li>: null}
+       {(state.online === true)? <li><Link className='menubari' to='/carrito' onClick={ ()=> onhandledmenuback() }>Carrito</Link></li>: null}
+       {(state.online === true)?<li><Link className='menubari' to='/ajustes' onClick={ ()=> onhandledmenuback() }>Perfil</Link></li>: null}
+       {(state.online === false)?<li><Link className='menubari' to='/login' onClick={ ()=> onhandledmenuback() }>Login</Link></li> : null}
+       {(state.online === false)?<li><Link className='menubari' to='/register' onClick={ ()=> onhandledmenuback() }>Register</Link></li> : null}
      
       </ul>
     <button className='btnmenu' onClick={ ()=> onhandledclick() } >

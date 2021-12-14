@@ -33,7 +33,7 @@ export const Cajasolicitudes = ({producto,descripsion,urlfoto}) => {
               
             </div>
           </div>
-          <form for="precio">
+          <form>
               <span>Precio orden</span>
               <input className='preciocajasolicitud' autoComplete={'off'} type="number" id="precio" placeholder="Tu nombre" name='producto' onChange={onChangeMensaje} value={solicitud.producto}></input>
               <br></br>

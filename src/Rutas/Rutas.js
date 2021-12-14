@@ -13,15 +13,16 @@ import Configuracion from '../componentes/Configuracion';
 import Ordenar from '../componentes/Ordenar';
 import Solicitudes from '../componentes/Solicitudes';
 import { Rutaprivada } from '../Rutas/Rutaprivada';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { Rutapublica } from '../Rutas/Rutapublica';
+import { useDispatch, useSelector } from 'react-redux';
 import { regenerate,loginstate } from '../redux/actions/auth';
 import { fetchCToken } from '../helpers/fetchmetod';
-
+import { useSocket } from "../SocketsConnection/useSocket";
 
 export default function Rutas() {
-
     const dispatch = useDispatch();
+        const { socket, online, conectarSocket, desconectarSocket } = useSocket('http://localhost:3000');
+
     const verificartoken = useCallback(
      async() => {
        const token = localStorage.getItem('token');
@@ -44,22 +45,38 @@ export default function Rutas() {
      useEffect(() => {
        verificartoken();
      }, [verificartoken])
-    const state = useSelector(state => state.infoUsuario.usuario);
+
+    const state = useSelector(state => state.infoUsuario);
+
+    
+    useEffect(() => {
+        if ( state.online ) {
+            conectarSocket();
+        }
+    }, [ state, conectarSocket ]);
+
+    useEffect(() => {
+        if ( !state.online ) {
+            desconectarSocket();
+        }
+    }, [ state, desconectarSocket ]);
+    
     return (
         <Router>
   <Header/>
+
   <Switch>
-  <Route exact path="/login" component={ Iniciarsesion }/>
-  <Route exact path="/register" component={ Register }/>
+  <Rutapublica isAuthenticated={state.online} path="/login" component={ Iniciarsesion }/>
+  <Rutapublica isAuthenticated={state.online} path="/register" component={ Register }/>
   <Route exact path="/productover" component={ Listprod }/>
   <Route exact path="/producto/:id" component={ Producto }/>
   <Route exact path="/" component={ Inicio }/>
-  <Rutaprivada isAuthenticated={!state?false:state} path='/chat' component={Chat}/>
-  <Rutaprivada isAuthenticated={!state?false:state} path='/comprar' component={Compra}/>
-  <Rutaprivada isAuthenticated={!state?false:state} path='/carrito' component={Carrito}/>
-  <Rutaprivada isAuthenticated={!state?false:state} path='/ajustes' component={Configuracion}/>
-  <Rutaprivada isAuthenticated={!state?false:state} path='/ordenar' component={Ordenar}/>
-  <Rutaprivada isAuthenticated={!state?false:state} path='/solicitudes' component={Solicitudes}/>
+  <Rutaprivada isAuthenticated={state.online} path='/chat' component={Chat}/>
+  <Rutaprivada isAuthenticated={state.online} path='/comprar' component={Compra}/>
+  <Rutaprivada isAuthenticated={state.online} path='/carrito' component={Carrito}/>
+  <Rutaprivada isAuthenticated={state.online} path='/ajustes' component={Configuracion}/>
+  <Rutaprivada isAuthenticated={state.online} path='/ordenar' component={Ordenar}/>
+  <Rutaprivada isAuthenticated={state.online} path='/solicitudes' component={Solicitudes}/>
   <Redirect from='/' to='/'/>
   </Switch>
   </Router>

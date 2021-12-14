@@ -1,19 +1,21 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-export const Rutaprivada = ({
+export const Rutapublica = ({
    isAuthenticated,
    component: Component,
    ...rest
 }) => {
-    console.log(isAuthenticated)
     return (
-       <Route { ...rest }
+        <Route { ...rest }
             component={ (props) => (
-                ( isAuthenticated )
+                ( !isAuthenticated )
                     ? <Component { ...props } />
-                    : <Redirect to="/login" />
+                    : <Redirect to="/" />
             )} 
         />
     )
 }
+
+
+
