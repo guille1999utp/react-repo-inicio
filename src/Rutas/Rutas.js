@@ -21,7 +21,7 @@ import { useSocket } from "../SocketsConnection/useSocket";
 
 export default function Rutas() {
     const dispatch = useDispatch();
-        const { socket, online, conectarSocket, desconectarSocket } = useSocket('http://localhost:3000');
+        const { socket, online, conectarSocket, desconectarSocket } = useSocket('http://localhost:4000');
 
     const verificartoken = useCallback(
      async() => {
