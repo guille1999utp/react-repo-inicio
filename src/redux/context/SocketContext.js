@@ -4,7 +4,6 @@ import { createContext } from 'react';
 import { AuthContext } from '../auth/AuthContext';
 import { ChatContext } from './chat/ChatContext';
 import { useSocket } from '../../SocketsConnection/useSocket'
-
 import { types } from '../types/chat';
 import { scrollToBottomAnimated } from '../helpers/scrollToBottom';
 export const SocketContext = createContext();
@@ -29,6 +28,7 @@ export const SocketProvider = ({ children }) => {
     useEffect(() => {
         
         socket?.on( 'lista-usuarios', (usuarios) => {
+            console.log(usuarios);
             dispatch({
                 type: types.usuariosCargados,
                 payload: usuarios

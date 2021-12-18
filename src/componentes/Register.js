@@ -4,7 +4,10 @@ import { useDispatch } from 'react-redux';
 import { fetchstoken } from '../helpers/fetchmetod';
 import { loginstate } from '../redux/actions/auth';
 import Swal from 'sweetalert2'
+import { useSocket } from "../SocketsConnection/useSocket";
+
 function Register() {
+  const { conectarSocket } = useSocket('http://localhost:4000');
 
   const dispatch = useDispatch();
   const [state, setState] = useState({
@@ -31,8 +34,10 @@ const onChangeMensaje = (e) => {
     if(state.password === state.passwordrepetida){
     const resultregister = await fetchstoken('register', state , 'POST');
     if(resultregister.ok){
-     const {__v,...state} = resultregister.newuser;
+   resultregister.newuser.online = true;   
+  const {__v,...state} = resultregister.newuser;
      localStorage.setItem('token',resultregister.token);
+     conectarSocket();
      dispatch(loginstate(state));
     }else{
       Swal.fire({

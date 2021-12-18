@@ -16,12 +16,13 @@ import { Rutaprivada } from '../Rutas/Rutaprivada';
 import { Rutapublica } from '../Rutas/Rutapublica';
 import { useDispatch, useSelector } from 'react-redux';
 import { regenerate,loginstate } from '../redux/actions/auth';
+import { userchat } from '../redux/actions/chat';
 import { fetchCToken } from '../helpers/fetchmetod';
 import { useSocket } from "../SocketsConnection/useSocket";
 
 export default function Rutas() {
     const dispatch = useDispatch();
-        const { socket, online, conectarSocket, desconectarSocket } = useSocket('http://localhost:4000');
+        const {  socket,conectarSocket, desconectarSocket } = useSocket('http://localhost:4000');
 
     const verificartoken = useCallback(
      async() => {
@@ -32,6 +33,7 @@ export default function Rutas() {
        }
        const res = await fetchCToken('renovacion');
        if(res.ok){
+         res.usuario.online = true;
          localStorage.getItem('token',res.token);
          const {__v,...usuario} = res.usuario
          dispatch(loginstate(usuario));
@@ -60,6 +62,16 @@ export default function Rutas() {
             desconectarSocket();
         }
     }, [ state, desconectarSocket ]);
+
+    useEffect(() => {
+        
+      socket?.on( 'lista-usuarios', (usuarios) => {
+          console.log(usuarios);
+          dispatch(userchat(usuarios));
+      })
+
+  }, [ socket, dispatch ]);
+
     
     return (
         <Router>

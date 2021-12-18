@@ -6,7 +6,6 @@ export const Rutaprivada = ({
    component: Component,
    ...rest
 }) => {
-    console.log(isAuthenticated)
     return (
        <Route { ...rest }
             component={ (props) => (

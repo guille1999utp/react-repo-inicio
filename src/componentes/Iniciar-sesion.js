@@ -3,9 +3,12 @@ import { useDispatch } from 'react-redux';
 import React,{useState} from 'react'
 import { fetchstoken } from '../helpers/fetchmetod';
 import { loginstate } from '../redux/actions/auth';
+import { useSocket } from "../SocketsConnection/useSocket";
+
 
 function Iniciarsesion() {
   const dispatch = useDispatch();
+  const { conectarSocket } = useSocket('http://localhost:4000');
   const [login, setLogin] = useState({
    correo:'pass@gmail.com',
    password: 'transformers'
@@ -25,14 +28,15 @@ const onChangeMensaje = (e) => {
     e.preventDefault();
     const resultlogin = await fetchstoken('login', login , 'POST');
     if(resultlogin.ok){
+    resultlogin.usuarioBd.online = true;
      const {__v,...state} = resultlogin.usuarioBd;
      localStorage.setItem('token',resultlogin.token);
+      conectarSocket();
      dispatch(loginstate(state));
     }else{
-      console.log(resultlogin)
+      return console.log(resultlogin);
     }
-  
-  };
+      };
 
   return (
     <div className='fondologin'>

@@ -45,6 +45,8 @@ import { types } from '../types/chat';
                 ...state,
                 mensajes: [ ...action.payload ]
             }
+            case types.regenerate:
+                return initialState;
     
         default:
             return state;
