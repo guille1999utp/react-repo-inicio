@@ -32,10 +32,7 @@
     width: 100px;
 }
 .usuariochatperfil{
-    height: 60px;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
 
 }
 .usuariochatperfil:hover{
@@ -59,23 +56,26 @@
 .perfilyultimo{
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
-    margin: 10px;
+    margin: 13px;
 }
 .perfilyultimo span{
     white-space: nowrap;
     text-overflow: ellipsis;
- font-size: 18px;
+    font-size: 18px;
    
 }
 .flexusuariochat{
     display: flex;
     flex-direction: row;
 }
-.perfilyultimo p{
-    text-overflow: ellipsis;
-    font-size: 13px;
+.perfilyultimo .userconect{
+  color: rgb(0, 148, 25);
+  font-size: 15px;
    }
+.perfilyultimo .userdisconnect{
+  color: red;
+  font-size: 15px;
+ }
 .horachat{
     font-size: 12px;
     margin: 10px;

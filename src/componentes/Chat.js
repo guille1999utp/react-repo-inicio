@@ -2,8 +2,13 @@ import "./Chat.css";
 import CajaChat from "./CajaChat";
 import UsuariosConectados from "./UsuariosConectados";
 import React, { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
+
 
 function Chat() {
+  const usuarios =  useSelector(chat => chat.chat.usuarios);
+  const miusuario =  useSelector(yo => yo.infoUsuario);
+
   let mensajesArray = [
     {
       mensaj:
@@ -44,7 +49,8 @@ function Chat() {
       behavior: "smooth",
     });
   });
-
+  
+ 
   const onSubmit = (e) => {
     e.preventDefault();
     setMensajes([...mensajes, mensaje]);
@@ -63,43 +69,6 @@ function Chat() {
       [name]: value,
     });
   };
-
-  const usuariosconectados = [
-    {
-      name: "Nicolas giraldo",
-      horault: "10:40",
-      ultmensaje:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
-      userid: 1,
-    },
-    {
-      name: "Santiago Correa",
-      horault: "10:40",
-      ultmensaje:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
-      userid: 2,
-    },
-    {
-      name: "Andres felipe mendoza",
-      horault: "10:40",
-      ultmensaje:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
-      userid: 3,
-    },
-    {
-      name: "Estefano hernandez",
-      horault: "10:40",
-      ultmensaje:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
-      userid: 4,
-    },
-    {
-      name: "Santiago martinez",
-      horault: "10:40",
-      ultmensaje: "erie jeje ",
-      userid: 5,
-    },
-  ];
   return (
     <>
       <div className="fondonegrochat"></div>
@@ -113,13 +82,15 @@ function Chat() {
             </div>
           </div>
 
-          {usuariosconectados.map((conectado) => (
+          {
+          (usuarios.length > 0)?
+          usuarios.filter(user => user.uid !== miusuario.uid).map((usuario) => (
             <UsuariosConectados
-              name={conectado.name}
-              ultmensaje={conectado.ultmensaje}
-              horault={conectado.horault}
+              key={usuario.uid}
+              user={usuario}
             ></UsuariosConectados>
-          ))}
+          )):null
+          }
         </div>
         <div className="mensajesusuarios">
           <div className="paletacomandochat">

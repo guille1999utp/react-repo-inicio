@@ -66,7 +66,6 @@ export default function Rutas() {
     useEffect(() => {
         
       socket?.on( 'lista-usuarios', (usuarios) => {
-          console.log(usuarios);
           dispatch(userchat(usuarios));
       })
 

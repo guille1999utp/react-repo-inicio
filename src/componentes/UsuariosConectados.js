@@ -1,7 +1,8 @@
 
-function UsuariosConectados({name, ultmensaje, horault}) {
-  ultmensaje = ultmensaje.trim().slice(0,35);
-  name = name.trim().toLowerCase().slice(0,15);
+function UsuariosConectados({user}) {
+  console.log(user)
+/*   ultmensaje = ultmensaje.trim().slice(0,35);*/  
+   const nombre = user.nombre.trim().toLowerCase().slice(0,15);
     return (
             <>
         <div className='usuariochatperfil'>
@@ -9,11 +10,13 @@ function UsuariosConectados({name, ultmensaje, horault}) {
           <img className='fotousuario' alt='' src='https://cdn.wallpapersafari.com/0/71/zFUkST.jpg'>
           </img>
           <div className='perfilyultimo'>
-           <span>{ name }</span>
-           <p> <i className='bx bx-check-double'></i>{ ultmensaje } ...</p>
+           <span>{ nombre }</span>
+           {
+             (user.online === true )?
+           <span className="userconect">online</span>: <span className="userdisconnect">offline</span>
+           }
           </div>
           </div>
-          <p className='horachat'>{ horault }</p>
           </div>
           <div className='hrdivchat'></div>
             </>
