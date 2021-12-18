@@ -8,6 +8,7 @@
     background: rgb(223, 206, 206);
   
 }
+
 .bx-user{
  cursor: pointer;
  font-size: 35px;
@@ -33,7 +34,9 @@
 }
 .usuariochatperfil{
     width: 100%;
-
+}
+.chatactivo{
+    background: rgb(214, 212, 212);
 }
 .usuariochatperfil:hover{
   background: rgb(240, 237, 237);
@@ -58,7 +61,7 @@
     flex-direction: column;
     margin: 13px;
 }
-.perfilyultimo span{
+.perfilyultimo .namechatperfil{
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 18px;
@@ -174,6 +177,14 @@ border:none;
     min-width: 200px;
     background: white;
  }
+ .mensajesvacio{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    background: grey;
+ }
 .fondonegrochat{
     width: 100%;
     height: 200px;
@@ -288,6 +299,10 @@ border:none;
 .botonsend{
     border: none;
 }
+.nohaychat{
+    margin: auto;
+    color: white;
+}
 @media screen and (max-width:650px){
     .cajachat{
         width: 100%;
@@ -301,12 +316,12 @@ border:none;
 
 
   @media screen and (max-width:1100px){
-    .perfilyultimo span{
+    .perfilyultimo .namechatperfil{
         font-size: 12px;
           
        }
-       .perfilyultimo p{
-           font-size: 7px;
+       .perfilyultimo .userdisconnect,.userconect{
+           font-size: 10px;
           }
           .fotousuario{
             width: 25px;

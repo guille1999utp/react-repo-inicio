@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 
 function Chat() {
-  const usuarios =  useSelector(chat => chat.chat.usuarios);
+  const {chatActivo, usuarios} =  useSelector(chat => chat.chat);
   const miusuario =  useSelector(yo => yo.infoUsuario);
 
   let mensajesArray = [
@@ -22,26 +22,16 @@ function Chat() {
       fecha: "5 minutos",
       enviado: 0,
     },
-    {
-      mensaj:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
-      fecha: "5 minutos",
-      enviado: 0,
-    },
-    {
-      mensaj:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
-      fecha: "5 minutos",
-      enviado: 1,
-    },
   ];
 
-  const [mensajes, setMensajes] = useState(mensajesArray);
-  const [mensaje, setmensaje] = useState({
-    mensaj: " ",
-    fecha: "5 minutos",
-    enviado: 1,
-  });
+  const [mensaje, setmensaje] = useState('');
+
+ 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+   
+    setmensaje('');
+  };
 
   useEffect(() => {
     const chatscrollabajo = document.querySelector(".finalchatscroll");
@@ -50,24 +40,8 @@ function Chat() {
     });
   });
   
- 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    setMensajes([...mensajes, mensaje]);
-    setmensaje({
-      mensaj: "",
-      fecha: "5 minutos",
-      enviado: 1,
-    });
-    console.log(mensajes);
-  };
-
   const onChangeMensaje = (e) => {
-    const { name, value } = e.target;
-    setmensaje({
-      ...mensaje,
-      [name]: value,
-    });
+    setmensaje(e.target.value);
   };
   return (
     <>
@@ -92,7 +66,9 @@ function Chat() {
           )):null
           }
         </div>
-        <div className="mensajesusuarios">
+        <div className={ (chatActivo)?"mensajesusuarios":'mensajesvacio'}>
+          {
+            (chatActivo)?<>
           <div className="paletacomandochat">
             <div className="correcionpaletachat">
               <img
@@ -105,7 +81,7 @@ function Chat() {
             <i className="bx bx-dots-vertical-rounded menuchat"></i>
           </div>
           <div className="chatuses">
-            {mensajes.map((e) => (
+            {mensajesArray.map((e) => (
               <CajaChat
                 mensaje={e.mensaj}
                 fecha={e.fecha}
@@ -120,7 +96,7 @@ function Chat() {
             autoComplete={'off'}
               type="text"
               className="decorationpaleta"
-              value={mensaje.mensaj}
+              value={mensaje}
               placeholder="Escribir Mensaje"
               onChange={onChangeMensaje}
               name="mensaj"
@@ -129,6 +105,12 @@ function Chat() {
               <i className="bx bxs-send"></i>
             </button>
           </form>
+          </>
+          :<div className="nohaychat">
+           <h1><i class='bx bxs-chat'></i> Selecciona un CHAT</h1>  
+            <div className="finalchatscroll"></div>
+          </div>
+          }
         </div>
       </div>
     </>
