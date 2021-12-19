@@ -16,7 +16,7 @@ import { Rutaprivada } from '../Rutas/Rutaprivada';
 import { Rutapublica } from '../Rutas/Rutapublica';
 import { useDispatch, useSelector } from 'react-redux';
 import { regenerate,loginstate } from '../redux/actions/auth';
-import { userchat } from '../redux/actions/chat';
+import { userchat,obtenermensajes } from '../redux/actions/chat';
 import { fetchCToken } from '../helpers/fetchmetod';
 import { useSocket } from "../SocketsConnection/useSocket";
 
@@ -70,6 +70,11 @@ export default function Rutas() {
       })
 
   }, [ socket, dispatch ]);
+  useEffect(() => {
+    socket?.on( 'mensaje', (mensaje) => {
+    dispatch(obtenermensajes(mensaje));
+    })
+}, [ socket , dispatch]);
 
     
     return (

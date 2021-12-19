@@ -29,9 +29,8 @@ import { types } from '../types/chat';
 
 
         case types.nuevoMensaje:
-            if ( state.chatActivo === action.payload.de || 
-                 state.chatActivo === action.payload.para   
-            ) {
+            if ( state.chatActivo === action.payload.de || state.chatActivo === action.payload.para ) {
+                console.log('hola')
                 return {
                     ...state,
                     mensajes: [ ...state.mensajes, action.payload ]

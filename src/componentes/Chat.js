@@ -3,33 +3,40 @@ import CajaChat from "./CajaChat";
 import UsuariosConectados from "./UsuariosConectados";
 import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
+import { useSocket } from "../SocketsConnection/useSocket";
 
 
 function Chat() {
-  const {chatActivo, usuarios} =  useSelector(chat => chat.chat);
+ const {  socket , conectarSocket, desconectarSocket } = useSocket('http://localhost:4000');
+
+  const {chatActivo, usuarios, mensajes} =  useSelector(chat => chat.chat);
   const miusuario =  useSelector(yo => yo.infoUsuario);
 
-  let mensajesArray = [
-    {
-      mensaj:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
-      fecha: "5 minutos",
-      enviado: 1,
-    },
-    {
-      mensaj:
-        "Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ",
-      fecha: "5 minutos",
-      enviado: 0,
-    },
-  ];
+  useEffect(() => {
+    if ( miusuario.online ) {
+        conectarSocket();
+    }
+   
+}, [conectarSocket]);
+
+useEffect(() => {
+  if( !miusuario.online ){
+    desconectarSocket();
+  }
+}, [ miusuario, desconectarSocket ]);
 
   const [mensaje, setmensaje] = useState('');
 
- 
   const onSubmit = async (e) => {
     e.preventDefault();
-   
+    if(mensaje.length === 0){
+      return ;
+    }
+   socket.emit('mensaje',{
+   de:miusuario.uid,
+   para:chatActivo,
+   mensaje
+   })
     setmensaje('');
   };
 
@@ -81,11 +88,11 @@ function Chat() {
             <i className="bx bx-dots-vertical-rounded menuchat"></i>
           </div>
           <div className="chatuses">
-            {mensajesArray.map((e) => (
+            {mensajes.map((e) => (
               <CajaChat
-                mensaje={e.mensaj}
-                fecha={e.fecha}
-                enviado={e.enviado}
+                de = {e.de}
+                mensaje = {e.mensaje}
+                fecha = {e.createdAt}
               ></CajaChat>
             ))}
             <div className="finalchatscroll"></div>

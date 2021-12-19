@@ -1,6 +1,9 @@
+import { useSelector } from 'react-redux';
 
-function CajaChat({mensaje, fecha, enviado}) {
-    if (enviado === 1 && mensaje.length > 0) {
+function CajaChat({de, mensaje, fecha}) {
+    const miusuario =  useSelector(yo => yo.infoUsuario.uid);
+
+    if (de === miusuario ) {
         return (
             <>
           <div className="mensaje-amigo">

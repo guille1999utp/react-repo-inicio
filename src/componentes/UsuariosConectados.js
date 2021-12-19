@@ -9,7 +9,6 @@ function UsuariosConectados({user}) {
   const onClick = () =>{
     dispatch(activarchat(user.uid))
   }
-/*   ultmensaje = ultmensaje.trim().slice(0,35);*/  
    const nombre = user.nombre.trim().toLowerCase().slice(0,15);
     return (
             <>
