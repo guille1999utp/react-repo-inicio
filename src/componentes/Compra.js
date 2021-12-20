@@ -50,32 +50,32 @@ import './Compra.scss'
 
 
 
-       <div class="containere">
-    <div class="price">
+       <div className="containere">
+    <div className="price">
         <h1>Comprar Producto a $104.500</h1>
     </div>
-    <div class="card__container">
-        <div class="cardtarjeta">
-            <div class="row paypal">
-                <div class="left">
+    <div className="card__container">
+        <div className="cardtarjeta">
+            <div className="row paypal">
+                <div className="left">
                     <input id="pp" type="radio" name="payment" />
-                    <div class="radio"></div>
+                    <div className="radio"></div>
                     <label for="pp">Paypal</label>
                 </div>
-                <div class="right">
+                <div className="right">
                 {(Width > 700)? <img src="https://www.paymentmedia.com/gallery/5ade47cb5cc8fpaypal_623.jpg" alt="paypal" />: null}
                    
                 </div>
             </div>
-            <div class="row credit">
-                <div class="left">
+            <div className="row credit">
+                <div className="left">
                     <input id="cd" type="radio" name="payment" />
-                    <div class="radio"></div>
+                    <div className="radio"></div>
                     <label for="cd">Debit/ Credit Card</label>
                 </div>
 
                 {(Width > 700)? 
-                <div class="right">
+                <div className="right">
                 <img src="https://1000marcas.net/wp-content/uploads/2019/12/logo-Mastercard.png" alt="visa" />
                <img src="https://cdn.pixabay.com/photo/2017/08/10/14/02/visa-2623015_960_720.png" alt="mastercard" />
                <img src="https://cdn-icons-png.flaticon.com/512/196/196539.png" alt="maestro" />
@@ -85,20 +85,20 @@ import './Compra.scss'
 
 
             </div>
-            <div class="row cardholder">
-                <div class="info">
+            <div className="row cardholder">
+                <div className="info">
                     <label for="cardholdername">Nombre</label>
                     <input placeholder="e.g. Richard Bovell" id="cardholdername" type="text" />
                 </div>
             </div>
-            <div class="row number">
-                <div class="info">
+            <div className="row number">
+                <div className="info">
                     <label for="cardnumber">Card number</label>
                     <input id="cardnumber" type="text" pattern="[0-9]{16,19}" maxlength="19" placeholder="8888-8888-8888-8888"/>
                 </div>
             </div>
-            <div class="row details">
-                <div class="left">
+            <div className="row details">
+                <div className="left">
                     <label for="expiry-date">Expiracion</label>
                     <select id="expiry-date">
                         <option>MM</option>
@@ -134,15 +134,15 @@ import './Compra.scss'
                         <option value="2030">2030</option>
                     </select>
                 </div>
-                <div class="right">
+                <div className="right">
                     <label for="cvv">CVC/CVV</label>
                     <input type="text" maxlength="4" placeholder="123"/>
                 </div>
             </div>
         </div>
     </div>
-    <div class="button">
-        <button type="submit"><i class="ion-locked"></i> Comprar Ahora</button>
+    <div className="button">
+        <button type="submit"><i className="ion-locked"></i> Comprar Ahora</button>
     </div>
 </div>
 

@@ -100,6 +100,9 @@ function Ordenar() {
     });
   };
   
+  const onFilesave  = (e) =>{
+    console.log(e.target.files)
+  }
 
   const onFile  = () =>{
     document.querySelector('#fileordenar').click();
@@ -140,7 +143,7 @@ function Ordenar() {
 
             <label className="flexrow wrap">
             <span className="file-custom">Fotos</span>
-            <input type="file" id="fileordenar" aria-label="File browser example" name='urlfoto' onChange={onChangeMensaje} value={solicitud.urlfoto}></input>
+            <input type="file" id="fileordenar" aria-label="File browser example" name='urlfoto' onChange={onFilesave} ></input>
              <button type='button' className='butonfile' onClick={onFile}>subir foto</button>
             </label>
             <button type="submit" className="butonsolicitar">

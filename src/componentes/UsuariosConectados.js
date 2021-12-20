@@ -12,7 +12,6 @@ function UsuariosConectados({user}) {
   const onClick = async() =>{
     dispatch(activarchat(user.uid))
     const res = await fetchCToken(`chat/${user.uid}`);
-    console.log(res);
     dispatch(Cargarmensajeschat(res.mensajes));
     scrollToBottom('mensajes');
 

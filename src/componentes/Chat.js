@@ -83,6 +83,7 @@ useEffect(() => {
           <div className="chatuses" id="mensajes">
             {mensajes.map((e) => (
               <CajaChat
+                key={e._id}
                 de = {e.de}
                 mensaje = {e.mensaje}
                 fecha = {e.createdAt}
@@ -107,7 +108,7 @@ useEffect(() => {
           </form>
           </>
           :<div className="nohaychat">
-           <h1><i class='bx bxs-chat'></i> Selecciona un CHAT</h1>  
+           <h1><i className='bx bxs-chat'></i> Selecciona un CHAT</h1>  
           </div>
           }
         </div>

@@ -2,11 +2,14 @@ import { createStore, combineReducers } from "redux";
 import results from "./reducer/results";
 import infoUsuario from "./reducer/usuario";
 import chat from "./reducer/chat";
+import ordenar from "./reducer/ordenar";
+
 
 const reducer = combineReducers({
 results,
 chat,
-infoUsuario
+infoUsuario,
+ordenar
 });
 
 const store = createStore(
