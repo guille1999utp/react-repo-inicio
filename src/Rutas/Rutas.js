@@ -19,6 +19,7 @@ import { regenerate,loginstate } from '../redux/actions/auth';
 import { userchat,obtenermensajes } from '../redux/actions/chat';
 import { fetchCToken } from '../helpers/fetchmetod';
 import { useSocket } from "../SocketsConnection/useSocket";
+import { scrollToBottomAnimated } from '../helpers/scrollToBottom';
 
 export default function Rutas() {
     const dispatch = useDispatch();
@@ -74,6 +75,7 @@ export default function Rutas() {
     socket?.on( 'mensaje', (mensaje) => {
     dispatch(obtenermensajes(mensaje));
     })
+    scrollToBottomAnimated('mensajes')
 }, [ socket , dispatch]);
 
     

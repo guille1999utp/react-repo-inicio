@@ -17,7 +17,7 @@ function Chat() {
         conectarSocket();
     }
    
-}, [conectarSocket]);
+}, [conectarSocket,miusuario.online]);
 
 useEffect(() => {
   if( !miusuario.online ){
@@ -40,13 +40,6 @@ useEffect(() => {
     setmensaje('');
   };
 
-  useEffect(() => {
-    const chatscrollabajo = document.querySelector(".finalchatscroll");
-    chatscrollabajo.scrollIntoView({
-      behavior: "smooth",
-    });
-  });
-  
   const onChangeMensaje = (e) => {
     setmensaje(e.target.value);
   };
@@ -87,7 +80,7 @@ useEffect(() => {
             </div>
             <i className="bx bx-dots-vertical-rounded menuchat"></i>
           </div>
-          <div className="chatuses">
+          <div className="chatuses" id="mensajes">
             {mensajes.map((e) => (
               <CajaChat
                 de = {e.de}
@@ -115,7 +108,6 @@ useEffect(() => {
           </>
           :<div className="nohaychat">
            <h1><i class='bx bxs-chat'></i> Selecciona un CHAT</h1>  
-            <div className="finalchatscroll"></div>
           </div>
           }
         </div>

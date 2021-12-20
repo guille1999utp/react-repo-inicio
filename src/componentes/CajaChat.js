@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { horaMes } from '../helpers/horaMes';
 
 function CajaChat({de, mensaje, fecha}) {
     const miusuario =  useSelector(yo => yo.infoUsuario.uid);
@@ -12,7 +13,7 @@ function CajaChat({de, mensaje, fecha}) {
                     </div>
                     <div className="flecha-derecha"></div>
                     <img src="https://microsofters.com/wp-content/uploads/2021/06/img19-scaled.jpg" alt="" className="foto"></img>
-                    <div className="fecha">enviado hace { fecha }</div>
+                    <div className="fecha">{ horaMes(fecha) }</div>
                 </div>
             </>
           );
@@ -25,7 +26,7 @@ function CajaChat({de, mensaje, fecha}) {
         <div className="contenido">
         { mensaje }
         </div>
-        <div className="fecha">enviado hace { fecha }</div>
+        <div className="fecha">{ horaMes(fecha)  }</div>
         </div>
             </>
           );

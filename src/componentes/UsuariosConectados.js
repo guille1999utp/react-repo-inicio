@@ -1,13 +1,21 @@
 import { useDispatch,useSelector} from 'react-redux';
+import { fetchCToken } from '../helpers/fetchmetod';
+import { scrollToBottom } from '../helpers/scrollToBottom';
 import { activarchat } from '../redux/actions/chat';
+import { Cargarmensajeschat } from '../redux/actions/chat';
 
 
 
 function UsuariosConectados({user}) {
   const dispatch = useDispatch();
   const {chatActivo} =  useSelector(chat => chat.chat);
-  const onClick = () =>{
+  const onClick = async() =>{
     dispatch(activarchat(user.uid))
+    const res = await fetchCToken(`chat/${user.uid}`);
+    console.log(res);
+    dispatch(Cargarmensajeschat(res.mensajes));
+    scrollToBottom('mensajes');
+
   }
    const nombre = user.nombre.trim().toLowerCase().slice(0,15);
     return (

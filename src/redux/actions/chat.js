@@ -15,3 +15,7 @@ export const obtenermensajes = (mensajes) =>({
 export const regeneratechat = () =>({
     type: types.regenerate
    })
+ export const Cargarmensajeschat = (mensajes) =>({
+  type: types.cargarMensajes,
+ payload: mensajes
+ })
