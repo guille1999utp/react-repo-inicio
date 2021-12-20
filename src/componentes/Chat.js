@@ -1,29 +1,15 @@
 import "./Chat.css";
 import CajaChat from "./CajaChat";
 import UsuariosConectados from "./UsuariosConectados";
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useSelector } from 'react-redux';
-import { useSocket } from "../SocketsConnection/useSocket";
-
+import { SocketContext } from '../redux/context/contextchat'
 
 function Chat() {
- const {  socket , conectarSocket, desconectarSocket } = useSocket('http://localhost:4000');
+      const {socket} = useContext(SocketContext);
 
   const {chatActivo, usuarios, mensajes} =  useSelector(chat => chat.chat);
   const miusuario =  useSelector(yo => yo.infoUsuario);
-
-  useEffect(() => {
-    if ( miusuario.online ) {
-        conectarSocket();
-    }
-   
-}, [conectarSocket,miusuario.online]);
-
-useEffect(() => {
-  if( !miusuario.online ){
-    desconectarSocket();
-  }
-}, [ miusuario, desconectarSocket ]);
 
   const [mensaje, setmensaje] = useState('');
 

@@ -1,69 +1,21 @@
 import "./Ordenar.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Cajasolicitud from "./Cajasolicitud";
+import { useSelector } from 'react-redux';
+import { SocketContext } from '../redux/context/contextchat'
+import Swal from 'sweetalert2'
 
 function Ordenar() {
-  let solicitudesarray = [
-    {
-      id: 1,
-      producto:
-        "computador gamer",
-      fecha: "5 minutos",
-      descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
-      requerido: '',
-      horallegada: '',
-      urlfoto:'https://www.alkosto.com/medias/192876259719-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wzNjU5MDJ8aW1hZ2UvcG5nfGltYWdlcy9oYzEvaGQ1LzkwNzg5NDYwMDUwMjIucG5nfGRjMzVlZjBkYzgwN2Y2ZWZhZGQxNmIxMjhhODg3NzU5NmMwNjNkN2I4OTc1NzMzY2NjNTA3YTQ3OTUxNjA2NGQ'
-    },
-    {
-      id: 2,
-      producto:"computador gamer",
-      fecha: "5 minutos",
-      descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
-      requerido: '',
-      horallegada: '',
-      urlfoto:'https://http2.mlstatic.com/D_NQ_NP_826178-MCO44786840309_022021-O.jpg'
-    },
-    {
-      id: 3,
-      producto:
-        "computador gamer",
-      fecha: "5 minutos",
-      descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
-      requerido: '',
-      horallegada: '',
-      urlfoto:'https://falabella.scene7.com/is/image/FalabellaCO/13166500_1?wid=800&hei=800&qlt=70'
-    },
-    {
-      id: 4,
-      producto:
-        "computador gamer",
-      fecha: "5 minutos",
-      descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
-      requerido: '',
-      horallegada: '',
-      urlfoto:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTIUoORhUjAt4aoZIWn6VYAJebLwoDQPdXUw&usqp=CAU'
-    },
-    {
-      id: 5,
-      producto:
-        "computador gamer",
-      fecha: "5 minutos",
-      descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
-      requerido: '',
-      horallegada: '',
-      urlfoto:'https://tecnobits.net/wp-content/uploads/2018/08/RAZER-BLADE-1555.jpg'
-    },
-  ];
-
-  const [solicitudes, setSolicitados] = useState(solicitudesarray);
+    const {socket} = useContext(SocketContext);
+    const ordenes = useSelector(ordenes => ordenes.ordenar.producto);
+    const miusuario =  useSelector(yo => yo.infoUsuario.uid);
   const [solicitud, setSolicitud] = useState({
-      id:"",
-      producto: "",
+      de: miusuario,
+      nombre: "",
       descripsion: "",
       fecha: "",
-      requerido: "",
-      horallegada: "",
-      urlfoto:""
+      urlfoto:"https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg",
+      categoria:"herramienta"
   });
 
   useEffect(() => {
@@ -75,21 +27,24 @@ function Ordenar() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if(solicitud.producto.length !== 0 && solicitud.descripsion.length !== 0){
-    setSolicitud({...solicitud});
- 
- 
-    console.log(solicitud)
-    setSolicitados([solicitud,...solicitudes]);
-    setSolicitud({
-      producto: "",
-      fecha: "",
-      descripsion: '',
-      requerido: '',
-      horallegada: '',
-      urlfoto:''
-    });
+    if(solicitud.nombre.length === 0 && solicitud.descripsion.length === 0 && solicitud.fecha.length === 0){
+      Swal.fire({
+        icon: 'error',
+        title: 'error...',
+        text: 'llene todos los campos por favor'
+            })
   }
+  socket.emit('orden',{
+    solicitud
+    })
+    setSolicitud({
+      de: miusuario,
+      nombre: "",
+      descripsion: "",
+      fecha: "",
+      urlfoto:"https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg",
+      categoria:""
+  });
   };
 
   const onChangeMensaje = (e) => {
@@ -116,7 +71,7 @@ function Ordenar() {
           <form className="formingresarproucto" onSubmit={onSubmit}>
             <label  className="flexrow wrap">
               <span>Producto</span>
-              <input autoComplete={'off'} type="text" id="titulo" placeholder="Tu nombre" name='producto' onChange={onChangeMensaje} value={solicitud.producto}></input>
+              <input autoComplete={'off'} type="text" id="titulo" placeholder="nombre" name='nombre' onChange={onChangeMensaje} value={solicitud.nombre}></input>
             </label>
 
             <label className="flexrow wrap">
@@ -179,9 +134,9 @@ function Ordenar() {
             </form>
             <div className="ordenarproductossolicitud">
             <div className="finalchatscroll"></div>
-            {(solicitudes.length > 0)?
-              solicitudes.map((soli) =>(
-                <Cajasolicitud key={soli.id} solicitudes={solicitudes} setSolicitados={setSolicitados} producto={soli.producto} id={soli.id} descripsion={soli.descripsion} urlfoto={soli.urlfoto}></Cajasolicitud>
+            {(ordenes.length > 0)?
+              ordenes.map((soli) =>(
+                <Cajasolicitud key={soli.id}  producto={soli.producto} id={soli.id} descripsion={soli.descripsion} urlfoto={soli.urlfoto}></Cajasolicitud>
               ))
             : <div className='ceroordenar'><h2>Solicita tu primer producto</h2></div>}
             
