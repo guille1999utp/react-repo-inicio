@@ -49,11 +49,11 @@ function Ordenar() {
   }
 
   try{
-  const url = await UploadPhoto(urlmas);
-
+    const url = (urlmas !== "https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg")? await UploadPhoto(urlmas):urlmas;
+    console.log(url)
     socket.emit('orden',{
       solicitud,
-      url
+      url: url
       })
     setSolicitud({
       de: miusuario,

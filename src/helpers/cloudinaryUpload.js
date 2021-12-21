@@ -14,7 +14,8 @@ export const UploadPhoto = async (file) =>{
         })
         if(res.ok){
             const clouurl = await res.json();
-            return clouurl.secure_url;
+            console.log(cloudrul)
+            return clouurl;
         }else {
             throw await res.json();
         }
