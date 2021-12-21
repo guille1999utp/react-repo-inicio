@@ -1,11 +1,15 @@
 import "./Ordenar.scss";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext , useCallback} from "react";
 import Cajasolicitud from "./Cajasolicitud";
-import { useSelector } from 'react-redux';
+import { useDispatch,useSelector} from 'react-redux';
 import { SocketContext } from '../redux/context/contextchat'
 import Swal from 'sweetalert2'
+import { fetchCToken } from "../helpers/fetchmetod";
+import { cargarordenes } from "../redux/actions/ordenar";
+import { UploadPhoto } from "../helpers/cloudinaryUpload";
 
 function Ordenar() {
+  const dispatch = useDispatch();
     const {socket} = useContext(SocketContext);
     const ordenes = useSelector(ordenes => ordenes.ordenar.producto);
     const miusuario =  useSelector(yo => yo.infoUsuario.uid);
@@ -14,38 +18,72 @@ function Ordenar() {
       nombre: "",
       descripsion: "",
       fecha: "",
-      urlfoto:"https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg",
       categoria:"herramienta"
   });
+  const [urlmas, setUrl] = useState("https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg");
 
-  useEffect(() => {
-    const chatscrollabajo = document.querySelector(".finalchatscroll");
-    chatscrollabajo.scrollIntoView({
-      behavior: "smooth",
-    });
-  });
+  const obtenerproductos = useCallback(
+    async() => {
+      const ordenes = await fetchCToken('ordenar');
+      if(!ordenes.ok){
+      return ;
+      }
+      dispatch(cargarordenes(ordenes.producto))
+    }, [dispatch],
+  )
+ useEffect( ()=>{
+  obtenerproductos()
+ },[obtenerproductos])
 
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
+    console.log(solicitud)
     e.preventDefault();
-    if(solicitud.nombre.length === 0 && solicitud.descripsion.length === 0 && solicitud.fecha.length === 0){
+
+    if(solicitud.nombre.length === 0 || solicitud.descripsion.length === 0 || solicitud.fecha.length === 0){
       Swal.fire({
         icon: 'error',
         title: 'error...',
         text: 'llene todos los campos por favor'
             })
+            return ;
   }
-  socket.emit('orden',{
-    solicitud
-    })
+
+  try{
+  const url = await UploadPhoto(urlmas);
+
+    socket.emit('orden',{
+      solicitud,
+      url
+      })
     setSolicitud({
       de: miusuario,
       nombre: "",
       descripsion: "",
       fecha: "",
-      urlfoto:"https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg",
-      categoria:""
+      categoria:"herramienta"
   });
+  setUrl("https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg");
+}catch(err){
+  console.log(err)
+}
   };
+  const onFilesave  = async(e) =>{
+    const file = e.target.files[0];
+    console.log(file)
+    setUrl(file);
+  }
+
+  const onFile  = () =>{
+    document.querySelector('#fileordenar').click();
+  }
+
+
+  useEffect(() => {
+    const chatscrollabajo = document.querySelector(".initialchatscroll");
+    chatscrollabajo.scrollIntoView({
+      behavior: "smooth",
+    });
+  });
 
   const onChangeMensaje = (e) => {
     const { name, value } = e.target;
@@ -55,13 +93,7 @@ function Ordenar() {
     });
   };
   
-  const onFilesave  = (e) =>{
-    console.log(e.target.files)
-  }
-
-  const onFile  = () =>{
-    document.querySelector('#fileordenar').click();
-  }
+ 
 
   return (
     <>
@@ -133,10 +165,10 @@ function Ordenar() {
               </button>
             </form>
             <div className="ordenarproductossolicitud">
-            <div className="finalchatscroll"></div>
+            <div className="initialchatscroll"></div>
             {(ordenes.length > 0)?
-              ordenes.map((soli) =>(
-                <Cajasolicitud key={soli.id}  producto={soli.producto} id={soli.id} descripsion={soli.descripsion} urlfoto={soli.urlfoto}></Cajasolicitud>
+              ordenes.map((producto) =>(
+                <Cajasolicitud key={producto.oid} oid={producto.oid} producto={producto.nombre}  descripsion={producto.descripsion} urlfoto={producto.urlfoto}></Cajasolicitud>
               ))
             : <div className='ceroordenar'><h2>Solicita tu primer producto</h2></div>}
             

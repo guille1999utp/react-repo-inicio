@@ -6,18 +6,25 @@ import { types } from '../types/ordenar';
  }
 
  function Reducer ( state= initialState, action ){
-
-
     switch ( action.type ) {
         
         case types.subir:
             return {
-                ...state
+                ...state,
+                producto: [action.payload,...state.producto]
             }
-        
+        case types.cargar:
+             return {
+                 ...state,
+                 producto: action.payload
+             }
         case types.eliminar:
             return {
-                ...state
+                ...state,
+                producto: state.producto.filter(function(producto){
+                    console.log(producto)
+                    return action.payload !== producto.oid;
+                  })
             }
 
         case types.eliminacionexito:

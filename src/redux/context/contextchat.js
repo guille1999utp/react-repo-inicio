@@ -2,6 +2,7 @@ import React, {useEffect,useCallback, createContext} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { regenerate,loginstate } from '../actions/auth';
 import { userchat,obtenermensajes } from '../actions/chat';
+import { subirOrden, eliminarorden } from '../actions/ordenar';
 import { fetchCToken } from '../../helpers/fetchmetod';
 import { useSocket } from "../../SocketsConnection/useSocket";
 import { scrollToBottomAnimated } from '../../helpers/scrollToBottom';
@@ -65,7 +66,20 @@ export const SocketProvider = ({ children }) => {
     scrollToBottomAnimated('mensajes')
 }, [ socket , dispatch]);
 
+useEffect(() => {
+    socket?.on( 'orden', (orden) => {
+        console.log(orden)
+        if(orden.de === state.uid){
+            dispatch(subirOrden(orden));
+        }
+    })
+}, [ socket , dispatch, state.uid]);
 
+useEffect(() => {
+    socket?.on( 'eliminarorden', (oid) => {
+            dispatch(eliminarorden(oid));
+    })
+}, [ socket , dispatch, state.uid]);
     return (
         <SocketContext.Provider value={{ socket, online }}>
             { children }

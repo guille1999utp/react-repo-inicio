@@ -1,16 +1,36 @@
 import './Cajasolicitud.css';
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
+import { SocketContext } from '../redux/context/contextchat'
+import Swal from 'sweetalert2'
 
-function Cajasolicitud({producto,descripsion,urlfoto,id,solicitudes,setSolicitados}) {
+function Cajasolicitud({producto,descripsion,urlfoto,oid}) {
+  const {socket} = useContext(SocketContext);
+
   const productoa = producto.trim().slice(0,70);
   const descripsiona = descripsion.trim().slice(0,150);
 
-  const onDelete = () => {
-   const borrar = solicitudes.filter(element =>element.id !== id);
-   console.log(borrar);
-   setSolicitados([...borrar]);
-     };
+  const onDelete = async (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: 'estas seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Sí, bórralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        socket.emit('eliminarorden', oid);
+        Swal.fire(
+          'Eliminado!',
+          'Tu orden a sido eliminado',
+          'éxito'
+        )
+      }
+    })
+  };
   return (
     <>
         <div className="productordenado">

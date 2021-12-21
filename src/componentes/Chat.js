@@ -1,7 +1,7 @@
 import "./Chat.css";
 import CajaChat from "./CajaChat";
 import UsuariosConectados from "./UsuariosConectados";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useSelector } from 'react-redux';
 import { SocketContext } from '../redux/context/contextchat'
 
@@ -25,6 +25,13 @@ function Chat() {
    })
     setmensaje('');
   };
+
+  useEffect(() => {
+    const chatscrollabajo = document.querySelector(".finalchatscroll");
+    chatscrollabajo?.scrollIntoView({
+      behavior: "smooth",
+    });
+  });
 
   const onChangeMensaje = (e) => {
     setmensaje(e.target.value);
