@@ -3,4 +3,6 @@ export const types = {
     cargar : '[Order] cargar',
     eliminar : '[Order] eliminar',
     eliminacionexito : '[Order] eliminacionexito',
+    solicitudes : '[Order] solicitudes',
+
   }

@@ -20,7 +20,7 @@ const url = `${ sitioUrl }/${ endpoint }`;
     }
     
     
-    export const fetchCToken = async( endpoint, data, method = 'GET' ) => {
+    export const fetchCToken = async( endpoint, data, method = 'GET',limit = 10 ) => {
     
         const url = `${ sitioUrl }/${ endpoint }`;
         const token = localStorage.getItem('token') || '';
@@ -28,7 +28,8 @@ const url = `${ sitioUrl }/${ endpoint }`;
         if ( method === 'GET' ) {
             const resp = await fetch( url, {
                 headers: {
-                    'x-token': token
+                    'x-token': token,
+                    'limit': limit
                 }
             });
             return await resp.json();

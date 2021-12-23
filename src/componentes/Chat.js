@@ -20,7 +20,7 @@ function Chat() {
     }
    socket.emit('mensaje',{
    de:miusuario.uid,
-   para:chatActivo,
+   para:chatActivo.iduser,
    mensaje
    })
     setmensaje('');
@@ -69,7 +69,7 @@ function Chat() {
                 alt=""
                 src="https://www.fondosdepantalla.top/wp-content/uploads/2017/02/Imagenes-de-Planetas-en-4K-fondosdepantalla-5.jpg"
               ></img>
-              <p className="nombrechat">nicolas pinga</p>
+              <p className="nombrechat">{chatActivo.name}</p>
             </div>
             <i className="bx bx-dots-vertical-rounded menuchat"></i>
           </div>

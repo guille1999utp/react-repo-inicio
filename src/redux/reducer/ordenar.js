@@ -1,7 +1,7 @@
 import { types } from '../types/ordenar';
 
  const initialState = {
-     pid: '',
+     solicitudes: [],
      producto: [], 
  }
 
@@ -30,6 +30,11 @@ import { types } from '../types/ordenar';
         case types.eliminacionexito:
             return {
                 ...state
+            }
+        case types.solicitudes:
+            return {
+                ...state,
+                solicitudes : action.payload
             }
         default:
             return state;

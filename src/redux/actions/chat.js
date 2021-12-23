@@ -4,11 +4,12 @@ export const userchat = (usuario) =>({
 type: types.usuariosCargados,
 payload: usuario
 })
-export const activarchat = (uid) =>({
+export const activarchat = (user) =>({
     type: types.activarChat,
-    payload: uid
+    payload: user
     })  
-export const obtenermensajes = (mensajes) =>({
+export const obtenermensajes = (mensajes) =>(
+    {
  type: types.nuevoMensaje,
  payload: mensajes
  })

@@ -10,7 +10,10 @@ function UsuariosConectados({user}) {
   const dispatch = useDispatch();
   const {chatActivo} =  useSelector(chat => chat.chat);
   const onClick = async() =>{
-    dispatch(activarchat(user.uid))
+    dispatch(activarchat({
+     iduser: user.uid,
+     name: user.nombre
+    }))
     const res = await fetchCToken(`chat/${user.uid}`);
     dispatch(Cargarmensajeschat(res.mensajes));
     scrollToBottom('mensajes');
