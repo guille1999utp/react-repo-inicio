@@ -68,7 +68,6 @@ export const SocketProvider = ({ children }) => {
 
 useEffect(() => {
     socket?.on( 'orden', (orden) => {
-        console.log(orden)
         if(orden.de === state.uid){
             dispatch(subirOrden(orden));
         }

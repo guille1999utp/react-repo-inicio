@@ -39,7 +39,6 @@ function Ordenar() {
  },[obtenerproductos])
 
   const onSubmit = async(e) => {
-    console.log(solicitud)
     e.preventDefault();
 
     if(solicitud.nombre.length === 0 || solicitud.descripsion.length === 0 || solicitud.fecha.length === 0){
@@ -53,7 +52,6 @@ function Ordenar() {
 
   try{
     const url = (urlmas.secure_url !== "https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg")? await UploadPhoto(urlmas):urlmas;
-    console.log(url)
     socket.emit('orden',{
       solicitud,
       url
@@ -76,7 +74,6 @@ function Ordenar() {
   };
   const onFilesave  = async(e) =>{
     const file = e.target.files[0];
-    console.log(file)
     setUrl(file);
   }
 

@@ -14,7 +14,6 @@ export const UploadPhoto = async (file) =>{
         })
         if(res.ok){
             const clouurl = await res.json();
-            console.log(cloudrul)
             return clouurl;
         }else {
             throw await res.json();
@@ -24,3 +23,4 @@ export const UploadPhoto = async (file) =>{
    }
 
 }
+
