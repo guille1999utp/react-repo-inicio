@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { SocketContext } from '../redux/context/contextchat'
 import Swal from 'sweetalert2'
 
-function Cajasolicitud({producto,descripsion,urlfoto,oid}) {
+function Cajasolicitud({producto,descripsion,urlfoto,oid,idfoto}) {
   const {socket} = useContext(SocketContext);
 
   const productoa = producto.trim().slice(0,70);
@@ -22,11 +22,11 @@ function Cajasolicitud({producto,descripsion,urlfoto,oid}) {
       confirmButtonText: '¡Sí, bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        socket.emit('eliminarorden', oid);
+        socket.emit('eliminarorden', {oid,idfoto});
         Swal.fire(
           'Eliminado!',
-          'Tu orden a sido eliminado',
-          'éxito'
+          'eliminado con exito',
+          'success'
         )
       }
     })

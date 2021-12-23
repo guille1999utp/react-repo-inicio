@@ -20,7 +20,10 @@ function Ordenar() {
       fecha: "",
       categoria:"herramienta"
   });
-  const [urlmas, setUrl] = useState("https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg");
+  const [urlmas, setUrl] = useState({
+    secure_url:"https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg",
+    public_id: 0
+  });
 
   const obtenerproductos = useCallback(
     async() => {
@@ -49,11 +52,11 @@ function Ordenar() {
   }
 
   try{
-    const url = (urlmas !== "https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg")? await UploadPhoto(urlmas):urlmas;
+    const url = (urlmas.secure_url !== "https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg")? await UploadPhoto(urlmas):urlmas;
     console.log(url)
     socket.emit('orden',{
       solicitud,
-      url: url
+      url
       })
     setSolicitud({
       de: miusuario,
@@ -62,7 +65,11 @@ function Ordenar() {
       fecha: "",
       categoria:"herramienta"
   });
-  setUrl("https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg");
+  setUrl(
+    {
+    secure_url:"https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg",
+    public_id: 0
+});
 }catch(err){
   console.log(err)
 }
@@ -168,7 +175,7 @@ function Ordenar() {
             <div className="initialchatscroll"></div>
             {(ordenes.length > 0)?
               ordenes.map((producto) =>(
-                <Cajasolicitud key={producto.oid} oid={producto.oid} producto={producto.nombre}  descripsion={producto.descripsion} urlfoto={producto.urlfoto}></Cajasolicitud>
+                <Cajasolicitud key={producto.oid} idfoto={producto.idfoto} oid={producto.oid} producto={producto.nombre}  descripsion={producto.descripsion} urlfoto={producto.urlfoto}></Cajasolicitud>
               ))
             : <div className='ceroordenar'><h2>Solicita tu primer producto</h2></div>}
             
