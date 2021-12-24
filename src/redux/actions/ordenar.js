@@ -13,7 +13,15 @@ export const eliminarorden = (orden) =>({
     type: types.eliminar,
     payload: orden
     })
+export const eliminarpedido = (oid) =>({
+    type: types.solicitudrechazada,
+    payload: oid
+    })
 export const cargarsolicitudes = (solicitudes) =>({
     type: types.solicitudes,
     payload: solicitudes
+    })
+export const recibirsolicitud = (solicitud) =>({
+    type: types.solicitud,
+    payload: solicitud
     })

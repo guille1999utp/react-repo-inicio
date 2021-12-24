@@ -8,7 +8,7 @@ import { cargarsolicitudes } from "../redux/actions/ordenar";
 
 
 
-export default function Solicitudes() {
+export default function Solicitudes({history}) {
   const dispatch = useDispatch();
   const solicitudes = useSelector(solicitudes => solicitudes.ordenar.solicitudes);
   const solicitud = useCallback(
@@ -35,7 +35,7 @@ export default function Solicitudes() {
         </div>
         <hr></hr>
       {solicitudes.map((solicitud) =>(
-      <Cajasolicitudes key={solicitud.oid} producto={solicitud.nombre} descripsion={solicitud.descripsion} urlfoto={solicitud.urlfoto}></Cajasolicitudes>
+      <Cajasolicitudes key={solicitud.oid} history={history} de={solicitud.de} producto={solicitud.nombre} descripsion={solicitud.descripsion} urlfoto={solicitud.urlfoto}></Cajasolicitudes>
       ))}
       {(solicitudes.length === 0)?
       <>

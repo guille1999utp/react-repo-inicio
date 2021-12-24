@@ -4,4 +4,6 @@ export const types = {
     nuevoMensaje: '[Chat] Nuevo Mensaje',
     cargarMensajes: '[Chat] Cargar Mensajes',
     regenerate : '[Chat] regenerate',
+    chatsolicitud : '[Chat] chatsolicitud',
+
 }

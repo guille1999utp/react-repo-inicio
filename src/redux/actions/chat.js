@@ -4,6 +4,10 @@ export const userchat = (usuario) =>({
 type: types.usuariosCargados,
 payload: usuario
 })
+export const chatsolicitud = (oid) =>({
+    type: types.usuariosCargados,
+    payload: oid
+    })
 export const activarchat = (user) =>({
     type: types.activarChat,
     payload: user

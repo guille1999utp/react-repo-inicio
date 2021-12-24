@@ -1,8 +1,7 @@
 import { useDispatch,useSelector} from 'react-redux';
 import { fetchCToken } from '../helpers/fetchmetod';
 import { scrollToBottom } from '../helpers/scrollToBottom';
-import { activarchat } from '../redux/actions/chat';
-import { Cargarmensajeschat } from '../redux/actions/chat';
+import { activarchat , Cargarmensajeschat} from '../redux/actions/chat';
 
 
 

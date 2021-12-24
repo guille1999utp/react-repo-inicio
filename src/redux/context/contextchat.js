@@ -2,7 +2,7 @@ import React, {useEffect,useCallback, createContext} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { regenerate,loginstate } from '../actions/auth';
 import { userchat,obtenermensajes } from '../actions/chat';
-import { subirOrden, eliminarorden } from '../actions/ordenar';
+import { subirOrden, eliminarorden , recibirsolicitud, eliminarpedido} from '../actions/ordenar';
 import { fetchCToken } from '../../helpers/fetchmetod';
 import { useSocket } from "../../SocketsConnection/useSocket";
 import { scrollToBottomAnimated } from '../../helpers/scrollToBottom';
@@ -71,12 +71,17 @@ useEffect(() => {
         if(orden.de === state.uid){
             dispatch(subirOrden(orden));
         }
+        if(orden.de !== state.uid){
+          console.log(orden)
+          dispatch(recibirsolicitud(orden));
+      }
     })
 }, [ socket , dispatch, state.uid]);
 
 useEffect(() => {
     socket?.on( 'eliminarorden', (oid) => {
             dispatch(eliminarorden(oid));
+            dispatch(eliminarpedido(oid));
     })
 }, [ socket , dispatch, state.uid]);
     return (

@@ -4,5 +4,7 @@ export const types = {
     eliminar : '[Order] eliminar',
     eliminacionexito : '[Order] eliminacionexito',
     solicitudes : '[Order] solicitudes',
+    solicitud : '[Order] solicitud',
+    solicitudrechazada : '[Order] solicitudrechazada',
 
   }

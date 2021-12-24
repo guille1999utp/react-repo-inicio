@@ -26,7 +26,13 @@ import { types } from '../types/ordenar';
                     return action.payload !== producto.oid;
                   })
             }
-
+         case types.solicitudrechazada:
+             return {
+               ...state,
+               solicitudes: state.solicitudes.filter(function(solicitud){
+                    return action.payload !== solicitud.oid;
+                      })
+                }
         case types.eliminacionexito:
             return {
                 ...state
@@ -35,6 +41,11 @@ import { types } from '../types/ordenar';
             return {
                 ...state,
                 solicitudes : action.payload
+            }
+        case types.solicitud:
+            return {
+                ...state,
+                solicitudes : [ action.payload, ...state.solicitudes ]
             }
         default:
             return state;

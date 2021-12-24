@@ -11,7 +11,11 @@ import { types } from '../types/chat';
 
 
     switch ( action.type ) {
-        
+        case types.chatsolicitud:
+            return {
+                ...state,
+                uid: [ ...action.payload ]
+            }
         case types.usuariosCargados:
             return {
                 ...state,
