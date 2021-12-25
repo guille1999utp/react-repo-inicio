@@ -4,6 +4,7 @@ import './Producto.scss'
 import React, {useState, useEffect} from 'react'
 import Slider from "react-slick";
 import { Link  } from 'react-router-dom';
+import Footer from "./Footer";
 
 function Producto({history}) {
 
@@ -331,6 +332,8 @@ function Producto({history}) {
     </div>
   </Slider>
 </div>
+
+<Footer/>
 
     </>
   );

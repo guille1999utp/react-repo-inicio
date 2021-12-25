@@ -1,18 +1,71 @@
+@mixin centerize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+$navsize: 50px;
+$color: #9466ff;
+$mg: 40px;
+
+
+
+.wraper {
+  list-style: none;
+  @include centerize;
+  flex-direction: row;
+  list-style: none;
+
+  li {
+    a {
+      height: $navsize;
+      margin: 0 16px;
+      @include centerize;
+      text-decoration: none;
+      color: #707184;
+      text-transform: capitalize;
+      position: relative;
+      &:hover {
+        color: #ececec;
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+          border: 1px solid $color;
+        }
+      }
+    }
+  }
+}
+
+.active {
+  color: #f3f3f3 !important;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    border: 1px solid $color;
+  }
+}
+
+
 .menu{
-  background-color: black;
-  height: 75px;
+  background-color: rgb(18, 18, 20);
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 5px 0 10px black;
-  font-family: sans-serif;
-  position: relative;
-  z-index: 1;
 }
 .logo{
   color: white;
-  font-size: 35px;
-padding-left: 80px;
+  font-size: 22px;
+  padding-left: 80px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -29,24 +82,6 @@ padding-left: 80px;
     font-size: 10px;
       }
 }
-.items{
-  display: flex;
-  list-style: none;
-  margin-right: 30px;
-}
-.items li{
-  border-radius: 3px;
-  margin: 0 5px;
-}
-.items li a{
- text-decoration: none;
- font-size: 15px;
- display: block;
- margin-left: 15px;
- text-transform: uppercase;
- color: white;
-}
-
 .btnmenu{
   margin-right: 30px;
   font-size: 25px;
@@ -89,17 +124,9 @@ width: 80%;
   margin-top: 5px;
 }
 @media screen and (max-width:1280px){
-  
-  .logo{
-    font-size: 30px;
-    padding-left: 35px;
-  }
+
   .items li a{
-    text-decoration: none;
     font-size: 12px;
-    display: block;
-    text-transform: uppercase;
-    color: white;
    }
   
    
@@ -112,14 +139,8 @@ width: 80%;
   }
   .items li a{
     
-    text-decoration: none;
     font-size: 13px;
-    display: block;
-    text-transform: uppercase;
-    color: white;
-   }
-   .items li a{
-    margin: 0 0px;
+
    }
 
 }
@@ -194,3 +215,6 @@ width: 80%;
   }
   
   }
+
+
+

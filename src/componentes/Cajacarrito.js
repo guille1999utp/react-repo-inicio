@@ -14,11 +14,12 @@ function Cajasolicitud({producto,descripsion,urlfoto,id,carrito,setCarrito,preci
     return (
       <>
       <div className="productocarrito">
+          <div className="img-producto">
           <img
             src={urlfoto}
-            className="img-producto"
             alt="img"
           ></img>
+          </div>
           <div className="caracteristicaproductocarrito">
             <div className="flexcolum">
               <Link to="/producto/45" className="mostrartextotitulocarrito">

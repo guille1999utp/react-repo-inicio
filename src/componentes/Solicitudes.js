@@ -5,6 +5,7 @@ import './Solicitudes.scss';
 import { useDispatch,useSelector } from 'react-redux';
 import { fetchCToken } from "../helpers/fetchmetod";
 import { cargarsolicitudes } from "../redux/actions/ordenar";
+import Footer from "./Footer";
 
 
 
@@ -25,7 +26,7 @@ export default function Solicitudes({history}) {
    },[solicitud])
 
       return (
-        
+        <>
     <div className="fondocarrito">
     <div className="conteinerproductoseleccionado">
     <div className="flexro">
@@ -49,7 +50,9 @@ export default function Solicitudes({history}) {
       <button className='comprarbotoncarrito'>Ver mas</button>
       : null}
       </div>
+      <Footer/>
 
   </div>
+        </>
     )
 }

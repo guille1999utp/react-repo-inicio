@@ -1,12 +1,13 @@
 import "./Listprod.css";
 import Cards from "./Cards";
 import FilterCard from "./FilterCard";
+import Footer from "./Footer";
 
 export default function Listprod({ history }) {
   const cards = [
     {
       id: 1,
-      image: "https://mfiles.alphacoders.com/849/thumb-849315.jpg",
+      image: "https://previews.123rf.com/images/yemelyanov/yemelyanov1708/yemelyanov170800087/83850071-gradiente-de-fondo-abstracto-textura-horizontal-larga-para-el-dise%C3%B1o.jpg",
       rating: 4.3,
       star: "fas fa-star-half-alt",
       reviews: 453,
@@ -117,6 +118,8 @@ export default function Listprod({ history }) {
           </div>
         </div>
       </div>
+      <Footer/>
+
     </>
   );
 }

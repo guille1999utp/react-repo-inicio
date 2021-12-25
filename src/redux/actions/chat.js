@@ -5,7 +5,7 @@ type: types.usuariosCargados,
 payload: usuario
 })
 export const chatsolicitud = (oid) =>({
-    type: types.usuariosCargados,
+    type: types.chatsolicitud,
     payload: oid
     })
 export const activarchat = (user) =>({

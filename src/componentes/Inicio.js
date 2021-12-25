@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick-theme.css";
 import './Inicio.scss';
 import React, {useState, useEffect} from 'react'
 import Slider from "react-slick";
+import Footer from "./Footer";
 import { Link  } from 'react-router-dom';
 //useEffect para poder hacer responsive la carta
 function Inicio ({history}) {
@@ -336,6 +337,8 @@ function Inicio ({history}) {
         </div>
 
         </div>
+
+        <Footer/>
       </>
     );
   }

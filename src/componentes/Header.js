@@ -23,7 +23,7 @@ const Header = () => {
   const [bar, setbar] = useState({
     valid: false
     });
-    
+    const [position, setpos] = useState( 0 );
     const onhandledclick = () =>{
       if(bar.valid === false){
       setbar({
@@ -37,7 +37,8 @@ const Header = () => {
     }
 
 
-    const onhandledmenuback = () =>{
+    const onhandledmenuback = (num) =>{
+      setpos(num);
       if(bar.valid === true){
       setbar({
       valid : false
@@ -46,10 +47,10 @@ const Header = () => {
     }
  const state =  useSelector(user => user.infoUsuario);
   return (
-    
     <>
+    <div class="nav-1">
     <nav className='menu'>
-      <label className='logo'><Link to='/' >{ (Width > 488)?'CompraRepuestos':'CR'}</Link></label>
+      <label className='logo'><Link to='/' onClick={ ()=> onhandledmenuback(9) }>{ (Width > 488)?'CompraRepuestos':'CR'}</Link></label>
       <div className='formbusqueda'>
       <form >
         <div className='formbus'>
@@ -58,23 +59,24 @@ const Header = () => {
         </div>
           </form>
       </div>
-      <ul className={(bar.valid === true)?'items show':'items'}>
+      <ul className={(bar.valid === true)?'items show wraper':'items wraper'}>
 
-       <li><Link className='menubari' to='/productover' onClick={ ()=> onhandledmenuback() } >Productos</Link></li>
-       {(state.online === true)?<li><Link className='menubari' to='/ordenar' onClick={ ()=> onhandledmenuback() }>Ordenar</Link></li>: null}
-       {(state.online === true)?<li><Link className='menubari' to='/chat' onClick={ ()=> onhandledmenuback() }>Chats</Link></li>: null}
-       {(state.online === true)?<li><Link className='menubari' to='/solicitudes' onClick={ ()=> onhandledmenuback() }>Solicitudes</Link></li>: null}
-       {(state.online === true)? <li><Link className='menubari' to='/carrito' onClick={ ()=> onhandledmenuback() }>Carrito</Link></li>: null}
-       {(state.online === true)?<li><Link className='menubari' to='/ajustes' onClick={ ()=> onhandledmenuback() }>Perfil</Link></li>: null}
-       {(state.online === false)?<li><Link className='menubari' to='/login' onClick={ ()=> onhandledmenuback() }>Login</Link></li> : null}
-       {(state.online === false)?<li><Link className='menubari' to='/register' onClick={ ()=> onhandledmenuback() }>Register</Link></li> : null}
+       <li><Link className={(position === 0)?'active':null} to='/productover' onClick={ ()=> onhandledmenuback(0) } >Productos</Link></li>
+       {(state.online === true)?<li><Link className={(position === 1)?'active':null} to='/ordenar' onClick={ ()=> onhandledmenuback(1) }>Ordenar</Link></li>: null}
+       {(state.online === true)?<li><Link className={(position === 2)?'active':null} to='/chat' onClick={ ()=> onhandledmenuback(2) }>Chats</Link></li>: null}
+       {(state.online === true)?<li><Link className={(position === 3)?'active':null} to='/solicitudes' onClick={ ()=> onhandledmenuback(3) }>Solicitudes</Link></li>: null}
+       {(state.online === true)? <li><Link className={(position === 4)?'active':null} to='/carrito' onClick={ ()=> onhandledmenuback(4) }>Carrito</Link></li>: null}
+       {(state.online === true)?<li><Link className={(position === 5)?'active':null} to='/ajustes' onClick={ ()=> onhandledmenuback(5) }>Perfil</Link></li>: null}
+       {(state.online === false)?<li><Link className={(position === 6)?'active':null} to='/login' onClick={ ()=> onhandledmenuback(6) }>Login</Link></li> : null}
+       {(state.online === false)?<li><Link className={(position === 7)?'active':null} to='/register' onClick={ ()=> onhandledmenuback(7) }>Register</Link></li> : null}
      
       </ul>
     <button className='btnmenu' onClick={ ()=> onhandledclick() } >
     <i className='bx bx-menu' ></i>
     </button>
     </nav>
-
+</div>
+    
     </>
   );
 }

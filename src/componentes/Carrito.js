@@ -2,6 +2,7 @@ import React ,{useState} from "react";
 import "./Carrito.scss";
 import { Link } from "react-router-dom";
 import Cajacarrito from "./Cajacarrito";
+import Footer from "./Footer";
 
 const Carrito = () => {
   let infocarrito = [
@@ -26,7 +27,7 @@ const Carrito = () => {
         "computador gamer",
         precio: 65000,
       descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
-      urlfoto:'https://falabella.scene7.com/is/image/FalabellaCO/13166500_1?wid=800&hei=800&qlt=70'
+      urlfoto:'https://previews.123rf.com/images/yemelyanov/yemelyanov1708/yemelyanov170800087/83850071-gradiente-de-fondo-abstracto-textura-horizontal-larga-para-el-dise%C3%B1o.jpg'
     },
     {
       id: 4,
@@ -34,7 +35,7 @@ const Carrito = () => {
         "computador gamer",
         precio: 14000,
       descripsion: 'Jajaja qu,e onda señor Rivas, como está Yo estoy muy bien cansada como siempre por la serie jeje Yo estoy muy bien cansada como siempre por la serie jeje ',
-      urlfoto:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTIUoORhUjAt4aoZIWn6VYAJebLwoDQPdXUw&usqp=CAU'
+      urlfoto:'https://tienda.claro.com.co/wcsstore/Claro/images/catalog/equipos/646x1000/70037232_2.jpg'
     },
     {
       id: 5,
@@ -49,6 +50,7 @@ const Carrito = () => {
 
 
   return (
+    <>
     <div className="fondocarrito">
       <div className="conteinerproductoseleccionado">
         <div className="flexro">
@@ -75,8 +77,10 @@ const Carrito = () => {
         <button className='comprarbotoncarrito'>Comprar</button>
         : null}
         </div>
+        <Footer/>
 
     </div>
+    </>
   );
 };
 export default Carrito;

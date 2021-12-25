@@ -7,6 +7,7 @@ import Swal from 'sweetalert2'
 import { fetchCToken } from "../helpers/fetchmetod";
 import { cargarordenes } from "../redux/actions/ordenar";
 import { UploadPhoto } from "../helpers/cloudinaryUpload";
+import Footer from "./Footer";
 
 function Ordenar() {
   const dispatch = useDispatch();
@@ -101,6 +102,7 @@ function Ordenar() {
 
   return (
     <>
+    <div className="correcionfooter"> 
       <div className="agregardenar">
         <div className="formordenar">
           <h3>busca tu Producto</h3>
@@ -179,6 +181,8 @@ function Ordenar() {
             </div>
           </div>
         </div>
+      </div>
+      <Footer/>
       </div>
     </>
   );
