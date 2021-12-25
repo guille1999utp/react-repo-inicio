@@ -18,7 +18,6 @@
     font-weight: 400;
     margin-right: 8px;
     line-height: 1.25;
-   
 }
 .disp{
 	color: rgb(4, 116, 13);
@@ -129,9 +128,6 @@
 		font-size: 1rem;
 		font-weight: 100;
 	  }
-	  .price{
-		justify-content: start;
-	}
 	.disp{
 		color: rgb(4, 116, 13);
 		font-size: 1rem;
