@@ -41,9 +41,9 @@ function Chat() {
       <div className="fondonegrochat"></div>
       <div className="cajachat">
         <div className="usuariosactivos">
-          <div className="chatperfil">
-            <i className="bx bx-user"></i>
-            <div className="iconoschatfondo">
+         <div className="chatperfil">
+             <img className="imagenchatuser" src={miusuario.urlfoto} alt='fotoperfilchat'></img> 
+             <div className="iconoschatfondo">
               <i className="bx bxs-chat chaticon"></i>
               <i className="bx bx-dots-vertical-rounded menuchat"></i>
             </div>
@@ -67,7 +67,7 @@ function Chat() {
               <img
                 className="fotousuariouser"
                 alt=""
-                src="https://www.fondosdepantalla.top/wp-content/uploads/2017/02/Imagenes-de-Planetas-en-4K-fondosdepantalla-5.jpg"
+                src={chatActivo.urlfoto}
               ></img>
               <p className="nombrechat">{chatActivo.name}</p>
             </div>

@@ -11,7 +11,8 @@ function UsuariosConectados({user}) {
   const onClick = async() =>{
     dispatch(activarchat({
      iduser: user.uid,
-     name: user.nombre
+     name: user.nombre,
+     urlfoto: user.urlfoto
     }))
     const res = await fetchCToken(`chat/${user.uid}`);
     dispatch(Cargarmensajeschat(res.mensajes));
@@ -23,7 +24,7 @@ function UsuariosConectados({user}) {
             <>
         <div className={`usuariochatperfil ${(user.uid === chatActivo) && 'chatactivo'} `} onClick={onClick}>
             <div className='flexusuariochat'>
-          <img className='fotousuario' alt='' src='https://cdn.wallpapersafari.com/0/71/zFUkST.jpg'>
+          <img className='imagenchatuser' alt='' src={user.urlfoto}>
           </img>
           <div className='perfilyultimo'>
            <span className="namechatperfil">{ nombre }</span>

@@ -68,6 +68,7 @@ export const SocketProvider = ({ children }) => {
 
 useEffect(() => {
   socket?.on( 'fotouser', (url) => {
+  
   dispatch(actualizarfoto(url));
   })
 }, [ socket , dispatch]);

@@ -1,15 +1,18 @@
+.rowbotonperfil{
 .botonguardarperfil{
   padding: 10px 20px;
   border-radius: 20px;
   font-size: 18px;
   background: rgb(26, 24, 24);
   color: whitesmoke;
-  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
   &:hover{
     cursor: pointer;
     background: whitesmoke;
     color: rgb(26, 24, 24);;
   }
+}
 }
 .estructuraconfig{
     display: flex;

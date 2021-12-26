@@ -4,6 +4,7 @@ import { UploadPhoto } from "../helpers/cloudinaryUpload";
 import React, {useState, useContext} from 'react'
 import { SocketContext } from '../redux/context/contextchat'
 import { useSelector} from 'react-redux';
+import Swal from 'sweetalert2'
 
 
 function Configuracion() {
@@ -26,10 +27,24 @@ function Configuracion() {
     {
     secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
     public_id: 0
-});
-
+}
+);
+Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Foto Actualizada',
+  showConfirmButton: false,
+  timer: 1500
+})
 }catch(err){
   console.log(err)
+  Swal.fire({
+    position: 'top-end',
+    icon: 'error',
+    title: 'Sucedio un Error',
+    showConfirmButton: false,
+    timer: 1500
+  })
 }
 
   };
@@ -44,6 +59,13 @@ function Configuracion() {
     document.querySelector('#fileperfil').click();
   }
 
+  const reset  = () =>{
+  setUrl({
+    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
+    public_id: 0
+  })
+  }
+
   return (
     <>
     <div className='estructuraconfig'>
@@ -52,7 +74,10 @@ function Configuracion() {
        <img src={(miusuario.urlfoto !== 'https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp')?miusuario.urlfoto:'https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp'} alt='imageavatar'></img>
       </div>
       <input type="file" id="fileperfil" aria-label="File browser example" onChange={onFilesave} ></input>
+      <div className='rowbotonperfil'>
        {(urlmas.public_id !== 0)?<button type='submit' className='botonguardarperfil'>Guardar</button>: null}
+       {(urlmas.public_id !== 0)?<button type='button' className='botonguardarperfil' onClick={reset}>Cancelar</button>: null}
+       </div>
        </form>
       <h1>Guillermo Peñaranda Hernandez</h1>
       <div className='containerinfousuario'>
