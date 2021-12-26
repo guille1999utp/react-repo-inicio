@@ -5,7 +5,9 @@ correo:"",
 online:false,
 fechnacimiento:"",
 creacion:"",
-uid:""
+uid:"",
+urlfoto: ""
+
 }
 function reducer(state = initstate, action){
     switch (action.type){
@@ -17,9 +19,14 @@ function reducer(state = initstate, action){
             online: action.payload.online,
             fechnacimiento: action.payload.fechnacimiento,
             creacion: action.payload.creacion,
-            uid: action.payload.uid
+            uid: action.payload.uid,
+            urlfoto: action.payload.urlfoto
             }
-
+        case types.UpdateFoto:
+            return {
+                ...state,
+                urlfoto: action.payload
+            }
         case types.regenerate:
             return initstate
         default:

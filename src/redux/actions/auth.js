@@ -8,3 +8,8 @@ payload: usuario
 export const regenerate = () =>({
   type: types.regenerate
  })
+
+ export const actualizarfoto = (url) =>({
+  type: types.UpdateFoto,
+  payload: url
+ })

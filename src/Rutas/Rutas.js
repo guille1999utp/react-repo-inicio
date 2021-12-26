@@ -24,7 +24,7 @@ export default function Rutas() {
   <Switch>
   <Rutapublica isAuthenticated={online} path="/login" component={ Iniciarsesion }/>
   <Rutapublica isAuthenticated={online} path="/register" component={ Register }/>
-  <Route exact path="/productover" component={ Listprod }/>
+  <Route exact path="/busqueda" component={ Listprod }/>
   <Route exact path="/producto/:id" component={ Producto }/>
   <Route exact path="/" component={ Inicio }/>
   <Rutaprivada isAuthenticated={online} path='/chat' component={Chat}/>

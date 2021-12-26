@@ -52,7 +52,7 @@ const Header = () => {
     <nav className='menu'>
       <label className='logo'><Link to='/' onClick={ ()=> onhandledmenuback(9) }>{ (Width > 488)?'CompraRepuestos':'CR'}</Link></label>
       <div className='formbusqueda'>
-      <form >
+      <form>
         <div className='formbus'>
           <input type='text' placeholder='Buscar' className='inputbusqueda' ></input>
           <button type='submit' className='botonbusqueda'><i className='bx bx-search-alt-2'></i></button>

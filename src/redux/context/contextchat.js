@@ -1,6 +1,6 @@
 import React, {useEffect,useCallback, createContext} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { regenerate,loginstate } from '../actions/auth';
+import { regenerate,loginstate,actualizarfoto } from '../actions/auth';
 import { userchat,obtenermensajes } from '../actions/chat';
 import { subirOrden, eliminarorden , recibirsolicitud, eliminarpedido} from '../actions/ordenar';
 import { fetchCToken } from '../../helpers/fetchmetod';
@@ -44,13 +44,13 @@ export const SocketProvider = ({ children }) => {
         if ( state.online ) {
             conectarSocket();
         }
-    }, [ state, conectarSocket ]);
+    }, [ state.online, conectarSocket ]);
 
     useEffect(() => {
         if ( !state.online ) {
             desconectarSocket();
         }
-    }, [ state, desconectarSocket ]);
+    }, [ state.online, desconectarSocket ]);
 
     useEffect(() => {
         
@@ -66,6 +66,11 @@ export const SocketProvider = ({ children }) => {
     scrollToBottomAnimated('mensajes')
 }, [ socket , dispatch]);
 
+useEffect(() => {
+  socket?.on( 'fotouser', (url) => {
+  dispatch(actualizarfoto(url));
+  })
+}, [ socket , dispatch]);
 useEffect(() => {
     socket?.on( 'orden', (orden) => {
         if(orden.de === state.uid){

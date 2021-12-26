@@ -1,13 +1,59 @@
 import './Configuracion.scss';
 import Footer from "./Footer";
+import { UploadPhoto } from "../helpers/cloudinaryUpload";
+import React, {useState, useContext} from 'react'
+import { SocketContext } from '../redux/context/contextchat'
+import { useSelector} from 'react-redux';
+
 
 function Configuracion() {
+  const miusuario =  useSelector(yo => yo.infoUsuario);
+  const {socket} = useContext(SocketContext);
+  const [urlmas, setUrl] = useState({
+    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
+    public_id: 0
+  });
+
+  const onSubmit = async(e) => {
+    e.preventDefault();
+  try{
+    const url = (urlmas.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp")? await UploadPhoto(urlmas):urlmas;
+    socket.emit('fotouser',{
+      url,
+      uid: miusuario.uid
+      })
+  setUrl(
+    {
+    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
+    public_id: 0
+});
+
+}catch(err){
+  console.log(err)
+}
+
+  };
+
+
+  const onFilesave  = async(e) =>{
+    const file = e.target.files[0];
+    setUrl(file);
+  }
+
+  const onFile  = () =>{
+    document.querySelector('#fileperfil').click();
+  }
+
   return (
     <>
     <div className='estructuraconfig'>
-      <div className='imageavatar'>
-       <img src='https://st.depositphotos.com/2218212/2938/i/600/depositphotos_29387653-stock-photo-facebook-profile.jpg' alt='imageavatar'></img>
+    <form onSubmit={onSubmit}>
+      <div className='imageavatar' onClick={onFile}>
+       <img src={(miusuario.urlfoto !== 'https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp')?miusuario.urlfoto:'https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp'} alt='imageavatar'></img>
       </div>
+      <input type="file" id="fileperfil" aria-label="File browser example" onChange={onFilesave} ></input>
+       {(urlmas.public_id !== 0)?<button type='submit' className='botonguardarperfil'>Guardar</button>: null}
+       </form>
       <h1>Guillermo Peñaranda Hernandez</h1>
       <div className='containerinfousuario'>
       <div className='detallesusuario'>
@@ -33,10 +79,21 @@ function Configuracion() {
            <li><b><i className='bx bxs-user-check' ></i> Representante Legal:</b> Yuliana Peñaranda Hernandez</li>
          </ul>
       </div>
+      <div className='fotoslocales'>
+        <img src='https://i.pinimg.com/550x/94/2c/6c/942c6ce1d5875a44b851b12981f32112.jpg' alt='imagelocal'></img>
+        <img src='https://propiedadescom.s3.amazonaws.com/files/292x200/boulebar-pena-flor-0-ciudad-del-sol-queretaro-queretaro-20362346-foto-01.jpg' alt='imagelocal'></img>
+        <img src='https://www.oikos.com.co/constructora/images/proyectos/Comerciales-Industriales/Calera-CC/calera-cc-local.jpg' alt='imagelocal'></img>
+        <img src='https://imganuncios.mitula.net/se_vende_casa_comercial_con_locales_5130002636567765048.jpg' alt='imagelocal'></img>
+      </div>
+      <div className='fotolocalizacion'>
+        <img src='https://res.cloudinary.com/dmgfep69f/image/upload/v1640455393/yauzhlah5et8sma8yu3z.png' alt='imagelocal'></img>
+      </div>
       </div>
 
       <Footer/>
     </div>
+  
+    
     </>
   );
 }
