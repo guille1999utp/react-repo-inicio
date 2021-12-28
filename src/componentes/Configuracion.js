@@ -1,7 +1,7 @@
 import './Configuracion.scss';
 import Footer from "./Footer";
 import { UploadPhoto } from "../helpers/cloudinaryUpload";
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext,useCallback,useEffect} from 'react'
 import { SocketContext } from '../redux/context/contextchat'
 import { useSelector} from 'react-redux';
 import Swal from 'sweetalert2'
@@ -28,6 +28,26 @@ Gerente:'',
 cedulaGerente:'',
 Representantelegal:''
     });
+
+    const cargarUsuario = useCallback(
+      async() => {
+        const infousuario = await fetchCToken('perfil');
+        if(infousuario.ok){
+          setState(infousuario.infoadicional);
+          return  true;
+        }else{
+          return  false;
+        }
+      }, [setState],
+    )
+      useEffect(() => {
+        cargarUsuario();
+      }, [cargarUsuario])
+
+
+
+
+
 
   const [urlmas, setUrl] = useState({
     secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
@@ -141,24 +161,24 @@ Swal.fire({
       <div className='detallesusuario'>
          <h2>Detalles</h2>
          <ul>
-           <li><b><i className='bx bx-home'></i> Direccion:</b> { (guardarboton === false) ? ' carrera 5 #6-54': <input type='text' placeholder='Direccion'  name='Direccion'  onChange={onChangeMensaje}></input>}</li>
-           <li><b><i className='bx bx-buildings'></i> Barrio:</b>{ (guardarboton === false) ? ' alamos': <input type='text' placeholder='Barrio' name='Barrio'  onChange={onChangeMensaje}></input>} </li>
-           <li><b><i className='bx bx-barcode' ></i> Codigo Nit:</b>{ (guardarboton === false) ? ' 654654152156': <input type='number' placeholder='Codigo Nit' name='Nit'  onChange={onChangeMensaje}></input>}</li>
-           <li><b><i className='bx bx-car'></i> Domicilio Privado:</b>{ (guardarboton === false) ? ' Si': <input type='text' placeholder='Domicilio Privado' name='Privado'  onChange={onChangeMensaje}></input>} </li>
-           <li><b><i className='bx bx-mobile-alt' ></i> celular:</b>{ (guardarboton === false) ? ' 3186975663': <input type='number' placeholder='celular'  name='celular' onChange={onChangeMensaje}></input>} </li>
-           <li><b><i className='bx bx-phone' ></i> Telefono:</b>{ (guardarboton === false) ? ' 2107107': <input type='number' placeholder='Telefono' name='telefono' onChange={onChangeMensaje}></input>} </li>
-           <li><b><i className='bx bxs-map' ></i> Ciudades Con Servicio:</b>{ (guardarboton === false) ? ' cartago, valle del cauca': <input type='number'  name='Servicio' placeholder='Ciudades Con Servicio' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-home'></i> Direccion: </b> { (guardarboton === false) ? state.Direccion: <input type='text' placeholder={state.Direccion}  name='Direccion'  onChange={onChangeMensaje}></input>}</li>
+           <li><b><i className='bx bx-buildings'></i> Barrio: </b>{ (guardarboton === false) ? state.Barrio: <input type='text' placeholder={state.Barrio} name='Barrio'  onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-barcode' ></i> Codigo Nit: </b>{ (guardarboton === false) ? state.Nit: <input type='number' placeholder={state.Nit} name='Nit'  onChange={onChangeMensaje}></input>}</li>
+           <li><b><i className='bx bx-car'></i> Domicilio Privado: </b>{ (guardarboton === false) ? state.Privado: <input type='text' placeholder={state.Privado} name='Privado'  onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-mobile-alt' ></i> celular: </b>{ (guardarboton === false) ? state.celular: <input type='number' placeholder={state.celular}  name='celular' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-phone' ></i> Telefono: </b>{ (guardarboton === false) ? state.telefono: <input type='number' placeholder={state.telefono} name='telefono' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bxs-map' ></i> Ciudades Con Servicio: </b>{ (guardarboton === false) ? state.Servicio: <input type='number' name='Servicio' placeholder={state.Servicio} onChange={onChangeMensaje}></input>} </li>
          </ul>
       </div>
       <div className='detallesusuario'>
          <h2>Informacion Adicional</h2>
          <ul>
-           <li><b><i className='bx bx-time-five' ></i> Horarios Atencion:</b>{ (guardarboton === false) ? ' 8am - 6pm': <input type='time' placeholder='Horarios Atencion'  name='Atencion' onChange={onChangeMensaje}></input>} </li>
-           <li><b><i className='bx bxs-category' ></i> Categoria de Venta:</b>{ (guardarboton === false) ? ' Herramientas': <input type='text' placeholder='Categoria de Venta' name='Venta'  onChange={onChangeMensaje}></input>} </li>
-           <li><b><i className='bx bx-timer' ></i> Funcionamiento:</b>{ (guardarboton === false) ? ' 5 años': <input type='number' placeholder='Funcionamiento'  name='Funcionamiento' onChange={onChangeMensaje}></input>} </li>
-           <li><b><i className='bx bxs-user-pin'></i> Gerente:</b>{ (guardarboton === false) ? ' Guillermo Peñaranda Hernandez': <input type='text' placeholder='Gerente'  name='Gerente' onChange={onChangeMensaje}></input>}</li>
-           <li><b><i className='bx bx-id-card'></i> Cedula Gerente:</b>{ (guardarboton === false) ? ' 1193213491': <input type='number' placeholder='Cedula Gerente'  name='cedulaGerente' onChange={onChangeMensaje}></input>} </li>
-           <li><b><i className='bx bxs-user-check' ></i> Representante Legal:</b>{ (guardarboton === false) ? ' Yuliana Peñaranda Hernandez': <input type='text' name='Representantelegal'  placeholder='Representante Legal' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-time-five' ></i> Horarios Atencion: </b>{ (guardarboton === false) ? state.Atencion: <input type='time' placeholder={state.Atencion} name='Atencion' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bxs-category' ></i> Categoria de Venta: </b>{ (guardarboton === false) ? state.Venta: <input type='text' placeholder={state.Venta} name='Venta'  onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-timer' ></i> Funcionamiento: </b>{ (guardarboton === false) ? state.Funcionamiento +' años': <input type='number' placeholder={state.Funcionamiento} name='Funcionamiento' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bxs-user-pin'></i> Gerente: </b>{ (guardarboton === false) ? state.Gerente: <input type='text' name='Gerente'  placeholder={state.Gerente} onChange={onChangeMensaje}></input>}</li>
+           <li><b><i className='bx bx-id-card'></i> Cedula Gerente: </b>{ (guardarboton === false) ? state.cedulaGerente: <input type='number' placeholder={state.cedulaGerente}  name='cedulaGerente' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bxs-user-check' ></i> Representante Legal: </b>{ (guardarboton === false) ? state.Representantelegal: <input type='text' name='Representantelegal'  placeholder={state.Representantelegal} onChange={onChangeMensaje}></input>} </li>
          </ul>
       </div>
       <div className='fotoslocales'>
