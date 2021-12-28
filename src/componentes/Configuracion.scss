@@ -47,6 +47,7 @@
       margin-bottom: 30px;
     }
     .containerinfousuario{
+      position: relative;
       box-sizing: border-box;
       background: rgb(26, 24, 24);
       width: 100%;
@@ -59,6 +60,20 @@
       flex-wrap: wrap;
       padding: 0px 20px 20px 20px;
       justify-content: space-around;
+      button{
+        border-radius: 5px;
+        border: none;
+        position: absolute;
+        right: 15px;
+        top: 16px;
+        font-size: 30px;
+        padding: 0 4px;
+        &:hover{
+        background: rgb(90, 89, 89);
+        color: white;
+        cursor: pointer;
+        }
+      }
       .detallesusuario{
         min-width: 240px;
         margin-top: 20px;

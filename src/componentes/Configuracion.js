@@ -10,6 +10,7 @@ import Swal from 'sweetalert2'
 function Configuracion() {
   const miusuario =  useSelector(yo => yo.infoUsuario);
   const {socket} = useContext(SocketContext);
+  const [guardarboton, setguardar] = useState(true);
   const [urlmas, setUrl] = useState({
     secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
     public_id: 0
@@ -49,7 +50,9 @@ Swal.fire({
 
   };
 
-
+  const guardar = () =>{
+    setguardar(!guardarboton)
+  }
   const onFilesave  = async(e) =>{
     const file = e.target.files[0];
     setUrl(file);
@@ -80,28 +83,29 @@ Swal.fire({
        </div>
        </form>
       <h1>Guillermo Peñaranda Hernandez</h1>
-      <div className='containerinfousuario'>
+      <form className='containerinfousuario'>
+        <button type='button'  onClick={guardar}>{ (guardarboton === false) ? <i className='bx bxs-pencil'></i>: <i className='bx bx-save'></i>}</button>
       <div className='detallesusuario'>
          <h2>Detalles</h2>
          <ul>
-           <li><b><i className='bx bx-home'></i> Direccion:</b> carrera 5 #6-54</li>
-           <li><b><i className='bx bx-buildings'></i> Barrio:</b> alamos</li>
-           <li><b><i className='bx bx-barcode' ></i> Codigo Nit:</b> 654654152156</li>
-           <li><b><i className='bx bx-car'></i> Domicilio Privado:</b> Si</li>
-           <li><b><i className='bx bx-mobile-alt' ></i> celular:</b> 3186975663</li>
-           <li><b><i className='bx bx-phone' ></i> Telefono:</b> 2107107</li>
-           <li><b><i className='bx bxs-map' ></i> Ciudades Con Servicio:</b> cartago, valle del cauca</li>
+           <li><b><i className='bx bx-home'></i> Direccion:</b> { (guardarboton === false) ? ' carrera 5 #6-54': <input type='text'></input>}</li>
+           <li><b><i className='bx bx-buildings'></i> Barrio:</b>{ (guardarboton === false) ? ' alamos': <input type='text'></input>} </li>
+           <li><b><i className='bx bx-barcode' ></i> Codigo Nit:</b>{ (guardarboton === false) ? ' 654654152156': <input type='text'></input>}</li>
+           <li><b><i className='bx bx-car'></i> Domicilio Privado:</b>{ (guardarboton === false) ? ' Si': <input type='text'></input>} </li>
+           <li><b><i className='bx bx-mobile-alt' ></i> celular:</b>{ (guardarboton === false) ? ' 3186975663': <input type='text'></input>} </li>
+           <li><b><i className='bx bx-phone' ></i> Telefono:</b>{ (guardarboton === false) ? ' 2107107': <input type='text'></input>} </li>
+           <li><b><i className='bx bxs-map' ></i> Ciudades Con Servicio:</b>{ (guardarboton === false) ? ' cartago, valle del cauca': null} </li>
          </ul>
       </div>
       <div className='detallesusuario'>
          <h2>Informacion Adicional</h2>
          <ul>
-           <li><b><i className='bx bx-time-five' ></i> Horarios Atencion:</b> 8am - 6pm</li>
-           <li><b><i className='bx bxs-category' ></i> Categoria de Venta:</b> Herramientas</li>
-           <li><b><i className='bx bx-timer' ></i> Funcionamiento:</b> 5 años</li>
-           <li><b><i className='bx bxs-user-pin'></i> Gerente:</b> Guillermo Peñaranda Hernandez</li>
-           <li><b><i className='bx bx-id-card'></i> Cedula Gerente:</b> 1193213491</li>
-           <li><b><i className='bx bxs-user-check' ></i> Representante Legal:</b> Yuliana Peñaranda Hernandez</li>
+           <li><b><i className='bx bx-time-five' ></i> Horarios Atencion:</b>{ (guardarboton === false) ? ' 8am - 6pm': <input type='text'></input>} </li>
+           <li><b><i className='bx bxs-category' ></i> Categoria de Venta:</b>{ (guardarboton === false) ? ' Herramientas': <input type='text'></input>} </li>
+           <li><b><i className='bx bx-timer' ></i> Funcionamiento:</b>{ (guardarboton === false) ? ' 5 años': <input type='text'></input>} </li>
+           <li><b><i className='bx bxs-user-pin'></i> Gerente:</b>{ (guardarboton === false) ? ' Guillermo Peñaranda Hernandez': <input type='text'></input>}</li>
+           <li><b><i className='bx bx-id-card'></i> Cedula Gerente:</b>{ (guardarboton === false) ? ' 1193213491': <input type='text'></input>} </li>
+           <li><b><i className='bx bxs-user-check' ></i> Representante Legal:</b>{ (guardarboton === false) ? ' Yuliana Peñaranda Hernandez': <input type='text'></input>} </li>
          </ul>
       </div>
       <div className='fotoslocales'>
@@ -113,7 +117,7 @@ Swal.fire({
       <div className='fotolocalizacion'>
         <img src='https://res.cloudinary.com/dmgfep69f/image/upload/v1640455393/yauzhlah5et8sma8yu3z.png' alt='imagelocal'></img>
       </div>
-      </div>
+      </form>
 
       <Footer/>
     </div>
