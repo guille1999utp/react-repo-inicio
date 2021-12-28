@@ -6,7 +6,7 @@ import { SocketContext } from '../redux/context/contextchat'
 import { useSelector} from 'react-redux';
 import Swal from 'sweetalert2'
 import { fetchCToken } from '../helpers/fetchmetod';
-
+import { Fotorusuario } from './Fotorusuario';
 
 function Configuracion() {
   const miusuario =  useSelector(yo => yo.infoUsuario);
@@ -14,7 +14,7 @@ function Configuracion() {
   const [guardarboton, setguardar] = useState(false);
   const [guardarfoto, setguardarfoto] = useState(false);
 
-
+  const [fotos, setfotos] = useState([]);
   const [state, setState] = useState({
 Direccion:'',
 Barrio:'',
@@ -31,16 +31,19 @@ cedulaGerente:'',
 Representantelegal:''
     });
 
+    
     const cargarUsuario = useCallback(
       async() => {
         const infousuario = await fetchCToken('perfil');
+        console.log(infousuario);
         if(infousuario.ok){
           setState(infousuario.infoadicional);
+          setfotos(infousuario.fotosdescripsion);
           return  true;
         }else{
           return  false;
         }
-      }, [setState],
+      }, [setState,setfotos],
     )
       useEffect(() => {
         cargarUsuario();
@@ -59,6 +62,7 @@ Representantelegal:''
     secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
     public_id: 0
   });
+
   const onSubmit = async(e) => {
     e.preventDefault();
   try{
@@ -114,6 +118,7 @@ Swal.fire({
   }
   const onFilefoto  = () =>{
     document.querySelector('#filedes').click();
+    setguardarfoto(true);
   }
   const reset  = () =>{
   setUrl({
@@ -157,14 +162,19 @@ Swal.fire({
     setguardar(!guardarboton)
   }
   const guardarfotosync = async() =>{
-    if (guardarboton === true) {
+    console.log(guardarfoto)
+    if (guardarfoto === true) {
       try{
-      const url = (urlmas.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp")? await UploadPhoto(urlmas):urlmas;
-      socket.emit('fotouser',{
+        console.log('hola')
+      const url = (urlfotos.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp")? await UploadPhoto(urlfotos):null;
+      if(url === null){
+        return
+      }
+      socket.emit('fotouseradicional',{
         url,
         uid: miusuario.uid
         })
-    setUrl(
+      setUrlfotos(
       {
       secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
       public_id: 0
@@ -187,10 +197,10 @@ Swal.fire({
       timer: 1500
     })
   }
-      setguardarfoto(!guardarboton)
+ setguardarfoto(!guardarfoto)
     }  
-    setguardarfoto(!guardarboton)
   }
+  
   return (
     <>
     <div className='estructuraconfig'>
@@ -235,6 +245,11 @@ Swal.fire({
          </ul>
       </div>
       <div className='fotoslocales'> 
+
+      { fotos.map((fotolocal)=>(
+                <Fotorusuario urlfoto={fotolocal.urlfoto} uidfoto={fotolocal.uidfoto}></Fotorusuario>
+      )
+) }
         <img src='https://i.pinimg.com/550x/94/2c/6c/942c6ce1d5875a44b851b12981f32112.jpg' alt='imagelocal'></img>
         <img src='https://propiedadescom.s3.amazonaws.com/files/292x200/boulebar-pena-flor-0-ciudad-del-sol-queretaro-queretaro-20362346-foto-01.jpg' alt='imagelocal'></img>
         <img src='https://www.oikos.com.co/constructora/images/proyectos/Comerciales-Industriales/Calera-CC/calera-cc-local.jpg' alt='imagelocal'></img>
