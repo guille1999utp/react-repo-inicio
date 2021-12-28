@@ -47,6 +47,9 @@
       margin-bottom: 30px;
     }
     .containerinfousuario{
+      #filedes{
+        display: none;
+      }
       position: relative;
       box-sizing: border-box;
       background: rgb(26, 24, 24);
@@ -60,7 +63,7 @@
       flex-wrap: wrap;
       padding: 0px 20px 20px 20px;
       justify-content: space-around;
-      button{
+      .buttonr{
         border-radius: 5px;
         border: none;
         position: absolute;
@@ -73,6 +76,13 @@
         color: white;
         cursor: pointer;
         }
+       
+      }
+      .buttonfoto{
+        top:60px
+      }
+      .buttontop{
+        top:105px
       }
       .detallesusuario{
         min-width: 240px;
