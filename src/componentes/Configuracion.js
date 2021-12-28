@@ -5,12 +5,30 @@ import React, {useState, useContext} from 'react'
 import { SocketContext } from '../redux/context/contextchat'
 import { useSelector} from 'react-redux';
 import Swal from 'sweetalert2'
+import { fetchCToken } from '../helpers/fetchmetod';
 
 
 function Configuracion() {
   const miusuario =  useSelector(yo => yo.infoUsuario);
   const {socket} = useContext(SocketContext);
-  const [guardarboton, setguardar] = useState(true);
+  const [guardarboton, setguardar] = useState(false);
+
+  const [state, setState] = useState({
+Direccion:'',
+Barrio:'',
+Nit:'',
+Privado:'',
+celular:'',
+telefono:'',
+Servicio:'',
+Atencion:'',
+Venta:'',
+Funcionamiento:'',
+Gerente:'',
+cedulaGerente:'',
+Representantelegal:''
+    });
+
   const [urlmas, setUrl] = useState({
     secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
     public_id: 0
@@ -47,12 +65,17 @@ Swal.fire({
     timer: 1500
   })
 }
-
   };
 
-  const guardar = () =>{
-    setguardar(!guardarboton)
-  }
+  const onChangeMensaje = (e) => {
+    const { name, value } = e.target;
+    setState({
+      ...state,
+      [name]: value,
+    });
+  };
+
+  
   const onFilesave  = async(e) =>{
     const file = e.target.files[0];
     setUrl(file);
@@ -68,7 +91,37 @@ Swal.fire({
     public_id: 0
   })
   }
-
+  const guardar = async() =>{
+    if (guardarboton === true) {
+        const resmodi = await fetchCToken('perfil',state,'POST', null);
+        if(resmodi.ok){
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Informacion Guardada'
+          })
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: resmodi.msg,
+          })
+        }
+      setguardar(!guardarboton)
+    }  
+    setguardar(!guardarboton)
+  }
   return (
     <>
     <div className='estructuraconfig'>
@@ -88,24 +141,24 @@ Swal.fire({
       <div className='detallesusuario'>
          <h2>Detalles</h2>
          <ul>
-           <li><b><i className='bx bx-home'></i> Direccion:</b> { (guardarboton === false) ? ' carrera 5 #6-54': <input type='text'></input>}</li>
-           <li><b><i className='bx bx-buildings'></i> Barrio:</b>{ (guardarboton === false) ? ' alamos': <input type='text'></input>} </li>
-           <li><b><i className='bx bx-barcode' ></i> Codigo Nit:</b>{ (guardarboton === false) ? ' 654654152156': <input type='text'></input>}</li>
-           <li><b><i className='bx bx-car'></i> Domicilio Privado:</b>{ (guardarboton === false) ? ' Si': <input type='text'></input>} </li>
-           <li><b><i className='bx bx-mobile-alt' ></i> celular:</b>{ (guardarboton === false) ? ' 3186975663': <input type='text'></input>} </li>
-           <li><b><i className='bx bx-phone' ></i> Telefono:</b>{ (guardarboton === false) ? ' 2107107': <input type='text'></input>} </li>
-           <li><b><i className='bx bxs-map' ></i> Ciudades Con Servicio:</b>{ (guardarboton === false) ? ' cartago, valle del cauca': null} </li>
+           <li><b><i className='bx bx-home'></i> Direccion:</b> { (guardarboton === false) ? ' carrera 5 #6-54': <input type='text' placeholder='Direccion'  name='Direccion'  onChange={onChangeMensaje}></input>}</li>
+           <li><b><i className='bx bx-buildings'></i> Barrio:</b>{ (guardarboton === false) ? ' alamos': <input type='text' placeholder='Barrio' name='Barrio'  onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-barcode' ></i> Codigo Nit:</b>{ (guardarboton === false) ? ' 654654152156': <input type='number' placeholder='Codigo Nit' name='Nit'  onChange={onChangeMensaje}></input>}</li>
+           <li><b><i className='bx bx-car'></i> Domicilio Privado:</b>{ (guardarboton === false) ? ' Si': <input type='text' placeholder='Domicilio Privado' name='Privado'  onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-mobile-alt' ></i> celular:</b>{ (guardarboton === false) ? ' 3186975663': <input type='number' placeholder='celular'  name='celular' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-phone' ></i> Telefono:</b>{ (guardarboton === false) ? ' 2107107': <input type='number' placeholder='Telefono' name='telefono' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bxs-map' ></i> Ciudades Con Servicio:</b>{ (guardarboton === false) ? ' cartago, valle del cauca': <input type='number'  name='Servicio' placeholder='Ciudades Con Servicio' onChange={onChangeMensaje}></input>} </li>
          </ul>
       </div>
       <div className='detallesusuario'>
          <h2>Informacion Adicional</h2>
          <ul>
-           <li><b><i className='bx bx-time-five' ></i> Horarios Atencion:</b>{ (guardarboton === false) ? ' 8am - 6pm': <input type='text'></input>} </li>
-           <li><b><i className='bx bxs-category' ></i> Categoria de Venta:</b>{ (guardarboton === false) ? ' Herramientas': <input type='text'></input>} </li>
-           <li><b><i className='bx bx-timer' ></i> Funcionamiento:</b>{ (guardarboton === false) ? ' 5 años': <input type='text'></input>} </li>
-           <li><b><i className='bx bxs-user-pin'></i> Gerente:</b>{ (guardarboton === false) ? ' Guillermo Peñaranda Hernandez': <input type='text'></input>}</li>
-           <li><b><i className='bx bx-id-card'></i> Cedula Gerente:</b>{ (guardarboton === false) ? ' 1193213491': <input type='text'></input>} </li>
-           <li><b><i className='bx bxs-user-check' ></i> Representante Legal:</b>{ (guardarboton === false) ? ' Yuliana Peñaranda Hernandez': <input type='text'></input>} </li>
+           <li><b><i className='bx bx-time-five' ></i> Horarios Atencion:</b>{ (guardarboton === false) ? ' 8am - 6pm': <input type='time' placeholder='Horarios Atencion'  name='Atencion' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bxs-category' ></i> Categoria de Venta:</b>{ (guardarboton === false) ? ' Herramientas': <input type='text' placeholder='Categoria de Venta' name='Venta'  onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-timer' ></i> Funcionamiento:</b>{ (guardarboton === false) ? ' 5 años': <input type='number' placeholder='Funcionamiento'  name='Funcionamiento' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bxs-user-pin'></i> Gerente:</b>{ (guardarboton === false) ? ' Guillermo Peñaranda Hernandez': <input type='text' placeholder='Gerente'  name='Gerente' onChange={onChangeMensaje}></input>}</li>
+           <li><b><i className='bx bx-id-card'></i> Cedula Gerente:</b>{ (guardarboton === false) ? ' 1193213491': <input type='number' placeholder='Cedula Gerente'  name='cedulaGerente' onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bxs-user-check' ></i> Representante Legal:</b>{ (guardarboton === false) ? ' Yuliana Peñaranda Hernandez': <input type='text' name='Representantelegal'  placeholder='Representante Legal' onChange={onChangeMensaje}></input>} </li>
          </ul>
       </div>
       <div className='fotoslocales'>
