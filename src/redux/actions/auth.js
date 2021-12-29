@@ -13,3 +13,13 @@ export const regenerate = () =>({
   type: types.UpdateFoto,
   payload: url
  })
+
+ export const subidafotos = (urlcompleta) =>({
+  type: types.RecibirFotos,
+  payload: urlcompleta
+ })
+
+ export const borrarfotos = (urleliminar) =>({
+  type: types.RecibirFotos,
+  payload: urleliminar
+ })

@@ -14,8 +14,8 @@ function Configuracion() {
   const [guardarboton, setguardar] = useState(false);
   const [guardarfoto, setguardarfoto] = useState(false);
 
-  const [fotos, setfotos] = useState([]);
   const [state, setState] = useState({
+Cordenadas: '',
 Direccion:'',
 Barrio:'',
 Nit:'',
@@ -31,11 +31,11 @@ cedulaGerente:'',
 Representantelegal:''
     });
 
-    
+    const [fotos, setfotos] = useState(miusuario.fotosdescripsion);
+
     const cargarUsuario = useCallback(
       async() => {
         const infousuario = await fetchCToken('perfil');
-        console.log(infousuario);
         if(infousuario.ok){
           setState(infousuario.infoadicional);
           setfotos(infousuario.fotosdescripsion);
@@ -162,8 +162,8 @@ Swal.fire({
     setguardar(!guardarboton)
   }
   const guardarfotosync = async() =>{
-    console.log(guardarfoto)
     if (guardarfoto === true) {
+      if(fotos.length<7){
       try{
         console.log('hola')
       const url = (urlfotos.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp")? await UploadPhoto(urlfotos):null;
@@ -197,6 +197,22 @@ Swal.fire({
       timer: 1500
     })
   }
+}else{
+  Swal.fire({
+    position: 'top-end',
+    icon: 'error',
+    title: 'solo se permite un maximo de 6 imagenes',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  setUrlfotos(
+    {
+    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
+    public_id: 0
+}
+);
+
+}
  setguardarfoto(!guardarfoto)
     }  
   }
@@ -214,7 +230,7 @@ Swal.fire({
        {(urlmas.public_id !== 0)?<button type='button' className='botonguardarperfil' onClick={reset}>Cancelar</button>: null}
        </div>
        </form>
-      <h1>Guillermo Peñaranda Hernandez</h1>
+      <h1>{miusuario.nombre} {(miusuario.verificado === true)?<i className='bx bxs-been-here' ></i>:null}</h1>
       <form className='containerinfousuario'>
       <input type="file" id="filedes" aria-label="File browser example" onChange={onFilesavefoto} ></input>
 
@@ -231,6 +247,7 @@ Swal.fire({
            <li><b><i className='bx bx-mobile-alt' ></i> celular: </b>{ (guardarboton === false) ? state.celular: <input type='number' placeholder={state.celular}  name='celular' onChange={onChangeMensaje}></input>} </li>
            <li><b><i className='bx bx-phone' ></i> Telefono: </b>{ (guardarboton === false) ? state.telefono: <input type='number' placeholder={state.telefono} name='telefono' onChange={onChangeMensaje}></input>} </li>
            <li><b><i className='bx bxs-map' ></i> Ciudades Con Servicio: </b>{ (guardarboton === false) ? state.Servicio: <input type='number' name='Servicio' placeholder={state.Servicio} onChange={onChangeMensaje}></input>} </li>
+           <li><b><i className='bx bx-world' ></i> Coordenadas: </b>{ (guardarboton === false) ? <a href={state.Cordenadas}>buscame</a>: <input type='text' name='Cordenadas' placeholder={state.Cordenadas} onChange={onChangeMensaje}></input>} </li>
          </ul>
       </div>
       <div className='detallesusuario'>
@@ -245,18 +262,13 @@ Swal.fire({
          </ul>
       </div>
       <div className='fotoslocales'> 
-
+      <h2>Fotos del local:</h2>
       { fotos.map((fotolocal)=>(
-                <Fotorusuario urlfoto={fotolocal.urlfoto} uidfoto={fotolocal.uidfoto}></Fotorusuario>
+                <Fotorusuario key={fotolocal.uidfoto} urlfoto={fotolocal.urlfoto} uidfoto={fotolocal.uidfoto}></Fotorusuario>
       )
 ) }
-        <img src='https://i.pinimg.com/550x/94/2c/6c/942c6ce1d5875a44b851b12981f32112.jpg' alt='imagelocal'></img>
-        <img src='https://propiedadescom.s3.amazonaws.com/files/292x200/boulebar-pena-flor-0-ciudad-del-sol-queretaro-queretaro-20362346-foto-01.jpg' alt='imagelocal'></img>
-        <img src='https://www.oikos.com.co/constructora/images/proyectos/Comerciales-Industriales/Calera-CC/calera-cc-local.jpg' alt='imagelocal'></img>
-        <img src='https://imganuncios.mitula.net/se_vende_casa_comercial_con_locales_5130002636567765048.jpg' alt='imagelocal'></img>
-      </div>
-      <div className='fotolocalizacion'>
-        <img src='https://res.cloudinary.com/dmgfep69f/image/upload/v1640455393/yauzhlah5et8sma8yu3z.png' alt='imagelocal'></img>
+      
+
       </div>
       </form>
 

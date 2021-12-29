@@ -113,6 +113,9 @@
           li{              
             color: rgb(223, 217, 217);
             text-align: start;
+            a{
+            color: white;
+            }
             b{ 
               color: white;
               letter-spacing: 1px;
@@ -131,6 +134,9 @@
         margin: 20px 0;
         width: 100%;
         height: 100%;
+        h2{
+          color: white;
+        }
         img{
           min-width: 150px;
         margin: 20px;
@@ -146,16 +152,6 @@
          }    
         }
       }
-      .fotolocalizacion{
-        margin: 20px 0;
-        width: 100%;
-        height: 100%;
-        img{
-          
-            width: 90%;
-            margin: 20px auto;   
-               
-          }
-      }
+ 
     }
 }

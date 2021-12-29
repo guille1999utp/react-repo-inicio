@@ -20,3 +20,29 @@
 .productordenado{
     padding-right: 5px;
 }
+@media screen and (max-width:540px) {
+    .productordenado form{
+    margin-right: 11px;
+    }
+    .productordenado form span{
+        font-size: 10px;
+    }
+    .productordenado form input{
+        margin-top: 0px;
+            width: 62px;
+            padding: 5px;
+            padding-left: 5px; 
+            margin-right: 5px;
+            border-radius: 20px;
+            border: 1px solid;
+    }
+    .productordenado form button{
+            margin-top: 3px;
+            width: 76px;
+            padding: 5px;
+            padding-left: 0px; 
+            margin-right: 5px;
+            border-radius: 20px;
+            border: 1px solid;
+    }
+       } 
