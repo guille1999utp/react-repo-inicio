@@ -15,7 +15,7 @@ import Solicitudes from '../componentes/Solicitudes';
 import { Rutaprivada } from '../Rutas/Rutaprivada';
 import { Rutapublica } from '../Rutas/Rutapublica';
 import { SocketContext } from '../redux/context/contextchat'
-
+import Perfil from '../componentes/Perfil';
 export default function Rutas() {
     const {online} = useContext(SocketContext);
     return (
@@ -26,6 +26,7 @@ export default function Rutas() {
   <Rutapublica isAuthenticated={online} path="/register" component={ Register }/>
   <Route exact path="/busqueda" component={ Listprod }/>
   <Route exact path="/producto/:id" component={ Producto }/>
+  <Route exact path="/perfil/:de" component={ Perfil }/>
   <Route exact path="/" component={ Inicio }/>
   <Rutaprivada isAuthenticated={online} path='/chat' component={Chat}/>
   <Rutaprivada isAuthenticated={online} path='/comprar' component={Compra}/>

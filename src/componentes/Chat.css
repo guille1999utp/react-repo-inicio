@@ -93,6 +93,10 @@
     position: relative;
     margin-left: 15px;
 }
+.fotousuariouser:hover{
+cursor: pointer;
+opacity: 0.7;
+}
 .hrdivchat{
     width: 80%;
     height: 1px;

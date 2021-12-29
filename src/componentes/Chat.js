@@ -4,6 +4,7 @@ import UsuariosConectados from "./UsuariosConectados";
 import React, { useState, useContext, useEffect } from "react";
 import { useSelector } from 'react-redux';
 import { SocketContext } from '../redux/context/contextchat'
+import { Link  } from 'react-router-dom';
 
 function Chat() {
       const {socket} = useContext(SocketContext);
@@ -64,11 +65,13 @@ function Chat() {
             (chatActivo)?<>
           <div className="paletacomandochat">
             <div className="correcionpaletachat">
+            <Link to={`/perfil/${chatActivo.iduser}`} >
               <img
                 className="fotousuariouser"
-                alt=""
+                alt="imgchatusehablando"
                 src={chatActivo.urlfoto}
               ></img>
+            </Link>
               <p className="nombrechat">{chatActivo.name}</p>
             </div>
             <i className="bx bx-dots-vertical-rounded menuchat"></i>

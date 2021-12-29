@@ -1,0 +1,40 @@
+.estructuraconfig{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: rgb(36, 37, 38);
+    height: 100%;
+    text-align: center;
+    justify-content: space-between;
+    .imagenavatarbusqueda{
+      display: flex;
+      flex-direction: column;
+     width: 200px;
+     margin: 40px auto;
+     img{
+      border-radius: 50%;
+       width: 100%;
+       height: 200px;
+     }
+    }
+      .fotoslocalesbusqueda{
+        margin: 20px 0;
+        width: 100%;
+        height: 100%;
+        h2{
+          color: white;
+        }
+        img{
+          min-width: 150px;
+        margin: 20px;
+        max-width: 40%;
+        max-height: 600px;
+        @media screen and (max-width:540px) {
+          min-width: 90%;
+          margin: 20px auto;   
+             }  
+        }
+      }
+ 
+    }
+
