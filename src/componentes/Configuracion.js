@@ -163,7 +163,7 @@ Swal.fire({
   }
   const guardarfotosync = async() =>{
     if (guardarfoto === true) {
-      if(fotos.length<7){
+      if(fotos.length<6){
       try{
         console.log('hola')
       const url = (urlfotos.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp")? await UploadPhoto(urlfotos):null;
@@ -221,7 +221,7 @@ Swal.fire({
     <>
     <div className='estructuraconfig'>
     <form onSubmit={onSubmit}>
-      <div className='imageavatar' onClick={onFile}>
+      <div className='imageavatar' onClick={onFile} >
        <img src={(miusuario.urlfoto !== 'https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp')?miusuario.urlfoto:'https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp'} alt='imageavatar'></img>
       </div>
       <input type="file" id="fileperfil" aria-label="File browser example" onChange={onFilesave} ></input>

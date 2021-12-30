@@ -9,6 +9,8 @@ import Footer from "./Footer";
 function Producto({history}) {
 
   const [Width, setWidth] = useState(window.innerWidth);  
+  const [Foto, setFoto] = useState('https://cdn.pocket-lint.com/r/s/1200x/assets/images/142227-phones-review-iphone-x-review-photos-image1-ahdsiyvum0.jpg');  
+
  const cambiarTamaño = ()=>{
     setWidth(window.innerWidth);
   }
@@ -35,7 +37,9 @@ function Producto({history}) {
         history.push( `/comprar`);
          }
 
-
+     const onOverFoto = (url) =>{
+       setFoto(url.nativeEvent.srcElement.currentSrc);
+     }
 
 
   return (
@@ -46,13 +50,13 @@ function Producto({history}) {
     <div>
         <div className='fleximg'>
           <div className='cajafotoproducto'>
-        <img className='fotoproducto' src='https://cdn.pocket-lint.com/r/s/1200x/assets/images/142227-phones-review-iphone-x-review-photos-image1-ahdsiyvum0.jpg' alt='producto'/>
+        <img id="fotoOver" className='fotoproducto' src={Foto} alt='producto'/>
         </div>
         <div className='morefotos'>
-        <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.8uu1-Xja_qIE5F2ge5zyWQHaLT?pid=ImgDet' alt='producto'/>
-        <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.PH4ArjoOnTFboybCIfrOMAHaNu?' alt='producto'/>
-        <img className='listmorefotos' src='https://i.pinimg.com/originals/64/b7/35/64b735fe92c580cad36351a26d4b13c9.jpg' alt='producto'/>
-        <img className='listmorefotos' src='https://www.xtrafondos.com/wallpapers/edificios-ciudad-de-noche-3183.jpg' alt='producto'/>
+        <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.8uu1-Xja_qIE5F2ge5zyWQHaLT?pid=ImgDet' alt='producto' onClick={onOverFoto}/>
+        <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.PH4ArjoOnTFboybCIfrOMAHaNu?' alt='producto' onClick={onOverFoto}/>
+        <img className='listmorefotos' src='https://i.pinimg.com/originals/64/b7/35/64b735fe92c580cad36351a26d4b13c9.jpg' alt='producto'  onClick={onOverFoto}/>
+        <img className='listmorefotos' src='https://www.xtrafondos.com/wallpapers/edificios-ciudad-de-noche-3183.jpg' alt='producto' onClick={onOverFoto} />
       
         </div>
        

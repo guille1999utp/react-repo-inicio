@@ -61,7 +61,7 @@ const Header = () => {
       </div>
       <ul className={(bar.valid === true)?'items show wraper':'items wraper'}>
 
-       <li><Link className={(position === 0)?'active':null} to='/productover' onClick={ ()=> onhandledmenuback(0) } >Productos</Link></li>
+       {(state.online === true)?<li><Link className={(position === 0)?'active':null} to='/crearproducto' onClick={ ()=> onhandledmenuback(0) } >Productos</Link></li>: null}
        {(state.online === true)?<li><Link className={(position === 1)?'active':null} to='/ordenar' onClick={ ()=> onhandledmenuback(1) }>Ordenar</Link></li>: null}
        {(state.online === true)?<li><Link className={(position === 2)?'active':null} to='/chat' onClick={ ()=> onhandledmenuback(2) }>Chats</Link></li>: null}
        {(state.online === true)?<li><Link className={(position === 3)?'active':null} to='/solicitudes' onClick={ ()=> onhandledmenuback(3) }>Solicitudes</Link></li>: null}
