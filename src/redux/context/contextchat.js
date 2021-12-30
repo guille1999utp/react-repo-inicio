@@ -53,12 +53,11 @@ export const SocketProvider = ({ children }) => {
     }, [ state.online, desconectarSocket ]);
 
     useEffect(() => {
-        
-      socket?.on( 'lista-usuarios', (usuarios) => {
+  
+    socket?.on( 'lista-usuarios', (usuarios) => {
           dispatch(userchat(usuarios));
       })
-
-  }, [ socket, dispatch ]);
+  }, [ socket, dispatch]);
   useEffect(() => {
     socket?.on( 'mensaje', (mensaje) => {
     dispatch(obtenermensajes(mensaje));
