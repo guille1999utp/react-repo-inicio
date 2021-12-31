@@ -2,21 +2,41 @@ import React, {useCallback,useContext,useEffect,useState} from 'react'
 import './CrearProducto.scss';
 import { UploadPhoto } from "../helpers/cloudinaryUpload";
 import { SocketContext } from '../redux/context/contextchat'
-import { useSelector} from 'react-redux';
+import { useSelector,useDispatch} from 'react-redux';
 import Swal from 'sweetalert2'
+import { fetchCToken } from "../helpers/fetchmetod";
+import { cargarproductos } from "../redux/actions/productos";
+import Cajaproductosubidos from "./Cajaproductosubidos";
+
+
 
 export const CrearProducto = () => {
+ const dispatch = useDispatch();
 const miusuario =  useSelector(yo => yo.infoUsuario);
+const productos =  useSelector(productos => productos.productos.productos);
 const {socket} = useContext(SocketContext);
 const [NewProducto, setNewProducto] = useState({
-    titulo:'',
-    Categoria:'',
-    Ubicacion:'',
-    Domicilio: '',
-    Garantia: '',
-    Age: '',
-    descripsion: ''
+        titulo:'',
+        Categoria:'Repuestos',
+        Ubicaion:'Cartago',
+        Domicilio: '',
+        Garantia: '',
+        Age: '2022',
+        descripsion: ''
 });
+
+const obtenerproductos = useCallback(
+  async() => {
+    const ordenes = await fetchCToken('crearproducto');
+    if(!ordenes.ok){
+    return ;
+    }
+    dispatch(cargarproductos(ordenes.producto))
+  }, [dispatch],
+)
+useEffect( ()=>{
+  obtenerproductos()
+ },[obtenerproductos])
 const [urlmas, setUrl] = useState({
     secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg",
     public_id: 0
@@ -34,11 +54,11 @@ const onChangeMensaje = (e) => {
       setagregar(!agregar);
       setNewProducto({
         titulo:'',
-        Categoria:'',
-        Ubicaion:'',
+        Categoria:'Repuestos',
+        Ubicaion:'Cartago',
         Domicilio: '',
         Garantia: '',
-        Age: '',
+        Age: '2022',
         descripsion: ''
     })
   }
@@ -52,6 +72,7 @@ const onChangeMensaje = (e) => {
 
   const onSubmit = async(e) => {
     e.preventDefault();
+    if(NewProducto.titulo.length>0 && NewProducto.descripsion.length>0){
   try{
     const url = (urlmas.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg")? await UploadPhoto(urlmas):urlmas;
     socket.emit('producto',{
@@ -65,6 +86,7 @@ const onChangeMensaje = (e) => {
     public_id: 0
 }
 );
+setagregar(!agregar);
 Swal.fire({
   position: 'top-end',
   icon: 'success',
@@ -82,13 +104,23 @@ Swal.fire({
     timer: 1500
   })
 }
+
+}else{
+  Swal.fire({
+    position: 'top-end',
+    icon: 'error',
+    title: 'Llenar Titulo y Descripsion',
+    showConfirmButton: false,
+    timer: 1500
+  })
+}
   };
     return (
     <>
         <div className='form-agregar-producto'>
         <input type="file" id="fileproducto" aria-label="File browser example" onChange={onFilesave} ></input>
             <div>
-            <i className='bx bxs-folder-plus' onClick={cambiar}></i>
+            <i className={agregar?'bx bxs-message-square-x':'bx bxs-folder-plus'} onClick={cambiar}></i>
            <table summary="Mis Productos">
   <caption>Mis Productos </caption>
   <thead>
@@ -149,25 +181,12 @@ Swal.fire({
       <td><button type='submit' className='botonproductoagregar add ' onClick={onSubmit}>Publicar</button></td>
     </tr>:null
       }
- 
-
-
-
-    <tr>
-      <th scope="row"><img src='https://c8.alamy.com/compes/ebhgaj/un-monton-de-coloridas-formas-cuadradas-sobre-un-fondo-abstracto-negro-ebhgaj.jpg'></img></th>
-      <td>titulo de producto que se quiere comprar</td>
-      <td>
-      <ul>
-  <li><b>Categoria: </b> Mascotas</li>
-  <li><b>Ubicacion: </b> cartago</li>
-  <li><b>Domicilio Incluido: </b> Si</li>
-  <li><b>Garantia: </b> No</li>
-  <li><b>Año: </b> 2021</li>
-</ul>
-          </td>
-      <td>Ever fallen in love (with someone you shouldn't've)</td>
-      <td><button type='button' className='botonproductoagregar add '> <i className='bx bx-pencil'></i></button><button type='button' className='botonproductoagregar delete'><i className='bx bxs-trash-alt' ></i></button></td>
-    </tr>
+      {(productos.length > 0)?
+              productos.map((producto) =>(
+                <Cajaproductosubidos key={producto.pid} Producto={producto}/>
+              ))
+            : <div className='ceroordenar'><h2>ingresa tu producto</h2></div>}
+  
     <tr>
       <th scope="row"><img src='https://previews.123rf.com/images/eugenius777/eugenius7771610/eugenius777161000057/64283057-fondo-geom%C3%A9trico-abstracto-de-tonos-marrones-rombo-y-formas-cuadradas.jpg'></img></th>
       <td>titulo de producto que se quiere comprar</td>

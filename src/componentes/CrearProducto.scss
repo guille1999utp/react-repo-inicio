@@ -1,4 +1,5 @@
 .form-agregar-producto{
+    min-height: 100vh;
     width: 100vw;
     background: rgb(235, 235, 235);
     margin: 0 auto;
@@ -13,7 +14,7 @@
         padding: 20px;
         max-width: 1280px;
         background-color: white;
-        .bxs-folder-plus{
+        .bxs-folder-plus,.bxs-message-square-x{
             position: absolute;
             right: 10px;
             font-size: 40px;

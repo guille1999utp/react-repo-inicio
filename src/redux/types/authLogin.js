@@ -4,6 +4,7 @@ export const types = {
   logout: '[Auth] logout',
   UpdateFoto: '[Auth] UpdateFoto',
   RecibirFotos: '[Auth] RecibirFotos',
-  Eliminarfoto: '[Auth] eliminarfoto'
+  Eliminarfoto: '[Auth] eliminarfoto',
+  
 
 }

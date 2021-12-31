@@ -14,7 +14,7 @@ function Configuracion() {
   const [guardarboton, setguardar] = useState(false);
   const [guardarfoto, setguardarfoto] = useState(false);
 
-  const [state, setState] = useState({
+const [state, setState] = useState({
 Cordenadas: '',
 Direccion:'',
 Barrio:'',

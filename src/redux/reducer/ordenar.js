@@ -22,7 +22,6 @@ import { types } from '../types/ordenar';
             return {
                 ...state,
                 producto: state.producto.filter(function(producto){
-                    console.log(producto)
                     return action.payload !== producto.oid;
                   })
             }

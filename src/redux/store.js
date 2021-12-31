@@ -3,13 +3,15 @@ import results from "./reducer/results";
 import infoUsuario from "./reducer/usuario";
 import chat from "./reducer/chat";
 import ordenar from "./reducer/ordenar";
+import productos from "./reducer/productos";
 
 
 const reducer = combineReducers({
 results,
 chat,
 infoUsuario,
-ordenar
+ordenar,
+productos
 });
 
 const store = createStore(

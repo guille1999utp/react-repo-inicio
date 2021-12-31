@@ -23,3 +23,5 @@ export const regenerate = () =>({
   type: types.RecibirFotos,
   payload: urleliminar
  })
+
+ 
