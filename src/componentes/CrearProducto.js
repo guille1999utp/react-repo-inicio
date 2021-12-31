@@ -14,7 +14,7 @@ const [NewProducto, setNewProducto] = useState({
     Ubicacion:'',
     Domicilio: '',
     Garantia: '',
-    Año: '',
+    Age: '',
     descripsion: ''
 });
 const [urlmas, setUrl] = useState({
@@ -35,10 +35,10 @@ const onChangeMensaje = (e) => {
       setNewProducto({
         titulo:'',
         Categoria:'',
-        Ubicacion:'',
+        Ubicaion:'',
         Domicilio: '',
         Garantia: '',
-        Año: '',
+        Age: '',
         descripsion: ''
     })
   }
@@ -52,7 +52,6 @@ const onChangeMensaje = (e) => {
 
   const onSubmit = async(e) => {
     e.preventDefault();
-    console.log('entra')
   try{
     const url = (urlmas.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg")? await UploadPhoto(urlmas):urlmas;
     socket.emit('producto',{
@@ -117,7 +116,7 @@ Swal.fire({
 <option>Electrodomesticos</option>
 <option>Tecnologia</option>
 </select></li>
-  <li><b>Ubicacion: </b> <select name="Ubicacion" onChange={onChangeMensaje} value={NewProducto.Ubicacion}>
+  <li><b>Ubicacion: </b> <select name="Ubicaion" onChange={onChangeMensaje} value={NewProducto.Ubicaion}>
 <option>Cartago</option>
 <option>Pereira</option>
 <option>Manizales</option>
@@ -130,7 +129,7 @@ Swal.fire({
 <option value={true}>Si</option>
 <option value={false}>No</option>
 </select></li>
-  <li><b>Año: </b>   <select name="Año" onChange={onChangeMensaje} value={NewProducto.Año}>
+  <li><b>Año: </b>   <select name="Age" onChange={onChangeMensaje} value={NewProducto.año}>
 <option>2011</option>
 <option>2012</option>
 <option>2013</option>
