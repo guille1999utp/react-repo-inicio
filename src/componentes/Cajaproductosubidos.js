@@ -16,19 +16,32 @@ const Cajaproductosubidos = ({Producto}) => {
             });
 
     const eliminarproducto = () =>{
+        Swal.fire({
+            title: 'estas seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Sí, bórralo!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                socket.emit('productoeliminar',{
+                    uidfoto:Producto.fotosdescripsion,
+                    Producto
+                    });
+        
+                 Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Foto eliminada con exito',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+            }
+          })
 
-        socket.emit('productoeliminar',{
-            uidfoto:Producto.fotosdescripsion,
-            Producto
-            });
-
-         Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Foto Actualizada',
-                showConfirmButton: false,
-                timer: 1500
-              })
+        
     }
     return (
     <tr>
