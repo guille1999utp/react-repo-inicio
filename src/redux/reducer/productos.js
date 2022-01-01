@@ -15,8 +15,21 @@ import { types } from '../types/productos';
          case types.agregarProducto:
               return {
                   ...state,
-                   productos: [action.payload,state.productos]
+                   productos: [action.payload,...state.productos]
              }
+        case types.modificarproducto:
+              return {
+                  ...state,
+                   productos: state.productos.map(function(producto){
+                       if(action.payload.pid !== producto.pid){
+                        return producto;
+                       }else{
+                           console.log(action.payload)
+                        return action.payload;
+                       }
+             })
+            }
+
         case types.eliminaProducto:
              return {
                 ...state,

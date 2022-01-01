@@ -11,6 +11,12 @@ export const eliminarproducto = (pid) =>({
 
 })
 
+export const modificarproducto = (producto) =>({
+    type: types.modificarproducto,
+    payload: producto
+
+})
+
 export const añadirproducto = (producto) =>({
     type: types.agregarProducto,
     payload: producto

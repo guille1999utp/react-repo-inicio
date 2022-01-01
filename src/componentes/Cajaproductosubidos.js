@@ -5,15 +5,9 @@ import Swal from 'sweetalert2'
 
 const Cajaproductosubidos = ({Producto}) => {
     const {socket} = useContext(SocketContext);
-    const [state, setState] = useState({
-        titulo:'',
-        Categoria:'Repuestos',
-        Ubicaion:'Cartago',
-        Domicilio: '',
-        Garantia: '',
-        Age: '2022',
-        descripsion: ''
-            });
+    const initialstate = Producto
+    const [state, setState] = useState(initialstate);
+    const [Modificar, setModificar] = useState(false);
 
     const eliminarproducto = () =>{
         Swal.fire({
@@ -40,24 +34,108 @@ const Cajaproductosubidos = ({Producto}) => {
                       })
             }
           })
-
-        
     }
+    const botonmodificar = () =>{
+      setModificar(!Modificar);
+      if(false === Modificar){
+        setState(initialstate);
+      }
+    }
+    const guardar = () =>{
+      if (Modificar === true) {
+        socket.emit('productomodificar',{
+          Producto:state
+          });
+        
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Informacion Guardada'
+          })
+        
+          setModificar(!Modificar)
+    }  
+    }
+    const onChangeMensaje = (e) => {
+        const { name, value } = e.target;
+        setState({
+          ...state,
+          [name]: value,
+        });
+        console.log(state)
+      };
+      const onChangedetalles= (e) => {
+        const { name, value } = e.target;
+        setState({
+          ...state,
+          detalles:[{...state.detalles[0],[name]: value}],
+        });
+        console.log(state)
+      };
+
     return (
     <tr>
     <th scope="row"><img src={Producto.fotosdescripsion[0].secure_url}></img></th>
-    <td>{Producto.titulo}</td>
+    {(Modificar === false)?<td>{Producto.titulo}</td>:null}
+    {(Modificar === true)?<td><textarea className='textproducto' value={state.titulo} name='titulo' maxLength={100} onChange={onChangeMensaje}></textarea></td>:null}
     <td>
     <ul>
-<li><b>Categoria: </b> {Producto.detalles[0].Categoria}</li>
-<li><b>Ubicacion: </b> {Producto.detalles[0].Ubicaion}</li>
-<li><b>Domicilio Incluido: </b> {(Producto.detalles[0].DomicilioIncluido)?'si':'no'}</li>
-<li><b>Garantia: </b> {(Producto.detalles[0].Garantia)?'si':'no'}</li>
-<li><b>Año: </b> {Producto.detalles[0].Age}</li>
+ {(Modificar === false)?<li><b>Categoria: </b> {Producto.detalles[0].Categoria}</li>:null}
+ {(Modificar === true)?<li><b>Categoria: </b><select name="Categoria" onChange={onChangedetalles} value={state.detalles[0].Categoria}>
+<option>Repuestos</option>
+<option>Mascotas</option>
+<option>Maquillaje</option>
+<option>Electrodomesticos</option>
+<option>Tecnologia</option>
+</select></li>:null}
+{(Modificar === false)?<li><b>Ubicacion: </b> {Producto.detalles[0].Ubicaion}</li>:null}
+{(Modificar === true)?<li><b>Ubicacion: </b> <select name="Ubicaion" onChange={onChangedetalles} value={state.detalles[0].Ubicaion}>
+<option>Cartago</option>
+<option>Pereira</option>
+<option>Manizales</option>
+</select></li>:null}
+{(Modificar === false)?<li><b>Domicilio Incluido: </b> {(Producto.detalles[0].DomicilioIncluido)?'si':'no'}</li>:null}
+{(Modificar === true)?<li><b>Domicilio Incluido: </b>  <select name="DomicilioIncluido" onChange={onChangedetalles} value={!!state.detalles[0].DomicilioIncluido}>
+<option value={true}>Si</option>
+<option value={false}>No</option>
+</select></li>:null}
+{(Modificar === false)?<li><b>Garantia: </b> {(Producto.detalles[0].Garantia)?'si':'no'}</li>:null}
+{(Modificar === true)?<li><b>Garantia: </b>   <select name="Garantia" onChange={onChangedetalles} value={!!state.detalles[0].Garantia}>
+<option value={true}>Si</option>
+<option value={false}>No</option>
+</select></li>:null}
+{(Modificar === false)?<li><b>Año: </b> {Producto.detalles[0].Age}</li>:null}
+{(Modificar === true)?<li><b>Año: </b>   <select name="Age" onChange={onChangedetalles} value={state.detalles[0].Age}>
+<option>2011</option>
+<option>2012</option>
+<option>2013</option>
+<option>2014</option>
+<option>2015</option>
+<option>2016</option>
+<option>2017</option>
+<option>2018</option>
+<option>2019</option>
+<option>2020</option>
+<option>2021</option>
+<option>2022</option>
+</select></li>:null}
 </ul>
         </td>
-    <td>{Producto.textdescripsion[0]}</td>
-    <td><button type='button' className='botonproductoagregar add '> <i className='bx bx-pencil'></i></button><button type='button' onClick={eliminarproducto} className='botonproductoagregar delete'><i className='bx bxs-trash-alt' ></i></button></td>
+        {(Modificar === false)?<td>{Producto.textdescripsion}</td>:null}
+    {(Modificar === true)?<td><textarea className='textproducto' value={state.textdescripsion} name='textdescripsion' maxLength={800} onChange={onChangeMensaje}></textarea></td>:null}
+    {(Modificar === false)?<td><button onClick={botonmodificar} type='button' className='botonproductoagregar add '> <i className='bx bx-pencil'></i></button><button type='button' onClick={eliminarproducto} className='botonproductoagregar delete'><i className='bx bxs-trash-alt' ></i></button></td>:null}
+    {(Modificar === true)?<td><button onClick={guardar} type='button' className='botonproductoagregar add '>Guardar</button><button onClick={botonmodificar} type='button' className='botonproductoagregar delete'> cancelar</button></td>:null}
   </tr>
     );
 }
