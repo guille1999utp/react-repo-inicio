@@ -2,7 +2,7 @@
 .gridproducto{
     max-width: 1200px;
     display: grid;
-    grid-template-columns:2fr 1fr 0f;
+    grid-template-columns:10fr 1fr ;
     background: white;
     padding: 20px 100px;
     margin: 20px auto;
@@ -16,21 +16,30 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 10px auto;
   margin-left: 10%;
   margin-right: 10%;
+  i{
+    font-size: 60px;
+    margin: auto 5px;
+    @media screen and (max-width:541px){
+      max-height: 25px;
+        }
+        cursor: pointer;
+  }
 }
 .listmorefotos{
   max-height:50px;
-  margin: 5px;
-  margin-bottom: 0px;
+  margin: auto 5px;
   border: solid grey 2px;
-  margin-top: 10px;
   @media screen and (max-width:541px){
     max-height: 25px;
       }
       cursor: pointer;
 }
 .cajafotoproducto{
+  background-color: rgb(245, 244, 244) ;
+
   text-align: center;
 }
 .infocom{

@@ -168,7 +168,6 @@ const Cajaproductosubidos = ({Producto}) => {
     {(Modificar === true)?<td><button onClick={guardar} type='button' className='botonproductoagregar add '>Guardar</button><button onClick={botonmodificar} type='button' className='botonproductoagregar delete'> cancelar</button></td>:null}
   </tr>
   <input type="file" id= { `fileproductoeditar${Producto.pid}`} className='fileproductoeditar' aria-label="File browser example" onChange={onFilesave} ></input>
-
 </>
     );
 }

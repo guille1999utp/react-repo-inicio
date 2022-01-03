@@ -1,15 +1,77 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Producto.scss'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect,useCallback} from 'react'
 import Slider from "react-slick";
 import { Link  } from 'react-router-dom';
 import Footer from "./Footer";
+import { useParams } from 'react-router-dom'
+import { fetchstoken } from '../helpers/fetchmetod';
 
 function Producto({history}) {
 
+  let { id } = useParams()
+
   const [Width, setWidth] = useState(window.innerWidth);  
-  const [Foto, setFoto] = useState('https://cdn.pocket-lint.com/r/s/1200x/assets/images/142227-phones-review-iphone-x-review-photos-image1-ahdsiyvum0.jpg');  
+  const [Foto, setFoto] = useState({});  
+  const [agregarfotos, setAgregarfotos] = useState({
+    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
+    public_id: 0
+  });
+  const [state, setState] = useState({
+    ok: true,
+    textdescripsion: [
+        "asd"
+    ],
+    fotosdescripsion: [
+        {
+            secure_url: 'https://cdn.pocket-lint.com/r/s/1200x/assets/images/142227-phones-review-iphone-x-review-photos-image1-ahdsiyvum0.jpg',
+        }
+    ],
+    titulo: "ada",
+    detalles: [
+        {
+            Age: "2021",
+            Categoria: "Repuestos",
+            Ubicaion: "Pereira",
+            DomicilioIncluido: false,
+            Garantia: false
+        }
+    ]
+})
+
+  const cargarProductos = useCallback(
+    async() => {
+      const infoproducto = await fetchstoken(`producto/${id}`);
+      if(infoproducto.ok){
+        setState(infoproducto);
+        setFoto(infoproducto.fotosdescripsion[0]);
+        return  true;
+      }else{
+        return  false;
+      }
+    }, [setState,setFoto,id],
+  )
+    useEffect(() => {
+      cargarProductos();
+    }, [cargarProductos])
+
+
+    const onFilefoto  = () =>{
+      document.querySelector('#filedes').click();
+    }
+
+    const onFilesavefoto  = async(e) =>{
+      const file = e.target.files[0];
+      setAgregarfotos(file);
+    }
+
+
+
+
+
+
+
 
  const cambiarTamaño = ()=>{
     setWidth(window.innerWidth);
@@ -38,7 +100,8 @@ function Producto({history}) {
          }
 
      const onOverFoto = (url) =>{
-       setFoto(url.nativeEvent.srcElement.currentSrc);
+       setFoto({
+        secure_url:url.nativeEvent.srcElement.currentSrc });
      }
 
 
@@ -50,36 +113,29 @@ function Producto({history}) {
     <div>
         <div className='fleximg'>
           <div className='cajafotoproducto'>
-        <img id="fotoOver" className='fotoproducto' src={Foto} alt='producto'/>
+        <img id="fotoOver" className='fotoproducto' src={Foto.secure_url} alt='producto'/>
         </div>
         <div className='morefotos'>
-        <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.8uu1-Xja_qIE5F2ge5zyWQHaLT?pid=ImgDet' alt='producto' onClick={onOverFoto}/>
-        <img className='listmorefotos' src='https://th.bing.com/th/id/OIP.PH4ArjoOnTFboybCIfrOMAHaNu?' alt='producto' onClick={onOverFoto}/>
-        <img className='listmorefotos' src='https://i.pinimg.com/originals/64/b7/35/64b735fe92c580cad36351a26d4b13c9.jpg' alt='producto'  onClick={onOverFoto}/>
-        <img className='listmorefotos' src='https://www.xtrafondos.com/wallpapers/edificios-ciudad-de-noche-3183.jpg' alt='producto' onClick={onOverFoto} />
-      
+          {state.fotosdescripsion.map((foto) =>(
+            <img className='listmorefotos' src={foto.secure_url} alt='producto' onClick={onOverFoto}/>
+          ))}
+        <i className='bx bxs-plus-square'></i>
         </div>
        
 
      <div className='infopro'>
-        <h3> titulo de producto que se quiere comprar</h3>
+        <h3>{state.titulo}</h3>
         <h4>Detalles</h4>
         <div className='flexcara'>
-        <p><strong>Año:</strong> 2021</p>
-        <p><strong>Tamaño:</strong> 10x50</p>
-        <p><strong>Peso:</strong> 10kg</p>
-        <p><strong>Categoria:</strong> motos</p>
-        <p><strong>Ubicaion:</strong> cartago</p>
-        <p><strong>Distancia:</strong> 230m</p>
-        <p><strong>Domicilio Incluido:</strong> si</p>
-        <p><strong>Garantia:</strong> no</p>
+        <p><strong>Año:</strong> {state.detalles[0].Age}</p>
+        <p><strong>Categoria:</strong> {state.detalles[0].Categoria}</p>
+        <p><strong>Ubicaion:</strong> {state.detalles[0].Ubicaion}</p>
+        <p><strong>Domicilio Incluido:</strong>{(state.detalles[0].DomicilioIncluido === 'true')?'si':'no'}</p>
+        <p><strong>Garantia:</strong> {(state.detalles[0].Garantia === 'true')?'si':'no'}</p>
         </div>
         <h4>Características del producto</h4>
         <ul>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</li>
-
+            <li>{state.textdescripsion[0]}</li>
         </ul>
     </div>
     </div>
