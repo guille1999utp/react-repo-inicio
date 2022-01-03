@@ -7,6 +7,9 @@
     #fileproducto{
         display: none;
     }
+    .fileproductoeditar{
+        display: none;
+    }
     div{
         position: relative;
         margin: 50px auto;
@@ -75,7 +78,7 @@
             }
         }
         th{
-            img{
+            .hover{
                 &:hover{
                     opacity: 0.5;
                     cursor: pointer;

@@ -24,7 +24,6 @@ import { types } from '../types/productos';
                        if(action.payload.pid !== producto.pid){
                         return producto;
                        }else{
-                           console.log(action.payload)
                         return action.payload;
                        }
              })

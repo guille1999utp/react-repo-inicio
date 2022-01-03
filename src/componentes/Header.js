@@ -48,7 +48,7 @@ const Header = () => {
  const state =  useSelector(user => user.infoUsuario);
   return (
     <>
-    <div class="nav-1">
+    <div className="nav-1">
     <nav className='menu'>
       <label className='logo'><Link to='/' onClick={ ()=> onhandledmenuback(9) }>{ (Width > 488)?'CompraRepuestos':'CR'}</Link></label>
       <div className='formbusqueda'>

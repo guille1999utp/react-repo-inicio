@@ -1,14 +1,14 @@
 import React,{useState,useContext} from 'react';
 import { SocketContext } from '../redux/context/contextchat'
 import Swal from 'sweetalert2'
-
+import { UploadPhoto } from "../helpers/cloudinaryUpload";
 
 const Cajaproductosubidos = ({Producto}) => {
     const {socket} = useContext(SocketContext);
     const initialstate = Producto
     const [state, setState] = useState(initialstate);
     const [Modificar, setModificar] = useState(false);
-
+    const [urlmas, setUrl] = useState(Producto.fotosdescripsion[0]);
     const eliminarproducto = () =>{
         Swal.fire({
             title: 'estas seguro?',
@@ -35,16 +35,27 @@ const Cajaproductosubidos = ({Producto}) => {
             }
           })
     }
+
     const botonmodificar = () =>{
       setModificar(!Modificar);
       if(false === Modificar){
         setState(initialstate);
       }
     }
-    const guardar = () =>{
+    const guardar = async() =>{
       if (Modificar === true) {
+        let url = null;
+        if(((!!urlmas.public_id)?urlmas.public_id:null) === initialstate.fotosdescripsion[0].public_id){ 
+         }else{
+          url = await UploadPhoto(urlmas);
+          setUrl({
+            secure_url: url.secure_url,
+            public_id: url.public_id
+        })
+         }
         socket.emit('productomodificar',{
-          Producto:state
+          Producto:state,
+          url
           });
         
           const Toast = Swal.mixin({
@@ -63,7 +74,7 @@ const Cajaproductosubidos = ({Producto}) => {
             icon: 'success',
             title: 'Informacion Guardada'
           })
-        
+          
           setModificar(!Modificar)
     }  
     }
@@ -81,12 +92,31 @@ const Cajaproductosubidos = ({Producto}) => {
           ...state,
           detalles:[{...state.detalles[0],[name]: value}],
         });
-        console.log(state)
       };
 
+    
+      const onFile  = () =>{
+        Swal.fire({
+          title: 'Quieres cambiar la foto?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: '¡Sí, Editar!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            document.querySelector(`#fileproductoeditar${Producto.pid}`).click();
+          }
+        })
+      }
+      const onFilesave  = async(e) =>{
+        const file =  e.target.files[0];
+        setUrl(file);
+      }
     return (
+      <>
     <tr>
-    <th scope="row"><img src={Producto.fotosdescripsion[0].secure_url}></img></th>
+    <th scope="row"><img alt={ `imagenproductomodificado${Producto.pid}`} className={(Modificar === true)?'hover':null} src={Producto.fotosdescripsion[0].secure_url} onClick={(Modificar === true)?onFile:null}></img></th>
     {(Modificar === false)?<td>{Producto.titulo}</td>:null}
     {(Modificar === true)?<td><textarea className='textproducto' value={state.titulo} name='titulo' maxLength={100} onChange={onChangeMensaje}></textarea></td>:null}
     <td>
@@ -137,6 +167,9 @@ const Cajaproductosubidos = ({Producto}) => {
     {(Modificar === false)?<td><button onClick={botonmodificar} type='button' className='botonproductoagregar add '> <i className='bx bx-pencil'></i></button><button type='button' onClick={eliminarproducto} className='botonproductoagregar delete'><i className='bx bxs-trash-alt' ></i></button></td>:null}
     {(Modificar === true)?<td><button onClick={guardar} type='button' className='botonproductoagregar add '>Guardar</button><button onClick={botonmodificar} type='button' className='botonproductoagregar delete'> cancelar</button></td>:null}
   </tr>
+  <input type="file" id= { `fileproductoeditar${Producto.pid}`} className='fileproductoeditar' aria-label="File browser example" onChange={onFilesave} ></input>
+
+</>
     );
 }
 export default Cajaproductosubidos;

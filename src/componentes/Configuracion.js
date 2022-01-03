@@ -236,7 +236,7 @@ Swal.fire({
 
         <button type='button'  className='buttonr' onClick={guardar}>{ (guardarboton === false) ? <i className='bx bxs-pencil'></i>: <i className='bx bx-save'></i>}</button>
       {(guardarboton === true || guardarfoto ===true)?<button type='button' className='buttonr buttontop' onClick={cancelar} ><i className='bx bx-x'></i></button>:null}
-        <button type='button'  className='buttonr buttonfoto' onClick={guardarfotosync}>{ (guardarfoto === false) ? <i class='bx bxs-camera' onClick={onFilefoto}></i>: <i className='bx bx-save'></i>}</button>
+        <button type='button'  className='buttonr buttonfoto' onClick={guardarfotosync}>{ (guardarfoto === false) ? <i className='bx bxs-camera' onClick={onFilefoto}></i>: <i className='bx bx-save'></i>}</button>
       <div className='detallesusuario'>
          <h2>Detalles</h2>
          <ul>

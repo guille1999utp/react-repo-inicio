@@ -22,7 +22,7 @@ export const Footer = () => {
         </ul>
         </div>
         
-        <div class="row">
+        <div className="row">
         CompraRepuestos Copyright © 2021 CompraRepuestos - Todos Los Derechos Reservados || Designed By: Mahesh 
         </div>
         </div>

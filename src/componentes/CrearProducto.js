@@ -61,6 +61,11 @@ const onChangeMensaje = (e) => {
         Age: '2022',
         descripsion: ''
     })
+    setUrl(
+      {
+      secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg",
+      public_id: 0
+  })
   }
   const onFilesave  = async(e) =>{
     const file = e.target.files[0];
@@ -118,7 +123,6 @@ Swal.fire({
     return (
     <>
         <div className='form-agregar-producto'>
-        <input type="file" id="fileproducto" aria-label="File browser example" onChange={onFilesave} ></input>
             <div>
             <i className={agregar?'bx bxs-message-square-x':'bx bxs-folder-plus'} onClick={cambiar}></i>
            <table summary="Mis Productos">
@@ -133,11 +137,9 @@ Swal.fire({
     </tr>
   </thead>
   <tbody>
-
-
       {(agregar === true)?
        <tr>
-      <th scope="row"><img src='https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg' onClick={onFile}></img></th>
+      <th scope="row"><img className='hover' src='https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg' onClick={onFile} alt='productousers'></img></th>
       <td><textarea className='textproducto' value={NewProducto.titulo} name='titulo' maxLength={100} onChange={onChangeMensaje}></textarea></td>
       <td>
       <ul>
@@ -185,39 +187,8 @@ Swal.fire({
               productos.map((producto) =>(
                 <Cajaproductosubidos key={producto.pid} Producto={producto}/>
               ))
-            : <div className='ceroordenar'><h2>ingresa tu producto</h2></div>}
+            : null}
   
-    <tr>
-      <th scope="row"><img src='https://previews.123rf.com/images/eugenius777/eugenius7771610/eugenius777161000057/64283057-fondo-geom%C3%A9trico-abstracto-de-tonos-marrones-rombo-y-formas-cuadradas.jpg'></img></th>
-      <td>titulo de producto que se quiere comprar</td>
-      <td>
-      <ul>
-  <li><b>Categoria: </b> Mascotas</li>
-  <li><b>Ubicacion: </b> cartago</li>
-  <li><b>Domicilio Incluido: </b> Si</li>
-  <li><b>Garantia: </b> No</li>
-  <li><b>Año: </b> 2021</li>
-</ul>
-          </td>
-      <td>London Calling</td>
-      <td><button type='button' className='botonproductoagregar add '><i className='bx bx-pencil'></i></button><button type='button' className='botonproductoagregar delete'> <i className='bx bxs-trash-alt' ></i></button></td>
-    </tr>
-    <tr>
-      <th scope="row"><img src='https://www.dzoom.org.es/wp-content/uploads/2011/08/insp-cuadradas-5.jpg'></img></th>
-      <td>titulo de producto que se quiere comprar titulo de producto que se quiere comprar</td>
-      <td>
-      <ul>
-  <li><b>Categoria: </b> Mascotas</li>
-  <li><b>Ubicacion: </b> cartago</li>
-  <li><b>Domicilio Incluido: </b> Si</li>
-  <li><b>Garantia: </b> No</li>
-  <li><b>Año: </b> 2021</li>
-</ul>
-          </td>
-      <td>No More Heroes</td>
-      <td><button type='button' className='botonproductoagregar add '><i className='bx bx-pencil'></i></button><button type='button' className='botonproductoagregar delete'><i className='bx bxs-trash-alt' ></i></button></td>
-
-    </tr>
   </tbody>
  {/*  <tfoot>
     <tr>
@@ -226,8 +197,9 @@ Swal.fire({
     </tr>
   </tfoot> */}
 </table>
-</div>
 
+</div>
+<input type="file" id="fileproducto" aria-label="File browser example" onChange={onFilesave} ></input>
         </div>
 
         </>
