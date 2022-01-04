@@ -2,6 +2,7 @@ import { types } from '../types/productos';
 
  const initialState = {
      productos: [], 
+     fotosproducto:[]
  }
 
  function Reducer ( state= initialState, action ){
@@ -12,11 +13,28 @@ import { types } from '../types/productos';
                  ...state,
                  productos: action.payload
              }
+        case types.cargarfotosproductos:
+             return {
+                  ...state,
+                  fotosproducto: action.payload
+                }
          case types.agregarProducto:
               return {
                   ...state,
                    productos: [action.payload,...state.productos]
              }
+         case types.eliminarfotoproducto:
+              return {
+                   ...state,
+                   fotosproducto: state.fotosproducto.filter(function(producto){
+                    return action.payload.public_id !== producto.public_id;
+                  })
+               }
+         case types.agregarFotoProducto:
+              return {
+                    ...state,
+                    fotosproducto: [...state.fotosproducto,action.payload]
+                 }
         case types.modificarproducto:
               return {
                   ...state,

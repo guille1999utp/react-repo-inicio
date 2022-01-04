@@ -1,16 +1,28 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Producto.scss'
-import React, {useState, useEffect,useCallback} from 'react'
+import React, {useState, useEffect,useCallback,useContext} from 'react'
 import Slider from "react-slick";
 import { Link  } from 'react-router-dom';
 import Footer from "./Footer";
 import { useParams } from 'react-router-dom'
 import { fetchstoken } from '../helpers/fetchmetod';
+import { UploadPhoto } from "../helpers/cloudinaryUpload";
+import { SocketContext } from '../redux/context/contextchat'
+import Swal from 'sweetalert2'
+import {useSelector, useDispatch } from 'react-redux';
+import { añadirfotosproducto } from '../redux/actions/productos';
+import CajaProductoFotos from "./CajaProductoFotos";
+
 
 function Producto({history}) {
+  const dispatch = useDispatch();
+
+  const miuid =  useSelector(yo => yo.infoUsuario.uid);
+  const fotos =  useSelector(fotos => fotos.productos.fotosproducto);
 
   let { id } = useParams()
+  const {socket} = useContext(SocketContext);
 
   const [Width, setWidth] = useState(window.innerWidth);  
   const [Foto, setFoto] = useState({});  
@@ -45,20 +57,23 @@ function Producto({history}) {
       const infoproducto = await fetchstoken(`producto/${id}`);
       if(infoproducto.ok){
         setState(infoproducto);
+        dispatch(añadirfotosproducto(infoproducto.fotosdescripsion));
         setFoto(infoproducto.fotosdescripsion[0]);
         return  true;
       }else{
         return  false;
       }
-    }, [setState,setFoto,id],
+    }, [setState,dispatch,id],
   )
+  
+
     useEffect(() => {
       cargarProductos();
     }, [cargarProductos])
 
 
     const onFilefoto  = () =>{
-      document.querySelector('#filedes').click();
+      document.querySelector('#fileperfilmas').click();
     }
 
     const onFilesavefoto  = async(e) =>{
@@ -67,10 +82,45 @@ function Producto({history}) {
     }
 
 
-
-
-
-
+    const onSubmit = async() => {
+      if(fotos.length <5){
+        try{
+          const url = (agregarfotos.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp")? await UploadPhoto(agregarfotos):agregarfotos;
+          socket.emit('subirfotoadicionalproducto',{
+            url,
+            pid: id
+               })
+            setAgregarfotos({
+              secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
+              public_id: 0
+            });
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Foto Subida',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      }catch(err){
+        console.log(err)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Sucedio un Error Al Subir La Foto',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+      }else{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'No se Aceptan Mas de 5 fotos',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    };
 
 
  const cambiarTamaño = ()=>{
@@ -104,25 +154,35 @@ function Producto({history}) {
         secure_url:url.nativeEvent.srcElement.currentSrc });
      }
 
+     const reset  = () =>{
+      setAgregarfotos({
+        secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
+        public_id: 0
+      })
+      }
+ 
 
   return (
   <>
 <div>
- 
     <div className='gridproducto'>
+    <input type="file" id="fileperfilmas" aria-label="File browser example" onChange={onFilesavefoto} ></input>
     <div>
         <div className='fleximg'>
           <div className='cajafotoproducto'>
         <img id="fotoOver" className='fotoproducto' src={Foto.secure_url} alt='producto'/>
         </div>
         <div className='morefotos'>
-          {state.fotosdescripsion.map((foto) =>(
-            <img className='listmorefotos' src={foto.secure_url} alt='producto' onClick={onOverFoto}/>
+          {fotos.map((foto) =>(
+            <CajaProductoFotos url={foto} func={onOverFoto} pid={id} state={state} />
           ))}
-        <i className='bx bxs-plus-square'></i>
+         
+          {(state.de === miuid)?<i className='bx bxs-plus-square' onClick={onFilefoto}></i>:null}
         </div>
-       
-
+       <div className="centerboton">
+       {(agregarfotos.public_id !== 0)?<button type='button' className='botonguardarperfil' onClick={onSubmit}>Guardar</button>: null}
+       {(agregarfotos.public_id !== 0)?<button type='button' className='botonguardarperfil' onClick={reset}>Cancelar</button>: null}
+       </div>
      <div className='infopro'>
         <h3>{state.titulo}</h3>
         <h4>Detalles</h4>

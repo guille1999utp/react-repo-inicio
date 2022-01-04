@@ -6,12 +6,35 @@
     background: white;
     padding: 20px 100px;
     margin: 20px auto;
+    #fileperfilmas{
+      display: none;
+    }
 }
 .fleximg .fotoproducto {
   max-height: 550px;
   max-width: 90%;
 }
-
+.fleximg{
+  .centerboton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .botonguardarperfil{
+      padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 18px;
+    background: rgb(26, 24, 24);
+    color: whitesmoke;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    &:hover{
+      cursor: pointer;
+      background: whitesmoke;
+      color: rgb(26, 24, 24);;
+    }
+    }
+  }
+}
 .morefotos{
   display: flex;
   flex-direction: row;
@@ -31,11 +54,13 @@
 .listmorefotos{
   max-height:50px;
   margin: auto 5px;
-  border: solid grey 2px;
   @media screen and (max-width:541px){
     max-height: 25px;
       }
       cursor: pointer;
+      &:hover{
+        opacity: 0.6;
+      }
 }
 .cajafotoproducto{
   background-color: rgb(245, 244, 244) ;

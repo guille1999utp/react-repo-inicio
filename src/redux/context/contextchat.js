@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { regenerate,loginstate,actualizarfoto, subidafotos, borrarfotos } from '../actions/auth';
 import { userchat,obtenermensajes } from '../actions/chat';
 import { subirOrden, eliminarorden , recibirsolicitud, eliminarpedido} from '../actions/ordenar';
-import { eliminarproducto ,añadirproducto, modificarproducto} from '../actions/productos';
+import { eliminarproducto ,añadirproducto, modificarproducto, agregarfotoproducto, eliminarfotoproducto} from '../actions/productos';
 import { fetchCToken } from '../../helpers/fetchmetod';
 import { useSocket } from "../../SocketsConnection/useSocket";
 import { scrollToBottomAnimated } from '../../helpers/scrollToBottom';
@@ -73,11 +73,24 @@ export const SocketProvider = ({ children }) => {
       dispatch(eliminarproducto(pid));
     })
   }, [ socket, dispatch]);
-
+  
+  useEffect(() => {
+  
+    socket?.on( 'subirfotoadicionalproducto', (producto) => {
+      dispatch(agregarfotoproducto(producto));
+    })
+  }, [ socket, dispatch]);
   useEffect(() => {
   
     socket?.on( 'producto', (product) => {
       dispatch(añadirproducto(product));
+    })
+  }, [ socket, dispatch]);
+
+  useEffect(() => {
+  
+    socket?.on( 'fotoproductoeliminar', (urlconver) => {
+      dispatch(eliminarfotoproducto(urlconver));
     })
   }, [ socket, dispatch]);
 
