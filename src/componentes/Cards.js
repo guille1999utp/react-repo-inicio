@@ -1,10 +1,9 @@
 import "./Cards.scss";
 
-function Cards({ id, history, image, mobile, actual_price }) {
+function Cards({ id, history, image,domicilio, mobile, actual_price }) {
   const redirect = () => {
     history.push(`/producto/${id}`);
   };
-
   return (
     <>
       <div className="card" onClick={redirect}>
@@ -15,10 +14,13 @@ function Cards({ id, history, image, mobile, actual_price }) {
           <div className="left">
             <h2 className="bold">{mobile}</h2>
             <br></br>
-            <span className="price">{"$" + actual_price}</span>
+            <span className="priceproductos">{"$" + actual_price}</span>
 
             <br></br>
-            <span className="disp">Envio Gratis</span>
+
+            {(domicilio === 'true')?
+              <span className="disp">Envio Gratis</span>:null
+              }
           </div>
         </div>
       </div>

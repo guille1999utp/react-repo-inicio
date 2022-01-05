@@ -11,13 +11,14 @@
 .card-body{
 	margin-top: 10px;
 }
-.price{
+.priceproductos{
 	color: #333;
     display: flex;
     font-size: 24px;
     font-weight: 400;
     margin-right: 8px;
     line-height: 1.25;
+	justify-content: space-between;
 }
 .disp{
 	color: rgb(4, 116, 13);
@@ -25,7 +26,7 @@
 	font-weight: 600;
 }
 .Cardcompleta { 
-	width: 80%;
+	width: 100%;
 	background: white;
 	margin:2rem;
 	grid-column: 2/8;
@@ -35,11 +36,18 @@
 	  margin-bottom: 8px;
   }
   .flex {
- 
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	
+  }
+  .centertextnoencontrado{
+	  height: 100%;
+	  justify-content: center;
+  }
+  .flex .h2noopcion{
+	  font-size: 40px;
+	  margin: auto;
   }
   
   .card {
@@ -106,6 +114,8 @@
 	.pagineCard{
 		display: flex;
 		flex-direction: column;
+		min-height: 81vh;
+
 	}
 	.margin-bottom{
 		font-size: 16px;
