@@ -27,7 +27,6 @@ const CajaProductoFotos = ({url, func,pid, state}) => {
           }
         })
        }
-       console.log(miusuario.uid,state)
     return (
         <img key={url.public_id} src={url.secure_url} alt='producto' onClick={(miusuario.uid === state.de )?deleteimagen: func}  className='listmorefotos'></img>
     )

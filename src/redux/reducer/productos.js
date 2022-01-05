@@ -2,7 +2,8 @@ import { types } from '../types/productos';
 
  const initialState = {
      productos: [], 
-     fotosproducto:[]
+     fotosproducto:[],
+     parrafosproducto:[]
  }
 
  function Reducer ( state= initialState, action ){
@@ -23,6 +24,16 @@ import { types } from '../types/productos';
                   ...state,
                    productos: [action.payload,...state.productos]
              }
+         case types.añadirProductoproducto:
+              return {
+                  ...state,
+                  parrafosproducto: [...state.parrafosproducto,action.payload]
+               }
+         case types.cargarparrafoproducto:
+              return {
+                  ...state,
+                  parrafosproducto: action.payload
+             }
          case types.eliminarfotoproducto:
               return {
                    ...state,
@@ -30,6 +41,15 @@ import { types } from '../types/productos';
                     return action.payload.public_id !== producto.public_id;
                   })
                }
+         case types.eliminarparrafoproducto:
+              return {
+                   ...state,
+                   parrafosproducto: state.parrafosproducto.filter(function(parrafo,i){
+                    if(i !== action.payload){
+                     return parrafo;
+                    }
+          })
+                 }
          case types.agregarFotoProducto:
               return {
                     ...state,

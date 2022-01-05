@@ -116,6 +116,7 @@ function Ordenar() {
               <span>descripsion</span>
               <br></br>
               <textarea
+              className="textareaordenar"
                 type="text"
                 id="descripsion"
                 placeholder="Descripsion"

@@ -17,6 +17,13 @@ export const eliminarfotoproducto = (fotouid) =>({
 
 })
 
+export const eliminarparrafoproducto = (index) =>({
+    type: types.eliminarparrafoproducto,
+    payload: index
+
+})
+
+
 export const agregarfotoproducto = (producto) =>({
     type: types.agregarFotoProducto,
     payload: producto
@@ -38,5 +45,17 @@ export const añadirproducto = (producto) =>({
 export const añadirfotosproducto = (fotos) =>({
     type: types.cargarfotosproductos,
     payload: fotos
+
+})
+
+export const cargarparrafoproducto = (parrafos) =>({
+    type: types.cargarparrafoproducto,
+    payload: parrafos
+
+})
+
+export const añadirProductoproducto = (parrafo) =>({
+    type: types.añadirProductoproducto,
+    payload: parrafo
 
 })

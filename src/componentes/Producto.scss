@@ -15,6 +15,21 @@
   max-width: 90%;
 }
 .fleximg{
+  .buttonagregarparrafo{
+    box-sizing: content-box;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 1px solid grey;
+    width: 70%;
+    padding: 10px;
+    &:hover{
+      cursor: pointer;
+      opacity: 0.6;
+    }
+  }
   .centerboton{
     display: flex;
     flex-direction: row;
@@ -27,12 +42,23 @@
     color: whitesmoke;
     margin-bottom: 20px;
     margin-left: 10px;
+    margin-top: 10px;
     &:hover{
       cursor: pointer;
       background: whitesmoke;
       color: rgb(26, 24, 24);;
     }
     }
+  }
+
+    .textareaparrafo{
+      box-sizing: border-box;
+      min-height: 200px;
+      padding: 10px;
+      font-size: 15px;
+      max-width:700px;
+      width:100% !important;
+      max-height: 500px;
   }
 }
 .morefotos{
@@ -46,7 +72,10 @@
     font-size: 60px;
     margin: auto 5px;
     @media screen and (max-width:541px){
-      max-height: 25px;
+      min-height: 33px;
+      font-size: 36px;
+      margin: 0;
+
         }
         cursor: pointer;
   }
@@ -88,6 +117,21 @@
   background: white;
   width: 90%;
   height: 100%;
+
+  ul{
+    li{
+      .flexrow{
+        justify-content: space-between;
+        i{
+          font-size: 25px;
+          &:hover{
+            cursor: pointer;
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
 }
 .infopro h3{
   font-family:sans-serif ;

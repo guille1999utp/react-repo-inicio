@@ -11,20 +11,24 @@ import { UploadPhoto } from "../helpers/cloudinaryUpload";
 import { SocketContext } from '../redux/context/contextchat'
 import Swal from 'sweetalert2'
 import {useSelector, useDispatch } from 'react-redux';
-import { añadirfotosproducto } from '../redux/actions/productos';
+import { añadirfotosproducto , cargarparrafoproducto} from '../redux/actions/productos';
 import CajaProductoFotos from "./CajaProductoFotos";
+import ParrafosProducto from "./ParrafosProductos";
 
 
 function Producto({history}) {
   const dispatch = useDispatch();
 
   const miuid =  useSelector(yo => yo.infoUsuario.uid);
-  const fotos =  useSelector(fotos => fotos.productos.fotosproducto);
-
+  const estado =  useSelector(fotos => fotos.productos);
+  const fotos = estado.fotosproducto;
+  const parrafosprodcuto = estado.parrafosproducto;
   let { id } = useParams()
   const {socket} = useContext(SocketContext);
 
   const [Width, setWidth] = useState(window.innerWidth);  
+  const [Parrafoactivo, setParrafoActivo] = useState(false);  
+  const [Parrafo, setParrafo] = useState('');  
   const [Foto, setFoto] = useState({});  
   const [agregarfotos, setAgregarfotos] = useState({
     secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
@@ -51,6 +55,14 @@ function Producto({history}) {
         }
     ]
 })
+const onChangeMensaje = (e) => {
+  setParrafo(e.target.value);
+};
+
+
+const agregarparrafo = () =>{
+  setParrafoActivo(!Parrafoactivo);
+}
 
   const cargarProductos = useCallback(
     async() => {
@@ -58,6 +70,7 @@ function Producto({history}) {
       if(infoproducto.ok){
         setState(infoproducto);
         dispatch(añadirfotosproducto(infoproducto.fotosdescripsion));
+        dispatch(cargarparrafoproducto(infoproducto.textdescripsion));
         setFoto(infoproducto.fotosdescripsion[0]);
         return  true;
       }else{
@@ -122,7 +135,7 @@ function Producto({history}) {
       }
     };
 
-
+   
  const cambiarTamaño = ()=>{
     setWidth(window.innerWidth);
   }
@@ -160,8 +173,51 @@ function Producto({history}) {
         public_id: 0
       })
       }
- 
+  
+      const resetParrafo  = () =>{
+        setParrafoActivo(false);
+        setParrafo('')
+        }
 
+        const onParrafoSubmit = async() => {
+          if(parrafosprodcuto.length <3){
+            try{
+              socket.emit('subirparrafonuevo',{
+                Parrafo,
+                pid: id
+                   })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Se Añadio el Parrafo con Exito',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          }catch(err){
+            console.log(err)
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Sucedio un Error Al Subir El Parrafor',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+          }else{
+            resetParrafo();
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'No se Aceptan Mas de 3 Parrafos',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          } 
+          setParrafoActivo(false);
+          setParrafo('')
+  
+        };
+    
   return (
   <>
 <div>
@@ -170,35 +226,49 @@ function Producto({history}) {
     <div>
         <div className='fleximg'>
           <div className='cajafotoproducto'>
-        <img id="fotoOver" className='fotoproducto' src={Foto.secure_url} alt='producto'/>
-        </div>
-        <div className='morefotos'>
+         <img id="fotoOver" className='fotoproducto' src={Foto.secure_url} alt='producto'/>
+         </div>
+         <div className='morefotos'>
           {fotos.map((foto) =>(
             <CajaProductoFotos url={foto} func={onOverFoto} pid={id} state={state} />
           ))}
          
           {(state.de === miuid)?<i className='bx bxs-plus-square' onClick={onFilefoto}></i>:null}
+          </div>
+          <div className="centerboton">
+           {(agregarfotos.public_id !== 0)?<button type='button' className='botonguardarperfil' onClick={onSubmit}>Guardar</button>: null}
+           {(agregarfotos.public_id !== 0)?<button type='button' className='botonguardarperfil' onClick={reset}>Cancelar</button>: null}
+           </div>
+         <div className='infopro'>
+            <h3>{state.titulo}</h3>
+             <h4>Detalles</h4>
+             <div className='flexcara'>
+             <p><strong>Año:</strong> {state.detalles[0].Age}</p>
+             <p><strong>Categoria:</strong> {state.detalles[0].Categoria}</p>
+             <p><strong>Ubicaion:</strong> {state.detalles[0].Ubicaion}</p>
+             <p><strong>Domicilio Incluido:</strong>{(state.detalles[0].DomicilioIncluido === 'true')?'si':'no'}</p>
+             <p><strong>Garantia:</strong> {(state.detalles[0].Garantia === 'true')?'si':'no'}</p>
+             </div>
+           <h4>Características del producto</h4>
+          <ul>
+            {parrafosprodcuto.map((parrafo, i)=>{
+              return <ParrafosProducto parrafo={parrafo} state={state} miuid={miuid} index={i} socket={socket}/>
+                  })}
+           </ul>
+           <div className="flexrow">
+           {(state.de === miuid && Parrafoactivo === false)?<button className="buttonagregarparrafo" type="button" onClick={agregarparrafo}>
+             Agregar Parrafo <i className='bx bx-plus-medical' ></i>
+             </button>:null}
+             </div>
+             {
+               (Parrafoactivo === true)?<textarea maxLength={600} value={Parrafo} className="textareaparrafo" onChange={onChangeMensaje}></textarea>:null
+             }
+             <div className="centerboton">
+           {(Parrafoactivo === true)?<button type='button' className='botonguardarperfil' onClick={onParrafoSubmit} >Guardar</button>: null}
+           {(Parrafoactivo === true)?<button type='button' className='botonguardarperfil' onClick={resetParrafo}>Cancelar</button>: null}
+           </div>
         </div>
-       <div className="centerboton">
-       {(agregarfotos.public_id !== 0)?<button type='button' className='botonguardarperfil' onClick={onSubmit}>Guardar</button>: null}
-       {(agregarfotos.public_id !== 0)?<button type='button' className='botonguardarperfil' onClick={reset}>Cancelar</button>: null}
-       </div>
-     <div className='infopro'>
-        <h3>{state.titulo}</h3>
-        <h4>Detalles</h4>
-        <div className='flexcara'>
-        <p><strong>Año:</strong> {state.detalles[0].Age}</p>
-        <p><strong>Categoria:</strong> {state.detalles[0].Categoria}</p>
-        <p><strong>Ubicaion:</strong> {state.detalles[0].Ubicaion}</p>
-        <p><strong>Domicilio Incluido:</strong>{(state.detalles[0].DomicilioIncluido === 'true')?'si':'no'}</p>
-        <p><strong>Garantia:</strong> {(state.detalles[0].Garantia === 'true')?'si':'no'}</p>
-        </div>
-        <h4>Características del producto</h4>
-        <ul>
-            <li>{state.textdescripsion[0]}</li>
-        </ul>
-    </div>
-    </div>
+      </div>
     </div>
 
        <div className='infocom'>

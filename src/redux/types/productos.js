@@ -5,5 +5,8 @@ export const types = {
     modificarproducto: '[PRODUCTOS] modificarproducto',
     agregarFotoProducto: '[PRODUCTOS] agregarFotoProducto',
     cargarfotosproductos: '[PRODUCTOS] cargarfotosproductos',
-    eliminarfotoproducto: '[PRODUCTOS] eliminarfotoproducto'
+    eliminarfotoproducto: '[PRODUCTOS] eliminarfotoproducto',
+    cargarparrafoproducto: '[PRODUCTOS] cargarparrafoproducto',
+    añadirProductoproducto: '[PRODUCTOS] añadirProductoproducto',
+    eliminarparrafoproducto: '[PRODUCTOS] eliminarparrafoproducto'
 } 
