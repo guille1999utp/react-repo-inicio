@@ -22,7 +22,9 @@ const [NewProducto, setNewProducto] = useState({
         Domicilio: '',
         Garantia: '',
         Age: '2022',
-        descripsion: ''
+        descripsion: '',
+        Cantidad:0,
+        Precio:0
 });
 
 const obtenerproductos = useCallback(
@@ -59,7 +61,9 @@ const onChangeMensaje = (e) => {
         Domicilio: '',
         Garantia: '',
         Age: '2022',
-        descripsion: ''
+        descripsion: '',
+        Precio:0,
+        Cantidad:1
     })
     setUrl(
       {
@@ -177,6 +181,18 @@ Swal.fire({
 <option>2021</option>
 <option>2022</option>
 </select></li>
+<li><b>Cantidad Disponible: </b>   <select name="Cantidad" onChange={onChangeMensaje} value={NewProducto.Cantidad}>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+</select></li>
+<li><b>Precio: </b> <input type='number' placeholder='Precio' name='Precio' onChange={onChangeMensaje} value={NewProducto.Precio}></input> </li>
 </ul>
           </td>
       <td><textarea className='textproducto' value={NewProducto.descripsion} name='descripsion' maxLength={800} onChange={onChangeMensaje}></textarea></td>

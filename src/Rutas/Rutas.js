@@ -21,11 +21,11 @@ export default function Rutas() {
     const {online} = useContext(SocketContext);
     return (
         <Router>
-  <Header/>
+  <Header />
   <Switch>
   <Rutapublica isAuthenticated={online} path="/login" component={ Iniciarsesion }/>
   <Rutapublica isAuthenticated={online} path="/register" component={ Register }/>
-  <Route exact path="/busqueda" component={ Listprod }/>
+  <Route exact path="/busqueda/:busqueda" component={ Listprod }/>
   <Route exact path="/producto/:id" component={ Producto }/>
   <Rutaprivada isAuthenticated={online}  path="/crearproducto" component={ CrearProducto }/>
   <Route exact path="/perfil/:de" component={ Perfil }/>

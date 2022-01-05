@@ -248,6 +248,7 @@ const agregarparrafo = () =>{
              <p><strong>Ubicaion:</strong> {state.detalles[0].Ubicaion}</p>
              <p><strong>Domicilio Incluido:</strong>{(state.detalles[0].DomicilioIncluido === 'true')?'si':'no'}</p>
              <p><strong>Garantia:</strong> {(state.detalles[0].Garantia === 'true')?'si':'no'}</p>
+             <p><strong>Cantidad disponible:</strong> {state.detalles[0].Cantidad }</p>
              </div>
            <h4>Características del producto</h4>
           <ul>
@@ -272,7 +273,7 @@ const agregarparrafo = () =>{
     </div>
 
        <div className='infocom'>
-    <h4>$50.000</h4>
+    <h4>${state.detalles[0].Precio}</h4>
     <p>Este articulo solo esta disponible en <strong>colombia</strong></p>
     <p>se entrega en promedio:<strong>30 minutos</strong> </p>
     <p className='disponiblecolor'><strong>Disponible</strong> </p>

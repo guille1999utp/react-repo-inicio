@@ -45,9 +45,7 @@ import { types } from '../types/productos';
               return {
                    ...state,
                    parrafosproducto: state.parrafosproducto.filter(function(parrafo,i){
-                    if(i !== action.payload){
-                     return parrafo;
-                    }
+                     return i !== action.payload;
           })
                  }
          case types.agregarFotoProducto:

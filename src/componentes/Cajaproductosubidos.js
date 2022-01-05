@@ -5,7 +5,7 @@ import { UploadPhoto } from "../helpers/cloudinaryUpload";
 
 const Cajaproductosubidos = ({Producto}) => {
     const {socket} = useContext(SocketContext);
-    const initialstate = Producto
+    const initialstate = Producto;
     const [state, setState] = useState(initialstate);
     const [Modificar, setModificar] = useState(false);
     const [urlmas, setUrl] = useState(Producto.fotosdescripsion[0]);
@@ -45,7 +45,7 @@ const Cajaproductosubidos = ({Producto}) => {
     const guardar = async() =>{
       if (Modificar === true) {
         let url = null;
-        if(((!!urlmas.public_id)?urlmas.public_id:null) === initialstate.fotosdescripsion[0].public_id){ 
+        if(((!!urlmas.public_id)?urlmas.public_id:null) === initialstate.fotosdescripsion[0].public_id || urlmas.public_id === 0){ 
          }else{
           url = await UploadPhoto(urlmas);
           setUrl({
@@ -84,7 +84,6 @@ const Cajaproductosubidos = ({Producto}) => {
           ...state,
           [name]: value,
         });
-        console.log(state)
       };
       const onChangedetalles= (e) => {
         const { name, value } = e.target;
@@ -160,6 +159,20 @@ const Cajaproductosubidos = ({Producto}) => {
 <option>2021</option>
 <option>2022</option>
 </select></li>:null}
+{(Modificar === false)?<li><b>Cantidad Disponible:  </b> {Producto.detalles[0].Cantidad}</li>:null}
+{(Modificar === true)?<li><b>Cantidad Disponible: </b>   <select name="Cantidad" onChange={onChangedetalles} value={state.detalles[0].Cantidad}>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+</select></li>:null}
+{(Modificar === false)?<li><b>Precio:  </b> {Producto.detalles[0].Precio}</li>:null}
+{(Modificar === true)?<li><b>Precio: </b> <input type='number' placeholder='Precio' name='Precio' onChange={onChangedetalles} value={state.detalles[0].Precio}></input> </li>:null}
 </ul>
         </td>
         {(Modificar === false)?<td>{Producto.textdescripsion}</td>:null}

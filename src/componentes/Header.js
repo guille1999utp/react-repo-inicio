@@ -5,7 +5,10 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
   const [Width, setWidth] = useState(window.innerWidth);  
-
+  const [busqueda, setbusqueda] = useState('')
+  const onChangeMensaje = (e) => {
+    setbusqueda(e.target.value);
+  };
 
   const cambiarTamaño=()=>{ 
      setWidth(window.innerWidth);
@@ -19,6 +22,9 @@ const Header = () => {
 
    })
 
+   const redirect = () => {
+  document.querySelector('#oprimirbusqueda').click();
+  }
 
   const [bar, setbar] = useState({
     valid: false
@@ -52,10 +58,11 @@ const Header = () => {
     <nav className='menu'>
       <label className='logo'><Link to='/' onClick={ ()=> onhandledmenuback(9) }>{ (Width > 488)?'CompraRepuestos':'CR'}</Link></label>
       <div className='formbusqueda'>
-      <form>
+      <form onSubmit={redirect}>
+      <Link id='oprimirbusqueda' to={`/busqueda/${busqueda}`}> </Link>
         <div className='formbus'>
-          <input type='text' placeholder='Buscar' className='inputbusqueda' ></input>
-          <button type='submit' className='botonbusqueda'><i className='bx bx-search-alt-2'></i></button>
+          <input type='text' placeholder='Buscar' className='inputbusqueda' value={busqueda} onChange={onChangeMensaje}></input>
+          <button type='submit' className='botonbusqueda' ><i className='bx bx-search-alt-2'></i></button>
         </div>
           </form>
       </div>
