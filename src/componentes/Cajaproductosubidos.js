@@ -3,7 +3,7 @@ import { SocketContext } from '../redux/context/contextchat'
 import Swal from 'sweetalert2'
 import { UploadPhoto } from "../helpers/cloudinaryUpload";
 
-const Cajaproductosubidos = ({Producto}) => {
+const Cajaproductosubidos = ({Producto,history}) => {
     const {socket} = useContext(SocketContext);
     const initialstate = Producto;
     const [state, setState] = useState(initialstate);
@@ -35,6 +35,10 @@ const Cajaproductosubidos = ({Producto}) => {
             }
           })
     }
+
+    const redirect = () => {
+      history.push( `/producto/${Producto.pid}`);
+       }
 
     const botonmodificar = () =>{
       setModificar(!Modificar);
@@ -115,7 +119,7 @@ const Cajaproductosubidos = ({Producto}) => {
     return (
       <>
     <tr>
-    <th scope="row"><img alt={ `imagenproductomodificado${Producto.pid}`} className={(Modificar === true)?'hover':null} src={Producto.fotosdescripsion[0].secure_url} onClick={(Modificar === true)?onFile:null}></img></th>
+    <th scope="row"><img alt={ `imagenproductomodificado${Producto.pid}`} className='hover' src={Producto.fotosdescripsion[0].secure_url} onClick={(Modificar === true)?onFile:redirect}></img></th>
     {(Modificar === false)?<td>{Producto.titulo}</td>:null}
     {(Modificar === true)?<td><textarea className='textproducto' value={state.titulo} name='titulo' maxLength={100} onChange={onChangeMensaje}></textarea></td>:null}
     <td>

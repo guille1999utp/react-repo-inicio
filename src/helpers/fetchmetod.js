@@ -8,9 +8,11 @@ const url = `${ sitioUrl }/${ endpoint }`;
         } else {
             const resp = await fetch( url, {
                 method,
+                
                 headers: {
                     'Content-type': 'application/json'
                 },
+                
                 body: JSON.stringify( data )
             })
     

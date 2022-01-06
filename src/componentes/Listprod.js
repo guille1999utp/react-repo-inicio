@@ -5,10 +5,9 @@ import Footer from "./Footer";
 import { useParams } from 'react-router-dom'
 import React, {useCallback,useEffect,useState} from "react";
 import { fetchstoken } from '../helpers/fetchmetod';
-
-export default function Listprod({history}) {
+export default function Listprod({history,location}) {
   let { busqueda } = useParams();
-
+console.log(location)
   const [productos, setState] = useState([{
     pid:0,
     titlo: '',
@@ -24,14 +23,14 @@ export default function Listprod({history}) {
 
   const cargarProductos = useCallback(
     async() => {
-      const producto = await fetchstoken(`busqueda/${busqueda}`);
+      const producto = await fetchstoken(`busqueda/${busqueda}${location.search}`);
       if(producto.ok){
         setState(producto.descr);
         return  true;
       }else{
         return  false;
       }
-    }, [setState,busqueda],
+    }, [setState,busqueda,location],
   )
  
   useEffect(() => {
@@ -43,7 +42,7 @@ export default function Listprod({history}) {
     <>
       <div className="pagineCard">
         
-        <FilterCard />
+        <FilterCard opciones={busqueda}/>
         <div className="Cardcompleta">
           <h1 className="margin-bottom">Productos Encontrados</h1>
           <div className={(productos.length === 0)?"flex centertextnoencontrado":'flex'}>

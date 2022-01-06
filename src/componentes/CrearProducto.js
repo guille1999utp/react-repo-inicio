@@ -10,7 +10,7 @@ import Cajaproductosubidos from "./Cajaproductosubidos";
 
 
 
-export const CrearProducto = () => {
+export const CrearProducto = ({history}) => {
  const dispatch = useDispatch();
 const miusuario =  useSelector(yo => yo.infoUsuario);
 const productos =  useSelector(productos => productos.productos.productos);
@@ -201,7 +201,7 @@ Swal.fire({
       }
       {(productos.length > 0)?
               productos.map((producto) =>(
-                <Cajaproductosubidos key={producto.pid} Producto={producto}/>
+                <Cajaproductosubidos key={producto.pid} Producto={producto} history={history}/>
               ))
             : null}
   
