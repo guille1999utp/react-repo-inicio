@@ -30,8 +30,7 @@ const [filtered, setFilter] = useState({
   usado:false,
   modelo:2022,
   ubicacion: 'cartago',
-  local: true,
-  corriente:true,
+  Garantia:true,
   min:0,
   max: 10000000000,
   categoria:'repuestos',
@@ -89,17 +88,11 @@ const onChangeMensaje = (e) => {
               <option value="value3">Value 3</option>
             </select>
           </div>
-          <h4 className="hdeproduc colorf">Vendedor</h4>
-          <div className="flexche">
             <div className="flexche">
-              <p className="mr-5">Local</p>
-              <input type="checkbox" className="checkbox" name='local' value={filtered.local} onChange={onChangeMensaje} />
+          <h4 className="hdeproduc colorf">Garantia</h4>
+              <input type="checkbox" className="checkbox" name='Garantia' value={filtered.Garantia} onChange={onChangeMensaje} />
             </div>
-            <div className="flexche">
-              <p className="mr-5">corriente</p>
-              <input type="checkbox" className="checkbox" name='corriente' value={filtered.corriente} onChange={onChangeMensaje}/>
-            </div>
-          </div>
+           
           <h4 className="hdeproduc colorf">Precio</h4>
           <div className="flexche">
             <input className="inputf" placeholder="minimo"  name="min" value={filtered.min} onChange={onChangeMensaje}/>
