@@ -78,14 +78,24 @@ const onChangeMensaje = (e) => {
               <option value="value1">Value 1</option>
               <option value="value2">Value 2</option>
               <option value="value3">Value 3</option>
+              <option value="value3">Value 3</option>
+              <option value="value3">Value 3</option>
+              <option value="value3">Value 3</option>
+              <option value="value3">Value 3</option>
+              <option value="value3">Value 3</option>
+              <option value="value3">Value 3</option>
+              <option value="value3">Value 3</option>
+              <option value="value3">Value 3</option>
+              <option value="value3">Value 3</option>
+
             </select>
           </div>
           <div className="flexche">
             <h4 className="hdeproduc colorf">Ubicacion</h4>
             <select name="ubicacion" className="select" value={filtered.ubicacion} onChange={onChangeMensaje}>
-              <option value="value1">Value 1</option>
-              <option value="value2">Value 2</option>
-              <option value="value3">Value 3</option>
+              <option value="Cartago">Cartago</option>
+              <option value="Pereira">Pereira</option>
+              <option value="Armenia">Armenia</option>
             </select>
           </div>
             <div className="flexche">
@@ -102,9 +112,11 @@ const onChangeMensaje = (e) => {
           <div className="flexche">
             <h4 className="hdeproduc colorf">Categoria</h4>
             <select name="categoria" className="select"   value={filtered.categoria} onChange={onChangeMensaje}>
-              <option value="value1">Value 1</option>
-              <option value="value2">Value 2</option>
-              <option value="value3">Value 3</option>
+              <option value="Electrodomesticos">Electrodomesticos</option>
+              <option value="Mascotas">Mascotas</option>
+              <option value="Repuestos">Repuestos</option>
+              <option value="Implementos">Implementos</option>
+
             </select>
           </div>
           <h4 className="hdeproduc colorf">Costo de envio</h4>
