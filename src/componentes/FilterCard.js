@@ -28,13 +28,13 @@ const ordenar = () =>{
 const [filtered, setFilter] = useState({
   nuevo:false,
   usado:false,
-  modelo:2022,
-  ubicacion: 'cartago',
-  Garantia:true,
+  modelo:'',
+  ubicacion: '',
+  Garantia:false,
   min:0,
   max: 10000000000,
-  categoria:'repuestos',
-  enviogratis:true,
+  categoria:'',
+  enviogratis:false,
   mayor:false,
   menor:false
 });
@@ -53,9 +53,25 @@ const onChangeMensaje = (e) => {
 
 
  const redirect = () => {
-  history.push(`/busqueda/${opciones}?modelo=${filtered.modelo}&ubicacion=${filtered.ubicacion}&min=${filtered.min}&max=${filtered.max}&categoria=${filtered.categoria}&enviogratis=${filtered.enviogratis}&corriente=${filtered.corriente}&local=${filtered.local}&nuevo=${filtered.nuevo}&usado=${filtered.usado}&mayor=${filtered.mayor}&menor=${filtered.menor}`);
+  history.push(`/busqueda/${opciones}?${(filtered.modelo.length  !== 0 )?'modelo='+filtered.modelo:''}${(filtered.ubicacion.length !== 0 )?'&ubicacion='+filtered.ubicacion:''}${(filtered.min !==0 )?'&min='+filtered.min:''}${(filtered.max!==10000000000 )?'&max='+filtered.max:''}${(filtered.categoria.length !==0 )?'&categoria='+filtered.categoria:''}${(filtered.enviogratis!== false )?'&enviogratis='+filtered.enviogratis:''}${(filtered.nuevo!== false )?'&nuevo='+filtered.nuevo:''}${(filtered.usado!== false)?'&usado='+filtered.usado:''}${(filtered.mayor!==false )?'&mayor='+filtered.mayor:''}${(filtered.menor!==false )?'&menor='+filtered.menor:''}`);
 }; 
+const limpiar = () =>{
+  setFilter({
+    nuevo:false,
+    usado:false,
+    modelo:'',
+    ubicacion: '',
+    Garantia:false,
+    min:0,
+    max: 10000000000,
+    categoria:'',
+    enviogratis:false,
+    mayor:false,
+    menor:false
+  });
+  history.push(`/busqueda/${opciones}?`);
 
+}
   if (Width > 545) {
     return (
       <div className="divfilterflex">
@@ -75,24 +91,27 @@ const onChangeMensaje = (e) => {
           <div className="flexche">
             <h4 className="hdeproduc colorf">Modelo</h4>
             <select  className="select" name='modelo'  value={filtered.modelo} onChange={onChangeMensaje}>
-              <option value="value1">Value 1</option>
-              <option value="value2">Value 2</option>
-              <option value="value3">Value 3</option>
-              <option value="value3">Value 3</option>
-              <option value="value3">Value 3</option>
-              <option value="value3">Value 3</option>
-              <option value="value3">Value 3</option>
-              <option value="value3">Value 3</option>
-              <option value="value3">Value 3</option>
-              <option value="value3">Value 3</option>
-              <option value="value3">Value 3</option>
-              <option value="value3">Value 3</option>
+            <option value=""></option>
+              <option value="2011">2011</option>
+              <option value="2012">2012</option>
+              <option value="2013">2013</option>
+              <option value="2014">2014</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+
 
             </select>
           </div>
           <div className="flexche">
             <h4 className="hdeproduc colorf">Ubicacion</h4>
             <select name="ubicacion" className="select" value={filtered.ubicacion} onChange={onChangeMensaje}>
+            <option value=""></option>
               <option value="Cartago">Cartago</option>
               <option value="Pereira">Pereira</option>
               <option value="Armenia">Armenia</option>
@@ -112,10 +131,12 @@ const onChangeMensaje = (e) => {
           <div className="flexche">
             <h4 className="hdeproduc colorf">Categoria</h4>
             <select name="categoria" className="select"   value={filtered.categoria} onChange={onChangeMensaje}>
+            <option value=""></option>
               <option value="Electrodomesticos">Electrodomesticos</option>
               <option value="Mascotas">Mascotas</option>
               <option value="Repuestos">Repuestos</option>
               <option value="Implementos">Implementos</option>
+              <option value="Maquillaje">Maquillaje</option>
 
             </select>
           </div>
@@ -125,7 +146,9 @@ const onChangeMensaje = (e) => {
             <input type="checkbox" className="checkbox" name='enviogratis' value={filtered.enviogratis} onChange={onChangeMensaje}/>
           </div>
 
-          <button className='botonbusquedafilter' onClick={redirect}>buscar</button>
+          <button className='botonbusquedafilter' type='button' onClick={redirect}>buscar</button>
+          <button className='botonbusquedafilter' type='button' onClick={limpiar}>Limpiar</button>
+
         </form>
         <hr></hr>
       </div>

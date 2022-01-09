@@ -7,7 +7,6 @@ import React, {useCallback,useEffect,useState} from "react";
 import { fetchstoken } from '../helpers/fetchmetod';
 export default function Listprod({history,location}) {
   let { busqueda } = useParams();
-console.log(location)
   const [productos, setState] = useState([{
     pid:0,
     titlo: '',
@@ -25,7 +24,7 @@ console.log(location)
     async() => {
       const producto = await fetchstoken(`busqueda/${busqueda}${location.search}`);
       if(producto.ok){
-        setState(producto.descr);
+        setState(producto.filtervar);
         return  true;
       }else{
         return  false;
@@ -37,12 +36,11 @@ console.log(location)
     cargarProductos();
   }, [cargarProductos])
 
-  console.log(productos)
   return (
     <>
       <div className="pagineCard">
         
-        <FilterCard opciones={busqueda}/>
+        <FilterCard history={history} opciones={busqueda}/>
         <div className="Cardcompleta">
           <h1 className="margin-bottom">Productos Encontrados</h1>
           <div className={(productos.length === 0)?"flex centertextnoencontrado":'flex'}>
