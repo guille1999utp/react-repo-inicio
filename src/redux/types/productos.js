@@ -8,5 +8,6 @@ export const types = {
     eliminarfotoproducto: '[PRODUCTOS] eliminarfotoproducto',
     cargarparrafoproducto: '[PRODUCTOS] cargarparrafoproducto',
     añadirProductoproducto: '[PRODUCTOS] añadirProductoproducto',
-    eliminarparrafoproducto: '[PRODUCTOS] eliminarparrafoproducto'
+    eliminarparrafoproducto: '[PRODUCTOS] eliminarparrafoproducto',
+    reset: '[PRODUCTOS] reset'
 } 

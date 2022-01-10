@@ -72,6 +72,10 @@ import { types } from '../types/productos';
                     return action.payload !== producto.pid;
                   })
                 }
+        case types.reset:
+             return {
+                    productos: initialState
+                       }
          
         default:
             return state;

@@ -4,6 +4,15 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 }
+.productordenadoss{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 150px;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    }
 .menuchat{
     cursor: pointer;
     font-size: 20px;
@@ -213,15 +222,24 @@ max-height: 100px;
 }
 }
  @media screen and (max-width:600px){
+    .productordenadoss{
+    padding: 0;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    height: auto;
+    }
     .agregardenar{
         margin:  0;
         margin-bottom: 23px;
         width: 100vw;
-        height: 153vh;
+        height: 122vh;
     }
 }
  @media screen and (max-width:280px){
     .ordenarproductossolicitud{
         max-height: 312px;
        }
+       .agregardenar{
+        height: 148vh;
+    }
 }

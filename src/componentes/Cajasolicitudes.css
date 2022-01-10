@@ -22,14 +22,15 @@
 }
 @media screen and (max-width:540px) {
     .productordenado form{
-    margin-right: 11px;
+    margin-right: 0px;
     }
     .productordenado form span{
         font-size: 10px;
     }
     .productordenado form input{
-        margin-top: 0px;
-            width: 62px;
+            font-size: 8px;
+            margin-top: 0px;
+            width: 39px;
             padding: 5px;
             padding-left: 5px; 
             margin-right: 5px;
@@ -38,11 +39,11 @@
     }
     .productordenado form button{
             margin-top: 3px;
-            width: 76px;
+            width: 51px;
             padding: 5px;
-            padding-left: 0px; 
             margin-right: 5px;
             border-radius: 20px;
             border: 1px solid;
+            font-size: 9px;
     }
        } 

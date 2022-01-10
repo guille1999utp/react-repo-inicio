@@ -59,3 +59,7 @@ export const añadirProductoproducto = (parrafo) =>({
     payload: parrafo
 
 })
+
+export const resetpro = () =>({
+    type: types.añadirProductoproducto,
+})

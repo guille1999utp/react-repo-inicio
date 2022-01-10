@@ -11,7 +11,7 @@ import { UploadPhoto } from "../helpers/cloudinaryUpload";
 import { SocketContext } from '../redux/context/contextchat'
 import Swal from 'sweetalert2'
 import {useSelector, useDispatch } from 'react-redux';
-import { añadirfotosproducto , cargarparrafoproducto} from '../redux/actions/productos';
+import { añadirfotosproducto , cargarparrafoproducto, resetpro} from '../redux/actions/productos';
 import CajaProductoFotos from "./CajaProductoFotos";
 import ParrafosProducto from "./ParrafosProductos";
 
@@ -74,6 +74,7 @@ const agregarparrafo = () =>{
         setFoto(infoproducto.fotosdescripsion[0]);
         return  true;
       }else{
+        dispatch(resetpro());
         return  false;
       }
     }, [setState,dispatch,id],

@@ -33,7 +33,7 @@ function Cajasolicitud({producto,descripsion,urlfoto,oid,idfoto}) {
   };
   return (
     <>
-        <div className="productordenado">
+        <div className="productordenadoss">
           <div className="img-producto">
           <img
             src={urlfoto}
