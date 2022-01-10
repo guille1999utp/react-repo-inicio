@@ -74,7 +74,6 @@ const agregarparrafo = () =>{
         setFoto(infoproducto.fotosdescripsion[0]);
         return  true;
       }else{
-        dispatch(resetpro());
         return  false;
       }
     }, [setState,dispatch,id],
@@ -83,6 +82,10 @@ const agregarparrafo = () =>{
 
     useEffect(() => {
       cargarProductos();
+      return ()=>{
+        console.log('salido de proudto')
+        dispatch(resetpro());
+      }
     }, [cargarProductos])
 
 
@@ -97,7 +100,7 @@ const agregarparrafo = () =>{
 
 
     const onSubmit = async() => {
-      if(fotos.length <5){
+      if(fotos.length < 5){
         try{
           const url = (agregarfotos.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp")? await UploadPhoto(agregarfotos):agregarfotos;
           socket.emit('subirfotoadicionalproducto',{
@@ -175,6 +178,36 @@ const agregarparrafo = () =>{
       })
       }
   
+      const guardarcarrito = () =>{
+        socket.emit('guardarcarrito',{
+          pid: id
+             })
+        socket.on('guardarcarrito',(res)=>{
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          if(res.ok){
+            Toast.fire({
+              icon: 'success',
+              title: res.msg
+            })
+          }else{
+            Toast.fire({
+              icon: 'error',
+              title: res.msg
+            })
+          }
+        })
+         
+      }
       const resetParrafo  = () =>{
         setParrafoActivo(false);
         setParrafo('')
@@ -293,7 +326,7 @@ const agregarparrafo = () =>{
     <option value="value11" >11</option>
     <option value="value12">12</option>
     </select>
-    <button className='botoncompra amarillo'>agregar al carrito</button>
+    <button className='botoncompra amarillo' type="button" onClick={guardarcarrito}>agregar al carrito</button>
     <button className='botoncompra naranja' onClick={compraredireccion}>comprar ya</button>
     <button className='listamia'>Compartir</button>
     </div>

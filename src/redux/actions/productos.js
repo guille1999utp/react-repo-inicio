@@ -61,5 +61,5 @@ export const añadirProductoproducto = (parrafo) =>({
 })
 
 export const resetpro = () =>({
-    type: types.añadirProductoproducto,
+    type: types.reset,
 })

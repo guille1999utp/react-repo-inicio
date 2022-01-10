@@ -74,7 +74,7 @@ import { types } from '../types/productos';
                 }
         case types.reset:
              return {
-                    productos: initialState
+                    ...initialState
                        }
          
         default:
