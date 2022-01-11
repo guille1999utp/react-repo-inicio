@@ -326,8 +326,11 @@ const agregarparrafo = () =>{
     <option value="value11" >11</option>
     <option value="value12">12</option>
     </select>
-    <button className='botoncompra amarillo' type="button" onClick={guardarcarrito}>agregar al carrito</button>
-    <button className='botoncompra naranja' onClick={compraredireccion}>comprar ya</button>
+    {(state.de !== miuid)?<button className='botoncompra amarillo' type="button" onClick={guardarcarrito}>agregar al carrito</button>:null}
+    {(state.de !== miuid)?<button className='botoncompra naranja' onClick={compraredireccion}>comprar ya</button>:null}
+
+    
+    
     <button className='listamia'>Compartir</button>
     </div>
   
