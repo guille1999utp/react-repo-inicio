@@ -5,6 +5,10 @@ export const cargarproductos = (productos) =>({
     payload: productos
     })
 
+export const cargarcarrito = (carritos) =>({
+    type: types.cargarcarrito,
+    payload: carritos
+    })
 export const eliminarproducto = (pid) =>({
      type: types.eliminaProducto,
      payload: pid

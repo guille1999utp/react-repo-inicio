@@ -9,5 +9,6 @@ export const types = {
     cargarparrafoproducto: '[PRODUCTOS] cargarparrafoproducto',
     añadirProductoproducto: '[PRODUCTOS] añadirProductoproducto',
     eliminarparrafoproducto: '[PRODUCTOS] eliminarparrafoproducto',
-    reset: '[PRODUCTOS] reset'
+    reset: '[PRODUCTOS] reset',
+    cargarcarrito: '[PRODUCTOS] cargarcarrito',
 } 

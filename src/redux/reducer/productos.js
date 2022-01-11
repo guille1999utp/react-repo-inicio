@@ -3,7 +3,8 @@ import { types } from '../types/productos';
  const initialState = {
      productos: [], 
      fotosproducto:[],
-     parrafosproducto:[]
+     parrafosproducto:[],
+     carrito:[]
  }
 
  function Reducer ( state= initialState, action ){
@@ -18,6 +19,11 @@ import { types } from '../types/productos';
              return {
                   ...state,
                   fotosproducto: action.payload
+                }
+        case types.cargarcarrito:
+             return {
+                     ...state,
+                     carrito: action.payload
                 }
          case types.agregarProducto:
               return {
@@ -74,7 +80,8 @@ import { types } from '../types/productos';
                 }
         case types.reset:
              return {
-                    ...initialState
+                    ...initialState,
+                    carrito:state.carrito
                        }
          
         default:

@@ -7,18 +7,7 @@ import React, {useCallback,useEffect,useState} from "react";
 import { fetchstoken } from '../helpers/fetchmetod';
 export default function Listprod({history,location}) {
   let { busqueda } = useParams();
-  const [productos, setState] = useState([{
-    pid:0,
-    titlo: '',
-    fotosdescripsion: [{
-      secure_url:''
-    } ],
-    detalles: [
-        {
-            Precio:''
-        }
-    ]
-}])
+  const [productos, setState] = useState([])
 
   const cargarProductos = useCallback(
     async() => {
