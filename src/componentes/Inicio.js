@@ -1,13 +1,17 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Inicio.scss';
-import React, {useState, useEffect} from 'react'
+import React, {useCallback,useEffect,useState} from "react";
 import Slider from "react-slick";
 import Footer from "./Footer";
 import { Link  } from 'react-router-dom';
+import { fetchstoken } from '../helpers/fetchmetod';
+
 //useEffect para poder hacer responsive la carta
 function Inicio ({history}) {
   const [Width, setWidth] = useState(window.innerWidth);  
+  const [productos, setState] = useState([])
+
  const cambiarTamaño = ()=>{
     setWidth(window.innerWidth);
   }
@@ -18,6 +22,34 @@ function Inicio ({history}) {
    }
  })
   
+
+ const cargarProductos = useCallback(
+  async() => {
+    const categoria1 = await fetchstoken(`mostrar/Repuestos`);
+    const categoria2 = await fetchstoken(`mostrar/Maquillaje`);
+    const categoria3 = await fetchstoken(`mostrar/Mascotas`);
+    const categoria4 = await fetchstoken(`mostrar/Electrodomesticos`);
+
+    if(categoria4.ok && categoria3.ok && categoria2.ok && categoria1.ok ){
+      setState({ 
+        Repuestos:categoria1.filtervar,
+        Maquillaje:categoria2.filtervar,
+        Mascotas:categoria3.filtervar,
+        Electrodomesticos:categoria4.filtervar
+      });
+      return  true;
+    }else{
+      return  false;
+    }
+  }, [setState],
+)
+
+useEffect(() => {
+  cargarProductos();
+}, [cargarProductos])
+
+
+
   const settings = {
     dots: false,
     infinite: true,
@@ -67,9 +99,23 @@ function Inicio ({history}) {
 
 
       <div className='margininiciotop'>
-        <h2>Repuestos Agregados Recientemente <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
+        <h2>Repuestos <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
         <Slider {...settings}>
-          <div>
+        {productos.Repuestos?.map((produc) => {
+            const productoa = produc.titulo.trim().slice(0,70);
+          return(
+          <div key={produc.pid}>
+          <div className='carditem' onClick={redirect}>
+           <img className='imginicio' src={produc.fotosdescripsion[0].secure_url} alt='img'></img>
+             <p className='precioinicio'>{'$ ' + produc.detalles[0].Precio}</p>
+            <p className='descuentoinicio'> {productoa}</p>
+         <p className='enviogratisinicio'>{(produc.detalles[0].DomicilioIncluido === 'true')?'Envio Gratis':null}</p>
+          </div>
+         </div>
+            )}
+            )}
+
+          <div >
           <div className='carditem' onClick={redirect}>
           <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
           <div className='flexinicio'>
@@ -79,6 +125,36 @@ function Inicio ({history}) {
           <p className='enviogratisinicio'>Envio Gratis</p>
           </div>
           </div>
+          <div >
+          <div className='carditem' onClick={redirect}>
+          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
+          <div className='flexinicio'>
+          <p className='precioinicio'>$ 456.321</p>
+          <p className='descuentoinicio'> 13% OFF</p>
+          </div>
+          <p className='enviogratisinicio'>Envio Gratis</p>
+          </div>
+          </div>
+        </Slider>
+      </div>
+
+      <div className='marginslider'>
+      <h2>Mascotas <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
+      <Slider {...settings}>
+        {productos.Mascotas?.map((produc) => {
+            const productoa = produc.titulo.trim().slice(0,70);
+          return(
+          <div key={produc.pid}>
+          <div className='carditem' onClick={redirect}>
+           <img className='imginicio' src={produc.fotosdescripsion[0].secure_url} alt='img'></img>
+             <p className='precioinicio'>{'$ ' + produc.detalles[0].Precio}</p>
+            <p className='descuentoinicio'> {productoa}</p>
+         <p className='enviogratisinicio'>{(produc.detalles[0].DomicilioIncluido === 'true')?'Envio Gratis':null}</p>
+          </div>
+         </div>
+            )}
+            )}
+
           <div >
           <div className='carditem' onClick={redirect}>
           <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
@@ -109,6 +185,26 @@ function Inicio ({history}) {
           <p className='enviogratisinicio'>Envio Gratis</p>
           </div>
           </div>
+        </Slider>
+      </div>
+      
+      <div className='marginslider'>
+      <h2>Electrodomesticos <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
+      <Slider {...settings}>
+        {productos.Electrodomesticos?.map((produc) => {
+            const productoa = produc.titulo.trim().slice(0,70);
+          return(
+          <div key={produc.pid}>
+          <div className='carditem' onClick={redirect}>
+           <img className='imginicio' src={produc.fotosdescripsion[0].secure_url} alt='img'></img>
+             <p className='precioinicio'>{'$ ' + produc.detalles[0].Precio}</p>
+            <p className='descuentoinicio'> {productoa}</p>
+         <p className='enviogratisinicio'>{(produc.detalles[0].DomicilioIncluido === 'true')?'Envio Gratis':null}</p>
+          </div>
+         </div>
+            )}
+            )}
+
           <div >
           <div className='carditem' onClick={redirect}>
           <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
@@ -139,6 +235,25 @@ function Inicio ({history}) {
           <p className='enviogratisinicio'>Envio Gratis</p>
           </div>
           </div>
+        </Slider>
+      </div>
+      <div className='marginslider'>
+      <h2>Maquillaje <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
+      <Slider {...settings}>
+        {productos.Maquillaje?.map((produc) => {
+            const productoa = produc.titulo.trim().slice(0,27);
+          return(
+          <div key={produc.pid}>
+          <div className='carditem' onClick={redirect}>
+           <img className='imginicio' src={produc.fotosdescripsion[0].secure_url} alt='img'></img>
+             <p className='precioinicio'>{'$ ' + produc.detalles[0].Precio}</p>
+            <p className='descuentoinicio'> {productoa}</p>
+         <p className='enviogratisinicio'>{(produc.detalles[0].DomicilioIncluido === 'true')?'Envio Gratis':null}</p>
+          </div>
+         </div>
+            )}
+            )}
+
           <div >
           <div className='carditem' onClick={redirect}>
           <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
@@ -172,114 +287,7 @@ function Inicio ({history}) {
         </Slider>
       </div>
 
-      <div className='marginslider'>
-     
-      <h2>Ultimas Ofertas <Link to='/productover' className='vermas' >Ver Mas</Link></h2>
-        
-        
-        <Slider {...settings}>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-        </Slider>
-      </div>
+
       <div className='marginslider'>
         <h2>Marcas y Empresas Aliadas</h2>
         <Slider {...settings}>
