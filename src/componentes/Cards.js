@@ -1,6 +1,6 @@
 import "./Cards.scss";
 
-function Cards({ id, history, image,domicilio, mobile, actual_price }) {
+function Cards({ id, history, image ,domicilio, mobile, actual_price }) {
   const redirect = () => {
     history.push(`/producto/${id}`);
   };
@@ -8,7 +8,7 @@ function Cards({ id, history, image,domicilio, mobile, actual_price }) {
     <>
       <div className="card" onClick={redirect}>
         <div className="card-img">
-          <img src={image} alt="mobile" />
+       <img src={image} alt="mobile" />   
         </div>
         <div className="card-body">
           <div className="left">

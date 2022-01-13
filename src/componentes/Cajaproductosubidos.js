@@ -119,7 +119,12 @@ const Cajaproductosubidos = ({Producto,history}) => {
     return (
       <>
     <tr>
-    <th scope="row"><img alt={ `imagenproductomodificado${Producto.pid}`} className='hover' src={Producto.fotosdescripsion[0].secure_url} onClick={(Modificar === true)?onFile:redirect}></img></th>
+    <th scope="row">
+    {
+        (Producto.fotosdescripsion[0]?.secure_url)? <img alt={ `imagenproductomodificado${Producto.pid}`} className='hover' src={Producto.fotosdescripsion[0].secure_url} onClick={(Modificar === true)?onFile:redirect}></img>
+         :<img alt={ `imagenproductomodificado${Producto.pid}`} className='hover' src="https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg" onClick={(Modificar === true)?onFile:redirect}></img>
+            }
+     </th>
     {(Modificar === false)?<td>{Producto.titulo}</td>:null}
     {(Modificar === true)?<td><textarea className='textproducto' value={state.titulo} name='titulo' maxLength={100} onChange={onChangeMensaje}></textarea></td>:null}
     <td>

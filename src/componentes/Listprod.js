@@ -29,7 +29,6 @@ export default function Listprod({history,location}) {
   useEffect(() => {
     cargarProductos();
   }, [cargarProductos])
-
   return (
     <>
     {(carga)? <CircularProgress/> :
@@ -47,7 +46,7 @@ export default function Listprod({history,location}) {
                 key={produc.pid}
                 id={produc.pid}
                 history={history}
-                image={produc.fotosdescripsion[0].secure_url}
+                image={(produc.fotosdescripsion[0]?.secure_url)?produc.fotosdescripsion[0].secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg"}
                 mobile={produc.titulo}
                 actual_price={produc.detalles[0].Precio}
                 domicilio={produc.detalles[0].DomicilioIncluido}

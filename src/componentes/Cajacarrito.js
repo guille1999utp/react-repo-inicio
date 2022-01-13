@@ -50,7 +50,7 @@ function Cajasolicitud({producto,descripsion,urlfoto,id,precio}) {
           </div>
           <div className="caracteristicaproductocarrito">
             <div className="flexcolum">
-              <Link to="/producto/45" className="mostrartextotitulocarrito">
+              <Link to={`/producto/${id}`} className="mostrartextotitulocarrito">
                 {productoa}
               </Link>
               <h3 className="cbasica">

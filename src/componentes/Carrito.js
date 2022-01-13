@@ -18,7 +18,7 @@ const Carrito = () => {
         </div>
         <hr></hr>
         {carritoproducto.map((carro) =>(
-        <Cajacarrito producto={carro.titulo} precio={carro.detalles[0].Precio} descripsion={carro.textdescripsion[0]} urlfoto={carro.fotosdescripsion[0].secure_url} id={carro.pid} ></Cajacarrito>
+        <Cajacarrito producto={carro.titulo} precio={carro.detalles[0].Precio} descripsion={carro.textdescripsion[0]}  urlfoto={(carro.fotosdescripsion[0]?.secure_url)?carro.fotosdescripsion[0].secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg"} id={carro.pid} ></Cajacarrito>
         ))}
         {(carritoproducto.length === 0)?
         <>

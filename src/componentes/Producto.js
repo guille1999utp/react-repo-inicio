@@ -269,7 +269,10 @@ const agregarparrafo = () =>{
     <div>
         <div className='fleximg'>
           <div className='cajafotoproducto'>
-         <img id="fotoOver" className='fotoproducto' src={Foto.secure_url} alt='producto'/>
+          {
+              (Foto?.secure_url)?<img id="fotoOver" className='fotoproducto' src={Foto.secure_url} alt='producto'/>
+              :<img id="fotoOver" className='fotoproducto' src="https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg" alt='producto'/>
+            }
          </div>
          <div className='morefotos'>
           {fotos.map((foto) =>(
@@ -338,8 +341,6 @@ const agregarparrafo = () =>{
     {(state.de !== miuid)?<button className='botoncompra amarillo' type="button" onClick={guardarcarrito}>agregar al carrito</button>:null}
     {(state.de !== miuid)?<button className='botoncompra naranja' onClick={compraredireccion}>comprar ya</button>:null}
 
-    
-    
     <button className='listamia'>Compartir</button>
     </div>
   
@@ -347,15 +348,12 @@ const agregarparrafo = () =>{
     <hr></hr>
     </div>
 
-
-
     <div className='marginslider'>
       <h2>Productos Relacionados <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
       <Slider {...settings}>
          {categoriaencontradas?.map((produc) => (
          <CajaMostrarProducto history={history} produc={produc}/>
         ))}
-        
 
           <div >
           <div className='carditem' onClick={redirect}>
@@ -392,6 +390,7 @@ const agregarparrafo = () =>{
 
 
    <hr></hr>
+{(productosuser.length >= 5)?
 
 <div className='marginslider'>
 <div className='flexinicio'>
@@ -405,7 +404,8 @@ const agregarparrafo = () =>{
 
   </Slider>
   
-</div>
+</div>:null
+}
 <Footer/>
 </>
  }

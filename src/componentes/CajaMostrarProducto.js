@@ -10,8 +10,11 @@ import React from 'react'
     return (
         <div>
           <div className='carditem' onClick={redirect}>
-           <img className='imginicio' src={produc.fotosdescripsion[0].secure_url} alt='img'></img>
-             <p className='precioinicio'>{'$ ' + produc.detalles[0].Precio}</p>
+            {
+              (produc.fotosdescripsion[0]?.secure_url)?<img className='imginicio' src={produc.fotosdescripsion[0].secure_url} alt='img'></img>
+              :<img className='imginicio' src="https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg" alt='img'></img>
+            }
+             <p className='precioinicio'>{ (produc.detalles[0]?.Precio)?'$ ' + produc.detalles[0].Precio: '$ 0'}</p>
             <p className='descuentoinicio'> {productoa}</p>
          <p className='enviogratisinicio'>{(produc.detalles[0].DomicilioIncluido === 'true')?'Envio Gratis':null}</p>
           </div>
