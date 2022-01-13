@@ -5,15 +5,20 @@ import Footer from "./Footer";
 import { useParams } from 'react-router-dom'
 import React, {useCallback,useEffect,useState} from "react";
 import { fetchstoken } from '../helpers/fetchmetod';
+import CircularProgress from "./CircularProgress";
+
 export default function Listprod({history,location}) {
   let { busqueda } = useParams();
   const [productos, setState] = useState([])
+  const [carga, setCarga] = useState(true);
+
 
   const cargarProductos = useCallback(
     async() => {
       const producto = await fetchstoken(`busqueda/${busqueda}${location.search}`);
       if(producto.ok){
-        setState(producto.filtervar);
+        setState(producto.filtervar); 
+        setCarga(false);
         return  true;
       }else{
         return  false;
@@ -27,8 +32,9 @@ export default function Listprod({history,location}) {
 
   return (
     <>
-      <div className="pagineCard">
-        
+    {(carga)? <CircularProgress/> :
+    <>
+    <div className="pagineCard">
         <FilterCard history={history} opciones={busqueda}/>
         <div className="Cardcompleta">
           <h1 className="margin-bottom">Productos Encontrados</h1>
@@ -52,7 +58,7 @@ export default function Listprod({history,location}) {
         </div>
       </div>
       <Footer/>
-
+      </>}
     </>
   );
 }

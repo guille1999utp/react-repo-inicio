@@ -83,12 +83,6 @@ function Ordenar() {
   }
 
 
-  useEffect(() => {
-    const chatscrollabajo = document.querySelector(".initialchatscroll");
-    chatscrollabajo.scrollIntoView({
-      behavior: "smooth",
-    });
-  });
 
   const onChangeMensaje = (e) => {
     const { name, value } = e.target;
@@ -107,12 +101,12 @@ function Ordenar() {
         <div className="formordenar">
           <h3>busca tu Producto</h3>
           <form className="formingresarproucto" onSubmit={onSubmit}>
-            <label  className="flexrow wrap">
+            <label  className="flexrow wrapordenar">
               <span>Producto</span>
               <input autoComplete={'off'} type="text" id="titulo" placeholder="nombre" name='nombre' onChange={onChangeMensaje} value={solicitud.nombre}></input>
             </label>
 
-            <label className="flexrow wrap">
+            <label className="flexrow wrapordenar">
               <span>descripsion</span>
               <br></br>
               <textarea
@@ -125,17 +119,17 @@ function Ordenar() {
                 value={solicitud.descripsion} ></textarea>
             </label>
 
-            <label  className="flexrow wrap">
+            <label  className="flexrow wrapordenar">
               <span>dia requerido</span>
               <input type="date" id="dia" name='fecha' onChange={onChangeMensaje} value={solicitud.fecha}></input>
             </label>
 
-            <label  className="flexrow wrap">
+            <label  className="flexrow wrapordenar">
               <span>hora llegada</span>
               <input type="time" id="horario" name='horallegada' onChange={onChangeMensaje} value={solicitud.horallegada}></input>
             </label>
 
-            <label className="flexrow wrap">
+            <label className="flexrow wrapordenar">
             <span className="file-custom">Fotos</span>
             <input type="file" id="fileordenar" aria-label="File browser example" name='urlfoto' onChange={onFilesave} ></input>
              <button type='button' className='butonfile' onClick={onFile}>subir foto</button>
@@ -172,7 +166,6 @@ function Ordenar() {
               </button>
             </form>
             <div className="ordenarproductossolicitud">
-            <div className="initialchatscroll"></div>
             {(ordenes.length > 0)?
               ordenes.map((producto) =>(
                 <Cajasolicitud key={producto.oid} idfoto={producto.idfoto} oid={producto.oid} producto={producto.nombre}  descripsion={producto.descripsion} urlfoto={producto.urlfoto}></Cajasolicitud>

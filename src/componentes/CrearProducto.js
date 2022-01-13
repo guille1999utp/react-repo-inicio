@@ -7,11 +7,11 @@ import Swal from 'sweetalert2'
 import { fetchCToken } from "../helpers/fetchmetod";
 import { cargarproductos } from "../redux/actions/productos";
 import Cajaproductosubidos from "./Cajaproductosubidos";
-
-
+import CircularProgress from "./CircularProgress";
 
 export const CrearProducto = ({history}) => {
- const dispatch = useDispatch();
+const [carga, setCarga] = useState(true);
+const dispatch = useDispatch();
 const miusuario =  useSelector(yo => yo.infoUsuario);
 const productos =  useSelector(productos => productos.productos.productos);
 const {socket} = useContext(SocketContext);
@@ -30,9 +30,11 @@ const [NewProducto, setNewProducto] = useState({
 const obtenerproductos = useCallback(
   async() => {
     const ordenes = await fetchCToken('crearproducto');
+
     if(!ordenes.ok){
     return ;
     }
+    setCarga(false);
     dispatch(cargarproductos(ordenes.producto))
   }, [dispatch],
 )
@@ -126,6 +128,8 @@ Swal.fire({
   };
     return (
     <>
+      {(carga)? <CircularProgress/> : <>
+
         <div className='form-agregar-producto'>
             <div>
             <i className={agregar?'bx bxs-message-square-x':'bx bxs-folder-plus'} onClick={cambiar}></i>
@@ -206,18 +210,12 @@ Swal.fire({
             : null}
   
   </tbody>
- {/*  <tfoot>
-    <tr>
-      <th scope="row" colspan="2"><img src='https://image.freepik.com/vector-gratis/gradiente-formas-cuadradas-geometricas-sobre-fondo-oscuro_23-2148424228.jpg'></img></th>
-      <td colspan="2">77</td>
-    </tr>
-  </tfoot> */}
 </table>
 
 </div>
 <input type="file" id="fileproducto" aria-label="File browser example" onChange={onFilesave} ></input>
         </div>
-
+        </>}
         </>
     )
 }

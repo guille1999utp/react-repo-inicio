@@ -6,7 +6,6 @@ import { subirOrden, eliminarorden , recibirsolicitud, eliminarpedido} from '../
 import { eliminarproducto ,añadirproducto, modificarproducto, agregarfotoproducto, eliminarfotoproducto, añadirProductoproducto,eliminarparrafoproducto, cargarcarrito} from '../actions/productos';
 import { fetchCToken } from '../../helpers/fetchmetod';
 import { useSocket } from "../../SocketsConnection/useSocket";
-import { scrollToBottomAnimated } from '../../helpers/scrollToBottom';
 
 export const SocketContext = createContext();
 export const SocketProvider = ({ children }) => {
@@ -120,7 +119,6 @@ export const SocketProvider = ({ children }) => {
       console.log(mensaje)
     dispatch(obtenermensajes(mensaje));
     })
-    scrollToBottomAnimated('mensajes')
 }, [ socket , dispatch]);
 
 useEffect(() => {
@@ -147,7 +145,6 @@ useEffect(() => {
             dispatch(subirOrden(orden));
         }
         if(orden.de !== state.uid){
-          console.log(orden)
           dispatch(recibirsolicitud(orden));
       }
     })

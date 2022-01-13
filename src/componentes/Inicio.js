@@ -4,11 +4,14 @@ import './Inicio.scss';
 import React, {useCallback,useEffect,useState} from "react";
 import Slider from "react-slick";
 import Footer from "./Footer";
+import CajaMostrarProducto from "./CajaMostrarProducto"
 import { Link  } from 'react-router-dom';
 import { fetchstoken } from '../helpers/fetchmetod';
+import CircularProgress from "./CircularProgress";
 
 //useEffect para poder hacer responsive la carta
 function Inicio ({history}) {
+  const [carga, setCarga] = useState(true);
   const [Width, setWidth] = useState(window.innerWidth);  
   const [productos, setState] = useState([])
 
@@ -29,8 +32,9 @@ function Inicio ({history}) {
     const categoria2 = await fetchstoken(`mostrar/Maquillaje`);
     const categoria3 = await fetchstoken(`mostrar/Mascotas`);
     const categoria4 = await fetchstoken(`mostrar/Electrodomesticos`);
-
+   
     if(categoria4.ok && categoria3.ok && categoria2.ok && categoria1.ok ){
+      setCarga(false);
       setState({ 
         Repuestos:categoria1.filtervar,
         Maquillaje:categoria2.filtervar,
@@ -73,6 +77,8 @@ useEffect(() => {
 
      return(
      <>
+      {(carga)? <CircularProgress/> :
+      <>
       <div className='contendioinicio'>
      <div className='sliderbargrande'>
         <Slider {...settingsinicio}>
@@ -101,18 +107,9 @@ useEffect(() => {
       <div className='margininiciotop'>
         <h2>Repuestos <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
         <Slider {...settings}>
-        {productos.Repuestos?.map((produc) => {
-            const productoa = produc.titulo.trim().slice(0,70);
-          return(
-          <div key={produc.pid}>
-          <div className='carditem' onClick={redirect}>
-           <img className='imginicio' src={produc.fotosdescripsion[0].secure_url} alt='img'></img>
-             <p className='precioinicio'>{'$ ' + produc.detalles[0].Precio}</p>
-            <p className='descuentoinicio'> {productoa}</p>
-         <p className='enviogratisinicio'>{(produc.detalles[0].DomicilioIncluido === 'true')?'Envio Gratis':null}</p>
-          </div>
-         </div>
-            )}
+        {productos.Repuestos?.map((produc) => (
+          <CajaMostrarProducto history={history} produc={produc}/>
+            )
             )}
 
           <div >
@@ -141,18 +138,9 @@ useEffect(() => {
       <div className='marginslider'>
       <h2>Mascotas <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
       <Slider {...settings}>
-        {productos.Mascotas?.map((produc) => {
-            const productoa = produc.titulo.trim().slice(0,70);
-          return(
-          <div key={produc.pid}>
-          <div className='carditem' onClick={redirect}>
-           <img className='imginicio' src={produc.fotosdescripsion[0].secure_url} alt='img'></img>
-             <p className='precioinicio'>{'$ ' + produc.detalles[0].Precio}</p>
-            <p className='descuentoinicio'> {productoa}</p>
-         <p className='enviogratisinicio'>{(produc.detalles[0].DomicilioIncluido === 'true')?'Envio Gratis':null}</p>
-          </div>
-         </div>
-            )}
+        {productos.Mascotas?.map((produc) => (
+         <CajaMostrarProducto history={history} produc={produc}/>
+        )
             )}
 
           <div >
@@ -191,18 +179,9 @@ useEffect(() => {
       <div className='marginslider'>
       <h2>Electrodomesticos <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
       <Slider {...settings}>
-        {productos.Electrodomesticos?.map((produc) => {
-            const productoa = produc.titulo.trim().slice(0,70);
-          return(
-          <div key={produc.pid}>
-          <div className='carditem' onClick={redirect}>
-           <img className='imginicio' src={produc.fotosdescripsion[0].secure_url} alt='img'></img>
-             <p className='precioinicio'>{'$ ' + produc.detalles[0].Precio}</p>
-            <p className='descuentoinicio'> {productoa}</p>
-         <p className='enviogratisinicio'>{(produc.detalles[0].DomicilioIncluido === 'true')?'Envio Gratis':null}</p>
-          </div>
-         </div>
-            )}
+        {productos.Electrodomesticos?.map((produc) => (
+         <CajaMostrarProducto history={history} produc={produc}/>
+        )
             )}
 
           <div >
@@ -240,18 +219,9 @@ useEffect(() => {
       <div className='marginslider'>
       <h2>Maquillaje <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
       <Slider {...settings}>
-        {productos.Maquillaje?.map((produc) => {
-            const productoa = produc.titulo.trim().slice(0,27);
-          return(
-          <div key={produc.pid}>
-          <div className='carditem' onClick={redirect}>
-           <img className='imginicio' src={produc.fotosdescripsion[0].secure_url} alt='img'></img>
-             <p className='precioinicio'>{'$ ' + produc.detalles[0].Precio}</p>
-            <p className='descuentoinicio'> {productoa}</p>
-         <p className='enviogratisinicio'>{(produc.detalles[0].DomicilioIncluido === 'true')?'Envio Gratis':null}</p>
-          </div>
-         </div>
-            )}
+        {productos.Maquillaje?.map((produc) =>(
+         <CajaMostrarProducto history={history} produc={produc}/>
+        )
             )}
 
           <div >
@@ -347,6 +317,7 @@ useEffect(() => {
         </div>
 
         <Footer/>
+        </>}
       </>
     );
   }

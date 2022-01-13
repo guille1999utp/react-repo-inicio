@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback} from 'react'
+import React, { useEffect, useCallback, useState} from 'react'
 import { Link } from "react-router-dom";
 import Cajasolicitudes from "./Cajasolicitudes";
 import './Solicitudes.scss';
@@ -6,10 +6,11 @@ import { useDispatch,useSelector } from 'react-redux';
 import { fetchCToken } from "../helpers/fetchmetod";
 import { cargarsolicitudes } from "../redux/actions/ordenar";
 import Footer from "./Footer";
-
-
+import CircularProgress from "./CircularProgress";
 
 export default function Solicitudes({history}) {
+  const [carga, setCarga] = useState(true);
+
   const dispatch = useDispatch();
   const solicitudes = useSelector(solicitudes => solicitudes.ordenar.solicitudes);
   const solicitud = useCallback(
@@ -18,6 +19,7 @@ export default function Solicitudes({history}) {
       if(!solicitude.ok){
       return ;
       }
+      setCarga(false);
       dispatch(cargarsolicitudes(solicitude.solicitudes))
     }, [dispatch],
   )
@@ -27,6 +29,7 @@ export default function Solicitudes({history}) {
 
       return (
         <>
+     {(carga)? <CircularProgress/> : <>
     <div className="fondocarrito">
     <div className="conteinerproductoseleccionado">
     <div className="flexro">
@@ -53,6 +56,7 @@ export default function Solicitudes({history}) {
       <Footer/>
 
   </div>
+  </>}
         </>
     )
 }
