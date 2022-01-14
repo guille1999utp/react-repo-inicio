@@ -171,7 +171,7 @@ const agregarparrafo = () =>{
       history.push( `/producto/4`);
        }
        const compraredireccion = () => {
-        history.push( `/comprar`);
+        history.push( `/comprar/${state.pid}`);
          }
 
      const onOverFoto = (url) =>{

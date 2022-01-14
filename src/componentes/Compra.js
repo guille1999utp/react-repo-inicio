@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import './Compra.scss'
+import MercadoPagoIntegracion from "./MercadoPagoIntegracion";
 
  const Compra = () => {
     const [Width, setWidth] = useState(window.innerWidth);  
@@ -16,6 +17,7 @@ import './Compra.scss'
 
     return (
         <>
+        <MercadoPagoIntegracion/>
         <div className='cajacompra'>
         <div>
         <fieldset>

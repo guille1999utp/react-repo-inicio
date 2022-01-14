@@ -31,7 +31,7 @@ export default function Rutas() {
   <Route exact path="/perfil/:de" component={ Perfil }/>
   <Route exact path="/" component={ Inicio }/>
   <Rutaprivada isAuthenticated={online} path='/chat' component={Chat}/>
-  <Rutaprivada isAuthenticated={online} path='/comprar' component={Compra}/>
+  <Rutaprivada isAuthenticated={online} path='/comprar/:id' component={Compra}/>
   <Rutaprivada isAuthenticated={online} path='/carrito' component={Carrito}/>
   <Rutaprivada isAuthenticated={online} path='/ajustes' component={Configuracion}/>
   <Rutaprivada isAuthenticated={online} path='/ordenar' component={Ordenar}/>
