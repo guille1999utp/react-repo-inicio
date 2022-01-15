@@ -1,0 +1,25 @@
+.containerresultadocompra{
+    width: 100vw;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  h1{
+      text-align: center;
+      color:white;
+  }
+  h2{
+      text-align: center;
+      color: white;
+      margin-top: 20px;
+  }
+}
+.aprobado{
+    background-color: rgb(38, 180, 106);
+}
+.rechazado{
+    background-color: rgb(179, 46, 46);
+}
+.pendiente{
+    background-color: rgb(179, 103, 32);
+}

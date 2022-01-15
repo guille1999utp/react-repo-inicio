@@ -15,6 +15,12 @@ const Carrito = () => {
           <Link to="/carrito/" className="botoncarrito">
             Carrito({carritoproducto.length})
           </Link>
+          <Link to="/carrito/guardado" className="botoncarrito">
+            Ventas(1)
+          </Link>
+          <Link to="/carrito/guardado" className="botoncarrito">
+            Compras(1)
+          </Link>
         </div>
         <hr></hr>
         {carritoproducto.map((carro) =>(

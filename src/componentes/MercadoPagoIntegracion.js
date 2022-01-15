@@ -4,12 +4,12 @@ import { fetchCToken } from "../helpers/fetchmetod";
 
 const FORM_ID = 'payment-form';
 
-export default function Product() {
+export default function Product( { items }) {
   const { id } = useParams(); // id de producto
 
   const obtenerpreference = useCallback(
     async() => {
-        const res = await fetchCToken(`comprar/${id}`, { productId: id }, 'POST');
+        const res = await fetchCToken(`comprar/${id}`, { items }, 'POST');
         console.log(res);
         if (res.global) {
             const script = document.createElement('script');
@@ -19,7 +19,7 @@ export default function Product() {
             const form = document.getElementById(FORM_ID);
             form.appendChild(script);
           }
-    }, [id],
+    }, [id,items],
   )
   useEffect( ()=>{
     obtenerpreference()

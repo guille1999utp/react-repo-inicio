@@ -4,6 +4,7 @@ import Register from '../componentes/Register';
 import Listprod from '../componentes/Listprod';
 import Iniciarsesion from '../componentes/Iniciar-sesion';
 import Producto from '../componentes/Producto';
+import Pagespagos from '../componentes/Pagepagos';
 import Inicio from '../componentes/Inicio';
 import Header from '../componentes/Header';
 import Chat from '../componentes/Chat';
@@ -36,6 +37,7 @@ export default function Rutas() {
   <Rutaprivada isAuthenticated={online} path='/ajustes' component={Configuracion}/>
   <Rutaprivada isAuthenticated={online} path='/ordenar' component={Ordenar}/>
   <Rutaprivada isAuthenticated={online} path='/solicitudes' component={Solicitudes}/>
+  <Route isAuthenticated={online} path='/feedback/' component={Pagespagos}/>
   <Redirect from='/' to='/'/>
   </Switch>
   </Router>
