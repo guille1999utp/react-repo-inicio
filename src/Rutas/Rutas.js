@@ -37,7 +37,7 @@ export default function Rutas() {
   <Rutaprivada isAuthenticated={online} path='/ajustes' component={Configuracion}/>
   <Rutaprivada isAuthenticated={online} path='/ordenar' component={Ordenar}/>
   <Rutaprivada isAuthenticated={online} path='/solicitudes' component={Solicitudes}/>
-  <Route isAuthenticated={online} path='/feedback/' component={Pagespagos}/>
+  <Route isAuthenticated={online} path='/feedback/:id' component={Pagespagos}/>
   <Redirect from='/' to='/'/>
   </Switch>
   </Router>

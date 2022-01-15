@@ -8,7 +8,6 @@ import { Link  } from 'react-router-dom';
 
 function Chat() {
       const {socket} = useContext(SocketContext);
-
   const {chatActivo, usuarios, mensajes} =  useSelector(chat => chat.chat);
   const miusuario =  useSelector(yo => yo.infoUsuario);
 
