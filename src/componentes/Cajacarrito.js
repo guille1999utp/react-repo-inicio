@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { SocketContext } from '../redux/context/contextchat'
 import Swal from 'sweetalert2'
 
-function Cajasolicitud({producto,descripsion,urlfoto,id,precio}) {
+function Cajasolicitud({producto,descripsion,urlfoto,id,precio,history}) {
     const {socket} = useContext(SocketContext);
     const productoa = producto.trim().slice(0,70);
     const descripsiona = descripsion.trim().slice(0,150);
@@ -39,11 +39,15 @@ function Cajasolicitud({producto,descripsion,urlfoto,id,precio}) {
           }
         })
        };
+       const redirect = () => {
+        history.push( `/producto/${id}`);
+         }
     return (
       <>
       <div className="productocarrito">
           <div className="img-producto">
           <img
+            onClick={redirect}
             src={urlfoto}
             alt="img"
           ></img>

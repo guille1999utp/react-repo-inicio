@@ -9,6 +9,12 @@ export const cargarcarrito = (carritos) =>({
     type: types.cargarcarrito,
     payload: carritos
     })
+
+    export const cargarcompras = (compras) =>({
+        type: types.cargarcompras,
+        payload: compras
+        })
+
 export const eliminarproducto = (pid) =>({
      type: types.eliminaProducto,
      payload: pid

@@ -1,30 +1,38 @@
-import React from "react";
+import React,{useState} from "react";
 import "./Carrito.scss";
 import { Link } from "react-router-dom";
 import Cajacarrito from "./Cajacarrito";
+import CajaComprados from "./CajaComprados";
 import Footer from "./Footer";
 import { useSelector} from 'react-redux';
 
-const Carrito = () => {
+const Carrito = ({history}) => {
   const carritoproducto = useSelector(carritos => carritos.productos.carrito);
+  const comprados = useSelector(comprados => comprados.productos.comprados);
+  const [state, setState] = useState(1);
+  const mostrar = (mostrar) =>{
+    setState(mostrar);
+  }
   return (
     <>
     <div className="fondocarrito">
       <div className="conteinerproductoseleccionado">
         <div className="flexro">
-          <Link to="/carrito/" className="botoncarrito">
+          <span  className={(state === 0)?"botoncarrito opacityOprimer":"botoncarrito"} onClick={()=>mostrar(0)}>
             Carrito({carritoproducto.length})
-          </Link>
-          <Link to="/carrito/guardado" className="botoncarrito">
+          </span>
+          <span className={(state === 1)?"botoncarrito opacityOprimer":"botoncarrito"} onClick={()=>mostrar(1)}>
+            Compras({comprados.length})
+          </span>
+          <span className={(state === 2)?"botoncarrito opacityOprimer":"botoncarrito"} onClick={()=>mostrar(2)}>
             Ventas(1)
-          </Link>
-          <Link to="/carrito/guardado" className="botoncarrito">
-            Compras(1)
-          </Link>
+          </span>
         </div>
         <hr></hr>
+
+        {(state === 0)? <>
         {carritoproducto.map((carro) =>(
-        <Cajacarrito producto={carro.titulo} precio={carro.detalles[0].Precio} descripsion={carro.textdescripsion[0]}  urlfoto={(carro.fotosdescripsion[0]?.secure_url)?carro.fotosdescripsion[0].secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg"} id={carro.pid} ></Cajacarrito>
+        <Cajacarrito history={history} producto={carro.titulo} precio={carro.detalles[0].Precio} descripsion={carro.textdescripsion[0]}  urlfoto={(carro.fotosdescripsion[0]?.secure_url)?carro.fotosdescripsion[0].secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg"} id={carro.pid} ></Cajacarrito>
         ))}
         {(carritoproducto.length === 0)?
         <>
@@ -37,6 +45,26 @@ const Carrito = () => {
         {(carritoproducto.length > 0)?
         <button className='comprarbotoncarrito'>Comprar</button>
         : null}
+        </>
+        :null
+        }
+
+    {(state === 1)? <>
+        {comprados.map((carro) =>(
+        <CajaComprados history={history} key={carro.codigoProducto} idcompra={carro.codigoProducto} producto={carro.titulo}  descripsion={carro.descripsion}  urlfoto={(carro.secure_url?.secure_url)?carro.secure_url.secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg"}  ></CajaComprados>
+        ))}
+        {(comprados.length === 0)?
+        <>
+        <div className='comprarbotoncarrito'>No tienes Compras, visita el Sitio y Compra tu Primer Producto <Link to="/inicio" className="botoncarrito">
+            Ver productos 
+          </Link></div>
+        </>
+        : null}
+   
+        </>
+        :null
+        } 
+
         </div>
         <Footer/>
 

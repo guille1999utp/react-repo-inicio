@@ -57,14 +57,22 @@ padding-bottom: 30px;
     margin-bottom: 48px;
 }
 .botoncarrito{
+    cursor: pointer;
     color: #000;
     text-decoration: none;
     margin-right: 5rem;
     font-weight: 600;
     font-size: 17px;
     margin-bottom: 15px;
+    &:hover{
+        opacity: 0.7;
+    }
+}
+.opacityOprimer{
+    color: rgb(59, 19, 204);
 }
 .img-producto{
+    cursor: pointer;
     max-height: 150px;
     width: 20%;
     text-align: center;
@@ -86,6 +94,7 @@ padding-bottom: 30px;
     flex-direction: column;
 }
 .mostrartextotitulocarrito{
+    cursor: pointer;
     font-size: 18px;
     text-decoration: none;
     color: black;
