@@ -1,0 +1,56 @@
+.containerfooterconsulta{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+.containerpagos{
+    position: relative;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    min-height: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px 10px rgba(70, 165, 70, 0.1);
+    .estaodproducto{
+        position: absolute;
+        right: 20px;
+        background: rgb(70, 165, 70);
+        color: white;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 15px;
+    }
+    .Precioproducto{
+        position: absolute;
+        right: 20px;
+        background: rgb(45, 117, 165);
+        color: white;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 15px;
+        bottom: 20px;
+    }
+    .fotoproductocomprado{
+        max-width: 350px;
+        max-height: 350px;
+        margin: 10px auto;
+    }
+    h1{
+        
+    }
+    .parrafocompra{
+        font-weight: bold;
+        font-size: 20px;
+    }
+    ul{
+        list-style: none;
+        li{
+            font-size: 17px;
+        }
+    }
+}

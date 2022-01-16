@@ -10,28 +10,7 @@ import ParrafosProducto from "./ParrafosProductos";
 
  const Compra = () => {
     const miuid =  useSelector(yo => yo.infoUsuario.uid);
-    const [state, setState] = useState({
-        ok: true,
-        textdescripsion: [
-            "asd"
-        ],
-        fotosdescripsion: [
-            {
-                secure_url: 'https://cdn.pocket-lint.com/r/s/1200x/assets/images/142227-phones-review-iphone-x-review-photos-image1-ahdsiyvum0.jpg',
-            }
-        ],
-        titulo: "ada",
-        detalles: [
-            {
-                Age: "2021",
-                Categoria: "Repuestos",
-                Ubicaion: "Pereira",
-                DomicilioIncluido: false,
-                Garantia: false,
-                Precio:10000
-            }
-        ]
-    })
+    const [state, setState] = useState({})
 
 
     const [carga, setCarga] = useState(true);
@@ -39,6 +18,7 @@ import ParrafosProducto from "./ParrafosProductos";
 
     const [datos, setDatos] = useState({
         nombre:'',
+        apellidos: '',
         telefono:'',
         direccion:'',
         anadirinfo:'',
@@ -52,6 +32,7 @@ import ParrafosProducto from "./ParrafosProductos";
         street_number: '',
         floor: '1',
         apartment: '',
+        picture_url: ''
       });
       
     let { id } = useParams()
@@ -62,6 +43,7 @@ import ParrafosProducto from "./ParrafosProductos";
           if(infoproducto.ok){
             setState(infoproducto);
             setCarga(false);
+            setDatos({...datos,picture_url:infoproducto.fotosdescripsion[0]?.secure_url})
             return  true;
           }else{
             return  false;
@@ -129,8 +111,17 @@ import ParrafosProducto from "./ParrafosProductos";
                <legend>Datos de Compra</legend>
        <h3>Agregar una direccion</h3>
        <form onSubmit={onSubmit}>
-           <label> Nombre del comprador ( Completo ) </label>
+         
+       <div className='flexrow'>
+            <div className='flexcolumn'>
+            <label> Nombres </label>
            <input type='text' className='inputds' placeholder='nombre' name='nombre' value={datos.nombre} onChange={onChangeMensaje}></input>
+           </div>
+           <div className='flexcolumn'>
+           <label> Apellidos </label>
+           <input type='text' className='inputds' placeholder='apellidos' name='apellidos' value={datos.apellidos} onChange={onChangeMensaje}></input>
+           </div>
+        </div>
            <label> Numero de telefono </label>
            <input type='number' placeholder='telefono' className='inputds' name='telefono' value={datos.telefono} onChange={onChangeMensaje} ></input>
            <label> Correo Electronico </label>
