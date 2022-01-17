@@ -319,7 +319,7 @@ const agregarparrafo = () =>{
     </div>
 
        <div className='infocom'>
-    <h4>${state.detalles[0].Precio}</h4>
+    <h4>${parseInt(state.detalles[0].Precio*1.15)}</h4>
     <p>Este articulo solo esta disponible en <strong>colombia</strong></p>
     <p>se entrega en promedio:<strong>30 minutos</strong> </p>
     <p className='disponiblecolor'><strong>Disponible</strong> </p>

@@ -11,5 +11,6 @@ export const types = {
     eliminarparrafoproducto: '[PRODUCTOS] eliminarparrafoproducto',
     reset: '[PRODUCTOS] reset',
     cargarcarrito: '[PRODUCTOS] cargarcarrito',
-    cargarcompras: '[PRODUCTOS] cargarcompras'
+    cargarcompras: '[PRODUCTOS] cargarcompras',
+    cargarventas: '[PRODUCTOS] cargarventas'
 } 

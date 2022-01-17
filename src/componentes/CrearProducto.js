@@ -83,7 +83,7 @@ const onChangeMensaje = (e) => {
 
   const onSubmit = async(e) => {
     e.preventDefault();
-    if(NewProducto.titulo.length>0 && NewProducto.descripsion.length>0){
+    if(NewProducto.titulo.length>0 && NewProducto.descripsion.length>0 && NewProducto.Precio >= 20000){
   try{
     const url = (urlmas.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg")? await UploadPhoto(urlmas):urlmas;
     socket.emit('producto',{
@@ -117,6 +117,15 @@ Swal.fire({
 }
 
 }else{
+  if(NewProducto.Precio < 20000){
+    return Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'El precio debe ser de minimo $20.000',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
   Swal.fire({
     position: 'top-end',
     icon: 'error',

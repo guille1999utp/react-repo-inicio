@@ -4,12 +4,19 @@
     height: 100vh;
     justify-content: space-between;
 }
+.space-around{
+    justify-content: space-around;
+}
+.preciocompra{
+    text-align: end;
+}
 .containerpagos{
+    background: linear-gradient(77deg, rgb(241, 241, 241) 0%, rgba(82, 72, 72, 0.362) 100%, rgb(235, 234, 234) 100%);
+
     position: relative;
     max-width: 700px;
     display: flex;
     flex-direction: column;
-    min-height: 700px;
     margin: 20px auto;
     padding: 20px;
     box-sizing: border-box;
@@ -19,7 +26,6 @@
     .estaodproducto{
         position: absolute;
         right: 20px;
-        background: rgb(70, 165, 70);
         color: white;
         padding: 10px;
         font-size: 18px;
@@ -46,11 +52,21 @@
     .parrafocompra{
         font-weight: bold;
         font-size: 20px;
+        margin-bottom: 10px;
     }
     ul{
+        hr{
+            margin: 10px;
+            color: rgb(68, 68, 68);
+        }
+        .titulocardconsulta{
+            font-weight: bold;
+            font-size: 25px;
+        
+        }
         list-style: none;
-        li{
-            font-size: 17px;
+        .parrafocardconsulta{
+            font-size: 15px;
         }
     }
 }

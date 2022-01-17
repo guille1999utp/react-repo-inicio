@@ -6,6 +6,7 @@ import { types } from '../types/productos';
      parrafosproducto:[],
      carrito:[],
      comprados:[],
+     ventas:[]
  }
 
  function Reducer ( state= initialState, action ){
@@ -30,6 +31,11 @@ import { types } from '../types/productos';
              return {
                     ...state,
                     comprados: action.payload,
+             }
+        case types.cargarventas:
+             return {
+                    ...state,
+                    ventas: action.payload,
              }
          case types.agregarProducto:
               return {

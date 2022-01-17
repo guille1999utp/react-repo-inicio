@@ -48,6 +48,7 @@ const Cajaproductosubidos = ({Producto,history}) => {
     }
     const guardar = async() =>{
       if (Modificar === true) {
+        if(parseInt(state.detalles[0].Precio) >= 20000){
         let url = null;
         if(((!!urlmas.public_id)?urlmas.public_id:null) === initialstate.fotosdescripsion[0].public_id || urlmas.public_id === 0){ 
          }else{
@@ -80,6 +81,15 @@ const Cajaproductosubidos = ({Producto,history}) => {
           })
           
           setModificar(!Modificar)
+        }else{
+          return Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'El precio debe ser de minimo $20.000',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
     }  
     }
     const onChangeMensaje = (e) => {

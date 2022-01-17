@@ -57,6 +57,8 @@ import ParrafosProducto from "./ParrafosProductos";
 
 
       const onChangeMensaje = (e) => {
+        setpagar(true);
+
         const target = e.target;
           const value = target.type === 'checkbox' ? target.checked : target.value;
           const name = target.name;
@@ -84,7 +86,7 @@ import ParrafosProducto from "./ParrafosProductos";
             }
          </div>
          <div className='infopro'>
-            <h1>{'$ '+ state.detalles[0].Precio}</h1>
+            <h1>{'$ '+ parseInt(state.detalles[0].Precio*1.15)}</h1>
             <br></br>
             <h3>{state.titulo}</h3>
              <h4>Detalles</h4>
@@ -169,7 +171,8 @@ import ParrafosProducto from "./ParrafosProductos";
            <label className='recordatoriodireccio'> Recordar direccion </label>
            <input type='checkbox' className='checkcompra' name='recordar' value={datos.recordar} onChange={onChangeMensaje}></input>
           </div>
-          {(pagar)?<button type='submit' className='buttoncomprar'>Solicitar Pago</button>:<MercadoPagoIntegracion items={datos}/>}
+          <button type='submit' className='buttoncomprar'>Solicitar Pago</button>
+          {(pagar)?null:<MercadoPagoIntegracion  items={datos}/>}
 
        </form>
        </fieldset>

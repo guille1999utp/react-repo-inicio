@@ -43,6 +43,9 @@ padding-bottom: 30px;
     font-size: 25px;
     
 }
+.infoaprobado{
+    font-size: 18px;
+}
 .flexrowcarrito{
     display: flex;
     flex-direction: row;
@@ -55,6 +58,17 @@ padding-bottom: 30px;
     height: 150px;
     margin-top: 44px;
     margin-bottom: 48px;
+}
+.productoventa{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 150px;
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+    background: #def3e2;
+    border-radius: 10px;
 }
 .botoncarrito{
     cursor: pointer;
@@ -184,6 +198,9 @@ padding-bottom: 30px;
 
 
   @media screen and (max-width:550px){
+    .botoncarrito{
+        font-size: 10px;
+    }
     .cbasica{
         margin-top: 3px;
     }
@@ -209,7 +226,7 @@ padding-bottom: 30px;
         margin-left: 10px;
     }
     .preciocarrito{
-        font-size: 18px;
+        font-size: 15px;
         margin-right: 15px;
         margin: auto 20px ;
     }

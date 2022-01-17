@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { regenerate,loginstate,actualizarfoto, subidafotos, borrarfotos } from '../actions/auth';
 import { userchat,obtenermensajes } from '../actions/chat';
 import { subirOrden, eliminarorden , recibirsolicitud, eliminarpedido} from '../actions/ordenar';
-import { eliminarproducto ,añadirproducto, modificarproducto, agregarfotoproducto, eliminarfotoproducto, añadirProductoproducto,eliminarparrafoproducto, cargarcarrito, cargarcompras} from '../actions/productos';
+import { eliminarproducto ,añadirproducto, modificarproducto, agregarfotoproducto, eliminarfotoproducto, añadirProductoproducto,eliminarparrafoproducto,cargarventas, cargarcarrito, cargarcompras} from '../actions/productos';
 import { fetchCToken } from '../../helpers/fetchmetod';
 import { useSocket } from "../../SocketsConnection/useSocket";
 
@@ -58,6 +58,14 @@ export const SocketProvider = ({ children }) => {
           dispatch(userchat(usuarios));
       })
   }, [ socket, dispatch]);
+  
+  useEffect(() => {
+  
+    socket?.on( 'lista-vendidos', (ventas) => {
+          dispatch(cargarventas(ventas));
+      })
+  }, [ socket, dispatch]);
+
 
   useEffect(() => {
       socket?.on( 'lista-carrito', (productos) => {

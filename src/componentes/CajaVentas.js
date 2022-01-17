@@ -1,6 +1,6 @@
 import React from "react";
 
-function CajaComprados({producto,descripsion,urlfoto,history,idcompra,precio}) {
+function CajaVentas({producto,descripsion,urlfoto,history,idcompra,precio,lugar,status}) {
     const productoa = producto.trim().slice(0,70);
     const descripsiona = descripsion?.trim().slice(0,150);
     const redirect = () => {
@@ -8,7 +8,7 @@ function CajaComprados({producto,descripsion,urlfoto,history,idcompra,precio}) {
        }
     return (
       <>
-      <div className="productocarrito">
+      <div className="productoventa">
           <div className="img-producto">
           <img
             onClick={redirect}
@@ -24,6 +24,7 @@ function CajaComprados({producto,descripsion,urlfoto,history,idcompra,precio}) {
               <h3 className="cbasica">
                {descripsiona}
               </h3>
+              <p className='infoaprobado'>{(status==="approved")?"Venta Confirmada":null}</p>
               <p className='preciocarrito preciocompra'>{(precio)?"$"+precio:"$"+ 0}</p>
 
             </div>
@@ -35,5 +36,5 @@ function CajaComprados({producto,descripsion,urlfoto,history,idcompra,precio}) {
     );
   }
   
-  export default CajaComprados;
+  export default CajaVentas;
   

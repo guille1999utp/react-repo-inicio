@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import "./Carrito.scss";
 import { Link } from "react-router-dom";
 import Cajacarrito from "./Cajacarrito";
+import CajaVentas from "./CajaVentas";
 import CajaComprados from "./CajaComprados";
 import Footer from "./Footer";
 import { useSelector} from 'react-redux';
@@ -9,6 +10,7 @@ import { useSelector} from 'react-redux';
 const Carrito = ({history}) => {
   const carritoproducto = useSelector(carritos => carritos.productos.carrito);
   const comprados = useSelector(comprados => comprados.productos.comprados);
+  const ventas = useSelector(ventas => ventas.productos.ventas);
   const [state, setState] = useState(1);
   const mostrar = (mostrar) =>{
     setState(mostrar);
@@ -25,7 +27,7 @@ const Carrito = ({history}) => {
             Compras({comprados.length})
           </span>
           <span className={(state === 2)?"botoncarrito opacityOprimer":"botoncarrito"} onClick={()=>mostrar(2)}>
-            Ventas(1)
+            Ventas({ventas.length})
           </span>
         </div>
         <hr></hr>
@@ -51,7 +53,7 @@ const Carrito = ({history}) => {
 
     {(state === 1)? <>
         {comprados.map((carro) =>(
-        <CajaComprados history={history} key={carro.codigoProducto} idcompra={carro.codigoProducto} producto={carro.titulo}  descripsion={carro.descripsion}  urlfoto={(carro.secure_url?.secure_url)?carro.secure_url.secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg"}  ></CajaComprados>
+        <CajaComprados precio={carro.precio} history={history} key={carro.codigoProducto} idcompra={carro.codigoProducto} producto={carro.titulo}  descripsion={carro.descripsion}  urlfoto={(carro.secure_url?.secure_url)?carro.secure_url.secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg"}  ></CajaComprados>
         ))}
         {(comprados.length === 0)?
         <>
@@ -64,7 +66,21 @@ const Carrito = ({history}) => {
         </>
         :null
         } 
-
+{(state === 2)? <>
+        {ventas.map((carro) =>(
+        <CajaVentas  status={carro.status} precio={carro.precio} history={history} key={carro.codigoProducto} idcompra={carro.codigoProducto} producto={carro.titulo}  descripsion={carro.descripsion}  urlfoto={(carro.secure_url?.secure_url)?carro.secure_url.secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg"}  ></CajaVentas>
+        ))}
+        {(ventas.length === 0)?
+        <>
+        <div className='comprarbotoncarrito'>No tienes Compras, visita el Sitio y Compra tu Primer Producto <Link to="/inicio" className="botoncarrito">
+            Ver productos 
+          </Link></div>
+        </>
+        : null}
+   
+        </>
+        :null
+        } 
         </div>
         <Footer/>
 

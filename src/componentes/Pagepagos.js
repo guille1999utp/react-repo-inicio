@@ -16,17 +16,16 @@ const Pagepagos = ({location}) => {
           const res = await fetchCToken(`feedback/${location.search}`);
           if (res.ok) {
               setCarga(res)
-            const verificacion = await fetch(`https://api.mercadopago.com/v1/payments/${res.Payment}/?access_token=TEST-5055770355930459-011316-ccaea0a91c4691f54f9b459f1e29715e-1056242334`,{
-                method: "GET"
-              });
-           if(verificacion?.status === 404){
+            const verificacion = await fetchCToken(`consultarpago/${res.Payment}`);
+              console.log(verificacion)
+           if(!verificacion?.ok){
                return true
            }
            if(verificacion?.ok){
-               console.log('emtrp');
               setTimeout(()=> socket?.emit('anadircompra',{
                 codigo:res.Payment,
-                id
+                id,
+                status:res.Status
                 }), 
                 3000);
             
