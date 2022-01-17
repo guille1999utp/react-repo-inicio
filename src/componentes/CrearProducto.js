@@ -30,7 +30,29 @@ const [NewProducto, setNewProducto] = useState({
 const obtenerproductos = useCallback(
   async() => {
     const ordenes = await fetchCToken('crearproducto');
+    console.log(Notification.permission)
 
+     if(Notification.permission === 'default'){
+       Notification.requestPermission(function(permission){
+        if(Notification.permission === 'granted'){
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'success',
+            title: "notificaciones activas"
+          })
+        }
+       });
+     }
     if(!ordenes.ok){
     return ;
     }

@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 function Cajasolicitud({producto,descripsion,urlfoto,id,precio,history}) {
     const {socket} = useContext(SocketContext);
     const productoa = producto.trim().slice(0,70);
-    const descripsiona = descripsion.trim().slice(0,150);
+    const descripsiona = descripsion?.trim().slice(0,150);
   
     const onDelete = () => {
       socket.emit('eliminarproductocarrito',{
@@ -53,7 +53,7 @@ function Cajasolicitud({producto,descripsion,urlfoto,id,precio,history}) {
           ></img>
           </div>
           <div className="caracteristicaproductocarrito">
-            <div className="flexcolum">
+            <div className="flexcolum space-around">
               <Link to={`/producto/${id}`} className="mostrartextotitulocarrito">
                 {productoa}
               </Link>

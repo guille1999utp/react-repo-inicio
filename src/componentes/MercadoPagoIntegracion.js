@@ -4,11 +4,12 @@ import { fetchCToken } from "../helpers/fetchmetod";
 
 const FORM_ID = 'payment-form';
 
-export default function Product( { items }) {
+export default function Product( {items }) {
   const { id } = useParams(); // id de producto
 
   const obtenerpreference = useCallback(
     async() => {
+      
         const res = await fetchCToken(`comprar/${id}`, { items }, 'POST');
         console.log(res);
         if (res.global) {

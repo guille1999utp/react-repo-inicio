@@ -94,7 +94,8 @@ import { types } from '../types/productos';
              return {
                     ...initialState,
                     carrito:state.carrito,
-                    comprados:state.comprados
+                    comprados:state.comprados,
+                    ventas:state.ventas
                        }
          
         default:

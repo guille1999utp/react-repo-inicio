@@ -11,6 +11,7 @@ import Chat from '../componentes/Chat';
 import Carrito from '../componentes/Carrito';
 import Compra from '../componentes/Compra';
 import PagoConsultaPago from '../componentes/PageConsultaPago';
+import ConsultarVenta from '../componentes/ConsultarVenta';
 import Configuracion from '../componentes/Configuracion';
 import Ordenar from '../componentes/Ordenar';
 import Solicitudes from '../componentes/Solicitudes';
@@ -39,7 +40,8 @@ export default function Rutas() {
   <Rutaprivada isAuthenticated={online} path='/ordenar' component={Ordenar}/>
   <Rutaprivada isAuthenticated={online} path='/solicitudes' component={Solicitudes}/>
   <Route isAuthenticated={online} path='/feedback/:id' component={Pagespagos}/>
-  <Route isAuthenticated={online} path='/consultarpago/:id' component={PagoConsultaPago}/>
+  <Rutaprivada isAuthenticated={online} path='/consultarpago/:id' component={PagoConsultaPago}/>
+  <Rutaprivada isAuthenticated={online} path='/consultarventa/:id' component={ConsultarVenta}/>
   <Redirect from='/' to='/'/>
   </Switch>
   </Router>

@@ -78,7 +78,12 @@ export const SocketProvider = ({ children }) => {
             dispatch(cargarcompras(compras));
         })
     }, [ socket, dispatch]);
-
+    
+    useEffect(() => {
+      socket?.on( 'notificacion-venta', () => {
+       const notificacion = new Notification("tuviste una venta")
+        })
+    }, [ socket, dispatch]);
   useEffect(() => {
   
     socket?.on( 'productomodificar', (producto) => {

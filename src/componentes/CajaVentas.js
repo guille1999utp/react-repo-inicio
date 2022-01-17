@@ -1,10 +1,10 @@
 import React from "react";
 
-function CajaVentas({producto,descripsion,urlfoto,history,idcompra,precio,lugar,status}) {
+function CajaVentas({producto,descripsion,urlfoto,history,idcompra,precio,status}) {
     const productoa = producto.trim().slice(0,70);
     const descripsiona = descripsion?.trim().slice(0,150);
     const redirect = () => {
-      history.push( `/consultarpago/${idcompra}`);
+      history.push( `/consultarventa/${idcompra}`);
        }
     return (
       <>
@@ -25,7 +25,7 @@ function CajaVentas({producto,descripsion,urlfoto,history,idcompra,precio,lugar,
                {descripsiona}
               </h3>
               <p className='infoaprobado'>{(status==="approved")?"Venta Confirmada":null}</p>
-              <p className='preciocarrito preciocompra'>{(precio)?"$"+precio:"$"+ 0}</p>
+              <p className='preciocarrito preciocompra'>{(precio)?"$"+parseInt(precio/1.15+1):"$"+ 0}</p>
 
             </div>
           </div>
