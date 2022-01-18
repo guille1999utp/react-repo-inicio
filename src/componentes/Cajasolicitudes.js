@@ -1,5 +1,4 @@
 import React,{ useState, useContext} from 'react'
-import { Link } from "react-router-dom";
 import './Cajasolicitudes.css';
 import { useDispatch,useSelector } from 'react-redux';
 import { activarchat , Cargarmensajeschat} from '../redux/actions/chat';
@@ -61,9 +60,9 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto}) => {
           </div>
           <div className="caracteristicaproductocarrito">
             <div className="flexcolum">
-              <Link to="/producto/45" className="mostrartextotitulocarrito">
+              <p className="mostrartextotitulocarrito">
                {productoa}
-              </Link>
+              </p>
               <h3 className="cbasica">
                {descripsiona}
               </h3>

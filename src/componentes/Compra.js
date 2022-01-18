@@ -43,7 +43,7 @@ import ParrafosProducto from "./ParrafosProductos";
           if(infoproducto.ok){
             setState(infoproducto);
             setCarga(false);
-            setDatos({...datos,picture_url:infoproducto.fotosdescripsion[0]?.secure_url})
+            setDatos({picture_url:infoproducto.fotosdescripsion[0]?.secure_url})
             return  true;
           }else{
             return  false;

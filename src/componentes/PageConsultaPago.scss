@@ -1,7 +1,8 @@
 .containerfooterconsulta{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     justify-content: space-between;
     background: linear-gradient(rgba(5,7,12,0.2),rgba(5,7,12,0.2)), url("./images/—Pngtree—abstract-dark-sale-background_1304813.jpg") no-repeat center fixed;
 }
@@ -15,7 +16,7 @@
     background: linear-gradient(77deg, rgb(241, 241, 241) 0%, rgba(82, 72, 72, 0.362) 100%, rgb(235, 234, 234) 100%);
 
     position: relative;
-    max-width: 700px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     margin: 20px auto;
@@ -46,6 +47,9 @@
         max-width: 350px;
         max-height: 350px;
         margin: 10px auto;
+        @media screen and (max-width:552px){
+            max-width: 91%;
+          }
     }
     h1{
         
@@ -70,4 +74,4 @@
             font-size: 15px;
         }
     }
-}
+} 

@@ -157,6 +157,7 @@ width: 80%;
   }
   .items{
     position: fixed;
+    z-index: 2;
     width: 100vw;
     height: calc(100vh - 65px);
     background: rgb(45, 49, 58);

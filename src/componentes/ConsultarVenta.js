@@ -40,7 +40,7 @@ const ConsultarVenta = () => {
         <p className="parrafocompra">{state.additional_info?.items[0].description}</p>
         <ul>
         <li className="titulocardconsulta">Datos del Comprador</li>
-        <li className="parrafocardconsulta"> <b>Vendedor:</b> {state.payer?.first_name}</li>
+        <li className="parrafocardconsulta"> <b>Comprador:</b> {state.payer?.first_name}</li>
         <li className="parrafocardconsulta"> <b>Identificacion:</b> {state.payer?.identification.number}</li>
         <li className="parrafocardconsulta"> <b>Email:</b> {state.payer?.email}</li>
         <hr></hr>

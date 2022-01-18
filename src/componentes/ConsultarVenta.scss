@@ -1,15 +1,16 @@
 .containerfooterventa{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     justify-content: space-between;
     background: linear-gradient(rgba(5,7,12,0.75),rgba(5,7,12,0.75)), url("./images/—Pngtree—3d-white-circle-backdrop-background_307437.jpg") no-repeat center fixed;
 }
 .containerventas{
          background: linear-gradient(77deg , #ffffff 50%, rgb(255 ,255 ,255) 50%, #8f8f8f 77%);
          position: relative;
-        max-width: 700px;
-        display: flex;
+         max-width: 100%;
+         display: flex;
         flex-direction: column;
         margin: 20px auto;
         padding: 20px;

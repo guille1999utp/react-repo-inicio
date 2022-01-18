@@ -33,6 +33,7 @@ const url = `${ sitioUrl }/${ endpoint }`;
                     'x-token': token,
                     'limit': limit
                 }
+                
             });
             return await resp.json();
         } else {
@@ -40,7 +41,8 @@ const url = `${ sitioUrl }/${ endpoint }`;
                 method,
                 headers: {
                     'Content-type': 'application/json',
-                    'x-token': token
+                    'x-token': token,
+                    'limit': limit
                 },
                 body: JSON.stringify( data )
             })

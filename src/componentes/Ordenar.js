@@ -8,6 +8,7 @@ import { fetchCToken } from "../helpers/fetchmetod";
 import { cargarordenes } from "../redux/actions/ordenar";
 import { UploadPhoto } from "../helpers/cloudinaryUpload";
 import Footer from "./Footer";
+import { subirOrden} from '../redux/actions/ordenar';
 
 function Ordenar() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function Ordenar() {
       nombre: "",
       descripsion: "",
       fecha: "",
-      categoria:"herramienta"
+      categoria:"Repuestos"
   });
   const [urlmas, setUrl] = useState({
     secure_url:"https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg",
@@ -62,7 +63,7 @@ function Ordenar() {
       nombre: "",
       descripsion: "",
       fecha: "",
-      categoria:"herramienta"
+      categoria:"todos"
   });
   setUrl(
     {
@@ -73,6 +74,17 @@ function Ordenar() {
   console.log(err)
 }
   };
+
+  useEffect(() => {
+    socket?.on( 'orden', (orden) => {
+      console.log(orden)
+        if(orden.de === miusuario){
+            dispatch(subirOrden(orden));
+        }
+    })
+}, [ socket , dispatch, miusuario]);
+
+
   const onFilesave  = async(e) =>{
     const file = e.target.files[0];
     setUrl(file);
@@ -125,8 +137,15 @@ function Ordenar() {
             </label>
 
             <label  className="flexrow wrapordenar">
-              <span>hora llegada</span>
-              <input type="time" id="horario" name='horallegada' onChange={onChangeMensaje} value={solicitud.horallegada}></input>
+              <span>Categoria</span>
+              <select name="categoria" onChange={onChangeMensaje} value={solicitud.categoria}>
+          <option>todos</option>
+          <option>Repuestos</option>
+          <option>Mascotas</option>
+          <option>Maquillaje</option>
+          <option>Electrodomesticos</option>
+          <option>Tecnologia</option>
+          </select>
             </label>
 
             <label className="flexrow wrapordenar">

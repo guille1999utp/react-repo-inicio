@@ -2,7 +2,7 @@ import React, {useEffect,useCallback, createContext} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { regenerate,loginstate,actualizarfoto, subidafotos, borrarfotos } from '../actions/auth';
 import { userchat,obtenermensajes } from '../actions/chat';
-import { subirOrden, eliminarorden , recibirsolicitud, eliminarpedido} from '../actions/ordenar';
+import {  eliminarorden ,eliminarpedido} from '../actions/ordenar';
 import { eliminarproducto ,añadirproducto, modificarproducto, agregarfotoproducto, eliminarfotoproducto, añadirProductoproducto,eliminarparrafoproducto,cargarventas, cargarcarrito, cargarcompras} from '../actions/productos';
 import { fetchCToken } from '../../helpers/fetchmetod';
 import { useSocket } from "../../SocketsConnection/useSocket";
@@ -81,7 +81,7 @@ export const SocketProvider = ({ children }) => {
     
     useEffect(() => {
       socket?.on( 'notificacion-venta', () => {
-       const notificacion = new Notification("tuviste una venta")
+       new Notification("tuviste una venta")
         })
     }, [ socket, dispatch]);
   useEffect(() => {
@@ -158,16 +158,7 @@ useEffect(() => {
   dispatch(actualizarfoto(url));
   })
 }, [ socket , dispatch]);
-useEffect(() => {
-    socket?.on( 'orden', (orden) => {
-        if(orden.de === state.uid){
-            dispatch(subirOrden(orden));
-        }
-        if(orden.de !== state.uid){
-          dispatch(recibirsolicitud(orden));
-      }
-    })
-}, [ socket , dispatch, state.uid]);
+
 
 useEffect(() => {
     socket?.on( 'eliminarorden', (oid) => {
