@@ -79,7 +79,7 @@ export default function Solicitudes({history}) {
     </div>
         <hr></hr>
       {solicitudes.map((solicitud) =>(
-      <Cajasolicitudes key={solicitud.oid} history={history} de={solicitud.de} producto={solicitud.nombre} descripsion={solicitud.descripsion} urlfoto={solicitud.urlfoto}></Cajasolicitudes>
+      <Cajasolicitudes key={solicitud.oid} productorden={solicitud.oid} history={history} de={solicitud.de} producto={solicitud.nombre} descripsion={solicitud.descripsion} urlfoto={solicitud.urlfoto}></Cajasolicitudes>
       ))}
       {(solicitudes.length === 0)?
       <>

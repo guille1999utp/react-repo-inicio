@@ -4,12 +4,11 @@ import { useDispatch,useSelector } from 'react-redux';
 import { activarchat , Cargarmensajeschat} from '../redux/actions/chat';
 import Swal from 'sweetalert2'
 import { SocketContext } from '../redux/context/contextchat'
-import { fetchCToken } from '../helpers/fetchmetod';
+import { fetchCToken ,fetchstoken} from '../helpers/fetchmetod';
 
-export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto}) => {
+export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,productorden}) => {
   const {socket} = useContext(SocketContext);
   const miusuario =  useSelector(yo => yo.infoUsuario);
-  const chats =  useSelector(chatsuser => chatsuser.chat.usuarios);
   const dispatch = useDispatch();
   const productoa = producto.trim().slice(0,70);
   const descripsiona = descripsion.trim().slice(0,200);
@@ -37,10 +36,13 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto}) => {
   socket.emit('mensaje',{
     de:miusuario.uid,
     para:de,
-    mensaje
+    mensaje,
+    productorden
     })
-    const chatactivo = chats.filter( user => user.uid === de);
-    dispatch(activarchat({iduser:chatactivo[0].uid, name: chatactivo[0].nombre}));
+    const resuser = await fetchstoken(`perfil/${de}`);
+    console.log(resuser)
+
+    dispatch(activarchat({iduser: de, name: resuser.nombre,urlfoto: resuser.urlfoto }));
     const res = await fetchCToken(`chat/${de}`);
     dispatch(Cargarmensajeschat(res.mensajes));
     history.push( '/chat');

@@ -3,7 +3,8 @@ export const types = {
     activarChat: '[Chat] Activar Chat',
     nuevoMensaje: '[Chat] Nuevo Mensaje',
     cargarMensajes: '[Chat] Cargar Mensajes',
-    regenerate : '[Chat] regenerate',
+    regeneratechat : '[Chat] regeneratechat',
     chatsolicitud : '[Chat] chatsolicitud',
+    exitChat : '[Chat] exitChat',
 
 }

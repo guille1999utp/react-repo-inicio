@@ -24,6 +24,7 @@ const Pagepagos = ({location}) => {
            if(verificacion?.ok){
               setTimeout(()=> socket?.emit('anadircompra',{
                 codigo:res.Payment,
+                preference: res.Preference_id,
                 id,
                 status:res.Status
                 }), 

@@ -23,16 +23,19 @@ import { types } from '../types/chat';
             }
         
         case types.activarChat:
-            if ( state.chatActivo === action.payload ) return state;
+            if ( state.chatActivo === action.payload ) {return state}else{
 
-            return {
-                ...state,
-                chatActivo: action.payload,
-                mensajes: []
-            }
+                return {
+                    ...state,
+                    chatActivo: action.payload,
+                    mensajes: []
+                }
+            };
+
 
 
         case types.nuevoMensaje:
+            console.log(action.payload)
             if ( state.chatActivo?.iduser === action.payload.de || state.chatActivo?.iduser === action.payload.para ) {
                 return {
                     ...state,
@@ -47,9 +50,16 @@ import { types } from '../types/chat';
                 ...state,
                 mensajes: [ ...action.payload ]
             }
-            case types.regenerate:
+            case types.regeneratechat:
                 return initialState;
-    
+        case types.exitChat:
+            return {
+                uid: '',
+                chatActivo: null, 
+                usuarios: [...state.usuarios], 
+                mensajes: [],
+            };
+        
         default:
             return state;
     }

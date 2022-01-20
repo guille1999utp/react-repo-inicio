@@ -1,7 +1,7 @@
 import React, {useEffect,useCallback, createContext} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { regenerate,loginstate,actualizarfoto, subidafotos, borrarfotos } from '../actions/auth';
-import { userchat,obtenermensajes } from '../actions/chat';
+import { userchat,obtenermensajes,exitChat } from '../actions/chat';
 import {  eliminarorden ,eliminarpedido} from '../actions/ordenar';
 import { eliminarproducto ,añadirproducto, modificarproducto, agregarfotoproducto, eliminarfotoproducto, añadirProductoproducto,eliminarparrafoproducto,cargarventas, cargarcarrito, cargarcompras} from '../actions/productos';
 import { fetchCToken } from '../../helpers/fetchmetod';
@@ -123,6 +123,13 @@ export const SocketProvider = ({ children }) => {
     socket?.on( 'productoparrafoeliminar', (index) => {
       dispatch(eliminarparrafoproducto(index));
       console.log(index)
+    })
+  }, [ socket, dispatch]);
+
+  useEffect(() => {
+  
+    socket?.on( 'resetchat', () => {
+      dispatch(exitChat());
     })
   }, [ socket, dispatch]);
 

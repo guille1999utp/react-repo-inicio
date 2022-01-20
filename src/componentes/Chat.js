@@ -18,13 +18,23 @@ function Chat() {
     if(mensaje.length === 0){
       return ;
     }
+    console.log(mensaje[0].productorden)
    socket.emit('mensaje',{
    de:miusuario.uid,
    para:chatActivo.iduser,
-   mensaje
+   mensaje,
+   productorden: mensajes[0].productorden
    })
     setmensaje('');
   };
+
+  const onSelect = () =>{
+    socket.emit('seleccionarchat',{
+      de:miusuario.uid,
+      para:chatActivo.iduser,
+      productorden: mensajes[0].productorden
+      })
+  }
 
   useEffect(() => {
     const chatscrollabajo = document.querySelector(".finalchatscroll");
@@ -59,7 +69,7 @@ function Chat() {
           )):null
           }
         </div>
-        <div className={ (chatActivo)?"mensajesusuarios":'mensajesvacio'}>
+        <div className={ (chatActivo )?"mensajesusuarios":'mensajesvacio'}>
           {
             (chatActivo)?<>
           <div className="paletacomandochat">
@@ -87,7 +97,7 @@ function Chat() {
             <div className="finalchatscroll"></div>
           </div>
           <form className="paletachat" onSubmit={onSubmit}>
-            <i className="bx bx-paperclip"></i>
+            <i className="bx bx-paperclip" onClick={onSelect}></i>
             <input
             autoComplete={'off'}
               type="text"
