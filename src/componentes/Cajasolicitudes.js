@@ -40,7 +40,6 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,product
     productorden
     })
     const resuser = await fetchstoken(`perfil/${de}`);
-    console.log(resuser)
 
     dispatch(activarchat({iduser: de, name: resuser.nombre,urlfoto: resuser.urlfoto }));
     const res = await fetchCToken(`chat/${de}`);

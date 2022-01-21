@@ -1,7 +1,7 @@
 import "./Chat.css";
 import CajaChat from "./CajaChat";
 import UsuariosConectados from "./UsuariosConectados";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect} from "react";
 import { useSelector } from 'react-redux';
 import { SocketContext } from '../redux/context/contextchat'
 import { Link  } from 'react-router-dom';
@@ -10,30 +10,34 @@ function Chat() {
       const {socket} = useContext(SocketContext);
   const {chatActivo, usuarios, mensajes} =  useSelector(chat => chat.chat);
   const miusuario =  useSelector(yo => yo.infoUsuario);
+  const [seleccionar, setSeleccionar] = useState(false);
+
 
   const [mensaje, setmensaje] = useState('');
-
   const onSubmit = async (e) => {
     e.preventDefault();
     if(mensaje.length === 0){
       return ;
     }
-    console.log(mensaje[0].productorden)
    socket.emit('mensaje',{
    de:miusuario.uid,
    para:chatActivo.iduser,
    mensaje,
    productorden: mensajes[0].productorden
    })
+
     setmensaje('');
   };
 
   const onSelect = () =>{
+    setSeleccionar(true);
     socket.emit('seleccionarchat',{
       de:miusuario.uid,
       para:chatActivo.iduser,
       productorden: mensajes[0].productorden
       })
+      socket.emit('eliminarorden', {oid:mensajes[0].productorden});
+
   }
 
   useEffect(() => {
@@ -65,6 +69,7 @@ function Chat() {
             <UsuariosConectados
               key={usuario.uid}
               user={usuario}
+              funChulo={setSeleccionar}
             ></UsuariosConectados>
           )):null
           }
@@ -97,7 +102,7 @@ function Chat() {
             <div className="finalchatscroll"></div>
           </div>
           <form className="paletachat" onSubmit={onSubmit}>
-            <i className="bx bx-paperclip" onClick={onSelect}></i>
+            {(seleccionar)?<button className="buttonexitopedido">Exito</button>:<i className='bx bx-check' onClick={onSelect}></i>}
             <input
             autoComplete={'off'}
               type="text"

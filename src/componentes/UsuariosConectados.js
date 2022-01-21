@@ -3,9 +3,7 @@ import { fetchCToken } from '../helpers/fetchmetod';
 import { scrollToBottom } from '../helpers/scrollToBottom';
 import { activarchat , Cargarmensajeschat} from '../redux/actions/chat';
 
-
-
-function UsuariosConectados({user}) {
+function UsuariosConectados({user,funChulo}) {
   const dispatch = useDispatch();
   const {chatActivo} =  useSelector(chat => chat.chat);
   const onClick = async() =>{
@@ -15,6 +13,11 @@ function UsuariosConectados({user}) {
      urlfoto: user.urlfoto
     }))
     const res = await fetchCToken(`chat/${user.uid}`);
+    const orden = await fetchCToken('ordenconsulta',{oid:res.mensajes[0]._id},'POST');
+    console.log(orden)
+    if(orden.ok && orden.producto === 0){
+      funChulo(true);
+      }
     dispatch(Cargarmensajeschat(res.mensajes));
     scrollToBottom('mensajes');
 
