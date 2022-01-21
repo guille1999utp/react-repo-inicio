@@ -135,13 +135,17 @@ border:none;
     color: rgb(81, 88, 92);
 }
 .buttonexitopedido{
-    padding: 6px;
-    margin: 20px 0;
+    padding: 0 6px;
+    margin: auto 0;
     margin-left: 10px;
     border-radius: 11px;
     background: #90e190;
     border: solid 1px;
     cursor: pointer;
+    height: 65%;
+}
+.buttonexitopedido p{
+    margin: auto;
 }
 .buttonexitopedido:hover{
     opacity: 0.7;

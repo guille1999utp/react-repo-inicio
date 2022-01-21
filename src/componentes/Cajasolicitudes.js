@@ -37,7 +37,9 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,product
     de:miusuario.uid,
     para:de,
     mensaje,
-    productorden
+    productorden,
+    precio: solicitud.plata,
+    condicion: "pendiente"
     })
     const resuser = await fetchstoken(`perfil/${de}`);
 
