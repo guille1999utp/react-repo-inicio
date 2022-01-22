@@ -144,6 +144,28 @@ border:none;
     cursor: pointer;
     height: 65%;
 }
+.buttoncancelarpedido{
+    padding: 0 6px;
+    margin: auto 0;
+    margin-left: 10px;
+    border-radius: 11px;
+    background: #e25e5e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: 65%;
+}
+.buttonenviopedido{
+    padding: 0 6px;
+    margin: auto 0;
+    margin-left: 10px;
+    border-radius: 11px;
+    background: #008892;
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: 65%;
+}
 .buttonexitopedido p{
     margin: auto;
 }

@@ -34,10 +34,11 @@ function Chat() {
 
     setmensaje('');
   };
-
+ 
   const obtenerproductos = useCallback(
     async() => {
       const ordenes = await fetchCToken('ordenar');
+      console.log(ordenes)
       if(!ordenes.ok){
       return ;
       }
@@ -57,7 +58,7 @@ function Chat() {
       para:chatActivo.iduser,
       productorden: mensajes[0].productorden,
       })
-      socket.emit('eliminarorden', {oid:mensajes[0].productorden});
+      socket.emit('desactivarproducto', {oid:mensajes[0].productorden});
 
   }
 
@@ -67,8 +68,14 @@ function Chat() {
   const  onFail = () =>{
 
   }
-
-
+  
+  const  onEnviado = () =>{
+    socket.emit('enviadoproductosolicitud',{
+      productorden: mensajes[0].productorden,
+      de:miusuario.uid,
+      para:chatActivo.iduser
+      })
+  }
   useEffect(() => {
     const chatscrollabajo = document.querySelector(".finalchatscroll");
     chatscrollabajo?.scrollIntoView({
@@ -132,13 +139,20 @@ function Chat() {
             <div className="finalchatscroll"></div>
           </div>
           <form className="paletachat" onSubmit={onSubmit}>
-            {(seleccionar)?(pendiente === 'pendiente')?<button className="buttonexitopedido" type="button" onClick={onFail}><p>Cancelar</p></button>:<button className="buttonexitopedido" type="button" onClick={onExito}><p>recibido</p></button>:(ordenecomparar.map((dato)=>{
+            {(seleccionar)?(pendiente === 'pendiente')?(ordenecomparar.map((dato)=>{
   if(dato.oid === mensajes[0]?.productorden){
     return dato.oid
   }else{
     return null;
   }
-}).includes(mensajes[0]?.productorden))?<i className='bx bx-check' onClick={onSelect}></i>:null}
+}).includes(mensajes[0]?.productorden))?<button className="buttoncancelarpedido" type="button" onClick={onFail}><p>Cancelar</p></button>:<button className="buttonenviopedido" type="button" onClick={onEnviado}><p>Enviado</p></button>:<button className="buttonexitopedido" type="button" onClick={onExito}><p>recibido</p></button>:(ordenecomparar.map((dato)=>{
+  if(dato.oid === mensajes[0]?.productorden){
+    console.log(dato.aparecer)
+    return dato.aparecer
+  }else{
+    return false;
+  }
+}).includes(true))?<i className='bx bx-check' onClick={onSelect}></i>:null}
             <input
             autoComplete={'off'}
               type="text"
