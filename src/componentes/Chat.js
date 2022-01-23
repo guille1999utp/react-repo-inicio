@@ -105,7 +105,8 @@ function Chat() {
     socket.emit('productorecibidoconexito',{
       productorden: mensajes[0].productorden,
       de:miusuario.uid,
-      para:chatActivo.iduser
+      para:chatActivo.iduser,
+      dinero:mensajes[0].precio*0.05
       })
   }
   

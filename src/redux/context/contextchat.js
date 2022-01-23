@@ -104,12 +104,6 @@ export const SocketProvider = ({ children }) => {
       dispatch(agregarfotoproducto(producto));
     })
   }, [ socket, dispatch]);
-  useEffect(() => {
-    socket?.on( 'enviadoproductosolicitud',async () => {
-      const res = await fetchCToken(`chat/${state.uid}`);
-      dispatch(Cargarmensajeschat(res.mensajes));
-    })
-  }, [ socket, dispatch,state.uid]);
 
 useEffect(() => {
   socket?.on( 'recibidoproductosolicitud',async (data) => {
