@@ -58,15 +58,55 @@ function Chat() {
       para:chatActivo.iduser,
       productorden: mensajes[0].productorden,
       })
-      socket.emit('desactivarproducto', {oid:mensajes[0].productorden});
-
+      socket.emit('desactivarproducto', {oid:mensajes[0].productorden, para:chatActivo.iduser});
   }
 
-  const onExito = () =>{
+  useEffect(() => {
+  
+    socket.on('desactivarproducto',(dato)=>{
+      console.log(dato)
+      setSeleccionar(dato)
+    });
+  }, [ socket, setSeleccionar]);
+  
+  useEffect(() => {
+    socket.on('estadopendiente',()=>{
+      setPendiente('enviado')
+    });
+  }, [ socket, setSeleccionar]);
 
+  useEffect(() => {
+    socket.on('estadorecibido',()=>{
+      setPendiente('recibido')
+    });
+  }, [ socket, setSeleccionar]);
+
+  const onRecibido = () =>{
+    socket.emit('recibidoproductosolicitud',{
+      productorden: mensajes[0].productorden,
+      de:miusuario.uid,
+      para:chatActivo.iduser
+      })
   }
   const  onFail = () =>{
 
+  }
+  
+  const  onCancel = () =>{
+    setSeleccionar(false);
+    socket.emit('deseleccionarchat',{
+      de:miusuario.uid,
+      para:chatActivo.iduser,
+      productorden: mensajes[0].productorden,
+      })
+  }
+  
+  const  onExito = () =>{
+    socket.emit('productorecibidoconexito',{
+      productorden: mensajes[0].productorden,
+      de:miusuario.uid,
+      para:chatActivo.iduser
+      })
   }
   
   const  onEnviado = () =>{
@@ -139,32 +179,74 @@ function Chat() {
             <div className="finalchatscroll"></div>
           </div>
           <form className="paletachat" onSubmit={onSubmit}>
-            {(seleccionar)?(pendiente === 'pendiente')?(ordenecomparar.map((dato)=>{
+            {(seleccionar)?//1i
+            (pendiente === 'pendiente')?//2i
+  (ordenecomparar.map((dato)=>{
   if(dato.oid === mensajes[0]?.productorden){
     return dato.oid
   }else{
     return null;
   }
-}).includes(mensajes[0]?.productorden))?<button className="buttoncancelarpedido" type="button" onClick={onFail}><p>Cancelar</p></button>:<button className="buttonenviopedido" type="button" onClick={onEnviado}><p>Enviado</p></button>:<button className="buttonexitopedido" type="button" onClick={onExito}><p>recibido</p></button>:(ordenecomparar.map((dato)=>{
+}).includes(mensajes[0]?.productorden))?//3i
+<button className="buttoncancelarpedido" type="button" onClick={onCancel}><p>Cancelar</p></button>://3f
+<button className="buttonenviopedido" type="button" onClick={onEnviado}><p>Enviado</p></button>://2f
+ (pendiente === 'enviado')?//4i
+ (ordenecomparar.map((dato)=>{
+  if(dato.oid === mensajes[0]?.productorden){
+    return dato.oid
+  }else{
+    return null;
+  }
+}).includes(mensajes[0]?.productorden))?//5i
+<button className="buttonexitopedido" type="button" onClick={onRecibido}><p>recibido</p></button>: null: null://4f // 5f
+ (ordenecomparar.map((dato)=>{
   if(dato.oid === mensajes[0]?.productorden){
     console.log(dato.aparecer)
     return dato.aparecer
   }else{
     return false;
   }
-}).includes(true))?<i className='bx bx-check' onClick={onSelect}></i>:null}
-            <input
-            autoComplete={'off'}
-              type="text"
-              className="decorationpaleta"
-              value={mensaje}
-              placeholder="Escribir Mensaje"
-              onChange={onChangeMensaje}
-              name="mensaj"
-            ></input>
-            <button type="submit" className="botonsend">
+}).includes(true))?//6i
+<i className='bx bx-check' onClick={onSelect}></i>:null//1f
+}
+ 
+ { (pendiente === 'recibido')?
+ (ordenecomparar.map((dato)=>{
+  if(dato.oid === mensajes[0]?.productorden){
+    return dato.oid
+  }else{
+    return null;
+  }
+}).includes(mensajes[0]?.productorden))?
+<><input
+         autoComplete={'off'}
+           type="text"
+           className="decorationpaleta"
+           value={mensaje}
+           placeholder="Escribir Mensaje"
+           onChange={onChangeMensaje}
+           name="mensaj"
+         ></input>
+          <button type="submit" className="botonsend">
               <i className="bx bxs-send"></i>
             </button>
+         </>:<div className='bordesolicitudcompleta'>
+          <button className="buttonenviopedido" type="button" onClick={onExito}><p>Terminar</p></button>
+           <button className="buttoncancelarpedido" type="button" onClick={onFail}><p>Reportar Problema</p></button>
+          </div>
+          :<><input
+          autoComplete={'off'}
+            type="text"
+            className="decorationpaleta"
+            value={mensaje}
+            placeholder="Escribir Mensaje"
+            onChange={onChangeMensaje}
+            name="mensaj"
+          ></input>
+           <button type="submit" className="botonsend">
+               <i className="bx bxs-send"></i>
+             </button></>}
+           
           </form>
           </>
           :<div className="nohaychat">

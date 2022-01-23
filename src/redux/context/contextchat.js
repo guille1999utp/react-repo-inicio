@@ -104,14 +104,21 @@ export const SocketProvider = ({ children }) => {
       dispatch(agregarfotoproducto(producto));
     })
   }, [ socket, dispatch]);
-///////////////////////////////////////////////////////////////
   useEffect(() => {
     socket?.on( 'enviadoproductosolicitud',async () => {
       const res = await fetchCToken(`chat/${state.uid}`);
       dispatch(Cargarmensajeschat(res.mensajes));
     })
   }, [ socket, dispatch,state.uid]);
-///////////////////////////////////////////////////////////////
+
+useEffect(() => {
+  socket?.on( 'recibidoproductosolicitud',async (data) => {
+    console.log(data)
+    const res = await fetchCToken(`chat/${data}`);
+    console.log(res)
+    dispatch(Cargarmensajeschat(res.mensajes));
+  })
+}, [ socket, dispatch,state.uid]);
 
   useEffect(() => {
   
@@ -151,7 +158,6 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     socket?.on( 'mensaje', (mensaje) => {
-      console.log(mensaje)
     dispatch(obtenermensajes(mensaje));
     })
 }, [ socket , dispatch]);
