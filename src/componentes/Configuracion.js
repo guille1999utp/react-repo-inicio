@@ -7,6 +7,7 @@ import { useSelector} from 'react-redux';
 import Swal from 'sweetalert2'
 import { fetchCToken } from '../helpers/fetchmetod';
 import { Fotorusuario } from './Fotorusuario';
+import MercadoPagoPropio from "./MercadoPagoPropio";
 
 function Configuracion() {
   const miusuario =  useSelector(yo => yo.infoUsuario);
@@ -14,6 +15,7 @@ function Configuracion() {
   const [guardarboton, setguardar] = useState(false);
   const [guardarfoto, setguardarfoto] = useState(false);
   const [precio, setPrecio] = useState(0);
+  const [pagar, setPagar] = useState(false);
   const [mostrar, setMostrar] = useState(0);
 
 const [state, setState] = useState({
@@ -223,13 +225,14 @@ Swal.fire({
 setMostrar(!e)  
 }
 const PagarSolicitudes = () =>{
-
+  setPagar(true)
 }
 
   return (
     <>
     <div className='estructuraconfig'>
       <button className='buttondineropagar' onMouseOver={()=>eventPaga(true)} onMouseOut={()=>eventPaga(false)} onClick={PagarSolicitudes}>{(mostrar)?'$ '+precio:'Pagar'}</button>
+    {(pagar)?<MercadoPagoPropio/>:null}
     <form onSubmit={onSubmit}>
       <div className='imageavatar' onClick={onFile} >
        <img src={(miusuario.urlfoto !== 'https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp')?miusuario.urlfoto:'https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp'} alt='imageavatar'></img>
