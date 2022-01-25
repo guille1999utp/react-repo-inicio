@@ -3,12 +3,14 @@ import React, {useState,useCallback,useEffect,useContext} from 'react'
 import { fetchCToken } from '../helpers/fetchmetod';
 import { SocketContext } from '../redux/context/contextchat'
 import { useParams } from 'react-router-dom'
+import CircularProgress from "./CircularProgress";
 
 const Pagepagos = ({location}) => {
     const {socket} = useContext(SocketContext);
     let { id } = useParams();
   
-      
+    const [circular, setcircular] = useState(true)
+
     const [carga, setCarga] = useState('');
 
     const MostaResultados = useCallback(
@@ -22,13 +24,15 @@ const Pagepagos = ({location}) => {
                return true
            }
            if(verificacion?.ok){
-              setTimeout(()=> socket?.emit('anadircompra',{
-                codigo:res.Payment,
-                preference: res.Preference_id,
-                id,
-                status:res.Status
-                }), 
-                3000);
+              setTimeout(()=>{
+                setcircular(false);
+                socket?.emit('anadircompra',{
+                  codigo:res.Payment,
+                  preference: res.Preference_id,
+                  id,
+                  status:res.Status
+                  })
+              },3000);
             
         }
             
@@ -40,14 +44,18 @@ const Pagepagos = ({location}) => {
      },[MostaResultados])
   
    
-    return (
-        <div className={ (carga?.Status === 'approved')?"containerresultadocompra aprobado":(carga?.Status === "pending")? "containerresultadocompra pendiente":"containerresultadocompra rechazado"}>
+    return (<>
+     {(circular)? <CircularProgress/> : <>
+      <div className={ (carga?.Status === 'approved')?"containerresultadocompra aprobado":(carga?.Status === "pending")? "containerresultadocompra pendiente":"containerresultadocompra rechazado"}>
             <h1>{(carga?.Status === 'approved')?"Compra Aprobada":(carga?.Status === "pending")? "Compra Pendiente por Pagar":"Error a la Hora de Pagar"}</h1>
             <h2>Codigo de Pago: {carga.Payment}</h2>
             <h2>Orden Mercantil: {carga.MerchantOrder}</h2>
             <h2>Tipo de Pago : {carga.Typepago}</h2>
 
         </div>
+        </>}
+    </>
+       
     )
 }
 export default Pagepagos;

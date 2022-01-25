@@ -38,20 +38,20 @@ const PageConsultaPago = () => {
          }
         <h1>{state.additional_info?.items[0].title}</h1>
         <p className="parrafocompra">{state.additional_info?.items[0].description}</p>
-        <ul>
+        {(state.additional_info?.items[0].title !== 'LB-SHOP' && state.additional_info?.items[0].description !== 'Recibo Solicitudes')?<ul>
         <li className="titulocardconsulta">Datos del Comprador</li>
         <li className="parrafocardconsulta"> <b>Comprador:</b> {state.payer?.first_name}</li>
         <li className="parrafocardconsulta"> <b>Identificacion:</b> {state.payer?.identification.number}</li>
         <li className="parrafocardconsulta"> <b>Email:</b> {state.payer?.email}</li>
         <hr></hr>
         <li className="titulocardconsulta">Lugar de Entrega</li>
-        <li className="parrafocardconsulta"> <b>Departamento:</b> {state.additional_info?.shipments.receiver_address.state_name}</li>
-        <li className="parrafocardconsulta"> <b>Ciudad de Entrega: </b>{state.additional_info?.shipments.receiver_address.city_name}</li>
-        <li className="parrafocardconsulta"> <b>Codigo Postal:</b> {state.additional_info?.shipments.receiver_address.zip_code}</li>
-        <li className="parrafocardconsulta"><b> Direccion:</b> {state.additional_info?.shipments.receiver_address.street_number}</li>
-        <li className="parrafocardconsulta"><b> Barrio:</b> {state.additional_info?.shipments.receiver_address.street_name}</li>
+        <li className="parrafocardconsulta"> <b>Departamento:</b> {state.additional_info?.shipments?.receiver_address.state_name}</li>
+        <li className="parrafocardconsulta"> <b>Ciudad de Entrega: </b>{state.additional_info?.shipments?.receiver_address.city_name}</li>
+        <li className="parrafocardconsulta"> <b>Codigo Postal:</b> {state.additional_info?.shipments?.receiver_address.zip_code}</li>
+        <li className="parrafocardconsulta"><b> Direccion:</b> {state.additional_info?.shipments?.receiver_address.street_number}</li>
+        <li className="parrafocardconsulta"><b> Barrio:</b> {state.additional_info?.shipments?.receiver_address.street_name}</li>
         <li className="parrafocardconsulta"> <b>Cantidad: </b>{state.additional_info?.items[0].quantity}</li>
-        </ul>
+        </ul>:null}
         </div>
         <Footer/>
         </div>

@@ -1,6 +1,9 @@
 import React, { useEffect, useCallback} from 'react';
 import { fetchCToken } from "../helpers/fetchmetod";
+import { useSelector} from 'react-redux';
+
 const MercadoPagoPropio = ( ) =>{
+  const miusuario =  useSelector(yo => yo.infoUsuario.uid);
   const FORM_ID = 'payment-form';
   const obtenerpreference = useCallback(
     async() => {
@@ -13,7 +16,7 @@ const MercadoPagoPropio = ( ) =>{
             script.setAttribute('data-preference-id', res.global);
             const form = document.getElementById(FORM_ID);
             form.appendChild(script);
-          } }
+          } },[miusuario]
           )
           useEffect( ()=>{
             obtenerpreference()

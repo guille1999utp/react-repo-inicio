@@ -231,8 +231,8 @@ const PagarSolicitudes = () =>{
   return (
     <>
     <div className='estructuraconfig'>
-      <button className='buttondineropagar' onMouseOver={()=>eventPaga(true)} onMouseOut={()=>eventPaga(false)} onClick={PagarSolicitudes}>{(mostrar)?'$ '+precio:'Pagar'}</button>
-    {(pagar)?<MercadoPagoPropio/>:null}
+     
+    {(pagar)?<MercadoPagoPropio/>: <button className='buttondineropagar' onMouseOver={()=>eventPaga(true)} onMouseOut={()=>eventPaga(false)} onClick={PagarSolicitudes}>{(mostrar)?'$ '+precio:'Pagar'}</button>}
     <form onSubmit={onSubmit}>
       <div className='imageavatar' onClick={onFile} >
        <img src={(miusuario.urlfoto !== 'https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp')?miusuario.urlfoto:'https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp'} alt='imageavatar'></img>
