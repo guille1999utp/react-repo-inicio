@@ -6,6 +6,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import { SocketContext } from '../redux/context/contextchat'
 import { Link  } from 'react-router-dom';
 import { cargarordenes } from "../redux/actions/ordenar";
+import { exitChat } from "../redux/actions/chat";
 import { fetchCToken } from "../helpers/fetchmetod";
 
 function Chat() {
@@ -81,6 +82,9 @@ function Chat() {
     });
   }, [ socket, setSeleccionar]);
   
+  const exitchat = () =>{
+    dispatch(exitChat());
+  }
   useEffect(() => {
     socket.on('estadopendiente',()=>{
       setPendiente('enviado')
@@ -307,7 +311,7 @@ function Chat() {
             </Link>
               <p className="nombrechat">{chatActivo.name}</p>
             </div>
-            <i className="bx bx-dots-vertical-rounded menuchat"></i>
+          <i className='bx bx-log-out menuchat' onClick={exitchat}></i>
           </div>
           <div className="chatuses" id="mensajes">
             {mensajes.map((e) => (

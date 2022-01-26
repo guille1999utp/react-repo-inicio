@@ -15,3 +15,20 @@
     
 }
  
+@media screen and (max-width:600px){
+    .buttoncerrarsesion {
+    bottom: 61px;
+    right: 11px;
+    position: fixed;
+    width: 40px;
+    height: 42px;
+    background: black;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-size: 10px;
+    i{
+        font-size: 26px;
+    }
+  }}

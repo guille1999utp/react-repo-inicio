@@ -8,7 +8,6 @@ const MercadoPagoPropio = ( ) =>{
   const obtenerpreference = useCallback(
     async() => {
         const res = await fetchCToken(`pagar`);
-        console.log(res);
         if (res.global) {
             const script = document.createElement('script');
             script.type = 'text/javascript';
