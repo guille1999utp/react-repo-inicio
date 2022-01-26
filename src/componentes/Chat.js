@@ -11,6 +11,18 @@ import { fetchCToken } from "../helpers/fetchmetod";
 function Chat() {
   const dispatch = useDispatch();
   const {socket} = useContext(SocketContext);
+  const [Width, setWidth] = useState(window.innerWidth);  
+  const cambiarTamaño=()=>{ 
+    setWidth(window.innerWidth);
+ }
+
+  useEffect(()=>{
+    window.addEventListener('resize',cambiarTamaño);
+    return ()=>{
+      window.removeEventListener('resize', cambiarTamaño)
+    }
+
+  })
   const {chatActivo, usuarios, mensajes} =  useSelector(chat => chat.chat);
   const miusuario =  useSelector(yo => yo.infoUsuario);
   const ordenecomparar =  useSelector(orden => orden.ordenar.producto);
@@ -130,7 +142,8 @@ function Chat() {
   return (
     <>
       <div className="fondonegrochat"></div>
-      <div className="cajachat">
+
+     { (Width > 600)?<div className="cajachat">
         <div className="usuariosactivos">
          <div className="chatperfil">
              <img className="imagenchatuser" src={miusuario.urlfoto} alt='fotoperfilchat'></img> 
@@ -182,44 +195,44 @@ function Chat() {
           <form className="paletachat" onSubmit={onSubmit}>
             {(seleccionar)?//1i
             (pendiente === 'pendiente')?//2i
-  (ordenecomparar.map((dato)=>{
-  if(dato.oid === mensajes[0]?.productorden){
-    return dato.oid
-  }else{
-    return null;
-  }
-}).includes(mensajes[0]?.productorden))?//3i
-<button className="buttoncancelarpedido" type="button" onClick={onCancel}><p>Cancelar</p></button>://3f
-<button className="buttonenviopedido" type="button" onClick={onEnviado}><p>Enviado</p></button>://2f
- (pendiente === 'enviado')?//4i
- (ordenecomparar.map((dato)=>{
-  if(dato.oid === mensajes[0]?.productorden){
-    return dato.oid
-  }else{
-    return null;
-  }
-}).includes(mensajes[0]?.productorden))?//5i
-<button className="buttonexitopedido" type="button" onClick={onRecibido}><p>recibido</p></button>: null: null://4f // 5f
- (ordenecomparar.map((dato)=>{
-  if(dato.oid === mensajes[0]?.productorden){
-    console.log(dato.aparecer)
-    return dato.aparecer
-  }else{
-    return false;
-  }
-}).includes(true))?//6i
-<i className='bx bx-check' onClick={onSelect}></i>:null//1f
-}
- 
- { (pendiente === 'recibido')?
- (ordenecomparar.map((dato)=>{
-  if(dato.oid === mensajes[0]?.productorden){
-    return dato.oid
-  }else{
-    return null;
-  }
-}).includes(mensajes[0]?.productorden))?
-<><input
+              (ordenecomparar.map((dato)=>{
+              if(dato.oid === mensajes[0]?.productorden){
+                return dato.oid
+              }else{
+               return null;
+              }
+            }).includes(mensajes[0]?.productorden))?//3i
+            <button className="buttoncancelarpedido" type="button" onClick={onCancel}><p>Cancelar</p></button>://3f
+            <button className="buttonenviopedido" type="button" onClick={onEnviado}><p>Enviado</p></button>://2f
+            (pendiente === 'enviado')?//4i
+             (ordenecomparar.map((dato)=>{
+             if(dato.oid === mensajes[0]?.productorden){
+               return dato.oid
+             }else{
+               return null;
+             }
+            }).includes(mensajes[0]?.productorden))?//5i
+            <button className="buttonexitopedido" type="button" onClick={onRecibido}><p>recibido</p></button>: null: null://4f // 5f
+             (ordenecomparar.map((dato)=>{
+              if(dato.oid === mensajes[0]?.productorden){
+                console.log(dato.aparecer)
+                return dato.aparecer
+              }else{
+                return false;
+              }
+            }).includes(true))?//6i
+            <i className='bx bx-check' onClick={onSelect}></i>:null//1f
+            }
+
+            { (pendiente === 'recibido')?
+            (ordenecomparar.map((dato)=>{
+             if(dato.oid === mensajes[0]?.productorden){
+                return dato.oid
+             }else{
+               return null;
+              }
+            }).includes(mensajes[0]?.productorden))?
+            <><input
          autoComplete={'off'}
            type="text"
            className="decorationpaleta"
@@ -255,7 +268,135 @@ function Chat() {
           </div>
           }
         </div>
-      </div>
+      </div>:
+      
+      ////////////////////////////
+      <div className="cajachat">
+        {(!chatActivo)?<div className="usuariosactivos">
+         <div className="chatperfil">
+             <img className="imagenchatuser" src={miusuario.urlfoto} alt='fotoperfilchat'></img> 
+             <div className="iconoschatfondo">
+              <i className="bx bxs-chat chaticon"></i>
+              <i className="bx bx-dots-vertical-rounded menuchat"></i>
+            </div>
+          </div>
+
+          {
+          (usuarios.length > 0)?
+          usuarios.filter(user => user.uid !== miusuario.uid).map((usuario) => (
+            <UsuariosConectados
+              key={usuario.uid}
+              user={usuario}
+              funChulo={setSeleccionar}
+              funcpendiente={setPendiente}
+            ></UsuariosConectados>
+          )):null
+          }
+        </div>:null}
+        {(chatActivo)?<div className={ (chatActivo )?"mensajesusuarios":'mensajesvacio'}>
+          {
+            (chatActivo)?<>
+          <div className="paletacomandochat">
+            <div className="correcionpaletachat">
+            <Link to={`/perfil/${chatActivo.iduser}`} >
+              <img
+                className="fotousuariouser"
+                alt="imgchatusehablando"
+                src={chatActivo.urlfoto}
+              ></img>
+            </Link>
+              <p className="nombrechat">{chatActivo.name}</p>
+            </div>
+            <i className="bx bx-dots-vertical-rounded menuchat"></i>
+          </div>
+          <div className="chatuses" id="mensajes">
+            {mensajes.map((e) => (
+              <CajaChat
+                key={e._id}
+                de = {e.de}
+                mensaje = {e.mensaje}
+                fecha = {e.createdAt}
+              ></CajaChat>
+            ))}
+            <div className="finalchatscroll"></div>
+          </div>
+          <form className="paletachat" onSubmit={onSubmit}>
+            {(seleccionar)?//1i
+            (pendiente === 'pendiente')?//2i
+              (ordenecomparar.map((dato)=>{
+              if(dato.oid === mensajes[0]?.productorden){
+                return dato.oid
+              }else{
+               return null;
+              }
+            }).includes(mensajes[0]?.productorden))?//3i
+            <button className="buttoncancelarpedido" type="button" onClick={onCancel}><p>Cancelar</p></button>://3f
+            <button className="buttonenviopedido" type="button" onClick={onEnviado}><p>Enviado</p></button>://2f
+            (pendiente === 'enviado')?//4i
+             (ordenecomparar.map((dato)=>{
+             if(dato.oid === mensajes[0]?.productorden){
+               return dato.oid
+             }else{
+               return null;
+             }
+            }).includes(mensajes[0]?.productorden))?//5i
+            <button className="buttonexitopedido" type="button" onClick={onRecibido}><p>recibido</p></button>: null: null://4f // 5f
+             (ordenecomparar.map((dato)=>{
+              if(dato.oid === mensajes[0]?.productorden){
+                console.log(dato.aparecer)
+                return dato.aparecer
+              }else{
+                return false;
+              }
+            }).includes(true))?//6i
+            <i className='bx bx-check' onClick={onSelect}></i>:null//1f
+            }
+
+            { (pendiente === 'recibido')?
+            (ordenecomparar.map((dato)=>{
+             if(dato.oid === mensajes[0]?.productorden){
+                return dato.oid
+             }else{
+               return null;
+              }
+            }).includes(mensajes[0]?.productorden))?
+            <><input
+         autoComplete={'off'}
+           type="text"
+           className="decorationpaleta"
+           value={mensaje}
+           placeholder="Escribir Mensaje"
+           onChange={onChangeMensaje}
+           name="mensaj"
+         ></input>
+          <button type="submit" className="botonsend">
+              <i className="bx bxs-send"></i>
+            </button>
+         </>:<div className='bordesolicitudcompleta'>
+          <button className="buttonenviopedido" type="button" onClick={onExito}><p>Terminar</p></button>
+           <button className="buttoncancelarpedido" type="button" onClick={onFail}><p>Reportar Problema</p></button>
+          </div>
+          :<><input
+          autoComplete={'off'}
+            type="text"
+            className="decorationpaleta"
+            value={mensaje}
+            placeholder="Escribir Mensaje"
+            onChange={onChangeMensaje}
+            name="mensaj"
+          ></input>
+           <button type="submit" className="botonsend">
+               <i className="bx bxs-send"></i>
+             </button></>}
+           
+          </form>
+          </>
+          :<div className="nohaychat">
+           <h1><i className='bx bxs-chat'></i> Selecciona un CHAT</h1>  
+          </div>
+          }
+        </div>:null}
+      </div>}
     </>
   );
 }

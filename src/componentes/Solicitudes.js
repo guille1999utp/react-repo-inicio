@@ -26,7 +26,7 @@ export default function Solicitudes({history}) {
       }
       setCarga(false);
       dispatch(cargarsolicitudes(solicitude.solicitudes))
-    }, [dispatch,cantidad,Categoria],
+    }, [dispatch,cantidad,Categoria]
   )
   useEffect( ()=>{
     solicitud()
@@ -36,18 +36,19 @@ export default function Solicitudes({history}) {
     setCantidad(cantidad+1)
    }
 
-
+console.log(Categoria)
    useEffect(() => {
-    socket?.on( 'orden', (orden) => {
+    socket?.on( 'ordenagregarsolicitud', (orden) => {
         const desicion = orden.categoria === Categoria.Categoria;
+        console.log(desicion)
+        console.log(orden.categoria, Categoria.Categoria)
         if(desicion){
           if(orden.de !== state){
-            console.log(desicion)
             dispatch(recibirsolicitud(orden));
         }
         }
     })
-}, [ socket , dispatch, state,Categoria]);
+}, [ socket , dispatch,state,Categoria]);
   
 
    const onChangeMensaje = (e) => {
@@ -78,8 +79,8 @@ export default function Solicitudes({history}) {
           </div>
     </div>
         <hr></hr>
-      {solicitudes.map((solicitud) =>(
-      <Cajasolicitudes key={solicitud.oid} productorden={solicitud.oid} history={history} de={solicitud.de} producto={solicitud.nombre} descripsion={solicitud.descripsion} urlfoto={solicitud.urlfoto}></Cajasolicitudes>
+      {solicitudes.map((solicitud,count) =>(
+      <Cajasolicitudes key={solicitud.oid + count} productorden={solicitud.oid} history={history} de={solicitud.de} producto={solicitud.nombre} descripsion={solicitud.descripsion} urlfoto={solicitud.urlfoto}></Cajasolicitudes>
       ))}
       {(solicitudes.length === 0)?
       <>

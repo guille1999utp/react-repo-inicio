@@ -16,7 +16,7 @@ function Configuracion() {
   const [guardarfoto, setguardarfoto] = useState(false);
   const [precio, setPrecio] = useState(0);
   const [pagar, setPagar] = useState(false);
-  const [mostrar, setMostrar] = useState(0);
+  const [mostrar, setMostrar] = useState(true);
 
 const [state, setState] = useState({
 Cordenadas: '',

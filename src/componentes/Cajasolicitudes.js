@@ -17,7 +17,7 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,product
     plata: ''
   });
 
-  const onChangeMensaje = (e) => {
+  const onChange = (e) => {
     setSolicitud({plata:e.target.value});
   };
 
@@ -74,7 +74,7 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,product
           </div>
           <form onSubmit={onSubmit}>
               <span>Precio orden</span>
-              <input className='preciocajasolicitud' autoComplete={'off'} type="number" id="precio" placeholder="Tu nombre" name='plata' onChange={onChangeMensaje} value={solicitud.plata}></input>
+              <input className='preciocajasolicitud' autoComplete={'off'} type="number" id="precio" placeholder="Tu nombre" name='plata' onChange={onChange} value={solicitud.plata}></input>
               <br></br>
              <button type='submit'>Informar</button>
             </form>
