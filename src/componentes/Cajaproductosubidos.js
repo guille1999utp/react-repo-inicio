@@ -141,11 +141,10 @@ const Cajaproductosubidos = ({Producto,history}) => {
     <ul>
  {(Modificar === false)?<li><b>Categoria: </b> {Producto.detalles[0].Categoria}</li>:null}
  {(Modificar === true)?<li><b>Categoria: </b><select name="Categoria" onChange={onChangedetalles} value={state.detalles[0].Categoria}>
-<option>Repuestos</option>
+ <option>Repuestos</option>
 <option>Mascotas</option>
-<option>Maquillaje</option>
-<option>Electrodomesticos</option>
-<option>Tecnologia</option>
+<option>Estanquillos</option>
+<option>Farmacia</option>
 </select></li>:null}
 {(Modificar === false)?<li><b>Ubicacion: </b> {Producto.detalles[0].Ubicaion}</li>:null}
 {(Modificar === true)?<li><b>Ubicacion: </b> <select name="Ubicaion" onChange={onChangedetalles} value={state.detalles[0].Ubicaion}>

@@ -14,7 +14,7 @@ function Ordenar() {
   const dispatch = useDispatch();
     const {socket} = useContext(SocketContext);
     const ordenes = useSelector(ordenes => ordenes.ordenar.producto);
-    const miusuario =  useSelector(yo => yo.infoUsuario.uid);
+    const miusuario =  useSelector(yo => yo.infoUsuario);
   const [solicitud, setSolicitud] = useState({
       de: miusuario,
       nombre: "",
@@ -23,7 +23,7 @@ function Ordenar() {
       categoria:"Repuestos"
   });
   const [urlmas, setUrl] = useState({
-    secure_url:"https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg",
+    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
     public_id: 0
   });
 
@@ -53,13 +53,13 @@ function Ordenar() {
   }
 
   try{
-    const url = (urlmas.secure_url !== "https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg")? await UploadPhoto(urlmas):urlmas;
+    const url = (urlmas.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp")? await UploadPhoto(urlmas):urlmas;
     socket.emit('orden',{
       solicitud,
       url
       })
     setSolicitud({
-      de: miusuario,
+      de: miusuario.uid,
       nombre: "",
       descripsion: "",
       fecha: "",
@@ -67,7 +67,7 @@ function Ordenar() {
   });
   setUrl(
     {
-    secure_url:"https://www.ing.uc.cl/transporte-y-logistica/wp-content/uploads/2018/04/foto-incognito.jpg",
+    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640536316/orgeial7kefv2dzsdqqt.webp",
     public_id: 0
 });
 }catch(err){
@@ -78,11 +78,11 @@ function Ordenar() {
   useEffect(() => {
     socket?.on( 'orden', (orden) => {
       console.log(orden)
-        if(orden.de === miusuario){
+        if(orden.de === miusuario.uid){
             dispatch(subirOrden(orden));
         }
     })
-}, [ socket , dispatch, miusuario]);
+}, [ socket , dispatch, miusuario.uid]);
 
 
   const onFilesave  = async(e) =>{
@@ -165,25 +165,13 @@ function Ordenar() {
                 <img
                   className="fotousuariouser"
                   alt=""
-                  src="https://www.fondosdepantalla.top/wp-content/uploads/2017/02/Imagenes-de-Planetas-en-4K-fondosdepantalla-5.jpg"
+                  src={miusuario.urlfoto}
                 ></img>
                 <p className="solicitante">Productos Solicitados</p>
               </div>
               <i className="bx bx-dots-vertical-rounded menuchat"></i>
             </div>
-            <form className="paletachat" onSubmit={onSubmit}>
-              <input
-                type="text"
-                className="decorationpaleta"
-                value={solicitud.solicitado}
-                placeholder="Buscar"
-                onChange={onChangeMensaje}
-                name="solicitado"
-              ></input>
-              <button type="submit" className="botonsend">
-                <i className="bx bxs-send"></i>
-              </button>
-            </form>
+
             <div className="ordenarproductossolicitud">
             {(ordenes.length > 0)?
               ordenes.map((producto) =>(

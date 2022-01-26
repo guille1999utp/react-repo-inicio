@@ -29,17 +29,17 @@ function Inicio ({history}) {
  const cargarProductos = useCallback(
   async() => {
     const categoria1 = await fetchstoken(`mostrar/Repuestos`);
-    const categoria2 = await fetchstoken(`mostrar/Maquillaje`);
+    const categoria2 = await fetchstoken(`mostrar/Farmacia`);
     const categoria3 = await fetchstoken(`mostrar/Mascotas`);
-    const categoria4 = await fetchstoken(`mostrar/Electrodomesticos`);
+    const categoria4 = await fetchstoken(`mostrar/Estanquillos`);
    
     if(categoria4.ok && categoria3.ok && categoria2.ok && categoria1.ok ){
       setCarga(false);
       setState({ 
         Repuestos:categoria1.filtervar,
-        Maquillaje:categoria2.filtervar,
+        Farmacia:categoria2.filtervar,
         Mascotas:categoria3.filtervar,
-        Electrodomesticos:categoria4.filtervar
+        Estanquillos:categoria4.filtervar
       });
       return  true;
     }else{
@@ -112,26 +112,6 @@ useEffect(() => {
             )
             )}
 
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
         </Slider>
       </div>
 
@@ -143,117 +123,25 @@ useEffect(() => {
         )
             )}
 
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
         </Slider>
       </div>
       
       <div className='marginslider'>
-      <h2>Electrodomesticos <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
+      <h2>Farmacias <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
       <Slider {...settings}>
-        {productos.Electrodomesticos?.map((produc) => (
+        {productos.Farmacia?.map((produc) => (
          <CajaMostrarProducto history={history} produc={produc}/>
         )
             )}
-
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
         </Slider>
       </div>
       <div className='marginslider'>
-      <h2>Maquillaje <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
+      <h2>Estanquillos <Link  to='/productover' className='vermas' >Ver Mas</Link></h2>
       <Slider {...settings}>
-        {productos.Maquillaje?.map((produc) =>(
+        {productos.Estanquillos?.map((produc) =>(
          <CajaMostrarProducto history={history} produc={produc}/>
         )
             )}
-
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
-          <div >
-          <div className='carditem' onClick={redirect}>
-          <img className='imginicio' src='https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg' alt='img'></img>
-          <div className='flexinicio'>
-          <p className='precioinicio'>$ 456.321</p>
-          <p className='descuentoinicio'> 13% OFF</p>
-          </div>
-          <p className='enviogratisinicio'>Envio Gratis</p>
-          </div>
-          </div>
         </Slider>
       </div>
 

@@ -64,7 +64,7 @@ useEffect( ()=>{
   obtenerproductos()
  },[obtenerproductos])
 const [urlmas, setUrl] = useState({
-    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg",
+    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg",
     public_id: 0
   });
 const [agregar, setagregar] = useState(false)
@@ -91,7 +91,7 @@ const onChangeMensaje = (e) => {
     })
     setUrl(
       {
-      secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg",
+      secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg",
       public_id: 0
   })
   }
@@ -107,7 +107,7 @@ const onChangeMensaje = (e) => {
     e.preventDefault();
     if(NewProducto.titulo.length>0 && NewProducto.descripsion.length>0 && NewProducto.Precio >= 20000){
   try{
-    const url = (urlmas.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg")? await UploadPhoto(urlmas):urlmas;
+    const url = (urlmas.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg")? await UploadPhoto(urlmas):urlmas;
     socket.emit('producto',{
       url,
       uid: miusuario.uid,
@@ -115,7 +115,7 @@ const onChangeMensaje = (e) => {
       })
   setUrl(
     {
-    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg",
+    secure_url:"https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg",
     public_id: 0
 }
 );
@@ -178,16 +178,15 @@ Swal.fire({
   <tbody>
       {(agregar === true)?
        <tr>
-      <th scope="row"><img className='hover' src='https://res.cloudinary.com/dmgfep69f/image/upload/v1640965190/hdacrvney49wogm85fcn.jpg' onClick={onFile} alt='productousers'></img></th>
+      <th scope="row"><img className='hover' src='https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg' onClick={onFile} alt='productousers'></img></th>
       <td><textarea className='textproducto' value={NewProducto.titulo} name='titulo' maxLength={100} onChange={onChangeMensaje}></textarea></td>
       <td>
       <ul>
   <li><b>Categoria: </b><select name="Categoria" onChange={onChangeMensaje} value={NewProducto.Categoria}>
 <option>Repuestos</option>
 <option>Mascotas</option>
-<option>Maquillaje</option>
-<option>Electrodomesticos</option>
-<option>Tecnologia</option>
+<option>Estanquillos</option>
+<option>Farmacia</option>
 </select></li>
   <li><b>Ubicacion: </b> <select name="Ubicaion" onChange={onChangeMensaje} value={NewProducto.Ubicaion}>
 <option>Cartago</option>
