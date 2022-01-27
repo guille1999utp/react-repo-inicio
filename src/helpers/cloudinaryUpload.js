@@ -14,6 +14,8 @@ export const UploadPhoto = async (file) =>{
         })
         if(res.ok){
             const clouurl = await res.json();
+            console.log(clouurl)
+
             return clouurl;
         }else {
             throw await res.json();

@@ -16,7 +16,7 @@ function Ordenar() {
     const ordenes = useSelector(ordenes => ordenes.ordenar.producto);
     const miusuario =  useSelector(yo => yo.infoUsuario);
   const [solicitud, setSolicitud] = useState({
-      de: miusuario,
+      de: miusuario.uid,
       nombre: "",
       descripsion: "",
       fecha: "",
