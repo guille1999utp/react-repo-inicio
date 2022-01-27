@@ -16,6 +16,7 @@ export default function Listprod({history,location}) {
   const cargarProductos = useCallback(
     async() => {
       const producto = await fetchstoken(`busqueda/${busqueda}${location.search}`);
+      console.log(producto)
       if(producto.ok){
         setState(producto.filtervar); 
         setCarga(false);

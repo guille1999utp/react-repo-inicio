@@ -32,7 +32,7 @@ function Inicio ({history}) {
     const categoria2 = await fetchstoken(`mostrar/Farmacia`);
     const categoria3 = await fetchstoken(`mostrar/Mascotas`);
     const categoria4 = await fetchstoken(`mostrar/Estanquillos`);
-   
+   console.log(categoria1,categoria2,categoria3,categoria4)
     if(categoria4.ok && categoria3.ok && categoria2.ok && categoria1.ok ){
       setCarga(false);
       setState({ 
