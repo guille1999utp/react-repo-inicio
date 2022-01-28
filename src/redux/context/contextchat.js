@@ -11,7 +11,7 @@ export const SocketContext = createContext();
 export const SocketProvider = ({ children }) => {
 
     const dispatch = useDispatch();
-    const {  socket , online,  conectarSocket, desconectarSocket } = useSocket('http://159.223.100.183:4000');
+    const {  socket , online,  conectarSocket, desconectarSocket } = useSocket('https://www.lbshop.bond');
 
     const verificartoken = useCallback(
      async() => {
@@ -21,6 +21,7 @@ export const SocketProvider = ({ children }) => {
          return  false;
        }
        const res = await fetchCToken('renovacion');
+       console.log(res)
        if(res.ok){
          res.usuario.online = true;
          localStorage.getItem('token',res.token);

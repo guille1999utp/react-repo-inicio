@@ -1,8 +1,9 @@
-const sitioUrl = 'http://159.223.100.183:4000';
+const sitioUrl = 'https://www.lbshop.bond';
 export const fetchstoken = async (endpoint, data, method = 'GET') =>{
 const url = `${ sitioUrl }/${ endpoint }`;
     
         if ( method === 'GET' ) {
+            console.log(url)
             const resp = await fetch( url );
             console.log(resp)
             return await resp.json();
@@ -26,7 +27,6 @@ const url = `${ sitioUrl }/${ endpoint }`;
     
         const url = `${ sitioUrl }/${ endpoint }`;
         const token = localStorage.getItem('token') || '';
-    
         if ( method === 'GET' ) {
             const resp = await fetch( url, {
                 headers: {
