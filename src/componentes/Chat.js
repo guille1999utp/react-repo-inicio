@@ -151,10 +151,6 @@ function Chat() {
         <div className="usuariosactivos">
          <div className="chatperfil">
              <img className="imagenchatuser" src={miusuario.urlfoto} alt='fotoperfilchat'></img> 
-             <div className="iconoschatfondo">
-              <i className="bx bxs-chat chaticon"></i>
-              <i className="bx bx-dots-vertical-rounded menuchat"></i>
-            </div>
           </div>
 
           {
@@ -183,7 +179,6 @@ function Chat() {
             </Link>
               <p className="nombrechat">{chatActivo.name}</p>
             </div>
-            <i className="bx bx-dots-vertical-rounded menuchat"></i>
           </div>
           <div className="chatuses" id="mensajes">
             {mensajes.map((e) => (
@@ -279,10 +274,6 @@ function Chat() {
         {(!chatActivo)?<div className="usuariosactivos">
          <div className="chatperfil">
              <img className="imagenchatuser" src={miusuario.urlfoto} alt='fotoperfilchat'></img> 
-             <div className="iconoschatfondo">
-              <i className="bx bxs-chat chaticon"></i>
-              <i className="bx bx-dots-vertical-rounded menuchat"></i>
-            </div>
           </div>
 
           {

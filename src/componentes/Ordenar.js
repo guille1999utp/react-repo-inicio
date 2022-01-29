@@ -43,7 +43,7 @@ function Ordenar() {
   const onSubmit = async(e) => {
     e.preventDefault();
 
-    if(solicitud.nombre.length === 0 || solicitud.descripsion.length === 0 || solicitud.fecha.length === 0){
+    if(solicitud.nombre.length === 0 || solicitud.descripsion.length === 0){
       Swal.fire({
         icon: 'error',
         title: 'error...',
@@ -62,7 +62,6 @@ function Ordenar() {
       de: miusuario.uid,
       nombre: "",
       descripsion: "",
-      fecha: "",
       categoria:"todos"
   });
   setUrl(
@@ -111,7 +110,7 @@ function Ordenar() {
     <div className="correcionfooter"> 
       <div className="agregardenar">
         <div className="formordenar">
-          <h3>busca tu Producto</h3>
+          <h3>Busca tu Producto</h3>
           <form className="formingresarproucto" onSubmit={onSubmit}>
             <label  className="flexrow wrapordenar">
               <span>Producto</span>
@@ -119,7 +118,7 @@ function Ordenar() {
             </label>
 
             <label className="flexrow wrapordenar">
-              <span>descripsion</span>
+              <span>Descripcion</span>
               <br></br>
               <textarea
               className="textareaordenar"
@@ -130,15 +129,9 @@ function Ordenar() {
                 onChange={onChangeMensaje}
                 value={solicitud.descripsion} ></textarea>
             </label>
-
-            <label  className="flexrow wrapordenar">
-              <span>dia requerido</span>
-              <input type="date" id="dia" name='fecha' onChange={onChangeMensaje} value={solicitud.fecha}></input>
-            </label>
-
             <label  className="flexrow wrapordenar">
               <span>Categoria</span>
-              <select name="categoria" onChange={onChangeMensaje} value={solicitud.categoria}>
+              <select name="categoria" onChange={onChangeMensaje} className="categoriaorden" value={solicitud.categoria}>
           <option>todos</option>
           <option>Repuestos</option>
           <option>Mascotas</option>
@@ -159,7 +152,7 @@ function Ordenar() {
           </form>
         </div>
         <div className="cajaordenar">
-          <div className="mensajesusuarios">
+          <div className="ordenesenorden">
             <div className="paletacomandoproductos">
               <div className="correcionpaletachat">
                 <img

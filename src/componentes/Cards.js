@@ -14,7 +14,7 @@ function Cards({ id, history, image ,domicilio, mobile, actual_price }) {
           <div className="left">
             <h2 className="bold">{mobile}</h2>
             <br></br>
-            <span className="priceproductos">{"$" + actual_price}</span>
+            <span className="priceproductos">{"$" + parseInt(actual_price)}</span>
 
             <br></br>
 

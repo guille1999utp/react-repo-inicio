@@ -111,9 +111,26 @@ border:none;
     width: 70%;
     background: white;
     border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
 
 }
+.categoriaorden{
+    margin-top: 15px;
+    padding: 8px;
+}
+.ordenesenorden{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    background: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
 .agregardenar{
+    border-radius: 20px;
     min-height: 550px;
     margin: 20px auto ;
     width: 85%;
@@ -189,7 +206,11 @@ max-height: 100px;
         margin: 0 auto;
         width: 100%;
         padding-bottom: 30px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
     }
+    
+    
     .mensajesusuarios {
         width: 100%;
         height: 100%;

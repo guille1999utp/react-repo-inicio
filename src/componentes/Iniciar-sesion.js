@@ -10,8 +10,8 @@ function Iniciarsesion() {
   const dispatch = useDispatch();
   const { conectarSocket } = useSocket('https://www.lbshop.bond');
   const [login, setLogin] = useState({
-   correo:'pass@gmail.com',
-   password: 'transformers'
+   correo:'',
+   password: ''
 });
 const loginsesion= ()=>{
   return (login.correo.length > 0 && login.password.length > 0) ? true: false;

@@ -56,7 +56,7 @@ const Header = () => {
     <>
     <div className="nav-1">
     <nav className='menu'>
-      <label className='logo'><Link to='/' onClick={ ()=> onhandledmenuback(9) }>{ (Width > 488)?'CompraRepuestos':'CR'}</Link></label>
+      <label className='logo'><Link to='/' onClick={ ()=> onhandledmenuback(9) }>{ (Width > 488)?'Lb shop':'LB'}</Link></label>
       <div className='formbusqueda'>
       <form onSubmit={redirect}>
       <Link id='oprimirbusqueda' to={`/busqueda/${busqueda}`}> </Link>

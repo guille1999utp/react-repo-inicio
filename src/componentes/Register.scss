@@ -9,7 +9,8 @@
     grid-template-columns: repeat(2, 1fr); ;
     grid-template-rows: repeat(2, 1fr);
     background: white;
-   
+    border-radius: 39px;
+
 }
 .gridform{
     grid-column: 2/3;
@@ -26,7 +27,6 @@
 .ajust{
     margin-left: 6rem;
     font-size: 22px;
-    font-family: sans-serif;
 }
 .divmarginregister{
     margin-top: 20px;
@@ -96,12 +96,14 @@
     font-size: 18px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     .formre{
        margin-top: 0%;
        display: flex;
        flex-direction: column;
+       border-radius: 0px;
         }
+
         .i{
             margin-left: 0px;
             color: black;
@@ -111,15 +113,14 @@
             text-align: center;
         }
         .ajust{
-            text-align: center;
-            margin-left: 0px;
-            font-size: 22px;
-            font-family: sans-serif;
-            padding-bottom: 20px;
-        }
+    margin-left: 4%;
+    font-size: 17px;
+    padding-bottom: 20px;
+}
+        
         .inputr{
-          width: 85%;
-           margin-left: 4%;
+            width: 80%;
+            margin-left: 4%;
    
         
         }
