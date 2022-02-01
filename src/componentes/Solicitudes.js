@@ -72,9 +72,8 @@ console.log(Categoria)
           <option>todos</option>
           <option>Repuestos</option>
           <option>Mascotas</option>
-          <option>Maquillaje</option>
-          <option>Electrodomesticos</option>
-          <option>Tecnologia</option>
+          <option>Farmacias</option>
+          <option>Estanquillos</option>
           </select>
           </div>
     </div>
