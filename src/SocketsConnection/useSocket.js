@@ -8,6 +8,7 @@ export const useSocket = ( serverPath ) => {
     const [ online, setOnline ] = useState(false);
 
     const conectarSocket = useCallback( () => {
+        console.log('socket conectado')
         const token = localStorage.getItem('token');
         const socketTemp = io( serverPath, { 
             transports: ["websocket"],

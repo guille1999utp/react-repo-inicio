@@ -8,7 +8,6 @@ import { fetchCToken } from "../helpers/fetchmetod";
 import { cargarordenes } from "../redux/actions/ordenar";
 import { UploadPhoto } from "../helpers/cloudinaryUpload";
 import Footer from "./Footer";
-import { subirOrden} from '../redux/actions/ordenar';
 
 function Ordenar() {
   const dispatch = useDispatch();
@@ -74,14 +73,7 @@ function Ordenar() {
 }
   };
 
-  useEffect(() => {
-    socket?.on( 'orden', (orden) => {
-      console.log(orden)
-        if(orden.de === miusuario.uid){
-            dispatch(subirOrden(orden));
-        }
-    })
-}, [ socket , dispatch, miusuario.uid]);
+ 
 
 
   const onFilesave  = async(e) =>{
