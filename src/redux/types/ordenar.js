@@ -6,5 +6,5 @@ export const types = {
     solicitudes : '[Order] solicitudes',
     solicitud : '[Order] solicitud',
     solicitudrechazada : '[Order] solicitudrechazada',
-    
+    categoriaseleccionada: '[Order] categoriaseleccionada'
   }
