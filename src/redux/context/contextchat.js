@@ -160,12 +160,9 @@ useEffect(() => {
 
 useEffect(() => {
   socket?.on( 'orden', (orden) => {
-    console.log(orden)
-      if(orden.de === state.uid){
           dispatch(subirOrden(orden));
-      }
   })
-}, [ socket , dispatch, state.uid]);
+}, [ socket , dispatch]);
 
 useEffect(() => {
   socket?.on( 'fotouseradicional', ({urlfoto,uidfoto}) => {

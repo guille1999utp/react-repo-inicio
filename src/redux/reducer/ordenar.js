@@ -3,9 +3,10 @@ import { types } from '../types/ordenar';
  const initialState = {
      solicitudes: [],
      producto: [], 
+     categoria: 'todos'
  }
 
- function Reducer ( state= initialState, action ){
+ function Reducer ( state = initialState, action ){
     switch ( action.type ) {
         
         case types.subir:
@@ -46,6 +47,11 @@ import { types } from '../types/ordenar';
                 ...state,
                 solicitudes : [ action.payload, ...state.solicitudes ]
             }
+        case types.categoriaseleccionada:
+           return {
+             ...state,
+             categoria : action.payload
+          }
         default:
             return state;
     }

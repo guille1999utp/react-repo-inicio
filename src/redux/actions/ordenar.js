@@ -25,3 +25,7 @@ export const recibirsolicitud = (solicitud) =>({
     type: types.solicitud,
     payload: solicitud
     })
+export const categoriaseleccionada = (categoria) =>({
+    type: types.categoriaseleccionada,
+    payload: categoria
+    })

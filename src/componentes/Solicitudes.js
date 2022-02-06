@@ -7,23 +7,24 @@ import { fetchCToken } from "../helpers/fetchmetod";
 import { cargarsolicitudes } from "../redux/actions/ordenar";
 import Footer from "./Footer";
 import CircularProgress from "./CircularProgress";
-import { recibirsolicitud} from '../redux/actions/ordenar';
+import { recibirsolicitud,categoriaseleccionada} from '../redux/actions/ordenar';
 import { SocketContext } from '../redux/context/contextchat'
 
-export default function Solicitudes({history}) {
+const Solicitudes = ({history}) =>{
   const state = useSelector(state => state.infoUsuario.uid);
   const {socket} = useContext(SocketContext);
   const [carga, setCarga] = useState(true);
   const [cantidad, setCantidad] = useState(1);
-  const [Categoria, setCategoria] = useState({Categoria:'todos'});
   const dispatch = useDispatch();
   const solicitudes = useSelector(solicitudes => solicitudes.ordenar.solicitudes);
+  const Cate = useSelector(solicitudes => solicitudes.ordenar.categoria);
   const solicitud = useCallback(
     async() => {
-      const solicitude = await fetchCToken('solicitudes',Categoria,'POST',cantidad);
+      console.log('entro')
+      const solicitude = await fetchCToken('solicitudes',{Categoria:Cate},'POST',cantidad);
       setCarga(false);
       dispatch(cargarsolicitudes(solicitude.solicitudes))
-    }, [dispatch,cantidad,Categoria]
+    }, [dispatch,cantidad,Cate]
   )
   useEffect( ()=>{
     solicitud()
@@ -33,25 +34,24 @@ export default function Solicitudes({history}) {
     setCantidad(cantidad+1)
    }
 
-console.log(Categoria)
+console.log(Cate);
    useEffect(() => {
-     console.log('entro')
     socket.on( 'ordenagregarsolicitud', (orden) => {
-        const desicion = orden.categoria === Categoria.Categoria;
-        console.log(desicion)
-        console.log(orden.categoria, Categoria.Categoria)
+      console.log(orden)
+        const desicion = orden.categoria === Cate;
+        console.log(orden.categoria,Cate)
         if(desicion){
           if(orden.de !== state){
             dispatch(recibirsolicitud(orden));
         }
         }
     })
-}, [ socket , dispatch,state,Categoria]);
+}, [ socket ]);
   
 
    const onChangeMensaje = (e) => {
     setCantidad(1)
-    setCategoria({Categoria:e.target.value});
+    dispatch(categoriaseleccionada(e.target.value));
   };
     return (
         <>
@@ -66,7 +66,7 @@ console.log(Categoria)
           <p className="botoncarrito">
            Categorias
           </p>
-          <select name="Categoria" className='selectsolicitud' onChange={onChangeMensaje} value={Categoria.Categoria}>
+          <select name="Categoria" className='selectsolicitud' onChange={onChangeMensaje} value={Cate}>
           <option value={'todos'}>todos</option>
           <option value={'Repuestos'}>Repuestos</option>
           <option value={'Mascotas'}>Mascotas</option>
@@ -98,3 +98,4 @@ console.log(Categoria)
         </>
     )
 }
+export default Solicitudes;
