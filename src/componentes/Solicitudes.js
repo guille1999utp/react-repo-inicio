@@ -21,9 +21,6 @@ export default function Solicitudes({history}) {
   const solicitud = useCallback(
     async() => {
       const solicitude = await fetchCToken('solicitudes',Categoria,'POST',cantidad);
-      if(!solicitude.ok){
-      return ;
-      }
       setCarga(false);
       dispatch(cargarsolicitudes(solicitude.solicitudes))
     }, [dispatch,cantidad,Categoria]
@@ -38,7 +35,8 @@ export default function Solicitudes({history}) {
 
 console.log(Categoria)
    useEffect(() => {
-    socket?.on( 'ordenagregarsolicitud', (orden) => {
+     console.log('entro')
+    socket.on( 'ordenagregarsolicitud', (orden) => {
         const desicion = orden.categoria === Categoria.Categoria;
         console.log(desicion)
         console.log(orden.categoria, Categoria.Categoria)
@@ -69,11 +67,11 @@ console.log(Categoria)
            Categorias
           </p>
           <select name="Categoria" className='selectsolicitud' onChange={onChangeMensaje} value={Categoria.Categoria}>
-          <option>todos</option>
-          <option>Repuestos</option>
-          <option>Mascotas</option>
-          <option>Farmacias</option>
-          <option>Estanquillos</option>
+          <option value={'todos'}>todos</option>
+          <option value={'Repuestos'}>Repuestos</option>
+          <option value={'Mascotas'}>Mascotas</option>
+          <option value={'Farmacias'}>Farmacias</option>
+          <option value={'Estanquillos'}>Estanquillos</option>
           </select>
           </div>
     </div>
