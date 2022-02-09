@@ -9,22 +9,23 @@ import Footer from "./Footer";
 import CircularProgress from "./CircularProgress";
 import { recibirsolicitud,categoriaseleccionada} from '../redux/actions/ordenar';
 import { SocketContext } from '../redux/context/contextchat'
+import { useParams } from 'react-router-dom'
 
 const Solicitudes = ({history}) =>{
+  let { categoria } = useParams()
   const state = useSelector(state => state.infoUsuario.uid);
   const {socket} = useContext(SocketContext);
   const [carga, setCarga] = useState(true);
   const [cantidad, setCantidad] = useState(1);
   const dispatch = useDispatch();
   const solicitudes = useSelector(solicitudes => solicitudes.ordenar.solicitudes);
-  const Cate = useSelector(solicitudes => solicitudes.ordenar.categoria);
   const solicitud = useCallback(
     async() => {
       console.log('entro')
-      const solicitude = await fetchCToken('solicitudes',{Categoria:Cate},'POST',cantidad);
+      const solicitude = await fetchCToken('solicitudes',{Categoria:categoria},'POST',cantidad);
       setCarga(false);
       dispatch(cargarsolicitudes(solicitude.solicitudes))
-    }, [dispatch,cantidad,Cate]
+    }, [dispatch,cantidad,categoria]
   )
   useEffect( ()=>{
     solicitud()
@@ -34,12 +35,12 @@ const Solicitudes = ({history}) =>{
     setCantidad(cantidad+1)
    }
 
-console.log(Cate);
+console.log(categoria);
    useEffect(() => {
     socket.on( 'ordenagregarsolicitud', (orden) => {
       console.log(orden)
-        const desicion = orden.categoria === Cate;
-        console.log(orden.categoria,Cate)
+        const desicion = orden.categoria === categoria;
+        console.log(orden.categoria,categoria)
         if(desicion){
           if(orden.de !== state){
             dispatch(recibirsolicitud(orden));
@@ -66,7 +67,7 @@ console.log(Cate);
           <p className="botoncarrito">
            Categorias
           </p>
-          <select name="Categoria" className='selectsolicitud' onChange={onChangeMensaje} value={Cate}>
+          <select name="Categoria" className='selectsolicitud' onChange={onChangeMensaje} value={categoria}>
           <option value={'todos'}>todos</option>
           <option value={'Repuestos'}>Repuestos</option>
           <option value={'Mascotas'}>Mascotas</option>

@@ -71,7 +71,7 @@ const Header = () => {
        {(state.online === true)?<li><Link className={(position === 0)?'active':null} to='/crearproducto' onClick={ ()=> onhandledmenuback(0) } >Productos</Link></li>: null}
        {(state.online === true)?<li><Link className={(position === 1)?'active':null} to='/ordenar' onClick={ ()=> onhandledmenuback(1) }>Ordenar</Link></li>: null}
        {(state.online === true)?<li><Link className={(position === 2)?'active':null} to='/chat' onClick={ ()=> onhandledmenuback(2) }>Chats</Link></li>: null}
-       {(state.online === true)?<li><Link className={(position === 3)?'active':null} to='/solicitudes' onClick={ ()=> onhandledmenuback(3) }>Solicitudes</Link></li>: null}
+       {(state.online === true)?<li><Link className={(position === 3)?'active':null} to='/solicitudes/todos' onClick={ ()=> onhandledmenuback(3) }>Solicitudes</Link></li>: null}
        {(state.online === true)? <li><Link className={(position === 4)?'active':null} to='/carrito' onClick={ ()=> onhandledmenuback(4) }>Carrito</Link></li>: null}
        {(state.online === true)?<li><Link className={(position === 5)?'active':null} to='/ajustes' onClick={ ()=> onhandledmenuback(5) }>Perfil</Link></li>: null}
        {(state.online === false)?<li><Link className={(position === 6)?'active':null} to='/login' onClick={ ()=> onhandledmenuback(6) }>Login</Link></li> : null}
