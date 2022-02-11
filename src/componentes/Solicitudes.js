@@ -9,23 +9,23 @@ import Footer from "./Footer";
 import CircularProgress from "./CircularProgress";
 import { recibirsolicitud,categoriaseleccionada} from '../redux/actions/ordenar';
 import { SocketContext } from '../redux/context/contextchat'
-import { useParams } from 'react-router-dom'
 
 const Solicitudes = ({history}) =>{
-  let { categoria } = useParams()
-  const state = useSelector(state => state.infoUsuario.uid);
+  const state = useSelector(state => state.infoUsuario);
   const {socket} = useContext(SocketContext);
-  const [carga, setCarga] = useState(true);
+  const [Categoria, setCategoria] = useState('');
   const [cantidad, setCantidad] = useState(1);
+  const [carga, setCarga] = useState(true);
   const dispatch = useDispatch();
   const solicitudes = useSelector(solicitudes => solicitudes.ordenar.solicitudes);
   const solicitud = useCallback(
     async() => {
       console.log('entro')
-      const solicitude = await fetchCToken('solicitudes',{Categoria:categoria},'POST',cantidad);
+      const solicitude = await fetchCToken('solicitudes',{Categoria},'POST',cantidad);
       setCarga(false);
       dispatch(cargarsolicitudes(solicitude.solicitudes))
-    }, [dispatch,cantidad,categoria]
+      setCategoria(state.Categoria);
+    }, [dispatch,cantidad,Categoria]
   )
   useEffect( ()=>{
     solicitud()
@@ -35,14 +35,14 @@ const Solicitudes = ({history}) =>{
     setCantidad(cantidad+1)
    }
 
-console.log(categoria);
+console.log(Categoria);
    useEffect(() => {
     socket.on( 'ordenagregarsolicitud', (orden) => {
       console.log(orden)
-        const desicion = orden.categoria === categoria;
-        console.log(orden.categoria,categoria)
+        const desicion = orden.categoria === Categoria;
+        console.log(orden.categoria,Categoria)
         if(desicion){
-          if(orden.de !== state){
+          if(orden.de !== state.uid){
             dispatch(recibirsolicitud(orden));
         }
         }
@@ -53,6 +53,12 @@ console.log(categoria);
    const onChangeMensaje = (e) => {
     setCantidad(1)
     dispatch(categoriaseleccionada(e.target.value));
+    socket.emit('solicitud',{
+      Categoria:e.target.value
+      })  
+      socket.on('solicitud',(Categoria)=>{
+        setCategoria(Categoria)
+      })  
   };
     return (
         <>
@@ -67,7 +73,7 @@ console.log(categoria);
           <p className="botoncarrito">
            Categorias
           </p>
-          <select name="Categoria" className='selectsolicitud' onChange={onChangeMensaje} value={categoria}>
+          <select name="Categoria" className='selectsolicitud' onChange={onChangeMensaje} value={Categoria}>
           <option value={'todos'}>todos</option>
           <option value={'Repuestos'}>Repuestos</option>
           <option value={'Mascotas'}>Mascotas</option>

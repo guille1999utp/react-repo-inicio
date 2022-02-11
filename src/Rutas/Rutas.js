@@ -38,7 +38,7 @@ export default function Rutas() {
   <Rutaprivada isAuthenticated={online} path='/carrito' component={Carrito}/>
   <Rutaprivada isAuthenticated={online} path='/ajustes' component={Configuracion}/>
   <Rutaprivada isAuthenticated={online} path='/ordenar' component={Ordenar}/>
-  <Rutaprivada isAuthenticated={online} path='/solicitudes/:categoria' component={Solicitudes}/>
+  <Rutaprivada isAuthenticated={online} path='/solicitudes' component={Solicitudes}/>
   <Route isAuthenticated={online} path='/feedback/:id' component={Pagespagos}/>
   <Rutaprivada isAuthenticated={online} path='/consultarpago/:id' component={PagoConsultaPago}/>
   <Rutaprivada isAuthenticated={online} path='/consultarventa/:id' component={ConsultarVenta}/>
