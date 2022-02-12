@@ -8,7 +8,8 @@ creacion:"",
 uid:"",
 urlfoto: "",
 fotosdescripsion: [],
-verificado: false
+verificado: false,
+categoria:""
 }
 function reducer(state = initstate, action){
     switch (action.type){
@@ -23,7 +24,8 @@ function reducer(state = initstate, action){
             uid: action.payload.uid,
             urlfoto: action.payload.urlfoto,
             fotosdescripsion: action.payload.fotosdescripsion,
-            verificado: action.payload.verificado
+            verificado: action.payload.verificado,
+            categoria: action.payload.Categoria
             }
         case types.UpdateFoto:
             return {
