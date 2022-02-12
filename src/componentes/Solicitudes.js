@@ -4,29 +4,29 @@ import Cajasolicitudes from "./Cajasolicitudes";
 import './Solicitudes.scss';
 import { useDispatch,useSelector } from 'react-redux';
 import { fetchCToken } from "../helpers/fetchmetod";
-import { cargarsolicitudes } from "../redux/actions/ordenar";
+import { cargarsolicitudes,categoriaseleccionada } from "../redux/actions/ordenar";
 import Footer from "./Footer";
 import CircularProgress from "./CircularProgress";
-import { recibirsolicitud} from '../redux/actions/ordenar';
 import { SocketContext } from '../redux/context/contextchat'
 
 const Solicitudes = ({history}) =>{
   const dispatch = useDispatch();
-  const state = useSelector(state => state.infoUsuario.uid);
+  const state = useSelector(state => state.infoUsuario);
   const {socket} = useContext(SocketContext);
-  const [Categoria, setCategoria] = useState({Categoria:'todos'});
   const [cantidad, setCantidad] = useState(1);
   const [carga, setCarga] = useState(true);
-  const solicitudes = useSelector(solicitudes => solicitudes.ordenar.solicitudes);
+  const solicitudes = useSelector(solicitudes => solicitudes.ordenar);
   const solicitud = useCallback(
     async() => {
       console.log('entro')
-      const solicitude = await fetchCToken('solicitudes',Categoria,'POST',cantidad);
+      const solicitude = await fetchCToken('solicitudes',{Categoria: solicitudes.categoria},'POST',cantidad);
       if(!solicitude.ok){
       return ;
       }
       setCarga(false);
       dispatch(cargarsolicitudes(solicitude.solicitudes))
+      dispatch(categoriaseleccionada(state.categoria));
+
     }, [dispatch,cantidad]
   )
   useEffect( ()=>{
@@ -37,38 +37,30 @@ const Solicitudes = ({history}) =>{
     setCantidad(cantidad+1)
    }
 
-   console.log(Categoria)
+   useEffect(()=>{
+     const hola = async()=>{
+       const solicitude = await fetchCToken('solicitudes',{Categoria: solicitudes.categoria},'POST',cantidad);
+       dispatch(cargarsolicitudes(solicitude.solicitudes))
+     }
+     hola()
+  },[solicitudes.categoria,dispatch,cantidad])
+
    useEffect(() => {
-    socket?.on( 'ordenagregarsolicitud', (orden) => {
-        const desicion = orden.categoria === Categoria.Categoria;
-        console.log(desicion)
-        console.log(orden.categoria, Categoria.Categoria)
-        if(desicion){
-          if(orden.de !== state){
-            dispatch(recibirsolicitud(orden));
-        }
-        }
+    socket?.on( 'ordenagregarsolicitud', async(Categoria) => {
+      const solicitude = await fetchCToken('solicitudes',{Categoria: Categoria},'POST',cantidad);
+      dispatch(cargarsolicitudes(solicitude.solicitudes))
     })
-}, [ socket , dispatch,state,Categoria]);
+}, [ socket , dispatch,state.uid,solicitudes.categoria]);
+
 
 const onChangeMensaje = (e) => {
   setCantidad(1)
-  setCategoria({Categoria:e.target.value});
+  dispatch(categoriaseleccionada(e.target.value));
+  socket.emit('solicitud',{
+    Categoria:e.target.value
+    })  
 };
 
-const onSubmit = async(e)=>{
-  e.preventDefault();
-  try {
-    const solicitude = await fetchCToken('solicitudes',Categoria,'POST',cantidad);
-        if(!solicitude.ok){
-        return ;
-        }
-        setCarga(false);
-        dispatch(cargarsolicitudes(solicitude.solicitudes))
-  } catch (error) {
-    console.log(error);
-  }
-}
     return (
         <>
      {(carga)? <CircularProgress/> : <>
@@ -76,30 +68,26 @@ const onSubmit = async(e)=>{
     <div className="conteinerproductoseleccionado">
     <div className="flexro">
           <p className="botoncarrito">
-          Solicitudes ({solicitudes.length})
+          Solicitudes ({solicitudes.solicitudes.length})
           </p>
           <div className="flexro">
           <p className="botoncarrito">
            Categorias
           </p>
-          <form onSubmit={onSubmit}>
-            <label>
-          <select name="categoria" className='selectsolicitud' onChange={onChangeMensaje} value={Categoria.Categoria}>
+          <select name="categoria" className='selectsolicitud' onChange={onChangeMensaje} value={solicitudes.categoria}>
           <option value={'todos'}>todos</option>
           <option value={'Repuestos'}>Repuestos</option>
           <option value={'Mascotas'}>Mascotas</option>
           <option value={'Farmacias'}>Farmacias</option>
           <option value={'Estanquillos'}>Estanquillos</option>
           </select>
-          </label>
-          </form>
           </div>
     </div>
         <hr></hr>
-      {solicitudes.map((solicitud,count) =>(
+      {solicitudes.solicitudes.map((solicitud,count) =>(
       <Cajasolicitudes key={solicitud.oid + count} productorden={solicitud.oid} history={history} de={solicitud.de} producto={solicitud.nombre} descripsion={solicitud.descripsion} urlfoto={solicitud.urlfoto}></Cajasolicitudes>
       ))}
-      {(solicitudes.length === 0)?
+      {(solicitudes.solicitudes.length === 0)?
       <>
       <div className='comprarbotoncarrito'>No Hay Productos Solicitados <Link to="/inicio" className="botoncarrito">
           Ver productos 
@@ -107,10 +95,8 @@ const onSubmit = async(e)=>{
       
       </>
       : null}
-      {(solicitudes.length > 0)?
-      <form onSubmit={onSubmit}>
+      {(solicitudes.solicitudes.length > 0)?
       <button type='submit'className='comprarbotoncarrito' onClick={cantidadmas}>Ver mas</button>
-      </form>
       : null}
       </div>
       <Footer/>
