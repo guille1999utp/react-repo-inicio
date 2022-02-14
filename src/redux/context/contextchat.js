@@ -12,7 +12,6 @@ export const SocketProvider = ({ children }) => {
 
     const dispatch = useDispatch();
     const {  socket , online,  conectarSocket, desconectarSocket } = useSocket('http://localhost:4000');
-
     const verificartoken = useCallback(
      async() => {
        const token = localStorage.getItem('token');
