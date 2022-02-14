@@ -12,7 +12,6 @@ export const SocketProvider = ({ children }) => {
 
     const dispatch = useDispatch();
     const {  socket , online,  conectarSocket, desconectarSocket } = useSocket('http://localhost:4000');
-
     const verificartoken = useCallback(
      async() => {
        const token = localStorage.getItem('token');
@@ -56,6 +55,7 @@ export const SocketProvider = ({ children }) => {
     useEffect(() => {
   
     socket?.on( 'lista-usuarios', (usuarios) => {
+      console.log(usuarios)
           dispatch(userchat(usuarios));
       })
   }, [ socket, dispatch]);
@@ -159,12 +159,9 @@ useEffect(() => {
 
 useEffect(() => {
   socket?.on( 'orden', (orden) => {
-    console.log(orden)
-      if(orden.de === state.uid){
           dispatch(subirOrden(orden));
-      }
   })
-}, [ socket , dispatch, state.uid]);
+}, [ socket , dispatch]);
 
 useEffect(() => {
   socket?.on( 'fotouseradicional', ({urlfoto,uidfoto}) => {

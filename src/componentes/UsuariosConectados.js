@@ -14,6 +14,7 @@ function UsuariosConectados({user,funChulo,funcpendiente}) {
     }))
     const res = await fetchCToken(`chat/${user.uid}`);
     const orden = await fetchCToken('ordenconsulta',{oid:res.mensajes[0].productorden},'POST');
+
     if(orden.ok && orden.producto === 0){
       funChulo(true);
       funcpendiente(res.mensajes[0].condicion)
