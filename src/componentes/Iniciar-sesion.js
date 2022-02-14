@@ -8,7 +8,7 @@ import { useSocket } from "../SocketsConnection/useSocket";
 
 function Iniciarsesion() {
   const dispatch = useDispatch();
-  const { conectarSocket } = useSocket('https://www.lbshop.bond');
+  const { conectarSocket } = useSocket('159.223.100.183');
   const [login, setLogin] = useState({
    correo:'',
    password: ''
