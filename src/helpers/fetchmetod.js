@@ -1,4 +1,4 @@
-const sitioUrl = 'https://www.lbshop.bond';
+const sitioUrl = 'http://159.223.100.183/';
 export const fetchstoken = async (endpoint, data, method = 'GET') =>{
 const url = `${ sitioUrl }/${ endpoint }`;
     
