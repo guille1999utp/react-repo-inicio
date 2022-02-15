@@ -47,7 +47,11 @@ const Solicitudes = ({history}) =>{
 
    useEffect(() => {
     socket?.on( 'ordenagregarsolicitud', async(Categoria) => {
+      console.log('entro soliocitudes')
+      console.log(Categoria)
       const solicitude = await fetchCToken('solicitudes',{Categoria: Categoria},'POST',cantidad);
+      console.log(solicitude)
+
       dispatch(cargarsolicitudes(solicitude.solicitudes))
     })
 }, [ socket , dispatch,state.uid,solicitudes.categoria]);
