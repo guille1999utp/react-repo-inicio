@@ -125,9 +125,12 @@ function Ordenar() {
               <span>Categoria</span>
               <select name="categoria" onChange={onChangeMensaje} className="categoriaorden" value={solicitud.categoria}>
           <option value={'todos'}>todos</option>
-          <option value={'Repuestos'}>Repuestos</option>
-          <option value={'Mascotas'}>Mascotas</option>
-          <option value={'Farmacias'}>Farmacias</option>
+          <option value={'Repuestos_Motos'}>Repuestos Motos</option>
+          <option value={'Repuestos_Carros'}>Repuestos Carros</option>
+          <option value={'Ferreterias'}>Ferreterias | Electricos</option>
+          <option value={'Naturistas'}>Tiendas Naturistas</option>
+          <option value={'Veterinaria_Mascotas'}>Veterinaria | Productos</option>
+          <option value={'Droguerias'}>Droguerias</option>
           <option value={'Estanquillos'}>Estanquillos</option>
           </select>
             </label>
@@ -135,7 +138,7 @@ function Ordenar() {
             <label className="flexrow wrapordenar">
             <span className="file-custom">Fotos</span>
             <input type="file" id="fileordenar" aria-label="File browser example" name='urlfoto' onChange={onFilesave} ></input>
-             <button type='button' className='butonfile' onClick={onFile}>subir foto</button>
+             <button type='button' className='butonfile' onClick={onFile}>Subir Foto</button>
             </label>
             <button type="submit" className="butonsolicitar">
               Solicitar

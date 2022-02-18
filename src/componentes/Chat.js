@@ -8,6 +8,7 @@ import { Link  } from 'react-router-dom';
 import { cargarordenes } from "../redux/actions/ordenar";
 import { exitChat } from "../redux/actions/chat";
 import { fetchCToken } from "../helpers/fetchmetod";
+import Swal from 'sweetalert2'
 
 function Chat() {
   const dispatch = useDispatch();
@@ -109,12 +110,30 @@ function Chat() {
   }
   
   const  onCancel = () =>{
-    setSeleccionar(false);
+    Swal.fire({
+      title: 'estas seguro?',
+      text: "¡Borraras Toda la Conversacion!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Sí, Entendido!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setSeleccionar(false);
     socket.emit('deseleccionarchat',{
       de:miusuario.uid,
       para:chatActivo.iduser,
       productorden: mensajes[0].productorden,
       })
+        Swal.fire(
+          'Chat Eliminado!',
+          'Chat eliminado con exito',
+          'success'
+        )
+      }
+    })
+    
   }
   
   const  onExito = () =>{
@@ -170,13 +189,11 @@ function Chat() {
             (chatActivo)?<>
           <div className="paletacomandochat">
             <div className="correcionpaletachat">
-            <Link to={`/perfil/${chatActivo.iduser}`} >
               <img
                 className="fotousuariouser"
                 alt="imgchatusehablando"
                 src={chatActivo.urlfoto}
               ></img>
-            </Link>
               <p className="nombrechat">{chatActivo.name}</p>
             </div>
           </div>

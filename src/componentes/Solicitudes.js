@@ -79,10 +79,12 @@ const onChangeMensaje = (e) => {
            Categorias
           </p>
           <select name="categoria" className='selectsolicitud' onChange={onChangeMensaje} value={solicitudes.categoria}>
-          <option value={'todos'}>todos</option>
-          <option value={'Repuestos'}>Repuestos</option>
-          <option value={'Mascotas'}>Mascotas</option>
-          <option value={'Farmacias'}>Farmacias</option>
+          <option value={'Repuestos_Motos'}>Repuestos Motos</option>
+          <option value={'Repuestos_Carros'}>Repuestos Carros</option>
+          <option value={'Ferreterias'}>Ferreterias | Electricos</option>
+          <option value={'Naturistas'}>Tiendas Naturistas</option>
+          <option value={'Veterinaria_Mascotas'}>Veterinaria | Productos</option>
+          <option value={'Droguerias'}>Droguerias</option>
           <option value={'Estanquillos'}>Estanquillos</option>
           </select>
           </div>

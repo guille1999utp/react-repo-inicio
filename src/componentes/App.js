@@ -1,7 +1,6 @@
 import store from '../redux/store';
 import { Provider } from 'react-redux';
 import Rutas from '../Rutas/Rutas';
-import ButtonLogout from '../componentes/ButtonLogout';
 import { SocketProvider } from '../redux/context/contextchat'
 
 import moment from 'moment';
@@ -15,7 +14,6 @@ const App = () => {
     <Provider store={store}>
     <SocketProvider>
     <Rutas/>
-    <ButtonLogout/>
     </SocketProvider>
     </Provider>
   );

@@ -32,7 +32,7 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,product
             })
             return ;
   }
-  const mensaje = productoa + 'lo tengo disponible al siguiente precio: ' + solicitud.plata;
+  const mensaje = productoa + ' lo tengo disponible al siguiente precio: ' + solicitud.plata;
   socket.emit('mensaje',{
     de:miusuario.uid,
     para:de,
