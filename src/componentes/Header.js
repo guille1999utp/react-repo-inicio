@@ -1,9 +1,23 @@
 import './Header.scss';
 import React, {useState,useEffect} from 'react'
 import { Link  } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { regenerate } from '../redux/actions/auth';
+import { regeneratechat } from '../redux/actions/chat';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const onchange = () =>{
+      localStorage.removeItem('token');
+   dispatch(regenerate());
+   dispatch(regeneratechat());
+   if(bar.valid === true){
+    setbar({
+    valid : false
+    })
+    }
+
+  }
   const [Width, setWidth] = useState(window.innerWidth);  
   const [busqueda, setbusqueda] = useState('')
   const onChangeMensaje = (e) => {
@@ -76,7 +90,8 @@ const Header = () => {
        {(state.online === true)?<li><Link className={(position === 5)?'active':null} to='/ajustes' onClick={ ()=> onhandledmenuback(5) }>Perfil</Link></li>: null}
        {(state.online === false)?<li><Link className={(position === 6)?'active':null} to='/login' onClick={ ()=> onhandledmenuback(6) }>Login</Link></li> : null}
        {(state.online === false)?<li><Link className={(position === 7)?'active':null} to='/register' onClick={ ()=> onhandledmenuback(7) }>Register</Link></li> : null}
-     
+       {(state.online === true)?<li><Link to='/login' onClick={onchange}>Cerrar</Link></li> : null}
+
       </ul>
     <button className='btnmenu' onClick={ ()=> onhandledclick() } >
     <i className='bx bx-menu' ></i>
