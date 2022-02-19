@@ -8,6 +8,8 @@ import CajaMostrarProducto from "./CajaMostrarProducto"
 import { Link  } from 'react-router-dom';
 import { fetchstoken } from '../helpers/fetchmetod';
 import CircularProgress from "./CircularProgress";
+import Fondo1 from "./images/Farmacia_banner.png"
+import Fondo2 from "./images/Banner_Ferreterias.png"
 
 //useEffect para poder hacer responsive la carta
 function Inicio ({history}) {
@@ -72,7 +74,7 @@ useEffect(() => {
         cssEase: "linear"
     }
     const redirect = () => {
-      history.push( `/producto/2`);
+      history.push( `/ordenar`);
        }
 
      return(
@@ -83,15 +85,11 @@ useEffect(() => {
      <div className='sliderbargrande'>
         <Slider {...settingsinicio}>
           <div>
-            <img onClick={redirect} src='https://image.freepik.com/vector-gratis/banner-tiendas-belleza-online-concepto-comercio-electronico-compras-moviles-internet-ilustracion-dibujos-animados-vector-interior-salon-cosmetica-tienda-online-pantalla-portatil_107791-4006.jpg' alt='img'></img>
+            <img onClick={redirect} src={Fondo1} alt='fondo'></img>
           </div>
           <div>
-          <img onClick={redirect} src='https://media.istockphoto.com/vectors/social-commerce-banner-web-icon-for-ecommerce-and-social-media-vector-id1172148385' alt='img'></img>
+          <img onClick={redirect} src={Fondo2} alt='fondo2'></img>
           </div>
-          <div>
-          <img  onClick={redirect} src='https://www.camaramedellin.com.co/Portals/0/Images/JE399_masempresario_Bannerhome.jpg?ver=2021-11-02-085802-780' alt='img'></img>
-          </div>
-        
         </Slider>
       </div>
 
