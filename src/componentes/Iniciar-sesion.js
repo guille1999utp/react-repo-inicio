@@ -8,7 +8,7 @@ import { useSocket } from "../SocketsConnection/useSocket";
 
 function Iniciarsesion() {
   const dispatch = useDispatch();
-  const { conectarSocket } = useSocket('http://localhost:4000');
+  const { conectarSocket } = useSocket('https://www.lbshop.bond');
   const [login, setLogin] = useState({
    correo:'',
    password: ''
@@ -47,7 +47,7 @@ const onChangeMensaje = (e) => {
    <label className='ajus'>Contraseña</label>
    <input className='inputl' id='contraseña' type='password' name='password' placeholder='ingrese contraseña' value={login.password} onChange={onChangeMensaje}/>
    <button type='submit' className={loginsesion()?'buttoningresar':'buttoningresardisable'} disabled={!loginsesion()}> ingresar</button>
-   <div 
+   {/* <div 
     className="google-btn"
 >
     <div className="google-icon-wrapper">
@@ -59,7 +59,7 @@ const onChangeMensaje = (e) => {
 </div>
 <button className="loginBtn loginBtn--facebook">
   Login with Facebook
-</button>
+</button> */}
 
    <h3 className='ajus'>no tienes cuenta?</h3>
    <a href='/register' className='am' >Registrarme</a>
