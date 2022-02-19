@@ -4,13 +4,6 @@
   align-items: center;
 }
 
-.logoimage{
-  background:  url("./images/LB-Shop1.png");
-  color: white;
-  width: 200px;
-  height: 100%;
-
-}
 
 $navsize: 50px;
 $color: #9466ff;
@@ -30,7 +23,7 @@ $mg: 40px;
       margin: 0 16px;
       @include centerize;
       text-decoration: none;
-      color: #707184;
+      color: #fffbfb;
       text-transform: capitalize;
       position: relative;
       &:hover {
@@ -62,17 +55,14 @@ $mg: 40px;
 
 
 .menu{
-  background-color: rgb(18, 18, 20);
+  background-color: #4b5360;
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .logo{
-  color: white;
-  font-size: 22px;
-  padding-left: 80px;
-  font-weight: bold;
+  width: 50%;
   cursor: pointer;
 }
 .logo a{
@@ -194,8 +184,9 @@ width: 80%;
    }
 
    .logo{
-     font-size: 18px;
-     padding-left: 35px;
+    height: 100%;
+    width: 102px;
+    padding-left: 6px;
    }
 
 }
