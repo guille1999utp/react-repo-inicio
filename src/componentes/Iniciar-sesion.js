@@ -59,7 +59,7 @@ const onChangeMensaje = (e) => {
 </div>
 <button className="loginBtn loginBtn--facebook">
   Login with Facebook
-</button> */}
+</button>  */}
 
    <h3 className='ajus'>no tienes cuenta?</h3>
    <a href='/register' className='am' >Registrarme</a>
