@@ -4,6 +4,7 @@ import { Link  } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { regenerate } from '../redux/actions/auth';
 import { regeneratechat } from '../redux/actions/chat';
+import Logo from "./images/LB-Shop1.png"
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -70,7 +71,7 @@ const Header = () => {
     <>
     <div className="nav-1">
     <nav className='menu'>
-      <label className='logo'><Link to='/' onClick={ ()=> onhandledmenuback(9) }>{ (Width > 488)?'Lb shop':'LB'}</Link></label>
+      <Link to='/' onClick={ ()=> onhandledmenuback(9) }><img src={Logo} alt='image-logo' className='logo'/></Link>
       <div className='formbusqueda'>
       <form onSubmit={redirect}>
       <Link id='oprimirbusqueda' to={`/busqueda/${busqueda}`}> </Link>
