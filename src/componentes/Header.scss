@@ -6,7 +6,7 @@
 
 
 $navsize: 50px;
-$color: #9466ff;
+$color: #f18546;
 $mg: 40px;
 
 
@@ -60,6 +60,14 @@ $mg: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .linkinicio{
+    height: 100%;
+    width: 20%;
+    text-align: center;
+    img{
+      height: 100%;
+    }
+  }
 }
 .logo{
   width: 50%;
@@ -203,7 +211,7 @@ width: 80%;
 
 }
 @media screen and (max-width:414px) and (orientation: landscape){
-
+ 
   .items li{
     margin: 5px 0 0 0;
   }
@@ -215,4 +223,23 @@ width: 80%;
   }
 
 
-
+  @media screen and (max-width:414px){
+    .menu .linkinicio {
+      height: 100%;
+      width: 20%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .img{
+        height: auto;
+      }
+  }
+  .menu .linkinicio img{
+      height: auto;
+}
+    .logo{
+      height: 100%;
+      width: 118%;
+    }
+  }

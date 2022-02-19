@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 import { useSocket } from "../SocketsConnection/useSocket";
 
 function Register() {
-  const { conectarSocket } = useSocket('http://localhost:4000');
+  const { conectarSocket } = useSocket('https://www.lbshop.bond');
 
   const dispatch = useDispatch();
   const [state, setState] = useState({

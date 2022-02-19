@@ -11,7 +11,8 @@ export const SocketContext = createContext();
 export const SocketProvider = ({ children }) => {
 
     const dispatch = useDispatch();
-    const {  socket , online,  conectarSocket, desconectarSocket } = useSocket('https://lbshop.bond');
+    const {  socket , online,  conectarSocket, desconectarSocket } = useSocket('https://www.lbshop.bond');
+
     const verificartoken = useCallback(
      async() => {
        const token = localStorage.getItem('token');
