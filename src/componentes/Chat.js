@@ -9,9 +9,11 @@ import { cargarordenes } from "../redux/actions/ordenar";
 import { exitChat } from "../redux/actions/chat";
 import { fetchCToken } from "../helpers/fetchmetod";
 import Swal from 'sweetalert2'
+import { UploadPhoto } from "../helpers/cloudinaryUpload";
 
 function Chat() {
   const dispatch = useDispatch();
+  const [urlmas, setUrl] = useState(0);
   const {socket} = useContext(SocketContext);
   const [Width, setWidth] = useState(window.innerWidth);  
   const cambiarTamaño=()=>{ 
@@ -41,6 +43,7 @@ function Chat() {
    de:miusuario.uid,
    para:chatActivo.iduser,
    mensaje,
+   image:false,
    productorden: mensajes[0].productorden,
    precio:mensajes[0].precio,
    condicion:mensajes[0].condicion
@@ -61,7 +64,10 @@ function Chat() {
   )
   useEffect( ()=>{
   obtenerproductos()
-  },[obtenerproductos])
+  return ()=>{
+    dispatch(exitChat());
+  }
+  },[obtenerproductos,dispatch])
 
 
 
@@ -136,6 +142,19 @@ function Chat() {
     
   }
   
+  const onFilesave  = async(e) =>{
+    if(e.target.files.length === 0){
+      return null;
+    }
+    const file = e.target.files[0];
+    setUrl(file);
+  }
+
+  const onFile  = () =>{
+    document.querySelector('#filefotochat').click();
+  }
+
+
   const  onExito = () =>{
     socket.emit('productorecibidoconexito',{
       productorden: mensajes[0].productorden,
@@ -143,6 +162,33 @@ function Chat() {
       para:chatActivo.iduser,
       dinero:mensajes[0].precio*0.05
       })
+  }
+
+  const  onExitoImage = async() =>{
+  
+    try{
+      const url =  await UploadPhoto(urlmas);
+      socket.emit('mensajeimage',{
+        de:miusuario.uid,
+        para:chatActivo.iduser,
+        mensaje:'a',
+        image:true,
+        urlfoto: url.secure_url,
+        uidfoto: url.public_id,
+        productorden: mensajes[0].productorden,
+        precio:mensajes[0].precio,
+        condicion:mensajes[0].condicion
+        })
+    
+    setUrl(0);
+  }catch(err){
+    console.log(err)
+  }
+  }
+  
+
+  const  onCancelImage = () =>{
+    setUrl(0);
   }
   
   const  onEnviado = () =>{
@@ -165,6 +211,7 @@ function Chat() {
   return (
     <>
       <div className="fondonegrochat"></div>
+      <input type="file" id="filefotochat" aria-label="File browser example" name='urlfoto' onChange={onFilesave} ></input>
 
      { (Width > 600)?<div className="cajachat">
         <div className="usuariosactivos">
@@ -204,6 +251,8 @@ function Chat() {
                 de = {e.de}
                 mensaje = {e.mensaje}
                 fecha = {e.createdAt}
+                urlfoto = {e.urlfoto}
+                image = {e.image}
               ></CajaChat>
             ))}
             <div className="finalchatscroll"></div>
@@ -248,7 +297,11 @@ function Chat() {
                return null;
               }
             }).includes(mensajes[0]?.productorden))?
-            <><input
+            <>
+            <button type="button" className="botonsend"  onClick={onFile}>
+            <i className='bx bx-image-alt' ></i>           
+             </button>
+            <input
          autoComplete={'off'}
            type="text"
            className="decorationpaleta"
@@ -264,18 +317,32 @@ function Chat() {
           <button className="buttonenviopedido" type="button" onClick={onExito}><p>Terminar</p></button>
            <button className="buttoncancelarpedido" type="button" onClick={onFail}><p>Reportar Problema</p></button>
           </div>
-          :<><input
-          autoComplete={'off'}
-            type="text"
-            className="decorationpaleta"
-            value={mensaje}
-            placeholder="Escribir Mensaje"
-            onChange={onChangeMensaje}
-            name="mensaj"
-          ></input>
-           <button type="submit" className="botonsend">
-               <i className="bx bxs-send"></i>
-             </button></>}
+          :<>
+             {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+             {(urlmas.size > 0)?
+            <div className='bordesolicitudcompleta'>
+            <button className="buttonenviopedido" type="button" onClick={onExitoImage}><p>Enviar</p></button>
+             <button className="buttoncancelarpedido" type="button" onClick={onCancelImage}><p>Cancelar</p></button>
+            </div>
+          :<>
+          <button type="button" className="botonsend"  onClick={onFile}>
+            <i className='bx bx-image-alt' ></i>           
+             </button>
+            <input
+         autoComplete={'off'}
+           type="text"
+           className="decorationpaleta"
+           value={mensaje}
+           placeholder="Escribir Mensaje"
+           onChange={onChangeMensaje}
+           name="mensaj"
+         ></input>
+          <button type="submit" className="botonsend">
+              <i className="bx bxs-send"></i>
+            </button>
+          </>  
+          }
+         {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}</>}
            
           </form>
           </>
@@ -328,6 +395,8 @@ function Chat() {
                 de = {e.de}
                 mensaje = {e.mensaje}
                 fecha = {e.createdAt}
+                urlfoto = {e.urlfoto}
+                image = {e.image}
               ></CajaChat>
             ))}
             <div className="finalchatscroll"></div>
@@ -372,7 +441,11 @@ function Chat() {
                return null;
               }
             }).includes(mensajes[0]?.productorden))?
-            <><input
+            <>
+             <button type="button" className="botonsend"  onClick={onFile}>
+            <i className='bx bx-image-alt' ></i>           
+             </button>
+            <input
          autoComplete={'off'}
            type="text"
            className="decorationpaleta"
@@ -388,18 +461,32 @@ function Chat() {
           <button className="buttonenviopedido" type="button" onClick={onExito}><p>Terminar</p></button>
            <button className="buttoncancelarpedido" type="button" onClick={onFail}><p>Reportar Problema</p></button>
           </div>
-          :<><input
-          autoComplete={'off'}
-            type="text"
-            className="decorationpaleta"
-            value={mensaje}
-            placeholder="Escribir Mensaje"
-            onChange={onChangeMensaje}
-            name="mensaj"
-          ></input>
-           <button type="submit" className="botonsend">
-               <i className="bx bxs-send"></i>
-             </button></>}
+          :<>
+           {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+           {(urlmas.size > 0)?
+            <div className='bordesolicitudcompleta'>
+            <button className="buttonenviopedido" type="button" onClick={onExitoImage}><p>Enviar</p></button>
+             <button className="buttoncancelarpedido" type="button" onClick={onCancelImage}><p>Cancelar</p></button>
+            </div>
+          :<>
+          <button type="button" className="botonsend"  onClick={onFile}>
+            <i className='bx bx-image-alt' ></i>           
+             </button>
+            <input
+         autoComplete={'off'}
+           type="text"
+           className="decorationpaleta"
+           value={mensaje}
+           placeholder="Escribir Mensaje"
+           onChange={onChangeMensaje}
+           name="mensaj"
+         ></input>
+          <button type="submit" className="botonsend">
+              <i className="bx bxs-send"></i>
+            </button>
+          </>  
+          }
+         {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}</>}
            
           </form>
           </>
