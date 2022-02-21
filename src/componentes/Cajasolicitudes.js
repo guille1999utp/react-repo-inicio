@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 import { SocketContext } from '../redux/context/contextchat'
 import { fetchCToken ,fetchstoken} from '../helpers/fetchmetod';
 
-export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,productorden}) => {
+export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,productorden,setFoto,foto}) => {
   const {socket} = useContext(SocketContext);
   const miusuario =  useSelector(yo => yo.infoUsuario);
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,product
   const [solicitud, setSolicitud] = useState({
     plata: ''
   });
+ 
 
   const onChange = (e) => {
     setSolicitud({plata:e.target.value});
@@ -50,7 +51,13 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,product
 
   };
 
-
+   const onClick = () =>{
+     if(foto.length === 0){
+       setFoto(urlfoto);
+     }else{
+       setFoto('');
+     }
+   }
 
     return (
       <>
@@ -59,6 +66,7 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,product
           <img
             src={urlfoto}
             alt="img"
+            onClick={onClick}
           ></img>
           </div>
           <div className="caracteristicaproductocarrito">

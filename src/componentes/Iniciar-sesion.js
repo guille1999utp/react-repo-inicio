@@ -4,11 +4,11 @@ import React,{useState} from 'react'
 import { fetchstoken } from '../helpers/fetchmetod';
 import { loginstate } from '../redux/actions/auth';
 import { useSocket } from "../SocketsConnection/useSocket";
-
+import Swal from 'sweetalert2'
 
 function Iniciarsesion() {
   const dispatch = useDispatch();
-  const { conectarSocket } = useSocket('https://www.lbshop.bond');
+  const { conectarSocket } = useSocket('http://localhost:4000');
   const [login, setLogin] = useState({
    correo:'',
    password: ''
@@ -34,7 +34,21 @@ const onChangeMensaje = (e) => {
       conectarSocket();
      dispatch(loginstate(state));
     }else{
-      return console.log(resultlogin);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      Toast.fire({
+        icon: 'error',
+        title: resultlogin.msg
+      })
     }
       };
 

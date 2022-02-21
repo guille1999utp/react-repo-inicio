@@ -126,13 +126,16 @@ border:none;
     margin-left: 15px;
     font-size: 1rem;
 }
-.bxs-send, .bx-check{
+.bxs-send, .bx-check, .bx-image-alt{
     cursor: pointer;
     margin: auto 0;
     font-size: 25px;
     margin-left: 5px;
     padding: 5px;
     color: rgb(81, 88, 92);
+}
+#filefotochat{
+    display: none;
 }
 .buttonexitopedido{
     padding: 0 6px;
@@ -276,6 +279,11 @@ border:none;
     vertical-align: top;
     width: 280px;
 }
+
+.mensaje-autor .contenido img{
+    width: 100%;
+ }
+
 .mensaje-autor .fecha{
     color: black;
     font-style: italic;
@@ -339,6 +347,11 @@ border:none;
     vertical-align: top;
     width: 280px;
 }
+
+.mensaje-amigo .contenido img{
+   width: 100%;
+}
+
 .botonsend{
     border: none;
 }

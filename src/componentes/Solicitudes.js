@@ -10,6 +10,7 @@ import CircularProgress from "./CircularProgress";
 import { SocketContext } from '../redux/context/contextchat'
 
 const Solicitudes = ({history}) =>{
+  const [foto, setFoto] = useState('');
   const dispatch = useDispatch();
   const state = useSelector(state => state.infoUsuario);
   const {socket} = useContext(SocketContext);
@@ -65,9 +66,22 @@ const onChangeMensaje = (e) => {
     })  
 };
 
+const onClick = () =>{
+    setFoto('');
+}
+
+
     return (
         <>
+
      {(carga)? <CircularProgress/> : <>
+      {(foto.length > 0)?<div className='mostrarimagenfondo' >
+        <img src={foto}
+            alt="img"></img>
+        <i className='bx bx-x' onClick={onClick}></i>
+      </div>:null}
+
+
     <div className="fondocarrito">
     <div className="conteinerproductoseleccionado">
     <div className="flexro">
@@ -91,7 +105,7 @@ const onChangeMensaje = (e) => {
     </div>
         <hr></hr>
       {solicitudes.solicitudes.map((solicitud,count) =>(
-      <Cajasolicitudes key={solicitud.oid + count} productorden={solicitud.oid} history={history} de={solicitud.de} producto={solicitud.nombre} descripsion={solicitud.descripsion} urlfoto={solicitud.urlfoto}></Cajasolicitudes>
+      <Cajasolicitudes foto={foto} setFoto={setFoto} key={solicitud.oid + count} productorden={solicitud.oid} history={history} de={solicitud.de} producto={solicitud.nombre} descripsion={solicitud.descripsion} urlfoto={solicitud.urlfoto}></Cajasolicitudes>
       ))}
       {(solicitudes.solicitudes.length === 0)?
       <>

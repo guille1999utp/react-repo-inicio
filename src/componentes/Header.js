@@ -1,5 +1,5 @@
 import './Header.scss';
-import React, {useState,useEffect} from 'react'
+import React, {useState} from 'react'
 import { Link  } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { regenerate } from '../redux/actions/auth';
@@ -19,23 +19,10 @@ const Header = () => {
     }
 
   }
-  const [Width, setWidth] = useState(window.innerWidth);  
   const [busqueda, setbusqueda] = useState('')
   const onChangeMensaje = (e) => {
     setbusqueda(e.target.value);
   };
-
-  const cambiarTamaño=()=>{ 
-     setWidth(window.innerWidth);
-  }
-
-   useEffect(()=>{
-     window.addEventListener('resize',cambiarTamaño);
-     return ()=>{
-       window.removeEventListener('resize', cambiarTamaño)
-     }
-
-   })
 
    const redirect = () => {
   document.querySelector('#oprimirbusqueda').click();
