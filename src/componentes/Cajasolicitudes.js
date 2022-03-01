@@ -40,7 +40,9 @@ export const Cajasolicitudes = ({history,de,producto,descripsion,urlfoto,product
     mensaje,
     productorden,
     precio: solicitud.plata,
-    condicion: "pendiente"
+    condicion: "pendiente",
+    image:false,
+
     })
     const resuser = await fetchstoken(`perfil/${de}`);
 
