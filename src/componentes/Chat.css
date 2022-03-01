@@ -182,7 +182,7 @@ border:none;
 .chatuses{
     width: 100%;
     height: 86%;
-    background-image: url("https://static.vecteezy.com/system/resources/previews/002/218/678/non_2x/blue-wallpaper-with-modern-smartphones-social-media-message-background-copy-space-for-a-text-vector.jpg");
+    background-image: url("./images/fondo.png");
     overflow-y: scroll;
 }
 .chatuses::-webkit-scrollbar{
@@ -316,7 +316,7 @@ border:none;
     height: 0; 
     border-top: 0px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 15px solid #3990BF;
+    border-left: 15px solid #996200;
 }
 .mensaje-autor .foto{
     border-radius: 5px;
@@ -338,7 +338,7 @@ border:none;
     height: 45px;
 }
 .mensaje-amigo .contenido{
-    background-color: #3990BF;
+    background-color: #996200;
     border-radius: 5px;
     color: white;
     display: inline-block;

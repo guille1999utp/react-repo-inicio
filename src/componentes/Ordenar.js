@@ -124,7 +124,6 @@ function Ordenar() {
             <label  className="flexrow wrapordenar">
               <span>Categoria</span>
               <select name="categoria" onChange={onChangeMensaje} className="categoriaorden" value={solicitud.categoria}>
-          <option value={'todos'}>todos</option>
           <option value={'Repuestos_Motos'}>Repuestos Motos</option>
           <option value={'Repuestos_Carros'}>Repuestos Carros</option>
           <option value={'Ferreterias'}>Ferreterias | Electricos</option>

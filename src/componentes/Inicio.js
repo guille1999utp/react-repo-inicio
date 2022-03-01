@@ -10,6 +10,8 @@ import { fetchstoken } from '../helpers/fetchmetod';
 import CircularProgress from "./CircularProgress";
 import Fondo1 from "./images/Farmacia_banner.png"
 import Fondo2 from "./images/Banner_Ferreterias.png"
+import Fondo3 from "./images/registrate.png"
+
 
 //useEffect para poder hacer responsive la carta
 function Inicio ({history}) {
@@ -84,6 +86,9 @@ useEffect(() => {
       <div className='contendioinicio'>
      <div className='sliderbargrande'>
         <Slider {...settingsinicio}>
+        <div>
+            <img onClick={redirect} src={Fondo3} alt='fondo'></img>
+          </div>
           <div>
             <img onClick={redirect} src={Fondo1} alt='fondo'></img>
           </div>
