@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 
 function Iniciarsesion() {
   const dispatch = useDispatch();
-  const { conectarSocket } = useSocket('https://www.lbshop.bond');
+  const { conectarSocket } = useSocket('https://pruebas-canal-youtube.herokuapp.com');
   const [login, setLogin] = useState({
    correo:'',
    password: ''

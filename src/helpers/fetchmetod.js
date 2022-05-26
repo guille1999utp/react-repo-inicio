@@ -1,4 +1,4 @@
-const sitioUrl = 'https://www.lbshop.bond';
+const sitioUrl = 'https://pruebas-canal-youtube.herokuapp.com';
 export const fetchstoken = async (endpoint, data, method = 'GET') =>{
 const url = `${ sitioUrl }/${ endpoint }`;
     
@@ -16,7 +16,7 @@ const url = `${ sitioUrl }/${ endpoint }`;
                 
                 body: JSON.stringify( data )
             })
-    
+     
             return await resp.json();
         }
     
